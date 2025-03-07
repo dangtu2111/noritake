@@ -46,8 +46,8 @@
                                 <a href="{{ route('product.catalogue.index') }}" class="nav-link">Nhóm sản phẩm</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#sidebarProduct" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-controls="sidebarProduct"> Sản phẩm
+                                <a href="#sidebarProduct" class="nav-link" data-bs-toggle="collapse" role="button"
+                                    aria-controls="sidebarProduct"> Sản phẩm
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarProduct">
                                     <ul class="nav nav-sm flex-column">
@@ -73,8 +73,8 @@
                         <ul class="nav nav-sm flex-column">
 
                             <li class="nav-item">
-                                <a href="#sidebarorder" class="nav-link" data-bs-toggle="collapse"
-                                    role="button" aria-controls="sidebarorder"> Quản lý
+                                <a href="#sidebarorder" class="nav-link" data-bs-toggle="collapse" role="button"
+                                    aria-controls="sidebarorder"> Quản lý
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarorder">
                                     <ul class="nav nav-sm flex-column">
@@ -113,7 +113,8 @@
             <div class="collapse menu-dropdown" id="sidebarMembers">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a href="{{ route('user.catalogue.index') }}" class="nav-link" data-key="t-starter"> Nhóm thành viên </a>
+                        <a href="{{ route('user.catalogue.index') }}" class="nav-link" data-key="t-starter"> Nhóm thành
+                            viên </a>
                     </li>
                     <li class="nav-item">
                         <a href="#sidebarUser" class="nav-link" data-bs-toggle="collapse" role="button"
@@ -122,10 +123,12 @@
                         <div class="collapse menu-dropdown" id="sidebarUser">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('user.index') }}" class="nav-link" data-key="t-simple-page"> Quản lý</a>
+                                    <a href="{{ route('user.index') }}" class="nav-link" data-key="t-simple-page"> Quản
+                                        lý</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('user.create') }}" class="nav-link" data-key="t-simple-page"> Thêm mới</a>
+                                    <a href="{{ route('user.create') }}" class="nav-link" data-key="t-simple-page"> Thêm
+                                        mới</a>
                                 </li>
                             </ul>
                         </div>
@@ -141,8 +144,8 @@
             <div class="collapse menu-dropdown" id="sidebarPagesvoucher">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a href="#sidebarvoucher" class="nav-link" data-bs-toggle="collapse"
-                            role="button" aria-controls="sidebarvoucher">Quản lý
+                        <a href="#sidebarvoucher" class="nav-link" data-bs-toggle="collapse" role="button"
+                            aria-controls="sidebarvoucher">Quản lý
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarvoucher">
                             <ul class="nav nav-sm flex-column">
@@ -167,8 +170,8 @@
             <div class="collapse menu-dropdown" id="sidebarPagescomment">
                 <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                        <a href="#sidebarcomment" class="nav-link" data-bs-toggle="collapse"
-                            role="button" aria-controls="sidebarcomment">Quản lý
+                        <a href="#sidebarcomment" class="nav-link" data-bs-toggle="collapse" role="button"
+                            aria-controls="sidebarcomment">Quản lý
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarcomment">
                             <ul class="nav nav-sm flex-column">
@@ -197,8 +200,8 @@
                         <a href="{{ route('post.catalogue.index') }}" class="nav-link">Nhóm bài viết</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#sidebarPost" class="nav-link" data-bs-toggle="collapse"
-                            role="button" aria-controls="sidebarPost"> Bài viết
+                        <a href="#sidebarPost" class="nav-link" data-bs-toggle="collapse" role="button"
+                            aria-controls="sidebarPost"> Bài viết
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarPost">
                             <ul class="nav nav-sm flex-column">
@@ -248,8 +251,8 @@
                 <ul class="nav nav-sm flex-column">
 
                     <li class="nav-item">
-                        <a href="#sidebarbanner" class="nav-link" data-bs-toggle="collapse"
-                            role="button" aria-controls="sidebarbanner"> Quản lý
+                        <a href="#sidebarbanner" class="nav-link" data-bs-toggle="collapse" role="button"
+                            aria-controls="sidebarbanner"> Quản lý
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarbanner">
                             <ul class="nav nav-sm flex-column">
@@ -274,7 +277,7 @@
                 <ul class="nav nav-sm flex-column">
 
                     <li class="nav-item">
-                        <a href="{{ route('banner.index') }}" class="nav-link">Thông tin hệ thống </a>
+                        <a href="{{ route('system.index') }}" class="nav-link">Thông tin hệ thống </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('banner.index') }}" class="nav-link">Menu </a>
