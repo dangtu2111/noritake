@@ -37,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         'App\Services\Interfaces\UserCatalogueServiceInterface' => 'App\Services\UserCatalogueService',
         'App\Services\Interfaces\BannerServiceInterface' => 'App\Services\BannerService',
         'App\Services\Interfaces\PromotionServiceInterface' => 'App\Services\PromotionService',
+        'App\Services\Interfaces\SystemServiceInterface' => 'App\Services\SystemService',
     ];
 
     public function register(): void
