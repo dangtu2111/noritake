@@ -5,7 +5,7 @@
                 <div class="col-md-4 wrapper-header-blank"></div>
                 <div class="col-md-4 wrapper-header-logo">
                     <div class="wrap-logo text-center" itemscope="" itemtype="http://schema.org/Organization">
-                        <a href="index.html" itemprop="url" aria-label="logo">
+                        <a href="{{ route('home_index.index') }}" itemprop="url" aria-label="logo">
                             <img itemprop="logo"
                                 src="/file.hstatic.net/200000296482/file/logo_1c90af075f3541399f3f74a35237f63c.png"
                                 alt="Thương hiệu đồ gốm sứ Nhật Bản cao cấp">
@@ -145,96 +145,61 @@
                                     </svg>
                                 </span>
                                 <div class="site-nav-container text-center">
+                                    @guest
+                                    <!-- Hiển thị form đăng nhập nếu chưa đăng nhập -->
                                     <div class="popover-panel_list">
                                         <div id="header-login-panel" class="popover-panel popover-panel_default is-selected">
                                             <div class="popover-inner">
-                                                <form accept-charset="UTF-8" action="https://noritake.vn/account/login" id="customer_login"
-                                                    method="post">
-                                                    <input name="form_type" type="hidden" value="customer_login">
-                                                    <input name="utf8" type="hidden" value="✓">
+                                                <form accept-charset="UTF-8" action="{{ route('store.login') }}" method="post">
+                                                    @csrf
                                                     <div class="popover_header">
                                                         <p class="popover_title">Đăng nhập tài khoản</p>
                                                         <p class="popover_legend">Nhập email và mật khẩu của bạn:</p>
                                                     </div>
                                                     <div class="form-group form-input-wrapper form-input-wrapper_labelled">
-                                                        <input type="email" id="login-customer[email]" class="form-field_text form-control"
-                                                            name="customer[email]" required="required" autocomplete="off">
+                                                        <input type="email" class="form-field_text form-control" name="email" id="email"
+                                                            placeholder="Nhập email" value="{{ old('email') }}">
+                                                        @error('email')
+                                                        <span class="text-danger fz-12 mt-1">{{ $message }}</span>
+                                                        @enderror
                                                         <label for="login-customer[email]" class="text-field form-floating_label">Email</label>
                                                     </div>
                                                     <div class="form-group form-input-wrapper form-input-wrapper_labelled">
-                                                        <input type="password" id="login-customer[password]"
-                                                            class="form-field_text form-control" name="customer[password]" required="required"
-                                                            autocomplete="off">
-                                                        <label for="login-customer[password]" class="text-field form-floating_label">Mật
-                                                            khẩu</label>
+                                                        <input id="password-input" name="password" required type="password"
+                                                            placeholder="Mật khẩu" autocomplete="off" class="form-field_text form-control">
+                                                        <label for="login-customer[password]" class="text-field form-floating_label">Mật khẩu</label>
                                                     </div>
-                                                    <div class="sitebox-recaptcha mb-3"> This site is protected by reCAPTCHA and the Google <a
-                                                            href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy
-                                                            Policy</a> and <a href="https://policies.google.com/terms" target="_blank"
-                                                            rel="noreferrer">Terms of Service</a> apply. </div>
-                                                    <button type="submit" class="form-submit btn btn-box dark" id="form-submit_login">Đăng
-                                                        nhập</button>
-                                                    <input id="3088bfe5fcb1400987c119029066b064" name="g-recaptcha-response" type="hidden">
-                                                    <noscript
-                                                        src="../www.google.com/recaptcha/api4d7a.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript>
-                                                    <noscript>grecaptcha.ready(function()
-                                                        {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action:
-                                                        'submit'}).then(function(token)
-                                                        {document.getElementById('3088bfe5fcb1400987c119029066b064').value =
-                                                        token;});});</noscript>
+                                                    <button type="submit" class="form-submit btn btn-box dark">Đăng nhập</button>
                                                 </form>
                                                 <div class="popover-secondary-action">
-                                                    <p class="mb-2">Khách hàng mới? <a href="account/register.html" class="link">Tạo tài
-                                                            khoản</a>
+                                                    <p class="mb-2">Khách hàng mới?
+                                                        <a href="{{ route('auth.register') }}" class="link">Tạo tài khoản</a>
                                                     </p>
-                                                    <p class="mb-0">Quên mật khẩu? <button data-action="show-popover-panel"
-                                                            aria-controls="header-recover-panel" class="link-accented link">Khôi phục mật
-                                                            khẩu</button>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="header-recover-panel" class="popover-panel popover-panel_sliding">
-                                            <div class="popover-inner">
-                                                <form accept-charset="UTF-8" action="https://noritake.vn/account/recover" method="post">
-                                                    <input name="form_type" type="hidden" value="recover_customer_password">
-                                                    <input name="utf8" type="hidden" value="✓">
-                                                    <div class="popover_header">
-                                                        <p class="popover_title">Khôi phục mật khẩu</p>
-                                                        <p class="popover_legend">Nhập email của bạn:</p>
-                                                    </div>
-                                                    <div class="form-group form-input-wrapper form-input-wrapper_labelled">
-                                                        <input type="email" id="recover-customer[recover_email]"
-                                                            class="form-field_text form-control" name="email" required="required"
-                                                            autocomplete="off">
-                                                        <label for="recover-customer[recover_email]"
-                                                            class="text-field form-floating_label">Email</label>
-                                                    </div>
-                                                    <div class="sitebox-recaptcha mb-3"> This site is protected by reCAPTCHA and the Google <a
-                                                            href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy
-                                                            Policy</a> and <a href="https://policies.google.com/terms" target="_blank"
-                                                            rel="noreferrer">Terms of Service</a> apply. </div>
-                                                    <button type="submit" class="btn form-submit btn-box dark" id="form-submit_recover">Khôi
-                                                        phục</button>
-                                                    <input id="d9ace79206f04395854bb4869cbfa1de" name="g-recaptcha-response" type="hidden">
-                                                    <noscript
-                                                        src="../www.google.com/recaptcha/api4d7a.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-"></noscript>
-                                                    <noscript>grecaptcha.ready(function()
-                                                        {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action:
-                                                        'submit'}).then(function(token)
-                                                        {document.getElementById('d9ace79206f04395854bb4869cbfa1de').value =
-                                                        token;});});</noscript>
-                                                </form>
-                                                <div class="popover-secondary-action">
-                                                    <p class="mb-0">Bạn đã nhớ mật khẩu? <button data-action="show-popover-panel"
-                                                            aria-controls="header-login-panel" class="link-accented link">Trở về đăng
-                                                            nhập</button>
+                                                    <p class="mb-0">Quên mật khẩu?
+                                                        <a href="{{ route('password.confirm_email') }}" class="link-accented link">Khôi phục mật khẩu</a>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endguest
+
+                                    @auth
+                                    <ul class="popover-panel_list">
+                                        <li><a class="  form-control" href="{{ route("profile.user") }}">Trang cá nhân</a></li>
+                                        <li><a class="  form-control" href="">Đơn hàng của tôi</a></li>
+                                        <li>
+                                            <form action="" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Đăng xuất</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <!-- Hiển thị dropdown nếu đã đăng nhập -->
+
+                                    @endauth
                                 </div>
+
                             </div>
                         </div>
                         <div class="wrap-cart header-action">
@@ -327,8 +292,8 @@
                                             <span id="total-view-cart">0₫</span>
                                         </div>
                                         <div class="mini-cart_button-container d-flex ">
-                                            <a href="cart.html" class="link-to-cart btn-box dark">Xem giỏ hàng</a>
-                                            <a href="cart.html" class="link-to-checkout btn-box btnred">Thanh toán</a>
+                                            <a href="{{ route('cart.index') }}" class="link-to-cart btn-box dark">Xem giỏ hàng</a>
+                                            <a href="{{ route('order.checkout') }}" class="link-to-checkout btn-box btnred">Thanh toán</a>
                                         </div>
                                     </div>
                                 </div>
@@ -374,7 +339,7 @@
 							</div>-->
 
                 <div id="menu-desktop-icon" class="icon-nav icon-state">
-                    <a href="index.html" class="trai home-icon" aria-hidden="true" style="color: #fff;">
+                    <a href="{{ route('home_index.index') }}" class="trai home-icon" aria-hidden="true" style="color: #fff;">
                         <!-- SVG biểu tượng Home -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                             style="padding-top: 4px; padding-bottom: 2px;">
@@ -398,7 +363,7 @@
                             <div class="navbar-level" data-level="1">
                                 <ul class="menuList-sub vertical-menu-list sub-child">
                                     <li>
-                                        <a class="parent" href="index.html">
+                                        <a class="parent" href="{{ route('home_index.index') }}">
                                             <span style="font-size: 17px; font-weight: 500;">TRANG CHỦ</span>
                                         </a>
                                     </li>
@@ -1647,7 +1612,7 @@
 
 
                 <li class="hidden-on-small ">
-                    <a href="index.html" title="Tìm theo chức năng">Tìm theo chức năng<svg class="icon--arrow-bottom"
+                    <a href="{{ route('home_index.index') }}" title="Tìm theo chức năng">Tìm theo chức năng<svg class="icon--arrow-bottom"
                             viewBox="0 0 12 8">
                             <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square">
                             </path>
@@ -1726,7 +1691,7 @@
 
                         <li class="has-sub">
 
-                            <a href="index.html" title="Phụ kiện bàn ăn">
+                            <a href="{{ route('home_index.index') }}" title="Phụ kiện bàn ăn">
                                 Phụ kiện bàn ăn<svg class="icon--arrow-right" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1758,7 +1723,7 @@
 
                         <li class="has-sub">
 
-                            <a href="index.html" title="Phụ kiện bàn trà">
+                            <a href="{{ route('home_index.index') }}" title="Phụ kiện bàn trà">
                                 Phụ kiện bàn trà<svg class="icon--arrow-right" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path

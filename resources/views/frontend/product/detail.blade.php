@@ -158,49 +158,49 @@ Chi tiết sản phẩm
 
                                     <form id="add-item-form" action="https://noritake.vn/cart/add" method="post"
                                         class="variants clearfix">
-                                        @if (!is_null($attrCatalogues) && !empty($attrCatalogues))
-    <div class="product-attributes">
-        @foreach ($attrCatalogues as $key => $val)
-            <div class="attribute attribute-{{ strtolower($val->name) }}">
-                <div class="attribute-header d-flex justify-content-between mb-2">
-                    <span class="attribute-title fw-medium fs-5">{{ $val->name }}</span>
-                    
-                    @if ($val->id == 2) <!-- Hiển thị bảng size nếu ID là 2 -->
-                        <a href="javascript:void(0)"
-                           class="size-chart-link fs-6"
-                           data-bs-target="#exampleModalToggle" 
-                           data-bs-toggle="modal">
-                            Bảng size <i class="fa-solid fa-ruler"></i>
-                        </a>
-                    @endif
-                </div>
+                                        @if (is_array($attrCatalogues) && !empty($attrCatalogues) && !in_array(null, $attrCatalogues, true))
+                                            <div class="product-attributes">
+                                                @foreach ($attrCatalogues as $key => $val)
+                                                    <div class="attribute attribute-{{ strtolower($val->name) }}">
+                                                        <div class="attribute-header d-flex justify-content-between mb-2">
+                                                            <span class="attribute-title fw-medium fs-5">{{ $val->name }}</span>
+                                                            
+                                                            @if ($val->id == 2) <!-- Hiển thị bảng size nếu ID là 2 -->
+                                                                <a href="javascript:void(0)"
+                                                                class="size-chart-link fs-6"
+                                                                data-bs-target="#exampleModalToggle" 
+                                                                data-bs-toggle="modal">
+                                                                    Bảng size <i class="fa-solid fa-ruler"></i>
+                                                                </a>
+                                                            @endif
+                                                        </div>
 
-                @if (!is_null($val->attributes) && is_iterable($val->attributes))
-                    <div class="attribute-value d-flex flex-wrap gap-3 ps-4 mb-3">
-                        @foreach ($val->attributes as $keyAttr => $attribute)
-                            <a href="#"
-                               class="choose-attribute {{ $keyAttr == 0 ? 'active' : '' }} attribute-item"
-                               data-attribute-id="{{ $attribute->id }}"
-                               data-attribute-type="{{ strtolower($val->name) }}"
-                               title="{{ $attribute->name }}">
-                                <div class="attribute-item-content">
-                                    @if ($val->id == 1) <!-- Thuộc tính màu sắc (ID = 1) -->
-                                        <img src="{{ $attribute->image }}"
-                                             alt="{{ $attribute->name }}"
-                                             class="me-2 rounded-circle" width="30" height="30">
-                                        <span class="d-none d-md-inline-block">{{ $attribute->name }}</span>
-                                    @else
-                                        <span class="fw-bold text-uppercase">{{ $attribute->name }}</span>
-                                    @endif
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        @endforeach
-    </div>
-@endif
+                                                        @if (!is_null($val->attributes) && is_iterable($val->attributes))
+                                                            <div class="attribute-value d-flex flex-wrap gap-3 ps-4 mb-3">
+                                                                @foreach ($val->attributes as $keyAttr => $attribute)
+                                                                    <a href="#"
+                                                                    class="choose-attribute {{ $keyAttr == 0 ? 'active' : '' }} attribute-item"
+                                                                    data-attribute-id="{{ $attribute->id }}"
+                                                                    data-attribute-type="{{ strtolower($val->name) }}"
+                                                                    title="{{ $attribute->name }}">
+                                                                        <div class="attribute-item-content">
+                                                                            @if ($val->id == 1) <!-- Thuộc tính màu sắc (ID = 1) -->
+                                                                                <img src="{{ $attribute->image }}"
+                                                                                    alt="{{ $attribute->name }}"
+                                                                                    class="me-2 rounded-circle" width="30" height="30">
+                                                                                <span class="d-none d-md-inline-block">{{ $attribute->name }}</span>
+                                                                            @else
+                                                                                <span class="fw-bold text-uppercase">{{ $attribute->name }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
 
                                         
                                         <div class="select-swatch clearfix">

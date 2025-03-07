@@ -59,6 +59,7 @@ Route::get('terms_and_conditions', [HomeController::class, 'terms_and_conditions
 Route::get('return_and_warranty_policy', [HomeController::class, 'return_and_warranty_policy'])->name('home.return_and_warranty_policy');
 Route::get('about_us', [HomeController::class, 'about_us'])->name('home.about_us');
 Route::get('security_center', [HomeController::class, 'security_center'])->name('home.security_center');
+Route::get('static_page', [HomeController::class, 'static_page'])->name('home.static_page');
 
 // AJAX
 //SEARCH SUGGESTION
@@ -92,6 +93,7 @@ Route::middleware(['auth'])->group(function () {
 
     // PROFILE USER
     Route::get('/profile', [FontendUserController::class, 'profile'])->name('profile.user');
+    Route::get('/address', [FontendUserController::class, 'address'])->name('address.user');
     Route::get('/profile/change-pass', [FontendUserController::class, 'changeViewProfile'])->name('profile.change-view');
     Route::post('/profile/change-pass', [FontendUserController::class, 'changeSubmitProfile'])->name('profile.change-submit');
     Route::get('/confirm-password-change/{token}', [FontendUserController::class, 'confirmPasswordChange'])->name('confirm.password.change');
@@ -120,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
     // ORDER 
     Route::group(['prefix' => 'order'], function () {
         Route::get('checkout', [FontendOrderController::class, 'checkout'])->name('order.checkout');
+        Route::post('payment_method', [FontendOrderController::class, 'selectmethod'])->name('order.paymentmethod');
         Route::post('store', [FontendOrderController::class, 'store'])->name('store.order');
         Route::get('success', [FontendOrderController::class, 'success'])->name('order.success');
         Route::get('failed', [FontendOrderController::class, 'failed'])->name('order.failed');

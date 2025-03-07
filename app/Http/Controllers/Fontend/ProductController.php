@@ -56,6 +56,7 @@ class ProductController extends Controller
         ]);
 
         $attributeVariant = $this->productService->checkAttributeVariantQuantity($slug);
+        // dd($product->attributeCatalogue);
         return view('frontend.product.detail', compact(
             'brands',
             'product',
