@@ -66,7 +66,9 @@ class OrderController extends FontendController
         }
     }
 
-
+    public function selectmethod(Request $request){
+        return view('frontend.order.paymentmethod');
+    }
     public function checkout(Request $request)
     {
         $carts = $this->cartService->all();
@@ -89,7 +91,7 @@ class OrderController extends FontendController
         }
         
         // Truyền dữ liệu vào view
-        return view('fontend.order.checkout', compact(
+        return view('frontend.order.checkout', compact(
             'order',
             'attributesByCartItem'
         ));

@@ -138,7 +138,7 @@ class ShopController extends Controller
             ['publish', 1],
             ['location', 2]
         ]);
-        return view('fontend.product.category', compact(
+        return view('frontend.product.category', compact(
             'category',
             'brandAll',
             'bannerShop',

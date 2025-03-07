@@ -1,6 +1,6 @@
 @extends('frontend.home.layout')
 @section('page_title')
-Bee Cloudy
+Test tile
 @endsection
 @section('content')
 <main class="mainContent-theme">

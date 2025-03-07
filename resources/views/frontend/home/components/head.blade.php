@@ -47,7 +47,7 @@
         
     </title>
 
-      <link rel="canonical" href="index.html" />
+      <link rel="canonical" href="{{ route('home_index.index') }}" />
 
     
     <!-- Favicon -->
@@ -70,7 +70,7 @@
     <link rel="preconnect" href="http://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap">
     <link rel="preload" href="http://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" as="style">
     <link href="/theme.hstatic.net/200000296482/1001063914/14/style-themes.css?v=5232" rel="stylesheet" type="text/css" media="all">
-    <link rel="dns-prefetch" href="index.html">
+    <link rel="dns-prefetch" href="{{ route('home_index.index') }}">
     <link rel="dns-prefetch" href="http://hstatic.net/">
     <link rel="dns-prefetch" href="http://theme.hstatic.net/">
     <link rel="dns-prefetch" href="http://file.hstatic.net/">
@@ -137,7 +137,7 @@
         "https://www.instagram.com/noritakevietnam",
         "https://www.youtube.com/noritakevietnam",
         "https://www.linkedin.com/company/noritake-vietnam",
-        "index.html"
+        "{{ route('home_index.index') }}"
     ]
 }
 </script>

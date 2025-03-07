@@ -139,4 +139,8 @@ class HomeController extends Controller
     {
         return view('fontend.page_other.security_center');
     }
+    public function static_page()
+    {
+        return view('frontend.page_other.staticpage');
+    }
 }
