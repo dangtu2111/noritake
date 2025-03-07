@@ -1765,7 +1765,7 @@
 
                         <li class="has-sub">
 
-                            <a href="index.html" title="Decor - Trang trí">
+                            <a href="{{ route('home_index.index') }}" title="Decor - Trang trí">
                                 Decor - Trang trí<svg class="icon--arrow-right" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1847,7 +1847,7 @@
 
 
                 <li class="hidden-on-small ">
-                    <a href="index.html" title="Khách hàng doanh nghiệp">Khách hàng doanh nghiệp<svg
+                    <a href="{{ route('home_index.index') }}" title="Khách hàng doanh nghiệp">Khách hàng doanh nghiệp<svg
                             class="icon--arrow-bottom" viewBox="0 0 12 8">
                             <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square">
                             </path>
