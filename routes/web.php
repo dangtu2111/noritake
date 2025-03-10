@@ -12,6 +12,7 @@ use App\Http\Controllers\Ajax\SearchController as AjaxSearchController;
 use App\Http\Controllers\Ajax\CartController as AjaxCartController;
 use App\Http\Controllers\Ajax\WishlistController as AjaxWishlistController;
 use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
+use App\Http\Controllers\Ajax\MenuController as AjaxMenuController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostCatalogueController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Fontend\FPromotionController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SystemController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Fontend\UserController as FontendUserController;
 use App\Http\Controllers\Fontend\ProductController as FontendProductController;
 use App\Http\Controllers\Fontend\HomeController;
@@ -79,7 +81,8 @@ Route::post('/ajax/cart/clearSessionId', [AjaxCartController::class, 'clearSessi
 Route::delete('/ajax/cart/destroyCart', [AjaxCartController::class, 'destroyCart'])->name('ajax.cart.destroyCart');
 Route::delete('/ajax/cart/clearCart', [AjaxCartController::class, 'clearCart'])->name('ajax.cart.clearCart');
 Route::post('/ajax/cart/checkStock', [AjaxCartController::class, 'checkStock'])->name('ajax.inventory.checkStock');
-
+//MENU AJAX
+Route::post('/ajax/menu/drag', [AjaxMenuController::class, 'drag'])->name('ajax.menu.drag');
 // WISHLIST AJAX
 Route::post('/ajax/wishlist/toggle', [AjaxWishlistController::class, 'toggle'])->name('ajax.wishlist.toggle');
 // POST
@@ -303,7 +306,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::group(['prefix' => 'system'], function () {
         Route::get('index', [SystemController::class, 'index'])->name('system.index');
         Route::post('store', [SystemController::class, 'store'])->name('system.store');
-       
+    });
+    // Manage menu
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('index', [MenuController::class, 'index'])->name('menu.index');
+        Route::get('create', [MenuController::class, 'create'])->name('menu.create');
+        Route::post('store', [MenuController::class, 'store'])->name('menu.store');
+        Route::get('edit', [MenuController::class, 'edit'])->name('menu.edit');
+        Route::get('{id}/children', [MenuController::class, 'children'])->name('menu.children');
+        Route::post('saveChildren', [MenuController::class, 'saveChildren'])->name('menu.save.children');
+        Route::post('update', [MenuController::class, 'update'])->name('menu.update');
+        // Route::get('{id}/delete', [MenuController::class, 'delete'])->name('menu.delete');
+        // Route::post('{id}/destroy', [MenuController::class, 'destroy'])->name('menu.destroy');
+        
     });
    
 
