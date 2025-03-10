@@ -14,12 +14,12 @@
                                 </ol>
                             </div>
                         </div>
-                        
+
                         <div class="card-body">
                             <div class="listjs-table" id="customerList">
                                 @include('backend.post.post.component.filter')
                                 @include('backend.post.post.component.table')
-                                
+
                             </div>
                         </div>
                     </div>

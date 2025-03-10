@@ -271,7 +271,7 @@
         <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarBanner" data-bs-toggle="collapse" role="button"
                 aria-expanded="false" aria-controls="sidebarBanner">
-                <i class="fa-solid fa-image"></i> <span data-key="t-Banner">Hệ thống </span>
+                <i class="fas fa-cogs"></i> <span data-key="t-Banner">Hệ thống </span>
             </a>
             <div class="collapse menu-dropdown" id="sidebarBanner">
                 <ul class="nav nav-sm flex-column">
@@ -280,7 +280,10 @@
                         <a href="{{ route('system.index') }}" class="nav-link">Thông tin hệ thống </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('banner.index') }}" class="nav-link">Menu </a>
+                        <a href="{{ route('menu.index') }}" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('menu.create') }}" class="nav-link">Thêm menu</a>
                     </li>
                 </ul>
             </div>
