@@ -13,6 +13,8 @@ use App\Repositories\ProductCatalogueRepository;
 use App\Services\PostService;
 use App\Services\ShopService;
 use Illuminate\Support\Facades\Mail;
+use  App\Repositories\Interfaces\SystemRepositoryInterface as SystemRepository;
+use App\Models\Menu;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
     protected $brandRepository;
     protected $bannerRepository;
     protected $productCatalogueRepository;
+    protected $systemRepository;
 
     public function __construct(
         ShopService $shopService,
@@ -31,6 +34,7 @@ class HomeController extends Controller
         BrandRepository $brandRepository,
         BannerRepository $bannerRepository,
         ProductCatalogueRepository $productCatalogueRepository,
+        SystemRepository $systemRepository
     ) {
         $this->postRepository = $postRepository;
         $this->shopService = $shopService;
@@ -38,6 +42,7 @@ class HomeController extends Controller
         $this->bannerRepository = $bannerRepository;
         $this->brandRepository = $brandRepository;
         $this->productCatalogueRepository = $productCatalogueRepository;
+        $this->systemRepository=$systemRepository;
     }
     public function index(Request $request)
     {
@@ -82,6 +87,8 @@ class HomeController extends Controller
             []
 
         );
+        $systems=convert_array($this->systemRepository->all(),'keyword','content');
+        $menus = \App\Models\Menu::whereNull('parent_id')->with('children')->get();
         // dd($postHomes);
         return view('frontend.index.home_index', compact(
             'brands',
@@ -94,6 +101,8 @@ class HomeController extends Controller
             'productCatalogues',
             'productSupperSales',
             'productShopPriceMins',
+            'systems',
+            'menus',
         ));
     }
 

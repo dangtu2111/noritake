@@ -23,6 +23,7 @@ class SystemController extends Controller
     {
         $systemConfig=$this->systemLibrary->config();
         $systems=convert_array($this->systemRepository->all(),'keyword','content');
+      
         $template = 'backend.system.index';
         return view('backend.dashboard.layout', compact(
             'template','systemConfig','systems'
@@ -35,7 +36,7 @@ class SystemController extends Controller
       
         $result = $this->systemService->save($request);
         if ($result) {
-            flash()->success('Thêm mới thành công');
+            flash()->success('Cập nhật thành công');
             return redirect()->route('system.index');
         } else {
             flash()->error('Thất bại. Đã có lỗi xảy ra vui lòng thử lại!');
