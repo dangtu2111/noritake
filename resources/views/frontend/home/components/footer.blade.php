@@ -24,12 +24,9 @@
 						<span class="titleHotline"><a class="linkHotline" href="tel:1800 1162">0934 033 988</a></span>					
 					</p>-->
             <ul class="payment-icon">
-              <li><img src="../file.hstatic.net/200000296482/file/viasa_fb97fbe2b8e54e588f14e9431fd6c251.png"></li>
-              <li><img src="../file.hstatic.net/200000296482/file/mastercard_9e962600a82d4cf99e0cbec5da6a66a6.png"></li>
-              <li><img
-                  src="../file.hstatic.net/200000296482/file/american-express_b0c503a52f5b42d3bfa48fa4fee3aa17.png">
-              </li>
-              <li><img src="../file.hstatic.net/200000296482/file/jcb_05dfb9483a8b4244b84385fc825efe4a.png"></li>
+              <li><img  src="{{$systems['homepage_logo_payment1']}}"></li>
+              <li><img  src="{{$systems['homepage_logo_payment2']}}"></li>
+              <li><img  src="{{$systems['homepage_logo_payment3']}}"></li>
             </ul>
 
             <p class="heading-h4 footer-newletter footer-trai">
@@ -62,10 +59,10 @@
             <ul class="footer-text-line">
               <!--<li>Công ty trách nhiệm hữu hạn NRTK</li>-->
               <li><i class="fa fa-phone"></i>
-                <p>Hotline: <a href="tel:0934033988">0934 033 988</a> (8:00-22:00 hàng ngày)</p>
+                <p>Hotline: <a href="">{{$systems['contact_hotline']}}</a> (8:00-22:00 hàng ngày)</p>
               </li>
               <li><i class="fa fa-envelope"></i>
-                <p>Email: contact@noritake.vn</p>
+              <p>Email: {{ $systems['contact_email'] ?? 'Chưa có email' }}</p>
               </li>
             </ul>
 
@@ -92,17 +89,15 @@
 
             <ul class="footer-wrap-item-info-list noClass">
               <li><i class="fa fa-map-marker"></i>
-                <p>HQ & SHOWROOM 1 (Hotline: 0945.900.188)<br>KĐT Sala - Đại Quang Minh<br>40 Đường B2, P. An Lợi Đông,
-                  Tp. Thủ Đức, Tp. Hồ Chí Minh</p>
+                <p>{{$systems['contact_address']}}  
               </li>
+              <br>
               <li><i class="fa fa-map-marker"></i>
-                <p>SHOWROOM 2 (Hotline: 0943.885.225)<br>Tầng 3 - TTTM Takashimaya<br>94 Đường Nam Kỳ Khởi Nghĩa, P. Bến
-                  Nghé, Q. 1, Tp. Hồ Chí Minh</p>
+                <p>{{$systems['contact_address1']}}  
               </li>
-
+              <br>
               <li><i class="fa fa-map-marker"></i>
-                <p>SHOWROOM 3 (Hotline: 0943.809.972)<br>Tầng 4 - TTTM Diamond Plaza<br>34 Lê Duẩn, P.Bến Nghé, Q.1, Tp.
-                  Hồ Chí Minh</p>
+                <p>{{$systems['contact_address2']}}  
               </li>
             </ul>
 
@@ -116,38 +111,38 @@
                 data-height="300px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
                 data-show-facepile="true">
                 <blockquote cite="https://www.facebook.com/NoritakeVietnam" class="fb-xfbml-parse-ignore"><a
-                    href="https://www.facebook.com/NoritakeVietnam">Noritake Vietnam</a></blockquote>
+                    href="https://www.facebook.com/NoritakeVietnam">{{$systems['contact_website']}} </a></blockquote>
               </div>
             </div>
             <div class="icon-trai"
               style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
               <ul class="navbar-social">
                 <li class="social">
-                  <a data-eventlabel="instagram" class="link-social" href="https://www.instagram.com/noritakevietnam/"
+                  <a data-eventlabel="instagram" class="link-social" href="{{$systems['contact_slug_logo1']}}"
                     target="_blank" rel="nofollow">
                     <img class="icon-social instagram"
-                      src="../file.hstatic.net/200000296482/file/instagram_-_footer_d01f0a0d01324ee0b54dda8d829a9ecc_small.png">
+                      src="{{$systems['contact_logo1']}}">
                   </a>
                 </li>
                 <li class="social">
-                  <a data-eventlabel="zalo" class="link-social" href="http://zalo.me/3535660045369223497"
+                  <a data-eventlabel="zalo" class="link-social" href="{{$systems['contact_slug_logo2']}}"
                     target="_blank" rel="nofollow">
                     <img class="icon-social zalo"
-                      src="../file.hstatic.net/200000296482/file/zalo_-_footer_d622bdb0640c465ea6fd753d0a985bf1_small.png">
+                      src="{{$systems['contact_logo2']}}">
                   </a>
                 </li>
                 <li class="social">
                   <a data-eventlabel="youtube" class="link-social"
-                    href="https://www.youtube.com/channel/UCjP5BI9Z4-AsIrkSDjdub0w" target="_blank" rel="nofollow">
+                    href="{{$systems['contact_slug_logo3']}}" target="_blank" rel="nofollow">
                     <img class="icon-social youtube"
-                      src="../file.hstatic.net/200000296482/file/youtube_-_footer_91ab502f46b34d4e9377dfdcfddd1024_small.png">
+                    src="{{$systems['contact_logo3']}}">
                   </a>
                 </li>
                 <li class="social">
-                  <a data-eventlabel="linkedin" class="link-social" href="https://linkedin.com/company/noritake-vietnam"
+                  <a data-eventlabel="linkedin" class="link-social" href="{{$systems['contact_slug_logo4']}}"
                     target="_blank" rel="nofollow">
                     <img class="icon-social linkedin"
-                      src="../file.hstatic.net/200000296482/file/linkedin_-_footer_1d4bfe5399964f939aea61b044440a44_small.png">
+                      src="{{$systems['contact_logo4']}}">
                   </a>
                 </li>
                 <!--<li class="social"> 
