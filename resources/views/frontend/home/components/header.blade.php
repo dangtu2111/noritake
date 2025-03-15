@@ -1114,6 +1114,7 @@
         </div>
         <nav class="f-nav nav-wrap-menu">
             <ul class="f-nav-one wrap-menu">
+                @if(isset($menus))
                 @foreach ($menus as $menu)
                 <li class="hidden-on-small {{ $menu->children->count() ? 'has-sub' : '' }}">
                     <a href="{{ url($menu->slug) }}" title="{{ $menu->name }}">
@@ -1158,6 +1159,7 @@
                     @endif
                 </li>
                 @endforeach
+                @endif
             </ul>
         </nav>
 
