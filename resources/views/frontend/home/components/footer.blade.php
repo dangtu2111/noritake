@@ -60,7 +60,7 @@
             <ul class="footer-text-line">
               <!--<li>Công ty trách nhiệm hữu hạn NRTK</li>-->
               <li><i class="fa fa-phone"></i>
-                <p>Hotline: <a href="">{{$systems['contact_hotline']}}</a> (8:00-22:00 hàng ngày)</p>
+                <p>Hotline: <a href="">{{ isset($systems['contact_hotline']) ? $systems['contact_hotline'] : '' }}</a> (8:00-22:00 hàng ngày)</p>
               </li>
               <li><i class="fa fa-envelope"></i>
               <p>Email: {{ $systems['contact_email'] ?? 'Chưa có email' }}</p>
