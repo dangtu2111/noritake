@@ -90,15 +90,15 @@
 
             <ul class="footer-wrap-item-info-list noClass">
               <li><i class="fa fa-map-marker"></i>
-                <p>{{$systems['contact_address']}}  
+                <p>{{isset($systems['contact_address'])?$systems['contact_address']:""}}  
               </li>
               <br>
               <li><i class="fa fa-map-marker"></i>
-                <p>{{$systems['contact_address1']}}  
+                <p>{{isset($systems['contact_address1'])?$systems['contact_address1']:""}}  
               </li>
               <br>
               <li><i class="fa fa-map-marker"></i>
-                <p>{{$systems['contact_address2']}}  
+                <p>{{isset($systems['contact_address2'])?$systems['contact_address2']:""}}  
               </li>
             </ul>
 
