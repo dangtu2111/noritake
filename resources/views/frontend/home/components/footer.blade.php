@@ -108,12 +108,14 @@
               FANPAGE CỦA CHÚNG TÔI
             </p>
             <div id="container1" style="width:100%;">
-              <div class="fb-page" data-href="https://www.facebook.com/NoritakeVietnam" data-tabs="" data-width="555px"
+              @if(isset($systems['contact_website']))
+              <div class="fb-page" data-href="{{$systems['contact_website']}}" data-tabs="" data-width="555px"
                 data-height="300px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
                 data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/NoritakeVietnam" class="fb-xfbml-parse-ignore"><a
-                    href="https://www.facebook.com/NoritakeVietnam">{{$systems['contact_website']}} </a></blockquote>
+                <blockquote cite="{{$systems['contact_website']}}" class="fb-xfbml-parse-ignore"><a
+                    href="{{$systems['contact_website']}}">{{$systems['contact_website']}} </a></blockquote>
               </div>
+              @endif
             </div>
             <div class="icon-trai"
               style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
