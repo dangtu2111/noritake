@@ -1,3 +1,4 @@
+@if(isset($systems))
 <section id="sectionInfoFooter" class="clearfix">
       <div class="footer-top">
         <ul class="row footer-top-trai">
@@ -172,7 +173,7 @@
             ngày 20/01/2021.</p>
         </div>
       </div>
-    </section>
+  </section>
     <div class="addThis_listSharing d-none">
       <ul class="addThis_listing">
         <li class="addThis_item">
@@ -434,3 +435,4 @@
 
   <!-- Site Overlay -->
   <div id="site-overlay" class="site-overlay"></div>
+  @endif
