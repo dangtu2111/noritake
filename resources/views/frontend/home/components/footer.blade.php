@@ -24,9 +24,10 @@
 						<span class="titleHotline"><a class="linkHotline" href="tel:1800 1162">0934 033 988</a></span>					
 					</p>-->
             <ul class="payment-icon">
-              <li><img  src="{{$systems['homepage_logo_payment1']}}"></li>
-              <li><img  src="{{$systems['homepage_logo_payment2']}}"></li>
-              <li><img  src="{{$systems['homepage_logo_payment3']}}"></li>
+            <li><img src="{{ isset($systems['homepage_logo_payment1']) ? $systems['homepage_logo_payment1'] : '' }}"></li>
+            <li><img src="{{ isset($systems['homepage_logo_payment2']) ? $systems['homepage_logo_payment2'] : '' }}"></li>
+            <li><img src="{{ isset($systems['homepage_logo_payment3']) ? $systems['homepage_logo_payment3'] : '' }}"></li>
+
             </ul>
 
             <p class="heading-h4 footer-newletter footer-trai">
