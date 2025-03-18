@@ -40,7 +40,7 @@ use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Backend\HomeViewController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeComponentController;
 
 
 
@@ -169,6 +169,7 @@ Route::middleware(['auth'])->group(function () {
 
 //BACKEND
 Route::middleware(['auth', 'admin'])->group(function () {
+    
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // usercatalogue
@@ -343,8 +344,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/producreview-update-admin', [ProductReviewController::class, 'updateadmin']);
     Route::post('/producreview-delete-admin', [ProductReviewController::class, 'deleteadmin']);
 
-    //view cấu hình trang chủ 
-    Route::get('/admin/home-view', [HomeViewController::class, 'index'])->name('homeview');
+
+    Route::get('/admin/home-view', [HomeComponentController::class, 'index'])->name('home-components.index');
+    Route::get('/admin/home-create', [HomeComponentController::class, 'create'])->name('home-components.create');
+    Route::get('/admin/home-update/{id}', [HomeComponentController::class, 'update_index'])->name('home-components.update_index');
+    Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name('home-components.delete');
+    Route::post('/admin/home-view', [HomeComponentController::class, 'store'])->name('home-components.store');
+    Route::put('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'update'])->name('home-components.update');
+    Route::delete('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
 
 });
 

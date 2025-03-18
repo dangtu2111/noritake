@@ -8,7 +8,7 @@
                             <h4 class="card-title mb-0 text-uppercase">Danh sách bài viết</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Dashboard</a>
+                                    <li class="breadcrumb-item"><a href="{{ route(name: 'home-components.index') }}">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item active">Danh sách bài viết</li>
                                 </ol>
@@ -17,8 +17,8 @@
                         
                         <div class="card-body">
                             <div class="listjs-table" id="customerList">
-                                @include('backend.home.component.filter')
-                                @include('backend.home.component.table')
+                                @include('backend.home_manager.component.filter')
+                                @include('backend.home_manager.component.table')
                                 
                             </div>
                         </div>
