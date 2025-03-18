@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+
 use App\Models\Product;
+
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
