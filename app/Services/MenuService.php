@@ -76,10 +76,7 @@ class MenuService implements MenuServiceInterface
                     if ($menuId === "0" || $menuId == 0) {
                         // Tạo mới menu
                         $menuSave = $this->menuRepository->create($data);
-                    } else {
-                        // Cập nhật menu đã có
-                        $menuSave = $this->menuRepository->update($menuId, $data);
-                    }
+                    } 
                 }
                 
                 // Cập nhật lại cấu trúc Nested Set cho bảng menus
