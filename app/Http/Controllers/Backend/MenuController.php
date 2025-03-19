@@ -53,15 +53,15 @@ class MenuController extends Controller
     if($this->menuService->save($request)){
      
       flash()->success('Thêm mới thành công');
-            return redirect()->route('system.index');
+            return redirect()->route('menu.create');
     }
     flash()->error('Thất bại. Đã có lỗi xảy ra vui lòng thử lại!');
+    return redirect()->back();
   }
 
   //edit
   public function edit(){
     $parentMenus = $this->menuRepository->getParentMenus();
-
     $template = 'backend.menu.edit';
     return view('backend.dashboard.layout', compact('template','parentMenus'));
   }
