@@ -3,33 +3,7 @@
 Test tile
 @endsection
 @section('content')
-<main class="mainContent-theme">
-    <div class="overlay123"></div>
-    <!-- Slider chính -->
-    @include('frontend.index.components.banner')
-    @include('frontend.index.components.category')
-    @include('frontend.index.components.product_category',['products' => $productNew])
-    <!-- Banner 1 -->
-
-    @include('frontend.index.components.banner_1')
-    <!-- End Banner 1 -->
-
-    @include('frontend.index.components.product_category')
-    @include('frontend.index.components.product_category')
-    <!-- Trai Text + Banner -->
-    @include('frontend.index.components.text_banner')
-    @include('frontend.index.components.product_category')
-
-  
-    <!-- End Trai Text + Banner Section 5 -->
-    <!-- Banner 2 -->
-    @include('frontend.index.components.banner_2')
-
-<!-- End Banner 2 -->
-    @include('frontend.index.components.product_category')
-    @include('frontend.index.components.text_banner')
-    @include('frontend.index.components.post')
-</main>
+<x-home-content />
 @endsection
 @section('js')
 <script>

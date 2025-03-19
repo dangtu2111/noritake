@@ -5,7 +5,7 @@
         </button>
         <div class="col-sm-auto">
             <div>
-                <a href="{{ route('post.create') }}" class="btn btn-success add-btn"><i
+                <a href="{{ route('home-components.create') }}" class="btn btn-success add-btn"><i
                         class="ri-add-line align-bottom me-1 fz-14"></i>Thêm mới</a>
             </div>
         </div>

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $this->call(UserCatalogueSeeder::class);
+        $this->call(HomeComponentSeeder::class);
         User::factory()->createMany(
             [
                 // [
