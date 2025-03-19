@@ -352,7 +352,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/home-view', [HomeComponentController::class, 'store'])->name('home-components.store');
     Route::put('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'update'])->name('home-components.update');
     Route::delete('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
-
+    Route::get('/admin/static-view', [HomeComponentController::class, 'index'])->name('static-components.index');
+    Route::get('/admin/static-create', [HomeComponentController::class, 'create'])->name('static-components.create');
+    Route::get('/admin/static-update/{id}', [HomeComponentController::class, 'update_index'])->name('static-components.update_index');
+    Route::get('/admin/static-delete/{id}', [HomeComponentController::class, 'delete'])->name('static-components.delete');
+    Route::post('/admin/static-view', [HomeComponentController::class, 'store'])->name('static-components.store');
+    Route::put('/admin/static-view/{homeComponent}', [HomeComponentController::class, 'update'])->name('static-components.update');
+    Route::delete('/admin/static-view/{homeComponent}', [HomeComponentController::class, 'destroy'])->name('static-components.destroy');
 });
 
 // AUTH
