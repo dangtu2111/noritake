@@ -1,9 +1,10 @@
 @extends('frontend.home.layout')
 @section('page_title')
-Giới thiệu
+{{ $page?$page->title:"WhitePage" }}
 @endsection
 @section('content')
-@include("frontend.page_other.component.banner")       
+<link href='/theme.hstatic.net/200000296482/1001063914/14/style-themes.css?v=5243' rel='stylesheet' type='text/css'  media='all'  />
+@include("frontend.page_other.component.topbar")       
 
 <div class="wrapper-page-content page-seo mt-lg-1">
     <div class="container-fluid">
@@ -22,4 +23,5 @@ Giới thiệu
         </div>
     </div>
 </div>
+
 @endsection

@@ -4,8 +4,8 @@
                 <div class="row align-items-md-center">
                     <div class="col-12 col-md-12">
                         <div class="banner-introproduct-image aspect-ratio text-center">
-                            <a href="collections/violet-t773.html"><img src="../file.hstatic.net/200000296482/file/violet.jpg"
-                                    alt="bộ sưu tập violet"></a>
+                            <a href="{{ $link }}"><img src="{{ $img }}"
+                                    alt="{{ $title }}"></a>
                         </div>
                     </div>
                 </div>
@@ -19,8 +19,8 @@
                 <div class="row align-items-md-center">
                     <div class="col-12 col-md-12">
                         <div class="banner-introproduct-image aspect-ratio text-center">
-                            <a href="collections/violet-t773.html"><img src="../file.hstatic.net/200000296482/file/violet.jpg"
-                                    alt="bộ sưu tập violet""></a>
+                            <a href="{{ $link }}"><img src="{{ $img }}"
+                                    alt="bộ sưu tập violet"></a>
 					</div>
 				</div>
 			</div>

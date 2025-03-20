@@ -11,9 +11,19 @@ class TextBanner extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public $img;
+    public $link;
+    public $name;
+    public $title;
+    public $description;
+
+    public function __construct($name="The white", $title="Bộ sưu tập",$img='/libaries/upload/images/img-notfound.png',$link="#",$description=" ")
+    {   
+        $this->name=$name;
+        $this->img=$img;
+        $this->link=$link;
+        $this->title=$title;
+        $this->description=$description;
     }
 
     /**

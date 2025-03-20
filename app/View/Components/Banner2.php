@@ -11,9 +11,15 @@ class Banner2 extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $img;
+    public $link;
+    public $title;
+
+    public function __construct($img='/libaries/upload/images/img-notfound.png',$link="#", $title="Bộ sưu tập")
     {
-        //
+        $this->img=$img;
+        $this->link=$link;
+        $this->title=$title;
     }
 
     /**

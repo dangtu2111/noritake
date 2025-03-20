@@ -29,7 +29,7 @@ class BannerService implements BannerServiceInterface
         return $this->bannerRepository->all();
     }
 
-    public function paginateFontend($request)
+    public function paginateFontend()
     {
         $condition = [
             ['publish', 1]

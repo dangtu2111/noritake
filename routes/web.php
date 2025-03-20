@@ -41,6 +41,7 @@ use App\Http\Controllers\Backend\RevenueController;
 use App\Http\Controllers\Backend\HomeViewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeComponentController;
+use App\Http\Controllers\StaticViewController;
 
 
 
@@ -62,7 +63,7 @@ Route::get('terms_and_conditions', [HomeController::class, 'terms_and_conditions
 Route::get('return_and_warranty_policy', [HomeController::class, 'return_and_warranty_policy'])->name('home.return_and_warranty_policy');
 Route::get('about_us', [HomeController::class, 'about_us'])->name('home.about_us');
 Route::get('security_center', [HomeController::class, 'security_center'])->name('home.security_center');
-Route::get('static_page', [HomeController::class, 'static_page'])->name('home.static_page');
+
 
 // AJAX
 //SEARCH SUGGESTION
@@ -71,6 +72,8 @@ Route::get('/ajax/search/suggestion', [AjaxSearchController::class, 'suggestion'
 Route::get('/ajax/attribute/getAttribute', [AjaxAttributeController::class, 'getAttribute'])->name('ajax.attribute.getAttribute');
 Route::get('/ajax/attribute/loadAttribute', [AjaxAttributeController::class, 'loadAttribute'])->name('ajax.attribute.loadAttribute');
 Route::get('ajax/product/loadVariant', [AjaxProductController::class, 'loadVariant'])->name('ajax.loadVariant');
+//Static page
+
 // CART AJAX
 Route::post('/ajax/cart/addToCart', [AjaxCartController::class, 'addToCart'])->name('ajax.cart.addToCart');
 Route::post('/ajax/cart/updateCart', [AjaxCartController::class, 'updateCart'])->name('ajax.cart.updateCart');
@@ -350,16 +353,21 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/home-update/{id}', [HomeComponentController::class, 'update_index'])->name('home-components.update_index');
     Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name('home-components.delete');
     Route::post('/admin/home-view', [HomeComponentController::class, 'store'])->name('home-components.store');
-    Route::put('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'update'])->name('home-components.update');
-    Route::delete('/admin/home-view/{homeComponent}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
-    Route::get('/admin/static-view', [HomeComponentController::class, 'index'])->name('static-components.index');
-    Route::get('/admin/static-create', [HomeComponentController::class, 'create'])->name('static-components.create');
-    Route::get('/admin/static-update/{id}', [HomeComponentController::class, 'update_index'])->name('static-components.update_index');
-    Route::get('/admin/static-delete/{id}', [HomeComponentController::class, 'delete'])->name('static-components.delete');
-    Route::post('/admin/static-view', [HomeComponentController::class, 'store'])->name('static-components.store');
-    Route::put('/admin/static-view/{homeComponent}', [HomeComponentController::class, 'update'])->name('static-components.update');
-    Route::delete('/admin/static-view/{homeComponent}', [HomeComponentController::class, 'destroy'])->name('static-components.destroy');
+    Route::put('/admin/home-view/{id}', [HomeComponentController::class, 'update'])->name('home-components.update');
+    Route::delete('/admin/home-view/{id}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
+
+
+    
+    Route::get('/admin/static-pages', [StaticViewController::class, 'index'])->name('static-pages.index');
+    Route::get('/admin/static-pages/create', [StaticViewController::class, 'create'])->name('static-pages.create');
+    Route::post('/admin/static-pages', [StaticViewController::class, 'store'])->name('static-pages.store');
+    Route::get('/admin/static-pages/{staticPage}/edit', [StaticViewController::class, 'edit'])->name('static-pages.edit');
+    Route::put('/admin/static-pages/{staticPage}', [StaticViewController::class, 'update'])->name('static-pages.update');
+    Route::delete('/admin/static-pages/{staticPage}', [StaticViewController::class, 'destroy'])->name('static-pages.destroy');
+    Route::delete('/admin/static-pages/bulk-destroy', [StaticViewController::class, 'bulkDestroy'])->name('static-pages.bulk-destroy');
 });
+//view static page 
+Route::get('static-pages/{slug}', [StaticViewController::class, 'show'])->name('static-pages.show');
 
 // AUTH
 Route::get('login', [LoginController::class, 'index'])->name('auth.login');

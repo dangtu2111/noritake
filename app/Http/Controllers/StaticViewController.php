@@ -2,78 +2,155 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StaticPage;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Str;
+use App\Services\ProductService;
 class StaticViewController extends Controller
-{
-    public function index()
-    {   
-        // $components = HomeComponent::orderBy('order')->get();
-        $template = 'backend.home_manager.index';
-        return view('backend.dashboard.layout', compact(
-            'template',
-            'components'
-        ));
+{   
+    protected $productService;
+    public function __construct(ProductService $productService){
+        $this->productService=$productService;
     }
+    public function index(Request $request)
+    {
+        $query = StaticPage::query();
 
-    public function create()
-    {
-        $template = 'backend.home_manager.create';
-        return view('backend.dashboard.layout', compact(
-            'template'
-        ));
-    }
-    public function update_index($id)
-    {
-        $template = 'backend.home_manager.create';
-        return view('backend.dashboard.layout', compact(
-            'template'
-        ));
-    }
-    
-    public function delete($id)
-    {
-        $homeComponent = HomeComponent::find($id); // Sửa tên biến
-        if (!$homeComponent) {
-            return redirect()->route('home-components.index')->with('error', 'Không tìm thấy thành phần.');
+        // Tìm kiếm theo keyword (title hoặc slug)
+        if ($keyword = $request->input('keyword')) {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('title', 'like', "%{$keyword}%")
+                  ->orWhere('slug', 'like', "%{$keyword}%");
+            });
         }
-        $template = 'backend.home_manager.delete';
-        return view('backend.dashboard.layout', compact(
-            'template',
-            'homeComponent'
-        ));
+
+        // Lọc theo trạng thái publish
+        if ($publish = $request->input('publish')) {
+            $query->where('is_active', $publish);
+        }
+
+        // Số bản ghi trên mỗi trang
+        $perPage = $request->input('perpage', 18);
+
+        // Lấy dữ liệu với phân trang
+        $pages = $query->paginate($perPage);
+        $template = 'backend.static_pages.index';
+        return view('backend.dashboard.layout', compact('pages','template'));
     }
 
+    /**
+     * Hiển thị form tạo trang tĩnh mới
+     */
+    public function create()
+    {   
+        $type="Create";
+        $template = 'backend.static_pages.create';
+        return view('backend.dashboard.layout',compact('template',"type"));
+    }
+
+    /**
+     * Lưu trang tĩnh mới vào cơ sở dữ liệu
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
-            'type' => 'required|string',
-            'props' => 'nullable|array',
-            'order' => 'required|integer',
-            'active' => 'boolean',
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:static_pages',
+            'content' => 'nullable|string',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'is_active' => 'boolean',
         ]);
 
-        HomeComponent::create($data);
-        return redirect()->route('home-components.index')->with('success', 'Thêm thành phần thành công');
+        // Tự động tạo slug nếu không nhập
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
+
+        // Đảm bảo slug là duy nhất
+        $originalSlug = $data['slug'];
+        $count = 1;
+        while (StaticPage::where('slug', $data['slug'])->exists()) {
+            $data['slug'] = $originalSlug . '-' . $count++;
+        }
+
+        StaticPage::create($data);
+
+        return redirect()->route('static-pages.index')->with('success', 'Trang tĩnh đã được tạo!');
     }
 
-    public function update(Request $request, HomeComponent $homeComponent)
+    /**
+     * Hiển thị form chỉnh sửa trang tĩnh
+     */
+    public function edit(StaticPage $staticPage)
+    {
+        $type="Update";
+        $template = 'backend.static_pages.create';
+        return view('backend.dashboard.layout', compact('staticPage',"type",'template'));
+    }
+
+    /**
+     * Cập nhật trang tĩnh
+     */
+    public function update(Request $request, StaticPage $staticPage)
     {
         $data = $request->validate([
-            'type' => 'required|string',
-            'props' => 'nullable|array',
-            'order' => 'required|integer',
-            'active' => 'boolean',
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:static_pages,slug,' . $staticPage->id,
+            'content' => 'nullable|string',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'is_active' => 'boolean',
         ]);
 
-        $homeComponent->update($data); // Sửa cú pháp update
-        return redirect()->route('home-components.index')->with('success', 'Cập nhật thành công');
+        // Tự động tạo slug nếu không nhập
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
+
+        // Đảm bảo slug là duy nhất (ngoại trừ chính nó)
+        $originalSlug = $data['slug'];
+        $count = 1;
+        while (StaticPage::where('slug', $data['slug'])->where('id', '!=', $staticPage->id)->exists()) {
+            $data['slug'] = $originalSlug . '-' . $count++;
+        }
+
+        $staticPage->update($data);
+
+        return redirect()->route('static-pages.index')->with('success', 'Trang tĩnh đã được cập nhật!');
     }
 
-    public function destroy(HomeComponent $homeComponent)
+    /**
+     * Xóa một trang tĩnh
+     */
+    public function destroy(StaticPage $staticPage)
     {
-        $homeComponent->delete();
-        return redirect()->route('home-components.index')->with('success', 'Xóa thành công');
+        $staticPage->delete();
+        return redirect()->route('static-pages.index')->with('success', 'Trang tĩnh đã được xóa!');
+    }
+
+    /**
+     * Xóa hàng loạt trang tĩnh
+     */
+    public function bulkDestroy(Request $request)
+    {
+        $arrayId = explode(',', $request->input('array_id'));
+        if (!empty($arrayId)) {
+            StaticPage::whereIn('id', $arrayId)->delete();
+            return redirect()->route('static-pages.index')->with('success', 'Đã xóa các trang tĩnh được chọn!');
+        }
+
+        return redirect()->route('static-pages.index')->with('error', 'Không có trang nào được chọn để xóa!');
+    }
+
+    /**
+     * Hiển thị trang tĩnh công khai
+     */
+    public function show($slug)
+    {
+        $page = StaticPage::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        $products = $this->productService->productNews();
+        // dd($products);
+        return view('frontend.page_other.staticpage', compact('page','products'));
     }
 }
