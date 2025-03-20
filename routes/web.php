@@ -351,7 +351,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/home-view', [HomeComponentController::class, 'index'])->name('home-components.index');
     Route::get('/admin/home-create', [HomeComponentController::class, 'create'])->name('home-components.create');
     Route::get('/admin/home-update/{id}', [HomeComponentController::class, 'update_index'])->name('home-components.update_index');
-    Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name('home-components.delete');
+    Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name(name: 'home-components.delete');
     Route::post('/admin/home-view', [HomeComponentController::class, 'store'])->name('home-components.store');
     Route::put('/admin/home-view/{id}', [HomeComponentController::class, 'update'])->name('home-components.update');
     Route::delete('/admin/home-view/{id}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
