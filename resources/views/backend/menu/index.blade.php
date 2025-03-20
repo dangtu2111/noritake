@@ -27,10 +27,10 @@
                                     <div class="uk-flex uk-flex-middle uk-flex-space-between col-lg-6">
                                         <h5>Menu</h5>
                                     </div>
-                                    <div>
-                                        <a href="{{ route('menu.edit') }}" class="btn btn-primary">Cập nhật
-                                            Menu Cấp 1</a>
-                                    </div>
+                                <div class="ibox-title d-flex justify-content-between align-items-center">
+                                    <a href="{{ route('menu.edit') }}" class="btn btn-primary">Cập nhật Menu Cấp 1</a>
+                                    <a href="{{ route('menu.create') }}" class="btn btn-primary">Thêm menu</a>
+                                </div>
                                 </div>
                                 <div class="ibox-content">
                                     @php
