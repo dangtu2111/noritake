@@ -2071,7 +2071,6 @@
             }),
         i(),
         (f = document.getElementById("search-close-options")),
-        (v = document.getElementById("search-dropdown")),
         (I = document.getElementById("search-options")) &&
             (I.addEventListener("focus", function () {
                 0 < I.value.length
