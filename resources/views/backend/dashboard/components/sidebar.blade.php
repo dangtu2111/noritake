@@ -302,9 +302,6 @@
                             <li class="nav-item">
                                 <a href="{{ route('menu.index') }}" class="nav-link">Menu</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('menu.create') }}" class="nav-link">Thêm menu</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
