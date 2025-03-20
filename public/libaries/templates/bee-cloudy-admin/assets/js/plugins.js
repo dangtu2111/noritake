@@ -9,4 +9,5 @@
     ),
     document.writeln(
         "<script type='text/javascript' src='/libaries/templates/bee-cloudy-admin/assets/libs/flatpickr/flatpickr.min.js'></script>"
-    ));
+    )
+);
