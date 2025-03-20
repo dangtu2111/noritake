@@ -21,7 +21,7 @@ class PostRepository extends BaseRepository implements PostRepositoryInterface
         $this->model = $model;
     }
 
-    public function getLimitOrder(array $relations = [], array $conditions = [],  array $orderBy = ['created_at', 'asc'], array $postCatalogueId = [], $limit = 4,)
+    public function getLimitOrder(array $relations = [], array $conditions = [],  array $orderBy = ['created_at', 'asc'], array $postCatalogueId = [], $limit = 5,)
     {
         $query = $this->model->with($relations);
 

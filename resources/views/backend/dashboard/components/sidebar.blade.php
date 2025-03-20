@@ -248,7 +248,7 @@
                         id="sidebarPage">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('banner.index') }}" class="nav-link">Trang tĩnh</a>
+                                <a href="{{ route('static-pages.index') }}" class="nav-link">Trang tĩnh</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('home-components.index') }}" class="nav-link">Trang chủ</a>

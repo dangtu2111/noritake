@@ -49,7 +49,7 @@ class MenuController extends Controller
 
   //Khi nhấn vào submit create
   public  function store(Request $request ){ //StoremenuRequest validate các menu cần create
-    dd("ádfasdfasdf");
+    // dd("ádfasdfasdf");
     if($this->menuService->save($request)){
      
       flash()->success('Thêm mới thành công');

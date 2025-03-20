@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_components', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('type'); // Loại component: banner, product-category, ...
             $table->json('props')->nullable(); // Thuộc tính: title, id_category, ...
             $table->integer('order')->default(0); // Thứ tự hiển thị

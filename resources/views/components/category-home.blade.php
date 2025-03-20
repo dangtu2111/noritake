@@ -8,7 +8,7 @@
             @foreach ($productCatalogues as $keyPCate => $valPCate)
             
             <div class="in-box">
-                <a href="collections/bo-am-chen-uong-tra.html">
+                <a href="{{ route('product.category',['id'=>$valPCate->id]) }}">
                     <span>
                         <img src="{{ $valPCate->image}}"
                             alt="{{ $valPCate->name}}">
