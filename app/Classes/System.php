@@ -35,19 +35,16 @@ class System{
               'address1'=>['type'=>'text','label'=>'Đia chỉ công ty 1'],
               'address2'=>['type'=>'text','label'=>'Đia chỉ công ty 2'],
               'hotline'=>['type'=>'text','label'=>'Hotline'],
-              // 'technial_phone'=>['type'=>'text','label'=>'Hotline kỹ thuật'],
-              // 'sell_phone'=>['type'=>'text','label'=>'Hotline kinh doanh'],
-              // 'fax'=>['type'=>'text','label'=>'Fax'],
               'email'=>['type'=>'text','label'=>'Email'],
               'website'=>['type'=>'text','label'=>'Website'],
               'logo1'=>['type'=>'image','label'=>'Logo website Liên hệ 1','title'=>'Click vào ảnh kế bên để tải logo'],
-              'slug_logo1'=>['type'=>'text','label'=>'Đường dẫn 1'],
+              'slug_logo1'=>['type'=>'text','label'=>'Đường dẫn Logo website Liên hệ 1'],
               'logo2'=>['type'=>'image','label'=>'Logo website Liên hệ 2','title'=>'Click vào ảnh kế bên để tải logo'],
-              'slug_logo2'=>['type'=>'text','label'=>'Đường dẫn 2'],
+              'slug_logo2'=>['type'=>'text','label'=>'Đường dẫn Logo website Liên hệ 2'],
               'logo3'=>['type'=>'image','label'=>'Logo website Liên hệ 3','title'=>'Click vào ảnh kế bên để tải logo'],
-              'slug_logo3'=>['type'=>'text','label'=>'Đường dẫn 3'],
+              'slug_logo3'=>['type'=>'text','label'=>'Đường dẫn Logo website Liên hệ 3'],
               'logo4'=>['type'=>'image','label'=>'Logo website Liên hệ 4','title'=>'Click vào ảnh kế bên để tải logo'],
-              'slug_logo4'=>['type'=>'text','label'=>'Đường dẫn 4'],
+              'slug_logo4'=>['type'=>'text','label'=>'Đường dẫn Logo website Liên hệ 4'],
               'map'=>[
                 'type'=>'textarea',
                 'label'=>'Bản đồ',
@@ -59,16 +56,7 @@ class System{
               
             ]  
           ];
-        // $data['seo']=[
-        //     'label'=>'Cấu hình SEO cho trang chủ',
-        //     'description'=>'Cài đặt đầy đủ thông tin SEO website',
-        //     'value'=>[
-        //       'meta_title'=>['type'=>'text','label'=>'Tiêu đề SEO'],
-        //       'meta_keyword'=>['type'=>'text','label'=>'Từ khóa SEO'],
-        //       'meta_description'=>['type'=>'text','label'=>'Mô tả SEO'],
-        //       'meta_images'=>['type'=>'image','label'=>'Ảnh SEO'],            
-        //     ]  
-        //   ];
+        
         return $data;
     }
 

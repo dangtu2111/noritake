@@ -88,7 +88,7 @@ class HomeController extends Controller
 
         );
         $systems=convert_array($this->systemRepository->all(),'keyword','content');
-        $menus = \App\Models\Menu::whereNull('parent_id')->with('children')->get();
+      
         // dd($postHomes);
         return view('frontend.index.home_index', compact(
             'brands',
@@ -102,7 +102,6 @@ class HomeController extends Controller
             'productSupperSales',
             'productShopPriceMins',
             'systems',
-            'menus',
         ));
     }
 
