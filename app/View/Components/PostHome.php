@@ -18,7 +18,7 @@ class PostHome extends Component
     {
         $this->postRepository=$postRepository;
         $this->posts=$this->postRepository->getLimitOrder(
-            ['users'],
+            ['users','postCatalogues'],
             [
                 ['publish', 1],
             ],
@@ -28,6 +28,7 @@ class PostHome extends Component
             []
 
         );
+        // dd($this->posts->toArray());
     }
 
     /**
