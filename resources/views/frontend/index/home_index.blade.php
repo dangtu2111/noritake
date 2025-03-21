@@ -1,6 +1,10 @@
 @extends('frontend.home.layout')
 @section('page_title')
-Test tile
+@if(isset($title))
+{{ $title }}
+@else
+Page
+@endif
 @endsection
 @section('content')
 <x-home-content />
