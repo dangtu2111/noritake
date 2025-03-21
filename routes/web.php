@@ -368,7 +368,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/static-pages/bulk-destroy', [StaticViewController::class, 'bulkDestroy'])->name('static-pages.bulk-destroy');
 });
 //view static page 
-Route::get('static-pages/{slug}', [StaticViewController::class, 'show'])->name('static-pages.show');
+Route::get('pages/{slug}', [StaticViewController::class, 'show'])->name('static-pages.show');
 
 // AUTH
 Route::get('login', [LoginController::class, 'index'])->name('auth.login');

@@ -60,16 +60,16 @@
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('type') }}</span>
                                     @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Tiêu đề (Title):<span class="text-danger fz-18">*</span></label>
+                                <div class="mb-3 field-title">
+                                    <label class="form-label">Tiêu đề (Title):</label>
                                     <input type="text" class="form-control" name="props[title]" id=""
                                            value="{{ old('props.title', $component->props['title'] ?? '') }}" placeholder="Tiêu đề">
                                     @if ($errors->has('props.title'))
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('props.title') }}</span>
                                     @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Danh mục (Category):<span class="text-danger fz-18">*</span></label>
+                                <div class="mb-3 field-category">
+                                    <label class="form-label">Danh mục (Category):</label>
                                     <select class="form-select setUpSelect2" name="props[id_category]">
                                         <option value="">[Chọn danh mục]</option>
                                         @foreach ($categories as $category)
@@ -83,23 +83,24 @@
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('props.id_category') }}</span>
                                     @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Đường dẫn(Link):<span class="text-danger fz-18">*</span></label>
+                                <div class="mb-3 field-link">
+                                    <label class="form-label">Đường dẫn (Link):</label>
                                     <input type="text" class="form-control" name="props[link]" id=""
                                            value="{{ old('props.link', $component->props['link'] ?? '') }}" placeholder="Đường dẫn">
                                     @if ($errors->has('props.link'))
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('props.link') }}</span>
                                     @endif
                                 </div>
-                                <div>
-                                    <label>Mô tả</label>
-                                    <div>
-                                        <textarea class="form-control ck-editor" id="description" data-height="150" name="props[description]">{{ old('description', $component->props['description'] ?? '') }}</textarea>
-                                    </div>
+                                <div class="mb-3 field-description">
+                                    <label class="form-label">Mô tả:</label>
+                                    <textarea class="form-control ck-editor" id="description" data-height="150" name="props[description]">{{ old('props.description', $component->props['description'] ?? '') }}</textarea>
+                                    @if ($errors->has('props.description'))
+                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('props.description') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card field-image">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">Hình ảnh</h5>
                             </div>
@@ -158,45 +159,56 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- HTML giữ nguyên, chỉ cập nhật phần script -->
+
+<!-- Script để điều khiển hiển thị các trường -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Khởi tạo Select2 (giả sử Select2 đã được load)
     const typeSelect = document.getElementById('type-select');
     if (typeof Select2 !== 'undefined') {
-        new Select2(typeSelect); // Khởi tạo Select2 nếu có
+        new Select2(typeSelect);
     }
 
     // Lấy các phần tử cần thao tác
-    const titleDiv = document.querySelector('.col-lg-8 .card .card-body .mb-3:nth-child(3)'); // Div chứa title
-    const categoryDiv = document.querySelector('.col-lg-8 .card .card-body .mb-3:nth-child(4)'); // Div chứa category
-    const imageCard = document.querySelector('.col-lg-8 .card:nth-child(2)'); // Card chứa hình ảnh
+    const titleDiv = document.querySelector('.field-title');
+    const categoryDiv = document.querySelector('.field-category');
+    const linkDiv = document.querySelector('.field-link');
+    const descriptionDiv = document.querySelector('.field-description');
+    const imageCard = document.querySelector('.field-image');
 
     // Hàm kiểm tra và ẩn/hiện các trường
     function toggleFields() {
-        const selectedValue = typeSelect.value; // Lấy giá trị trực tiếp từ select
-        
-        // Reset tất cả về hiển thị trước khi áp dụng điều kiện
-        titleDiv.style.display = 'block';
-        categoryDiv.style.display = 'block';
-        imageCard.style.display = 'block';
+        const selectedValue = typeSelect.value;
 
-        // Khi type là "banner": ẩn title và category
-        if (selectedValue === 'banner'||selectedValue === 'banner2') {
-            titleDiv.style.display = 'none';
-            categoryDiv.style.display = 'none';
-        } 
-        // Khi type là "category-home": ẩn category và image
-        else if (selectedValue === 'category-home') {
-            categoryDiv.style.display = 'none';
-            imageCard.style.display = 'none';
+        // Ẩn tất cả các trường trước khi áp dụng điều kiện
+        titleDiv.style.display = 'none';
+        categoryDiv.style.display = 'none';
+        linkDiv.style.display = 'none';
+        descriptionDiv.style.display = 'none';
+        imageCard.style.display = 'none';
+
+        // Điều kiện hiển thị dựa trên type
+        if (selectedValue === 'banner') {
+            // Không hiển thị gì thêm
+        } else if (selectedValue === 'category-home') {
+            titleDiv.style.display = 'block';
+        } else if (selectedValue === 'product-category') {
+            titleDiv.style.display = 'block';
+            categoryDiv.style.display = 'block';
+        } else if (selectedValue === 'banner2') {
+            imageCard.style.display = 'block';
+        } else if (selectedValue === 'text-banner') {
+            titleDiv.style.display = 'block';
+            linkDiv.style.display = 'block';
+            descriptionDiv.style.display = 'block';
+        } else if (selectedValue === 'post-home') {
+            // Không hiển thị gì thêm
         }
     }
 
