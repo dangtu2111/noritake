@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (selectedValue === 'text-banner') {
             titleDiv.style.display = 'block';
             linkDiv.style.display = 'block';
+            imageCard.style.display = 'block';
             descriptionDiv.style.display = 'block';
         } else if (selectedValue === 'post-home') {
             // Không hiển thị gì thêm
