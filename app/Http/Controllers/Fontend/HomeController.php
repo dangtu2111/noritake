@@ -46,62 +46,53 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-        $productCatalogues = $this->productCatalogueRepository->allWhere([
-            ['publish', 1]
-        ]);
-        $brands = $this->brandRepository->allWhere([
-            ['publish', 1]
-        ]);
-        $bannerHome1 = $this->bannerRepository->allWhere([
-            ['publish', 1],
-            ['location', 0]
-        ]);
-        $bannerHome2 = $this->bannerRepository->allWhere([
-            ['publish', 1],
-            ['location', 1]
-        ]);
-        $productNew = $this->productService->productNews();
-        $productSales = $this->productService->productSales();
-        $productSupperSales = $this->productService->productSupperSales();
-        $productShopPriceMins = $this->shopService->productShopPriceMins();
-        $postHomes = $this->postRepository->getLimitOrder(
-            ['users'],
-            [
-                ['publish', 1],
-                ['outstanding', 1],
-            ],
-            [
-                ['created_at', 'asc'],
-            ],
-            []
+        // $productCatalogues = $this->productCatalogueRepository->allWhere([
+        //     ['publish', 1]
+        // ]);
+        // $brands = $this->brandRepository->allWhere([
+        //     ['publish', 1]
+        // ]);
+        // $bannerHome1 = $this->bannerRepository->allWhere([
+        //     ['publish', 1],
+        //     ['location', 0]
+        // ]);
+        // $bannerHome2 = $this->bannerRepository->allWhere([
+        //     ['publish', 1],
+        //     ['location', 1]
+        // ]);
+        // $productNew = $this->productService->productNews();
+        // $productSales = $this->productService->productSales();
+        // $productSupperSales = $this->productService->productSupperSales();
+        // $productShopPriceMins = $this->shopService->productShopPriceMins();
+        // $postHomes = $this->postRepository->getLimitOrder(
+        //     ['users'],
+        //     [
+        //         ['publish', 1],
+        //         ['outstanding', 1],
+        //     ],
+        //     [
+        //         ['created_at', 'asc'],
+        //     ],
+        //     []
 
-        );
-        $postHomeNews = $this->postRepository->getLimitOrder(
-            ['users'],
-            [
-                ['publish', 1],
-            ],
-            [
-                ['created_at', 'desc'],
-            ],
-            []
+        // );
+        // $postHomeNews = $this->postRepository->getLimitOrder(
+        //     ['users'],
+        //     [
+        //         ['publish', 1],
+        //     ],
+        //     [
+        //         ['created_at', 'desc'],
+        //     ],
+        //     []
 
-        );
+        // );
         $systems=convert_array($this->systemRepository->all(),'keyword','content');
       
         // dd($postHomes);
+        $title="Trang chủ";
         return view('frontend.index.home_index', compact(
-            'brands',
-            'postHomes',
-            'productNew',
-            'bannerHome1',
-            'bannerHome2',
-            'postHomeNews',
-            'productSales',
-            'productCatalogues',
-            'productSupperSales',
-            'productShopPriceMins',
-            'systems',
+            'systems','title'
         ));
     }
 

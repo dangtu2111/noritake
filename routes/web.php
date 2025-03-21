@@ -75,6 +75,7 @@ Route::get('ajax/product/loadVariant', [AjaxProductController::class, 'loadVaria
 //Static page
 
 // CART AJAX
+
 Route::post('/ajax/cart/addToCart', [AjaxCartController::class, 'addToCart'])->name('ajax.cart.addToCart');
 Route::post('/ajax/cart/updateCart', [AjaxCartController::class, 'updateCart'])->name('ajax.cart.updateCart');
 Route::get('/ajax/cart/LoadOrderByCartId', [AjaxCartController::class, 'LoadOrderByCartId'])->name('ajax.cart.LoadOrderByCartId');
@@ -351,7 +352,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/home-view', [HomeComponentController::class, 'index'])->name('home-components.index');
     Route::get('/admin/home-create', [HomeComponentController::class, 'create'])->name('home-components.create');
     Route::get('/admin/home-update/{id}', [HomeComponentController::class, 'update_index'])->name('home-components.update_index');
-    Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name('home-components.delete');
+    Route::get('/admin/home-delete/{id}', [HomeComponentController::class, 'delete'])->name(name: 'home-components.delete');
     Route::post('/admin/home-view', [HomeComponentController::class, 'store'])->name('home-components.store');
     Route::put('/admin/home-view/{id}', [HomeComponentController::class, 'update'])->name('home-components.update');
     Route::delete('/admin/home-view/{id}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
@@ -367,7 +368,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/static-pages/bulk-destroy', [StaticViewController::class, 'bulkDestroy'])->name('static-pages.bulk-destroy');
 });
 //view static page 
-Route::get('static-pages/{slug}', [StaticViewController::class, 'show'])->name('static-pages.show');
+Route::get('pages/{slug}', [StaticViewController::class, 'show'])->name('static-pages.show');
 
 // AUTH
 Route::get('login', [LoginController::class, 'index'])->name('auth.login');
