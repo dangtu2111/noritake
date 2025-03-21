@@ -20,10 +20,10 @@
                             </div>
                             <div class="post-content">
                                 <p class="trai-title">
-                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{{ $product->title ?? 'Menorca Palace (4964L)' }}</a>
+                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{{ $product->name ?? 'Menorca Palace (4964L)' }}</a>
                                 </p>
                                 <p class="post-meta">
-                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{!! Str::limit($product->description, 50) !!}                                    </a>
+                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{!! Str::limit(strip_tags($product->description), 200) !!}</a>
                                 </p>
                             </div>
                         </div>
