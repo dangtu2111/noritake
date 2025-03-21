@@ -23,7 +23,7 @@
                                     <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{{ $product->title ?? 'Menorca Palace (4964L)' }}</a>
                                 </p>
                                 <p class="post-meta">
-                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{!!   $product->description !!}</a>
+                                    <a href="{{ route('product.detail',['slug'=>$product->slug])}}">{!! Str::limit($product->description, 50) !!}                                    </a>
                                 </p>
                             </div>
                         </div>
