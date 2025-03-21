@@ -14,8 +14,10 @@
                     @foreach($productShopNews as $product)
                         <div class="item-article d-flex align-items-center trai1">
                             <div class="post-image">
-                                <a href="{{ route('product.detail',['slug'=>$product->slug])}}" aria-label="{{ $product->title ?? 'Menorca Palace (4964L)' }}">
-                                    <img src="{{ $product->image ?? '//file.hstatic.net/200000296482/file/su-xuong-menorca-palace-cover_230b8c7cbd3a4ceb816a0d399fdc0211_small.jpg' }}" alt="{{ $product->title ?? 'Menorca Palace (4964L)' }}">
+                            <a href="{{ route('product.detail',['slug'=>$product->slug])}}" aria-label="{{ $product->name ?? 'Menorca Palace (4964L)' }}">
+                                    <img src="{{ $product->image ?? '//file.hstatic.net/200000296482/file/su-xuong-menorca-palace-cover_230b8c7cbd3a4ceb816a0d399fdc0211_small.jpg' }}"
+                                        alt="{{ $product->name ?? 'Menorca Palace (4964L)' }}"
+                                        style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
                                 </a>
                             </div>
                             <div class="post-content">
