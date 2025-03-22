@@ -185,6 +185,16 @@ class ProductService implements ProductServiceInterface
     private function createProduct($request)
     {
         $payload = $request->only($this->payload());
+        if (isset($payload['album'])) {
+            $payload['album'] = array_filter($payload['album'], function ($item) {
+                return !empty($item); // Loại bỏ các phần tử rỗng
+            });
+        }
+        if (isset($payload['album'])) {
+            $payload['album'] = implode(',', array_filter($payload['album'])); 
+        }
+        
+      
         $payload['del'] = (isset($payload['del'])) ? $payload['del'] : '0';
         $payload['slug'] = Str::slug($payload['slug'], '-').'-'.rand(10000, 99999);
         $payload['attributeCatalogue'] = $this->formatJson($request, 'attributeCatalogue');
@@ -282,7 +292,14 @@ class ProductService implements ProductServiceInterface
             $payload['attribute'] = null; // hoặc []
         }
         $payload['variant'] = $this->formatJson($request, 'variant');
-
+        if (isset($payload['album'])) {
+            $payload['album'] = array_filter($payload['album'], function ($item) {
+                return !empty($item); // Loại bỏ các phần tử rỗng
+            });
+        }
+        if (isset($payload['album'])) {
+            $payload['album'] = implode(',', array_filter($payload['album'])); 
+        }
         $product->update($payload);
         return $product;
     }

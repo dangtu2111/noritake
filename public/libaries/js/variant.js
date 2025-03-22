@@ -398,8 +398,10 @@
         finder.resourceType = type;
         finder.selectActionFunction = function (fileUrl, data, allFiles) {
             var html = "";
-            for (var i = 0; i < allFiles.length; i++) {
-                var image = allFiles[i].url;
+            var validFiles = allFiles.filter((file) => file.url); // Loại bỏ các phần tử không có URL
+
+            for (var i = 0; i < validFiles.length; i++) {
+                var image = validFiles[i].url;
                 html += '<li class="album-item-seft list-unstyled m-2">';
                 html += '<div class="thumb position-relative">';
                 html += '<span class="span image img-scaledown">';
@@ -410,7 +412,7 @@
                     image +
                     '" class="object-fit-contain" width="130px" height="110px">';
                 html +=
-                    '<input type="hidden" name="variantAlbum[]" value="' +
+                    '<input type="hidden" name="album[]" value="' +
                     image +
                     '">';
                 html +=
@@ -418,10 +420,12 @@
                 html += "</div>";
                 html += "</li>";
             }
+
             $(".click-to-upload-variant").addClass("d-none");
             $("#sortable2").append(html);
             $(".upload-variant-list").removeClass("d-none");
         };
+
         finder.popup();
     };
     // 2. mở popup ck finder và hiển thị ảnh đc chọn
@@ -551,6 +555,7 @@
     FS.updateVariantHtml = (variantData) => {
         // chuyển chuổi thành mảng -> load ra
         let variantAlbum = variantData.variant_album.split(",");
+        console.log(variantData.variant_album);
         let vatiantAlbumItem = FS.variantAlbumList(variantAlbum);
         let html = "";
         html += ' <tr class="updateVariantTr">';
@@ -774,11 +779,20 @@
     };
     FS.productVariant = () => {
         // bắt lại biến variant bên blade
-        variant = JSON.parse(atob(variant));
-        let variantQuantity = window.variantQuantities;
+        try {
+            variant =
+                typeof variant === "string" ? JSON.parse(variant) : variant;
+        } catch (error) {
+            console.error(
+                "❌ Lỗi parse JSON:",
+                error,
+                "Dữ liệu variant:",
+                variant
+            );
+            return;
+        }
 
-        const findIndexVariantBySku = (sku) =>
-            variant.sku.findIndex((item) => item === sku);
+        let variantQuantity = window.variantQuantities;
 
         // loop qua từng row và đổ dữ liệu vào
         $(".variant-row").each(function () {

@@ -83,6 +83,7 @@ class ProductController extends Controller
         $brands = $this->brandRepository->all();
         // dd($product->variant);
         // dd($productCatalogues);
+        $albumArray = !empty($product->album) ? explode(',', $product->album) : [];
         $template = 'backend.product.product.update';
         return view('backend.dashboard.layout', compact(
             'template',
@@ -90,6 +91,7 @@ class ProductController extends Controller
             'product',
             'productCatalogues',
             'attributeCatalogue',
+            'albumArray',
         ));
     }
     public function edit($slug, UpdateProductRequest $request)
