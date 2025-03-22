@@ -86,29 +86,46 @@
                                         <textarea class="form-control ck-editor" id="ckContent" data-height="300" name="description">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
-                                {{-- <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <label for="album-product">ALbum </label>
-                                            <div class="click-to-upload-album text-center ">
-                                                <div class="icon"> <a type="button" class="upload-variant-picture">
-                                                        <img src="/libaries/upload/images/img-notfound.png"
-                                                            alt=""
-                                                            class="render-image object-fit-cover rounded-1 mb-2 position-relative "
-                                                            width="96" height="96"> </a> </div>
-                                                <div class="small-text"> <span>Sử dụng nút chọn hình hoặc click vào đây
-                                                        để thêm hình ảnh.</span> </div>
-                                            </div>
-                                            <div class="upload-album">
-                                                <div class="row">
-                                                    <ul id="sortable3"
-                                                        class="clearfix data-album sortui ui-sortable d-lg-flex justify-content-start flex-wrap">
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                                <div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5>Albums ảnh</h5>
+            <div class="upload-album">
+                <a href="#" class="upload-variant-picture">Chọn hình</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Phần hiển thị khi chưa có ảnh -->
+                <div class="click-to-upload-variant text-center">
+                    <div class="icon">
+                        <a type="button" class="upload-variant-picture">
+                            <img src="/libaries/upload/images/img-notfound.png" 
+                                 alt="" 
+                                 class="render-image object-fit-cover rounded-1 mb-2 position-relative"
+                                 width="96" 
+                                 height="96">
+                        </a>
+                    </div>
+                    <div class="small-text">
+                        <span>Sử dụng nút chọn hình hoặc click vào đây để thêm hình ảnh.</span>
+                    </div>
+                </div>
+
+                <!-- Phần hiển thị danh sách ảnh đã upload -->
+                <div class="upload-variant-list d-none">
+                    <div class="row">
+                        <ul id="sortable2" class="clearfix data-album sortui ui-sortable d-lg-flex justify-content-start flex-wrap">
+                            <!-- Các ảnh sẽ được thêm vào đây động qua JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                                 {{-- sản phẩm nhiều phiên bản  --}}
                                 @include('backend.product.product.component.variant')
