@@ -153,7 +153,10 @@ class PostController extends Controller
         })
             ->where('publish', 1)
             ->paginate(9);
-        return view('fontend.post.category', compact(
+        $postSimilar = $this->postService->paginateFontend($id);
+        
+        return view('frontend.post.category', compact(
+            'postSimilar',
             'postCatalogue',
             'postCatalogues',
             'postInCatagories',

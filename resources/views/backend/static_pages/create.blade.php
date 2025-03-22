@@ -31,7 +31,7 @@
             <form action="{{ $type == 'Create' ? route('static-pages.store') : route('static-pages.update', $staticPage) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if($type == 'Update')
-                    @method('PUT')
+                @method('PUT')
                 @endif
                 <div class="row">
                     <div class="col-lg-8">
@@ -40,39 +40,50 @@
                                 <div class="mb-3">
                                     <label class="form-label">Tiêu đề:<span class="text-danger fz-18">*</span></label>
                                     <input type="text" class="form-control" name="title" id=""
-                                           value="{{ old('title', $type == 'Create' ? '' : $staticPage->title) }}" placeholder="Tiêu đề trang tĩnh">
+                                        value="{{ old('title', $type == 'Create' ? '' : $staticPage->title) }}" placeholder="Tiêu đề trang tĩnh">
                                     @if ($errors->has('title'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('title') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('title') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Slug:<span class="text-danger fz-18">*</span></label>
                                     <input type="text" name="slug" class="form-control" id=""
-                                           value="{{ old('slug', $type == 'Create' ? '' : $staticPage->slug) }}" placeholder="Slug trang tĩnh">
+                                        value="{{ old('slug', $type == 'Create' ? '' : $staticPage->slug) }}" placeholder="Slug trang tĩnh">
                                     @if ($errors->has('slug'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('slug') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('slug') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label>Nội dung</label>
                                     <textarea class="form-control ck-editor" id="content" data-height="150" name="content">{{ old('content', $type == 'Create' ? '' : $staticPage->content) }}</textarea>
                                     @if ($errors->has('content'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('content') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('content') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Meta Title</label>
                                     <input type="text" class="form-control" name="meta_title" id=""
-                                           value="{{ old('meta_title', $type == 'Create' ? '' : $staticPage->meta_title) }}" placeholder="Tiêu đề SEO">
+                                        value="{{ old('meta_title', $type == 'Create' ? '' : $staticPage->meta_title) }}" placeholder="Tiêu đề SEO">
                                     @if ($errors->has('meta_title'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('meta_title') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('meta_title') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
+                                    <label for="choices-active-pr-input" class="form-label">Active PR</label>
+                                    <select class="form-select setUpSelect2" name="active_pr">
+                                        <option value="">[Chọn trạng thái]</option>
+                                        <option value="1" {{ old('active_pr', $type == 'Create' ? '' : $staticPage->active_pr) == '1' ? 'selected' : '' }}>Hoạt động</option>
+                                        <option value="0" {{ old('active_pr', $type == 'Create' ? '' : $staticPage->active_pr) == '0' ? 'selected' : '' }}>Không hoạt động</option>
+                                    </select>
+                                    @if ($errors->has('active_pr'))
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('active_pr') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Meta Description</label>
                                     <textarea class="form-control" name="meta_description" id="meta_description">{{ old('meta_description', $type == 'Create' ? '' : $staticPage->meta_description) }}</textarea>
                                     @if ($errors->has('meta_description'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('meta_description') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('meta_description') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -95,7 +106,7 @@
                                         <option value="0" {{ old('is_active', $type == 'Create' ? 1 : $staticPage->is_active) == '0' ? 'selected' : '' }}>Ẩn</option>
                                     </select>
                                     @if ($errors->has('is_active'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('is_active') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('is_active') }}</span>
                                     @endif
                                 </div>
                             </div>
