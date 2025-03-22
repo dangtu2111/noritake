@@ -14,6 +14,7 @@ class ProductCategory extends Component
     protected $productRepository;
     public $products;
     public $title;
+    public $link;
 
     /**
      * Create a new component instance.
@@ -26,6 +27,7 @@ class ProductCategory extends Component
     ) {
         $this->productCatalogueRepository = $productCatalogueRepository;
         $this->productRepository = $productRepository;
+        $this->link="#";
 
         if ($id_category) {
             // Tìm danh mục theo ID với quan hệ childrenReference
@@ -40,6 +42,7 @@ class ProductCategory extends Component
             } else {
                 $this->products = collect(); // Trả về collection rỗng nếu không tìm thấy danh mục
             }
+            $this->link= route('product.category',['id'=>$id_category]);
         } else {
             // Mặc định lấy tất cả sản phẩm publish nếu không có id_category
             $this->products = $this->productRepository->allWhere([
@@ -48,6 +51,7 @@ class ProductCategory extends Component
         }
 
         $this->title = $title;
+        
     }
 
     /**
