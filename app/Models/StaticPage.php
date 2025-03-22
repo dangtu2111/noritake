@@ -12,6 +12,7 @@ class StaticPage extends Model
         'meta_title',
         'meta_description',
         'is_active',
+        'active_pr',
     ];
 
     protected $casts = [

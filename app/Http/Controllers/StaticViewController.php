@@ -60,6 +60,7 @@ class StaticViewController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'is_active' => 'boolean',
+            'active_pr' => ['nullable', 'boolean'],
         ]);
 
         // Tự động tạo slug nếu không nhập
@@ -101,6 +102,7 @@ class StaticViewController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'is_active' => 'boolean',
+            'active_pr' => ['nullable', 'boolean'],
         ]);
 
         // Tự động tạo slug nếu không nhập
@@ -149,8 +151,14 @@ class StaticViewController extends Controller
     public function show($slug)
     {
         $page = StaticPage::where('slug', $slug)->where('is_active', true)->firstOrFail();
-        $products = $this->productService->productNews();
-        // dd($products);
-        return view('frontend.page_other.staticpage', compact('page','products'));
+    
+        $products = []; // Khởi tạo mặc định
+    
+        if ($page->active_pr) {
+            $products = $this->productService->productNews();
+        }
+    
+        return view('frontend.page_other.staticpage', compact('page', 'products'));
     }
+    
 }
