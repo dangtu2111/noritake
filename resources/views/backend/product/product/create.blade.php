@@ -41,10 +41,10 @@
                                 <div class="mb-3">
                                     <label class="form-label">Tên sản phẩm:<span
                                             class="text-danger fz-18">*</span></label>
-                                    <input type="text" class="form-control" name="name" id=""
-                                        value="{{ old('name') }}" placeholder="Tên sản phẩm">
+                                    <input type="text" class="form-control" name="name" id="" value="{{ old('name') }}"
+                                        placeholder="Tên sản phẩm">
                                     @if ($errors->has('name'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('name') }} </span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('name') }} </span>
                                     @endif
                                 </div>
                                 <div class="tab-content">
@@ -54,12 +54,11 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Slug:<span
                                                             class="text-danger fz-18">*</span></label>
-                                                    <input type="text" name="slug" class="form-control"
-                                                        id="" value="{{ old('slug') }}"
-                                                        placeholder="Slug sản phẩm">
+                                                    <input type="text" name="slug" class="form-control" id=""
+                                                        value="{{ old('slug') }}" placeholder="Slug sản phẩm">
                                                     @if ($errors->has('slug'))
-                                                        <span
-                                                            class="text-danger fz-12 mt-1">{{ $errors->first('slug') }}</span>
+                                                    <span
+                                                        class="text-danger fz-12 mt-1">{{ $errors->first('slug') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -69,9 +68,10 @@
                                 <div>
                                     <label class="form-label" for="info">Thông tin</label>
                                     <div>
-                                        <textarea class="form-control " rows="6" name="info">{{ old('info') }}</textarea>
+                                        <textarea class="form-control " rows="6"
+                                            name="info">{{ old('info') }}</textarea>
                                         @if ($errors->has('info'))
-                                            <span class="text-danger fz-12 mt-1">{{ $errors->first('info') }}</span>
+                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('info') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -79,57 +79,48 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label class="form-label" for="ckContent">Mô tả </label>
                                         {{-- data- đc gọi là thuộc tính dữ liệu tùy chỉnh  --}}
-                                        <a href="#" class="multipleUploadImageCkeditor"
-                                            data-target="ckContent">Upload nhiều hình ảnh</a>
+                                        <a href="#" class="multipleUploadImageCkeditor" data-target="ckContent">Upload
+                                            nhiều hình ảnh</a>
                                     </div>
                                     <div>
-                                        <textarea class="form-control ck-editor" id="ckContent" data-height="300" name="description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control ck-editor" id="ckContent" data-height="300"
+                                            name="description">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h5>Albums ảnh</h5>
-            <div class="upload-album">
-                <a href="#" class="upload-variant-picture">Chọn hình</a>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- Phần hiển thị khi chưa có ảnh -->
-                <div class="click-to-upload-variant text-center">
-                    <div class="icon">
-                        <a type="button" class="upload-variant-picture">
-                            <img src="/libaries/upload/images/img-notfound.png" 
-                                 alt="" 
-                                 class="render-image object-fit-cover rounded-1 mb-2 position-relative"
-                                 width="96" 
-                                 height="96">
-                        </a>
-                    </div>
-                    <div class="small-text">
-                        <span>Sử dụng nút chọn hình hoặc click vào đây để thêm hình ảnh.</span>
-                    </div>
-                </div>
+                                    <div class="card-header">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5>Albums ảnh</h5>
+                                            <div class="upload-album"><a href="#" class="upload-variant-picture">Chọn
+                                                    hình</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="click-to-upload-variant text-center ">
+                                                    <div class="icon"> <a type="button" class="upload-variant-picture">
+                                                            <img src="/libaries/upload/images/img-notfound.png" alt=""
+                                                                class="render-image object-fit-cover rounded-1 mb-2 position-relative "
+                                                                width="96" height="96"> </a> </div>
+                                                    <div class="small-text"> <span>Sử dụng nút chọn hình hoặc click vào
+                                                            đây để thêm hình ảnh.</span> </div>
+                                                </div>
+                                                <div class="upload-variant-list ">
+                                                    <div class="row">
+                                                        <ul id="sortable2"
+                                                            class="clearfix data-album sortui ui-sortable d-lg-flex justify-content-start flex-wrap">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <!-- Phần hiển thị danh sách ảnh đã upload -->
-                <div class="upload-variant-list d-none">
-                    <div class="row">
-                        <ul id="sortable2" class="clearfix data-album sortui ui-sortable d-lg-flex justify-content-start flex-wrap">
-                            <!-- Các ảnh sẽ được thêm vào đây động qua JavaScript -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                                {{-- sản phẩm nhiều phiên bản  --}}
+                                <!-- {{-- sản phẩm nhiều phiên bản  --}}
                                 @include('backend.product.product.component.variant')
-                                {{-- kết thúc nhiều phiên bản  --}}
+                                {{-- kết thúc nhiều phiên bản  --}} -->
                             </div>
                         </div>
                         <div class="text-end mb-3">
@@ -154,15 +145,15 @@
                                         multiple="multiple">
                                         <option value="0">[Chọn nhóm sản phẩm]</option>
                                         @foreach ($productCatalogues as $key => $catalogue)
-                                            <option value="{{ $catalogue->id }}"
-                                                {{ collect(old('product_catalogue_id'))->contains($catalogue->id) ? 'selected' : '' }}>
-                                                {{ $catalogue->name }}
-                                            </option>
+                                        <option value="{{ $catalogue->id }}"
+                                            {{ collect(old('product_catalogue_id'))->contains($catalogue->id) ? 'selected' : '' }}>
+                                            {{ $catalogue->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('product_catalogue_id'))
-                                        <span
-                                            class="text-danger fz-12 mt-1">{{ $errors->first('product_catalogue_id') }}</span>
+                                    <span
+                                        class="text-danger fz-12 mt-1">{{ $errors->first('product_catalogue_id') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
@@ -176,15 +167,15 @@
                                     <select class="form-select setUpSelect2" name="brand_id">
                                         <option value="0">[Chọn thương hiệu]</option>
                                         @foreach ($brands as $key => $brand)
-                                            <option value="{{ $brand->id }}"
-                                                {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
-                                                {{ $brand->name }}
-                                            </option>
+                                        <option value="{{ $brand->id }}"
+                                            {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
+                                            {{ $brand->name }}
+                                        </option>
                                         @endforeach
                                     </select>
 
                                     @if ($errors->has('brand_id'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('brand_id') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('brand_id') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -199,21 +190,20 @@
                                     <input type="text" name="sku" id="product_sku" class="form-control"
                                         value="{{ old('sku') }}">
                                     @if ($errors->has('sku'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('sku') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('sku') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Giá</label>
-                                    <input type="text" name="price" class="form-control"
-                                        value="{{ old('price') }}" min="0">
+                                    <input type="text" name="price" class="form-control" value="{{ old('price') }}"
+                                        min="0">
                                     @if ($errors->has('price'))
-                                        <span class="text-danger fz-12 mt-1">{{ $errors->first('price') }}</span>
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('price') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Giá giảm</label>
-                                    <input type="text" name="del" class="form-control"
-                                        value="{{ old('del') }}" min="0">
+                                    <input type="text" name="del" class="form-control" value="{{ old('del') }}" min="0">
                                     <span class="text-warning fz-12 mt-1">Có thể bỏ trống nếu không giảm giá!</span>
                                 </div>
                             </div>
