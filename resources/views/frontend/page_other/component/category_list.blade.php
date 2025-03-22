@@ -22,7 +22,7 @@
                                 <div class="post-content">
                                     <p class="trai-title">
                                         <a href="{{ route('product.detail', ['slug' => $product['slug']]) }}"
-                                           class="fw-500">{{ $product['name'] }}</a>
+                                           class="fw-500">{{ \Illuminate\Support\Str::limit($product['name'], 40) }}                                           </a>
                                     </p>
                                     <p class="post-meta" data-description="{!! strip_tags($product['description']) !!}">
                                         <a href="{{ route('product.detail', ['slug' => $product['slug']]) }}">
@@ -83,7 +83,7 @@
                 const maxLines = Math.floor(availableHeight / lineHeight);
 
                 // Ước lượng số ký tự mỗi dòng (có thể điều chỉnh dựa trên thiết kế thực tế)
-                const charsPerLine = 50;
+                const charsPerLine = 100;
                 const maxChars = maxLines * charsPerLine;
 
                 // Cắt chuỗi và thêm vào nội dung
