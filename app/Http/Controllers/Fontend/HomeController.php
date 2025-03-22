@@ -132,7 +132,8 @@ class HomeController extends Controller
     }
     public function about_us()
     {
-        return view('fontend.page_other.about_us');
+        $products = $this->productService->productNews();
+        return view('frontend.page_other.about_us',compact('products'));
     }
     public function security_center()
     {
