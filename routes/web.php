@@ -57,7 +57,7 @@ Route::get('product/detail/{slug}', [FontendProductController::class, 'detail'])
 Route::get('search', [AjaxSearchController::class, 'search'])->name('search');
 //Page orther
 Route::get('faq', [HomeController::class, 'faq'])->name('home.faq');
-Route::get('/contact', [HomeController::class, 'showForm'])->name('home.contact');
+Route::get('/he-thong-cua-hang', [HomeController::class, 'showForm'])->name('home.contact');
 Route::post('/contact/send', [HomeController::class, 'send'])->name('contact.send');
 Route::get('terms_and_conditions', [HomeController::class, 'terms_and_conditions'])->name('home.terms_and_conditions');
 Route::get('return_and_warranty_policy', [HomeController::class, 'return_and_warranty_policy'])->name('home.return_and_warranty_policy');

@@ -1,125 +1,125 @@
-@extends('fontend.home.layout')
+@extends('frontend.home.layout')
 @section('page_title')
 Giới thiệu
 @endsection
 @section('content')
-<section>
-    <div class="container contact p-0">
-        <!-- breadcrumb  -->
-        <nav class="pt-3 pb-3" aria-label="breadcrumb">
-            <ol class="breadcrumb bg-color-white pt-2 pb-2 ps-2 shadow-sm mb-0 p-3 bg-body-tertiary fz-14">
-                <li class="breadcrumb-item "><a href="{{ route('home.index') }}" class="text-decoration-none text-muted">Trang chủ</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Về chúng tôi</li>
-            </ol>
-        </nav>
-        <!-- end breadcrumb  -->
+<main class="mainContent-theme">
+    <div class="overlay123"></div>
+    <style>
+        @media (min-width: 767px) {
+            .mobile-image {
+                display: none;
+            }
 
-        <div class="container">
-            <div class="card">
-                <img class="img-about shadow col-10 mx-auto mt-3" src="/libaries/templates/bee-cloudy-user/libaries/images/pexels-brandandpalms-768975.jpg" alt="">
-                <div class="card-content text-center">
-                    <h4 class="p-2 p-3">Giới Thiệu</h4>
+            img.desktop-image {
+                width: 100%;
+            }
+        }
 
-                    <p class="p-2 pb-5 px-5 w-75 text-center w-100" style="text-align: center;">
-                        Chào mừng bạn đến với BeeCloudy, nơi thời trang không chỉ đơn
-                        thuần là quần áo, mà còn là sự thể hiện bản thân và phong cách
-                        sống. Tại BeeCloudy, chúng tôi tin rằng mỗi người đều có một câu
-                        chuyện riêng và trang phục mà bạn chọn là một phần quan trọng trong
-                        việc kể câu chuyện đó. Chúng tôi cam kết cung cấp những sản phẩm thời
-                        trang tinh tế, sáng tạo, và hiện đại, giúp bạn tỏa sáng trong bất kỳ hoàn
-                        cảnh nào.
-                    </p>
+        @media (max-width: 767px) {
+            .desktop-image {
+                display: none;
+            }
 
-                    <div class="row p-3">
-                        <div class="col-12 col-lg-6 col-md-6 d-flex justify-content-center align-items-center ">
-                            <p class="text-start ">
-                                <strong>Sứ mệnh của chúng tôi</strong> là mang đến cho bạn trải nghiệm mua sắm trực
-                                tuyến tuyệt vời nhất.
-                                Với các bộ sưu tập phong phú, từ những trang phục công sở thanh lịch cho đến
-                                những bộ đồ dạo phố năng động, chúng tôi luôn cập nhật xu hướng mới nhất để đáp
-                                ứng nhu cầu của mọi khách hàng. Đội ngũ thiết kế của chúng tôi làm việc không ngừng
-                                nghỉ để tạo ra những sản phẩm không chỉ đẹp mắt mà còn thoải mái và dễ dàng phối đồ.
-                            </p>
-                        </div>
-                        <div class="col-12 col-lg-6 col-md-6">
-                            <img class="rounded-2" src="/libaries/templates/bee-cloudy-user/libaries/images/pexels-godisable-jacob-226636-1154861.jpg"
-                                style="max-width: 100%" alt="">
-                        </div>
-                    </div>
+            .mobile-image {
+                display: block;
+            }
+        }
+    </style>
 
+    <!--<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="desktop-image" src="https://file.hstatic.net/200000296482/file/1920_x_450_px_1.jpg" alt=""/></a>
+<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="mobile-image" src="https://file.hstatic.net/200000296482/file/1920_x_1440_px.jpg" alt=""/></a>-->
 
-                    <div class="row p-3 ">
-                        <div class="col-12 col-lg-6 col-md-6 d-flex justify-content-center align-items-center ">
-                            <img class="rounded-2" src="/libaries/templates/bee-cloudy-user/libaries/images/pexels-solliefoto-298863.jpg"
-                                style="max-width: 100%" alt="">
-
-                        </div>
-                        <div class="col-12 col-lg-6 col-md-6">
-                            <p class="text-start">
-                                <strong>TẠI SAO BẠN NÊN CHỌN BEE Cloudy?</strong>
-                                <br>
-                                <br>
-                                - <strong>Chất lượng hàng đầu:</strong> Chúng tôi hiểu rằng chất lượng sản phẩm là
-                                yếu tố quyết định.
-                                Mỗi sản phẩm đều được làm từ chất liệu tốt nhất, đảm bảo sự bền bỉ và thoải mái khi
-                                mặc.
-                                <br>
-                                <br>
-                                - <strong>Thiết kế độc quyền:</strong> Chúng tôi tự hào mang đến những thiết kế độc
-                                quyền, không chỉ
-                                theo kịp xu hướng mà còn mang đến sự khác biệt, giúp bạn tự tin hơn khi thể hiện cá
-                                tính của mình.
-                                <br>
-                                <br>
-                                - <strong>Mẫu mã đa dạng:</strong> Với nhiều lựa chọn từ phong cách cổ điển đến hiện
-                                đại, từ trang phục
-                                dạo phố đến trang phục dự tiệc, chúng tôi có mọi thứ bạn cần để làm mới tủ quần áo
-                                của mình.
-                                <br>
-                                <br>
-                                - <strong>Giá cả hợp lý:</strong> Chúng tôi cam kết cung cấp sản phẩm chất lượng cao
-                                với mức giá hợp
-                                lý, giúp bạn dễ dàng chọn lựa mà không phải lo lắng về ngân sách.
-                                <br>
-                                <br>
-                                - <strong>Dịch vụ khách hàng tận tâm:</strong> Đội ngũ chăm sóc khách hàng của chúng
-                                tôi luôn sẵn sàng
-                                hỗ trợ bạn với mọi câu hỏi và yêu cầu, đảm bảo rằng trải nghiệm mua sắm của bạn là
-                                tốt nhất có thể.
-                            </p>
+    <div class="container-fluid breadcrumb">
+        <div class="row row-breadcrumb">
+            <div class="col-12 col-lg-12 col-breadcrumb">
+                <div class="breadcrumb-content-inner">
+                    <div class="breadcrumb-shop clearfix">
+                        <div class="breadcrumb-list">
+                            <ol class="breadcrumb breadcrumb-arrows" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                    <a href="/" target="_self" itemprop="item"><span itemprop="name">Trang chủ</span></a>
+                                    <meta itemprop="position" content="1">
+                                </li>
+                                <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                    <span itemprop="item" content="https://noritake.vn/pages/lich-su-100-nam-hinh-thanh-va-phat-trien"><strong itemprop="name">Lịch sử 100 năm hình thành và phát triển</strong></span>
+                                    <meta itemprop="position" content="2">
+                                </li>
+                            </ol>
                         </div>
                     </div>
-
-                    <div class="row p-3">
-                        <div class="col-12">
-                            <p class="text-start">
-                                <strong>BeeCloudy</strong> không chỉ là một cửa hàng trực tuyến, mà còn là một cộng đồng dành cho những
-                                người yêu thích thời trang. Chúng tôi thường xuyên cập nhật các bài viết blog, chia sẻ
-                                mẹo phối đồ và xu hướng thời trang mới nhất để giúp bạn trở thành phiên bản tốt nhất của
-                                chính mình.
-                                <br>
-                                <br>
-                                Hãy gia nhập cộng đồng BeeCloudy và cùng chúng tôi khám phá thế giới thời trang đa sắc
-                                màu. Chúng tôi rất hân hạnh được đồng hành cùng bạn trên hành trình tìm kiếm phong cách
-                                riêng của mình!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row p-3">
-                        <div class="col-12 col-lg-8 col-md-8 mx-auto">
-                            <img class="rounded-2" src="/libaries/templates/bee-cloudy-user/libaries/images/pexels-nietjuh-934070.jpg" alt="" style="max-width: 100%;">
-                        </div>
-                    </div>
-
-
                 </div>
 
             </div>
-
-
         </div>
+    </div>
+    <div class="wrapper-page-content page-seo mt-lg-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-8 trai-page">
+                    <div class="page-wrapper">
+                        <div class="wrapbox-content-page">
+                            <div class="content-page">
 
-</section>
+                                <!-- Main Content -->
+                                <div id="history-main"><!-- Chapter I -->
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter I Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-su-khai-sinh.jpg"></div>
+                                        <div class="col-lg-9 col-md-8 col-sm-12">
+                                            <h2 class="h3 fw-bold">Chương I: Sự khai sinh của công ty “Morimura Gumi” và công ty “Anh em nhà Morimura”</h2>
+                                            <p class="text-dark">Vào đầu thế kỷ 20, công ty Morimura Gumi và Anh em nhà Morimura đã đặt những nền tảng đầu tiên cho sự phát triển của ngành công nghiệp gốm sứ Nhật Bản. Tầm nhìn của họ không chỉ đơn thuần là kinh doanh mà còn là sự cống hiến cho nghệ thuật và sự hoàn mỹ.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/su-khai-sinh-cua-cong-ty-morimura-gumi-va-cong-ty-anh-em-nha-morimura">Đọc tiếp</a>
+                                        </div>
+                                    </div><!-- Chapter II -->
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter II Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-thoi-dai-vat-pham.jpg"></div>
+                                        <div class="col-lg-9 col-md-8 col-sm-12">
+                                            <h2 class="h3 fw-bold">Chương II: Thời đại của vật phẩm</h2>
+                                            <p class="text-dark">Thời đại của vật phẩm mở ra một chương mới với việc mở rộng các sản phẩm gốm sứ ra thị trường quốc tế. Họ tập trung vào chất lượng và sáng tạo trong từng chi tiết, tạo nên sự khác biệt và đưa thương hiệu Nhật Bản lên một tầm cao mới.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/thoi-dai-cua-vat-pham">Đọc tiếp</a>
+                                        </div>
+                                    </div><!-- Chapter III -->
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter III Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-muc-tieu-san-xuat.jpg"></div>
+                                        <div class="col-lg-9 col-md-8 col-sm-12">
+                                            <h2 class="h3 fw-bold">Chương III: Mục tiêu sản xuất bộ đồ bàn ăn phương Tây màu trắng tinh tế</h2>
+                                            <p class="text-dark">Định hướng mới về sản xuất bộ đồ bàn ăn phương Tây với thiết kế tinh tế đã giúp họ tiếp cận được những người tiêu dùng yêu thích sự sang trọng. Sự tỉ mỉ và chất lượng của từng sản phẩm đã tạo nên uy tín không chỉ tại Nhật Bản mà còn trên khắp thế giới.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/muc-tieu-san-xuat-bo-do-ban-an-phuong-tay-mau-trang-tinh-te">Đọc tiếp</a>
+                                        </div>
+                                    </div><!-- Chapter IV -->
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter IV Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-thanh-lap-cong-ty.jpg"></div>
+                                        <div class="col-lg-9 col-md-8 col-sm-12">
+                                            <h2 class="h3 fw-bold">Chương IV: Thành lập Công ty Hợp danh Gốm sứ Nhật Bản - Sự ra đời của thương hiệu Noritake</h2>
+                                            <p class="text-dark">Thương hiệu Noritake được sinh ra từ khát vọng mang đến những sản phẩm chất lượng hàng đầu, phản ánh tinh thần Nhật Bản trong từng nét vẽ. Noritake nhanh chóng trở thành biểu tượng của sự tinh tế và sang trọng trong lĩnh vực sản xuất gốm sứ.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/thanh-lap-cong-ty-hop-danh-gom-su-nhat-ban">Đọc tiếp</a>
+                                        </div>
+                                    </div><!-- Quote Section -->
+                                    <p class="fst-italic text-secondary">“Chân thành và không ngừng theo đuổi hoài bão, chúng ta phấn đấu vì lợi ích của dân tộc và hạnh phúc của người dân.”- Ichizaemon Morimura</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    @include("frontend.page_other.component.category_list")
+                    
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden container for include -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Check if the current canonical URL matches the target URL
+            var canonicalUrl = $('link[rel="canonical"]').attr('href');
+            var targetUrl = "https://noritake.vn/pages/qua-tang-tan-gia-cao-cap";
+
+            if (canonicalUrl === targetUrl) {
+                // Find the second <h2> element and insert the content of hidden container after it
+                $('h2').eq(1).before($('#hidden-container').html()).show();
+            }
+        });
+    </script>
+</main>
 @endsection
