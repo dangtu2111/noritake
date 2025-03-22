@@ -33,26 +33,42 @@ class AttributeController extends Controller
     }
     public function loadAttribute(Request $request)
     {
-        /*
-        thực hiện một loạt các thao tác để giải mã và chuyển đổi dữ liệu 
-        được nhận từ yêu cầu HTTP (request) thành một mảng PHP
-        */
-        $payload['attribute'] = json_decode(base64_decode($request->input('attribute')), true);
+        // Lấy dữ liệu attribute từ request
+        $attributeInput = $request->input('attribute');
+
+        // Kiểm tra và xử lý dữ liệu attribute
+        if (is_string($attributeInput)) {
+            // Trường hợp dữ liệu là chuỗi JSON (ít xảy ra)
+            $payload['attribute'] = json_decode($attributeInput, true) ?? [];
+        } else {
+            // Trường hợp dữ liệu là mảng (thường gặp sau khi sửa Blade)
+            $payload['attribute'] = $attributeInput ?? [];
+        }
+
         $payload['attributeCatalogueId'] = $request->input('attributeCatalogueId');
+
+        // Kiểm tra attributeCatalogueId hợp lệ
+        if (!isset($payload['attributeCatalogueId']) || !isset($payload['attribute'][$payload['attributeCatalogueId']])) {
+            return response()->json(['items' => []]);
+        }
+
         $attributeArray = $payload['attribute'][$payload['attributeCatalogueId']];
 
-        if (count($attributeArray)) {
-            $attributes = $this->attributeRepository->findAttributeByIdArray($attributeArray);
-        }
+        // Lấy danh sách attribute từ repository
         $temp = [];
-        if (count($attributes)) {
-            foreach ($attributes as $key => $val) {
-                $temp[] = [
-                    'id' => $val->id,
-                    'text' => $val->name
-                ];
+        if (!empty($attributeArray)) {
+            $attributes = $this->attributeRepository->findAttributeByIdArray($attributeArray);
+
+            if (!empty($attributes)) {
+                foreach ($attributes as $val) {
+                    $temp[] = [
+                        'id' => $val->id,
+                        'text' => $val->name
+                    ];
+                }
             }
         }
-        return response()->json(array('items' => $temp));
+
+        return response()->json(['items' => $temp]);
     }
 }

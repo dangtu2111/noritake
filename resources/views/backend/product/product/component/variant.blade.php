@@ -108,45 +108,41 @@
 
 {{-- script chuyển dlieu về dạng json được compact từ controller lên blade --}}
 <script>
-    //  ---------------------@_json convert dữ liệu thành dạng json  của blade -> map mảng mới
     var attributeCatalogue = @json(
         $attributeCatalogue->map(function ($item) {
-                // $_item->name mảng chứa thông tin tên về loại thuộc tính
-                $name = $item->name;
-                // trả về id và name của
-                return [
-                    'id' => $item->id,
-                    'name' => $name,
-                ];
-                // _values() chuyển thành mảng trong js bình thường
-            })->values());
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+            ];
+        })->values()
+    );
 
-    // -- //
-    // lấy quan tity mới nhất ra update
     window.variantQuantities = @json($variantQuantities);
-    
-    // load giữ lại thông tin khi submit form    
-    //old() là một mảng nhuneg json-endcode chỉ nhận một chuỗi -> sd base64_endcode
-    var attribute =
-        '{{ base64_encode(json_encode(old('attribute') ?? (isset($product->attribute) ? $product->attribute : []))) }}';
-    var variant =
-        '{{ base64_encode(json_encode(old('variant') ?? (isset($product->variant) ? json_decode($product->variant, true) : []))) }}'
-        document.addEventListener("DOMContentLoaded", function () {
-  const checkbox = document.getElementById("variantCheckbox");
-  const variantWrapper = document.querySelector(".variant-wrapper");
 
-  if (checkbox && variantWrapper) {
-    // Khi checkbox được click, kiểm tra trạng thái checked
-    checkbox.addEventListener("click", function () {
-      if (checkbox.checked) {
-        // Nếu được chọn, loại bỏ class 'd-none'
-        variantWrapper.classList.remove("d-none");
-      } else {
-        // Nếu không được chọn, thêm class 'd-none'
-        variantWrapper.classList.add("d-none");
-      }
+    var attribute = @json(old('attribute', isset($product->attribute) ? $product->attribute : []));
+    var variant = @json(old('variant', isset($product->variant) ? json_decode($product->variant, true) : []));
+
+    // Chuyển album từ chuỗi thành mảng
+    if (variant.album && typeof variant.album[0] === 'string') {
+        variant.album = variant.album[0].split(',').map(url => url.trim());
+    }
+
+    console.log('attributeCatalogue:', attributeCatalogue);
+    console.log('variantQuantities:', window.variantQuantities);
+    console.log('attribute:', attribute);
+    console.log('variant:', variant);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkbox = document.getElementById("variantCheckbox");
+        const variantWrapper = document.querySelector(".variant-wrapper");
+
+        if (checkbox && variantWrapper) {
+            checkbox.addEventListener("change", function () {
+                variantWrapper.classList.toggle("d-none", !this.checked);
+            });
+            variantWrapper.classList.toggle("d-none", !checkbox.checked);
+        } else {
+            console.warn('Không tìm thấy checkbox hoặc variantWrapper');
+        }
     });
-  }
-});
-
 </script>

@@ -118,7 +118,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'cart'], function () {
-        Route::get('index', [AjaxCartController::class, 'index'])->name('cart.index');
+        Route::get('index', action: [AjaxCartController::class, 'index'])->name('cart.index');
         Route::post('/apply-discount', [AjaxCartController::class, 'applyPromotion'])->name('cart.applyDiscount');
         Route::post('/remove-voucher/{voucherId}', [AjaxCartController::class, 'removeVoucher'])->name('cart.removeVoucher');
     });

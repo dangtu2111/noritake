@@ -30,9 +30,15 @@ class PostController extends Controller
     }
     public function index(Request $request)
     {
-        $postCategories = $this->postCatalogueRepository->allWhere([
+        $postCategories = $this->postCatalogueRepository->getLimit(
+            ['posts'],
+            [
             ['publish', 1]
-        ]);
+            ],
+            3
+
+    );
+        // dd($postCategories);
         $productCategories = $this->productCatalogueRepository->allWhere([
             ['publish', '=', 1]
         ]);
@@ -82,9 +88,11 @@ class PostController extends Controller
             6
         );
         $postNew = $this->postService->paginateFontend($request);
-        return view('fontend.post.index', compact(
+        $postSimilar = $this->postService->paginateFontend($request);
+        return view('frontend.post.index', compact(
             'postNew',
             'postLikes',
+            'postSimilar',
             'postStandC1',
             'postStandC2',
             'postStandC3',
@@ -115,7 +123,7 @@ class PostController extends Controller
             $postCatalogueId,
             4
         );
-        return view('fontend.post.detail', compact(
+        return view('frontend.post.detail', compact(
             'post',
             'postSimilar',
             'postCatalogues',
