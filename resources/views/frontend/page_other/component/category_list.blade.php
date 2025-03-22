@@ -8,8 +8,8 @@
                 <div class="sidebox_content trai sidebox-content-togged clearfix">
                     <div class="sidebox_content-list list-blogs-latest trai_list1">
                         @foreach ($products as $product)
-                            <div class="item-article d-flex align-items-center trai1 mb-3">
-                                <div class="post-image me-2">
+                            <div class="item-article d-flex align-items-center trai1">
+                                <div class="post-image">
                                     <a href="{{ route('product.detail', ['slug' => $product['slug']]) }}"
                                        aria-label="{{ $product['name'] }}"
                                        style="aspect-ratio: 16 / 9; display: block; overflow: hidden;">
@@ -20,7 +20,7 @@
                                     </a>
                                 </div>
                                 <div class="post-content">
-                                    <p class="trai-title mb-0">
+                                    <p class="trai-title ">
                                         <a href="{{ route('product.detail', ['slug' => $product['slug']]) }}"
                                            class="fw-500">{{ $product['name'] }}</a>
                                     </p>
