@@ -103,7 +103,7 @@ class HomeController extends Controller
 
     public function showForm()
     {
-        return view('fontend.page_other.contact');
+        return view('frontend.page_other.contact');
     }
 
     public function send(Request $request)
