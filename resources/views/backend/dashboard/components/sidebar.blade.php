@@ -37,10 +37,10 @@
                         id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('attribute.catalogue.index') }}" class="nav-link">Nhóm thuộc tính</a>
+                                <a href="{{ route('attribute.catalogue.index') }}" class="nav-link">Nhóm sản phẩm con </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('attribute.index') }}" class="nav-link">Thuộc tính</a>
+                                <a href="{{ route('attribute.index') }}" class="nav-link">Sản phẩm con</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('brand.index') }}" class="nav-link">Thương hiệu</a>

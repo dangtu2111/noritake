@@ -52,6 +52,7 @@ class ProductController extends Controller
         $attributeCatalogue = $this->attributeCatalogueRepository->all();
         $brands = $this->brandRepository->all();
         $template = 'backend.product.product.create';
+        
         return view('backend.dashboard.layout', compact(
             'template',
             'brands',
@@ -80,7 +81,7 @@ class ProductController extends Controller
         $productCatalogues = $this->productCatalogueRepository->all();
         $attributeCatalogue = $this->attributeCatalogueRepository->all();
         $brands = $this->brandRepository->all();
-
+        // dd($product->variant);
         // dd($productCatalogues);
         $template = 'backend.product.product.update';
         return view('backend.dashboard.layout', compact(

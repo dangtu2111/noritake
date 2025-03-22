@@ -1,507 +1,310 @@
-@extends('fontend.home.layout')
+@extends('frontend.home.layout')
 @section('page_title')
-    Chi tiết bài viết
+@if(isset($title))
+{{ $title }}
+@else
+Chi tiết bài viết
+@endif
 @endsection
 @section('content')
-    <section id="app" >
-        <article>
-            <div class="container p-0">
-                <!-- breadcrumb  -->
-                <nav class="pt-3 pb-3" aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-color-white pt-2 pb-2 ps-2 shadow-sm mb-0 p-3 bg-body-tertiary fz-14">
-                        <li class="breadcrumb-item "><a href="{{ route('post.page') }}"
-                                class="text-decoration-none text-muted">Bài viết</a>
-                        </li>
-                        <li class="breadcrumb-item text-truncate active" aria-current="page">{{ $post->name }}</li>
-                    </ol>
-                </nav>
-                <!-- end breadcrumb  -->
+<main class="mainContent-theme">
+    <div class="overlay123"></div>
+    <style>
+        @media (min-width: 767px) {
+            .mobile-image {
+                display: none;
+            }
 
-                <div class="main-post">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-9 col-12 ">
-                            <div class="post-item-detail text-muted">
-                                <div class="image-detail-post">
-                                    <img src="{{ $post->iamge }}" alt=""
-                                        class="img-fluid rounded-top-3 object-fit-cover" width="100%"
-                                        style="max-height: 400px;">
+            img.desktop-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-image {
+                display: none;
+            }
+
+            .mobile-image {
+                display: block;
+            }
+        }
+    </style>
+
+    <!--<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="desktop-image" src="https://file.hstatic.net/200000296482/file/1920_x_450_px_1.jpg" alt=""/></a>
+<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="mobile-image" src="https://file.hstatic.net/200000296482/file/1920_x_1440_px.jpg" alt=""/></a>-->
+
+    <div id="article">
+        <div class="wrapper-content-article">
+            <div class="container-fluid">
+                <div class="row row-breadcrumb">
+                    <div class="col-12 col-lg-1"></div>
+                    <div class="col-12 col-lg-7 col-breadcrumb">
+                        <div class="breadcrumb-content-inner">
+                            <div class="breadcrumb-shop clearfix">
+                                <div class="breadcrumb-list">
+                                    <ol class="breadcrumb breadcrumb-arrows" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+                                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                            <a href="/" target="_self" itemprop="item"><span itemprop="name">Trang chủ</span></a>
+                                            <meta itemprop="position" content="1">
+                                        </li>
+                                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                            <a href="https://noritake.vn/blogs/all" itemprop="item">
+                                                <span itemprop="name">Blog</span>
+                                            </a>
+                                            <meta itemprop="position" content="2">
+                                        </li>
+                                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                            <a href="/blogs/tin-tuc-su-kien" itemprop="item">
+                                                <span itemprop="name">Tin tức - Sự kiện</span>
+                                            </a>
+                                            <meta itemprop="position" content="2">
+                                        </li>
+                                        <!--<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">
+						<span itemprop="item" content="https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet"><strong itemprop="name">Noritake Private Sale @ Diamond Plaza – Hành trình trải nghiệm tinh hoa sứ Nhật dành riêng cho khách hàng VIP</strong></span>
+						<meta itemprop="position" content="3" />
+					</li>-->
+                                    </ol>
                                 </div>
                             </div>
-                            @php
-                                $created_at_detail = $post->created_at ?? null;
-                                $now_detail = now();
-                                $dayDiffer_detail = date_diff($created_at_detail, $now_detail)->format('%a ngày trước');
+                        </div>
 
-                                $author_detail = optional($post->users()->first());
-                                $authorName_detail = $author_detail->name ? $author_detail->name : $post->cre;
-                                $imageAuthor_detail =
-                                    $author_detail->image ??
-                                    '/libaries/templates/bee-cloudy-user/libaries/images/user-default.avif';
-                            @endphp
-                            <div class="content-post-detail px-4 bg-white shadow py-3 rounded-bottom-3">
-                                <div class="title-post-detail">
-                                    <h2 class="text-muted fw-600 fs-2 text-break">{{ $post->name }}
-                                    </h2>
-                                </div>
-                                <div class="author-date-post my-3">
-                                    <span class="d-flex align-items-center">
-                                        <img class="rounded-circle header-profile-user" src="{{ $imageAuthor_detail }}"
-                                            alt="Avatar User" class="rounded-circle object-fit-cover" width="35"
-                                            height="35">
-                                        <span class="text-start ms-xl-2">
-                                            <span class="d-none d-xl-inline-block ms-1 fz-14 fw-medium text-muted">
-                                                {{ $authorName_detail }}
-                                            </span>
-                                            <span class="d-none d-xl-block ms-1 fz-10 text-warning">
-                                                <i class="fa-regular fa-calendar-days fz-10 me-1"></i>
-                                                {{ $dayDiffer_detail }}
-                                            </span>
+                    </div>
+                    <div class="col-12 col-lg-3"></div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-1" style="z-index: 1;">
+
+                        <!-- start icon share -->
+                        <ul class="cpanel-action social-pin">
+                            <li>
+                                <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.125 16.3V19.2H24.05C24.275 19.2 24.3875 19.4 24.3875 19.6L23.9375 21.5C23.9375 21.6 23.7125 21.7 23.6 21.7H21.125V29H17.75V21.8H15.8375C15.6125 21.8 15.5 21.7 15.5 21.5V19.6C15.5 19.4 15.6125 19.3 15.8375 19.3H17.75V16C17.75 14.3 19.2125 13 21.125 13H24.1625C24.3875 13 24.5 13.1 24.5 13.3V15.7C24.5 15.9 24.3875 16 24.1625 16H21.4625C21.2375 16 21.125 16.1 21.125 16.3Z" fill="#292D32"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--<li>
+						<a class="cpanel-item twitter" href="https://twitter.com/intent/tweet?text=https://dantri.com.vn/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" target="_blank" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-twitter" data-content-target="/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" rel="nofollow" title="Chia sẻ bài viết lên twitter">
+							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M29.5 15.5C28.825 15.8 28.15 15.9 27.3625 16C28.15 15.6 28.7125 15 28.9375 14.2C28.2625 14.6 27.475 14.8 26.575 15C25.9 14.4 24.8875 14 23.875 14C21.9625 14 20.275 15.5 20.275 17.3C20.275 17.6 20.275 17.8 20.3875 18C17.35 17.9 14.5375 16.6 12.7375 14.6C12.4 15.1 12.2875 15.6 12.2875 16.3C12.2875 17.4 12.9625 18.4 13.975 19C13.4125 19 12.85 18.8 12.2875 18.6C12.2875 20.2 13.525 21.5 15.2125 21.8C14.875 21.9 14.5375 21.9 14.2 21.9C13.975 21.9 13.75 21.9 13.525 21.8C13.975 23.1 15.325 24.1 17.0125 24.1C15.775 25 14.2 25.5 12.4 25.5C12.0625 25.5 11.8375 25.5 11.5 25.5C13.1875 26.4 15.1 27 17.125 27C23.875 27 27.5875 22 27.5875 17.7C27.5875 17.6 27.5875 17.4 27.5875 17.3C28.375 16.8 29.05 16.2 29.5 15.5Z" fill="#292D32" stroke="#292D32" stroke-linejoin="round"></path>
+							</svg>
+						</a>
+					</li>-->
+                            <li>
+                                <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_752_6605)">
+                                            <path d="M27.8 12H13.2C12.8 12 12.5 12.3 12.5 12.7V27.4C12.5 27.7 12.8 28 13.2 28H27.9C28.3 28 28.6 27.7 28.6 27.3V12.7C28.5 12.3 28.2 12 27.8 12ZM17.2 25.6H14.9V18H17.3V25.6H17.2ZM16.1 17C15.3 17 14.7 16.3 14.7 15.6C14.7 14.8 15.3 14.2 16.1 14.2C16.9 14.2 17.5 14.8 17.5 15.6C17.4 16.3 16.8 17 16.1 17ZM26.1 25.6H23.7V21.9C23.7 21 23.7 19.9 22.5 19.9C21.3 19.9 21.1 20.9 21.1 21.9V25.7H18.7V18H21V19C21.3 18.4 22.1 17.8 23.2 17.8C25.6 17.8 26 19.4 26 21.4V25.6H26.1Z" fill="#292D32"></path>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </li>
+                          
+                            <li>
+                                <button onclick="Copy()" type="button" class="cpanel-item link" data-track-content="" data-content-name="" data-content-piece="" title="Copy">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_608_611)">
+                                            <path d="M16.5002 28.0001C15.3002 28.0001 14.2002 27.5001 13.3002 26.7001C11.5002 24.9001 11.5002 22.1001 13.3002 20.3001L14.0002 19.6001L15.4002 21.0001L14.7002 21.7001C13.7002 22.7001 13.7002 24.3001 14.7002 25.3001C15.7002 26.3001 17.3002 26.3001 18.3002 25.3001L21.3002 22.3001C22.3002 21.3001 22.3002 19.7001 21.3002 18.7001L20.6002 18.0001L22.0002 16.6001L22.7002 17.3001C24.5002 19.1001 24.5002 21.9001 22.7002 23.7001L19.7002 26.7001C18.9002 27.5001 17.7002 28.0001 16.5002 28.0001Z" fill="#292D32"></path>
+                                            <path d="M18.0002 23.4L17.3002 22.7C15.5002 20.9 15.5002 18.1 17.3002 16.3L20.3002 13.3C21.2002 12.4 22.3002 12 23.5002 12C24.7002 12 25.8002 12.5 26.7002 13.3C28.5002 15.1 28.5002 17.9 26.7002 19.7L26.0002 20.4L24.6002 19L25.3002 18.3C26.3002 17.3 26.3002 15.7 25.3002 14.7C24.3002 13.7 22.7002 13.7 21.7002 14.7L18.7002 17.7C17.7002 18.7 17.7002 20.3 18.7002 21.3L19.4002 22L18.0002 23.4Z" fill="#292D32"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <p class="notification-message">Đã copy</p>
+                            </li>
+                            <li class="line">
+                                <a href="#comment"><button type="button" class="cpanel-item comment" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-comment" data-content-target="" title="Bình luận">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.5834 25.8334H17.1667C13.8334 25.8334 12.1667 25.0001 12.1667 20.8334V16.6667C12.1667 13.3334 13.8334 11.6667 17.1667 11.6667H23.8334C27.1667 11.6667 28.8334 13.3334 28.8334 16.6667V20.8334C28.8334 24.1667 27.1667 25.8334 23.8334 25.8334H23.4167C23.1584 25.8334 22.9084 25.9584 22.75 26.1667L21.5 27.8334C20.95 28.5667 20.05 28.5667 19.5 27.8334L18.25 26.1667C18.1167 25.9834 17.8084 25.8334 17.5834 25.8334Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M16.3333 16.6667H24.6666" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M16.3333 20.8333H21.3333" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button></a>
+                            </li>
+                           
+                            <li>
+                                <button class="cpanel-item back" onclick="javascript:window.history.back();">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.475 14.9417L13.4167 20L18.475 25.0583" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M27.5834 20H13.5583" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- end icon share -->
+
+                    </div>
+                    <div class="col-12 col-lg-7 col-article">
+                        <div class="list_blog article-content" itemscope="" itemtype="https://schema.org/Recipe">
+                            <div class="article-heading clearfix">
+                                <h1 class="article-heading_title" itemprop="name" style="scroll-margin-top: 40px;" id="noritake-private-sale-@-diamond-plaza-–-hành-trình-trải-nghiệm-tinh-hoa-sứ-nhật-dành-riêng-cho-khách-hàng-vip-1">{{ $post->name }}</h1>
+                                <ul class="article-heading_info article-info-more">
+                                    <li>
+                                        <!--<span class="article-heading_info-author" itemprop="author">Người viết: Nguyễn Trần Minh Nghi lúc</span>-->
+                                        <span class="article-heading_info-date" itemprop="datePublished">
+                                            <time datetime="2025-03-15">{{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}</time>
                                         </span>
-                                    </span>
-                                </div>
-                                <div class="content-post-detail fz-14 text-muted mt-3">
-                                    {!! $post->content !!}
-                                </div>
-                                <div class="cre-post text-end my-4">
-                                    <span>Theo:
-                                        <strong class="fst-italic">{{ $authorName_detail }}</strong>
-                                    </span>
-                                </div>
+                                    </li>
+                                    @if (!is_null($postCatalogues) && !empty($postCatalogues))
+                                        @foreach ($postCatalogues as $categoryP)
+                                    <li><i class="fa fa-file-text-o"></i><a href="{{ route('post.category', ['id' => $categoryP->id]) }}"> {{ $categoryP->name }}</a> </li>
+
+                                        
+                                        @endforeach
+                                        @endif
+
+                                </ul>
                             </div>
-                            @if(Auth::check())
-                            <div class="accordion shadow-sm text-muted mb-5 rounded-2 border-0 my-3">
-                                <div class="accordion-item material-shadow ">
-                                    <h2 class="accordion-header border-0" id="headingTow">
-                                        <button class="accordion-button fz-16 fw-500 text-dark" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTow" aria-expanded="true"
-                                            aria-controls="collapseTow">
-                                            <span class="">Bình luận bài viết</span>
-
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTow" class="accordion-collapse collapse show"
-                                        aria-labelledby="headingTow" data-bs-parent="#default-accordion-example">
-                                        <div class="accordion-body bg-white fz-14">
-                                            <div class="post-comment">
-                                                <div class="row">
-                                                    <div class="col-lg-2 col-md-2 col-12 d-block justify-content-center">
-                                                        <button type="button" class="btn border-0 px-0">
-                                                            <span class="d-block align-items-center">
-                                                                <img class="rounded-circle header-profile-user"
-                                                                    src="{{ Auth::user()->image !== null ? Auth::user()->image : '/libaries/templates/bee-cloudy-user/libaries/images/user-default.avif'}}"
-                                                                    alt="Avatar User"
-                                                                    class="rounded-circle object-fit-cover" width="60"
-                                                                    height="60">
-                                                                <p class="text-center mt-2">
-                                                                    <span
-                                                                        class="d-none d-xl-inline-block ms-1 fw-medium text-muted">{{ Auth::check() ? Auth::user()->name : 'Không xác định' }}</span>
-                                                                </p>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <div
-                                                        class="col-lg-10 col-md-10 col-12 d-block justify-content-center ps-0">
-                                                        <form>
-                                                            <div class="form-group position-relative w-100">
-                                                                <textarea v-model="create.content" class=" textarea-comment form-control rounded-2  shadwo-sm" id="comment"
-                                                                    rows="4" placeholder="Hãy cho chúng tôi biết ban đang nghĩ gì?"></textarea>
-                                                                <button type="button"
-                                                                    class="btn btn-success position-absolute z-3  py-1 px-4"
-                                                                    style="bottom: 5px;right: 0px;"
-                                                                    v-on:click="createContent()">Gửi</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="review-coment mt-3 mb-2">
-                                                <div class="py-2 me-3 mb-3">
-                                                    <span class="fw-500 fz-16 ">Xem đánh giá (@{{ comment }})</span>
-                                                </div>
-                                                <template v-for="(v,k) in list">
-                                                    <div class="row mx-2">
-                                                        <div
-                                                            class="col-lg-2 col-md-2 col-12 d-flex justify-content-end align-items-start" >
-                                                            <button type="button" class="btn  border-0 px-0">
-                                                                <span
-                                                                    class="d-block justify-content-end align-items-center">
-                                                                    <img class="rounded-circle header-profile-user"
-                                                                        :src="v.image || '/libaries/templates/bee-cloudy-user/libaries/images/user-default.avif'"
-                                                                        alt="Avatar User"
-                                                                        class="rounded-circle object-fit-cover"
-                                                                        width="50" 
-                                                                        height="50">                                                   
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                        <div
-                                                            class="col-lg-10 col-md-10 col-12 d-block justify-content-center ps-0">
-                                                            <div class="box-review">
-                                                                <div class="review-item rounded-2 my-2">
-                                                                    <div
-                                                                        class="hstack gap-2 d-flex justify-content-start align-items-center">
-                                                                        <div class="pt-2 d-inline-block">
-                                                                         <h6>@{{ v.name }}</h6>
-                                                                           
-                                                                        </div>
-                                                                        <div class="dropdown ms-auto ">
-                                                                            <a class=" dropdown-toggle" href="#"
-                                                                                role="button" data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                <i
-                                                                                    class="fa-solid fa-ellipsis-vertical fz-14 text-muted"></i>
-                                                                            </a>
-                                                                            <ul
-                                                                                class="dropdown-menu dropdown-menu-end border-0 ul-menu p-0 mb-1">
-                                                                                <template v-if="v.user_id === {{ Auth::id() }}">
-                                                                                    <li class="p-1 li-menu-header"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#delPosts"
-                                                                                        v-on:click="del = Object.assign({}, v)">
-                                                                                        <a href="#"
-                                                                                            class="text-decoration-none text-danger fz-14 ps-1">
-                                                                                            <i
-                                                                                                class="fa-solid fa-trash me-2"></i>Xóa
-                                                                                        </a>
-                                                                                    </li>
-
-                                                                                    <template v-if="v.edit_count === 0">
-                                                                                        <li class="p-1 li-menu-header"
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#updatePosts"
-                                                                                            v-on:click="update = Object.assign({}, v)">
-                                                                                            <a href="#"
-                                                                                                class="text-decoration-none text-muted fz-14 ps-1">
-                                                                                                <i
-                                                                                                    class="fa-solid fa-circle-info me-2"></i>Chỉnh
-                                                                                                sửa
-                                                                                            </a>
-                                                                                        </li>
-                                                                                    </template>
-
-                                                                                    <!-- Trường hợp edit_count là 1 (có thể thêm nội dung khác nếu cần) -->
-                                                                                    <template v-if="v.edit_count === 1">
-                                                                                        <!-- Nội dung cho trường hợp bình luận đã được chỉnh sửa, nếu cần -->
-                                                                                    </template>
-                                                                                </template>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="review-time">
-                                                                        <span class="fz-12">@{{ v.date }}</span>
-                                                                    </div>
-                                                                    <div class="content-review mt-2">
-                                                                        <p class="fz-14 fst-italic fw-500">
-                                                                            @{{ v.content }}
-                                                                        </p>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="icon-reaction pb-2">
-                                                                            <button class="like-button"
-                                                                                v-on:click="Like(v)"
-                                                                                style="border: none; background: none; padding: 0;">
-                                                                                <i class="fa-regular fa-heart me-2"></i>
-                                                                            </button>
-
-                                                                            <span>@{{ v.like_count }}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </template>
-                                                <!-- item review  -->
-
-                                                <!-- phân trang bình luận  -->
-                                                {{-- <div class="d-flex justify-content-center align-items-center mt-3">
-                                                    <nav aria-label="Page navigation example">
-                                                        <ul class="pagination pagination-sm">
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#"
-                                                                    aria-label="Previous">
-                                                                    <span aria-hidden="true">&laquo;</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link active"
-                                                                    href="#">1</a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link"
-                                                                    href="#">2</a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link"
-                                                                    href="#">3</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
-                                                                    <span aria-hidden="true">&raquo;</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </nav>
-                                                </div> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="article-background-image mb-4 aspect-ratio trai">
+                                <!--<img itemprop="image" class="lazyload" data-src="//file.hstatic.net/200000296482/article/thumbnal-private_sale_c05f692dbca248dd95d5cc6a01f5ff39_1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Noritake Private Sale @ Diamond Plaza – Hành trình trải nghiệm tinh hoa sứ Nhật dành riêng cho khách hàng VIP" >-->
+                                <img itemprop="image" width="100%" class=" ls-is-cached lazyloaded" src="{{ $post->image }}" alt="{{ $post->name }}">
                             </div>
-                            @endif
+                            <div class="article-content-desc mb-4" itemprop="description">
+                            {!! $post->content !!}      
+                            </div>
+                            <!--<div class="article-post-nav clearfix mb-4">							
+							<span class="float-right right">
+								<a href="/blogs/tin-tuc-su-kien/su-nhat-noritake-mon-qua-dang-cap-ton-vinh-phai-dep-ngay-8-3" title="">Bài sau</a>
+								<svg class="arrow-right d-inline-block align-middle" viewBox="0 0 11 18">
+									<path d="M1.5 1.5l8 7.5-8 7.5" stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
+								</svg>
+							</span>
+
+						</div>-->
                         </div>
-                        <div class="col-lg-3 col-md-12 col-12">
-                            <div class="card border-0 rounded-1 my-4">
-                                <div class="card-header">
-                                    <h6 class="card-title fw-18 fw-500">Tìm kiếm</h6>
-                                </div>
-                                <div class="card-body py-2">
-                                    <form action="{{ route('search') }}" method="get" class="">
-                                        <div class="d-flex shadow-sm rounded-pill py-1 my-1 overflow-hidden bg-white">
-                                            <input type="text" name="keyword"
-                                                class="form-control border-0 py-2 ps-3 pe-0"
-                                                placeholder="tìm theo ID, tiêu đề v.v.."
-                                                value="{{ request('keyword') ?: old('keyword') }}"
-                                                style="box-shadow: none;">
-                                            <input type="hidden" name="type" value="post">
 
-                                            <button type="submit" class="btn px-4 border-0">
-                                                <i class="fas fa-search fz-18 text-muted"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="card border-0 rounded-1 shadow-sm mb-4">
-                                <div class="card-header">
-                                    <h6 class="card-title fw-18 fw-500">Bài viết</h6>
-                                </div>
-                                <div class="card-body p-1">
-                                    <div class="categoryP-item mb-3 overflow-y-auto">
-                                        <ul class="list-group list-group-flush">
-                                            @if (!is_null($postCatalogues) && !empty($postCatalogues))
-                                                @foreach ($postCatalogues as $categoryP)
-                                                    <li class="list-group-item item-category">
-                                                        <a href="{{ route('post.category', ['id' => $categoryP->id]) }}"
-                                                            class="text-decoration-none d-flex align-items-center">
-                                                            <img src="{{ $categoryP->image }}"
-                                                                alt="{{ $categoryP->name }}" width="50"
-                                                                height="50"
-                                                                class="me-3 object-fit-contain bg-light rounded-3 ">
-                                                            <span class="text-muted fw-500">{{ $categoryP->name }}</span>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="card border-0 rounded-1 shadow-sm mb-4 {{ count($postSimilar) == 0 ? 'd-none' : '' }}">
-                                <div class="card-header">
-                                    <h6 class="card-title fw-18 fw-500">Bài viết tương tự</h6>
-                                </div>
-                                <div class="card-body p-1">
-                                    <div class="event-item mb-3">
-                                        <ul class="ps-0 mb-0" class="overflow-y-hidden">
-                                            @if ($postSimilar != null)
-                                                @foreach ($postSimilar as $key => $valSimilar)
-                                                    <li class="list-unstyled ">
-                                                        <a href="{{ route('post.detail', ['slug' => $valSimilar->slug]) }}"
-                                                            class="d-flex flex-wrap justify-content-start text-muted mb-2">
-                                                            <div class="image-event-item position-relative col-5 pe-2">
-                                                                <img src="{{ $valSimilar->image }}" alt=""
-                                                                    width="100%" height="80"
-                                                                    class="img-fuild rounded-2 object-fit-contain">
-                                                            </div>
-                                                            <div class="title-post col-7">
-                                                                <h6 class="fz-16 fw-500 overflow-hidden text-break"
-                                                                    style="height: 80px;">
-                                                                    {{ $valSimilar->name }}
-                                                                </h6>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="singular-footer horizontal">
+                            <ul class="cpanel-action social-pin hidden">
+                                <li>
+                                    <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21.125 16.3V19.2H24.05C24.275 19.2 24.3875 19.4 24.3875 19.6L23.9375 21.5C23.9375 21.6 23.7125 21.7 23.6 21.7H21.125V29H17.75V21.8H15.8375C15.6125 21.8 15.5 21.7 15.5 21.5V19.6C15.5 19.4 15.6125 19.3 15.8375 19.3H17.75V16C17.75 14.3 19.2125 13 21.125 13H24.1625C24.3875 13 24.5 13.1 24.5 13.3V15.7C24.5 15.9 24.3875 16 24.1625 16H21.4625C21.2375 16 21.125 16.1 21.125 16.3Z" fill="#292D32"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <!--<li>
+								<a class="cpanel-item twitter" href="https://twitter.com/intent/tweet?text=https://dantri.com.vn/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" target="_blank" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-twitter" data-content-target="/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" rel="nofollow" title="Chia sẻ bài viết lên twitter">
+									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M29.5 15.5C28.825 15.8 28.15 15.9 27.3625 16C28.15 15.6 28.7125 15 28.9375 14.2C28.2625 14.6 27.475 14.8 26.575 15C25.9 14.4 24.8875 14 23.875 14C21.9625 14 20.275 15.5 20.275 17.3C20.275 17.6 20.275 17.8 20.3875 18C17.35 17.9 14.5375 16.6 12.7375 14.6C12.4 15.1 12.2875 15.6 12.2875 16.3C12.2875 17.4 12.9625 18.4 13.975 19C13.4125 19 12.85 18.8 12.2875 18.6C12.2875 20.2 13.525 21.5 15.2125 21.8C14.875 21.9 14.5375 21.9 14.2 21.9C13.975 21.9 13.75 21.9 13.525 21.8C13.975 23.1 15.325 24.1 17.0125 24.1C15.775 25 14.2 25.5 12.4 25.5C12.0625 25.5 11.8375 25.5 11.5 25.5C13.1875 26.4 15.1 27 17.125 27C23.875 27 27.5875 22 27.5875 17.7C27.5875 17.6 27.5875 17.4 27.5875 17.3C28.375 16.8 29.05 16.2 29.5 15.5Z" fill="#292D32" stroke="#292D32" stroke-linejoin="round"></path>
+									</svg>
+								</a>
+							</li>-->
+                                <li>
+                                    <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_752_6605)">
+                                                <path d="M27.8 12H13.2C12.8 12 12.5 12.3 12.5 12.7V27.4C12.5 27.7 12.8 28 13.2 28H27.9C28.3 28 28.6 27.7 28.6 27.3V12.7C28.5 12.3 28.2 12 27.8 12ZM17.2 25.6H14.9V18H17.3V25.6H17.2ZM16.1 17C15.3 17 14.7 16.3 14.7 15.6C14.7 14.8 15.3 14.2 16.1 14.2C16.9 14.2 17.5 14.8 17.5 15.6C17.4 16.3 16.8 17 16.1 17ZM26.1 25.6H23.7V21.9C23.7 21 23.7 19.9 22.5 19.9C21.3 19.9 21.1 20.9 21.1 21.9V25.7H18.7V18H21V19C21.3 18.4 22.1 17.8 23.2 17.8C25.6 17.8 26 19.4 26 21.4V25.6H26.1Z" fill="#292D32"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <!--<li class="zalo-share-button" data-href="" data-oaid="" data-layout="3" data-color="blue" data-customize="true">
+								<button class="cpanel-item zalo" title="Chia sẻ bài viết lên zalo">
+									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<g clip-path="url(#clip0_608_594)">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M20.6809 17.5205V17.064H22.0481V23.4824H21.2659C20.9439 23.4824 20.6825 23.2224 20.6809 22.9008C20.6807 22.901 20.6804 22.9011 20.6802 22.9013C20.1295 23.304 19.4488 23.5431 18.7135 23.5431C16.872 23.5431 15.3789 22.0509 15.3789 20.2106C15.3789 18.3703 16.872 16.8782 18.7135 16.8782C19.4488 16.8782 20.1295 17.1173 20.6802 17.52C20.6804 17.5201 20.6807 17.5203 20.6809 17.5205ZM15.0246 15V15.2081C15.0246 15.5962 14.9727 15.9131 14.7205 16.2848L14.69 16.3197C14.6349 16.3821 14.5057 16.5287 14.4442 16.6083L10.0549 22.1175H15.0246V22.8974C15.0246 23.2205 14.7624 23.4824 14.439 23.4824H8V23.1146C8 22.6643 8.1119 22.4634 8.25335 22.254L12.9324 16.4624H8.19507V15H15.0246ZM23.7064 23.4824C23.4375 23.4824 23.2189 23.2639 23.2189 22.9953V15H24.6824V23.4824H23.7064ZM29.0096 16.838C30.864 16.838 32.3667 18.3414 32.3667 20.1929C32.3667 22.046 30.864 23.5494 29.0096 23.5494C27.1552 23.5494 25.6525 22.046 25.6525 20.1929C25.6525 18.3414 27.1552 16.838 29.0096 16.838ZM18.7135 22.1713C19.7972 22.1713 20.6754 21.2936 20.6754 20.2106C20.6754 19.1292 19.7972 18.2516 18.7135 18.2516C17.6298 18.2516 16.7516 19.1292 16.7516 20.2106C16.7516 21.2936 17.6298 22.1713 18.7135 22.1713ZM29.0096 22.168C30.0997 22.168 30.9844 21.2839 30.9844 20.1929C30.9844 19.1035 30.0997 18.2196 29.0096 18.2196C27.9179 18.2196 27.0348 19.1035 27.0348 20.1929C27.0348 21.2839 27.9179 22.168 29.0096 22.168Z" fill="#292D32"></path>
+										</g>
+										<defs>
+											<clipPath id="clip0_608_594">
+												<rect width="25" height="9" fill="white" transform="translate(8 15)"></rect>
+											</clipPath>
+										</defs>
+									</svg>
+								</button>
+							</li>-->
+                                <li>
+                                    <button onclick="Copy1()" type="button" class="cpanel-item link" data-track-content="" data-content-name="" data-content-piece="" title="Copy">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_608_611)">
+                                                <path d="M16.5002 28.0001C15.3002 28.0001 14.2002 27.5001 13.3002 26.7001C11.5002 24.9001 11.5002 22.1001 13.3002 20.3001L14.0002 19.6001L15.4002 21.0001L14.7002 21.7001C13.7002 22.7001 13.7002 24.3001 14.7002 25.3001C15.7002 26.3001 17.3002 26.3001 18.3002 25.3001L21.3002 22.3001C22.3002 21.3001 22.3002 19.7001 21.3002 18.7001L20.6002 18.0001L22.0002 16.6001L22.7002 17.3001C24.5002 19.1001 24.5002 21.9001 22.7002 23.7001L19.7002 26.7001C18.9002 27.5001 17.7002 28.0001 16.5002 28.0001Z" fill="#292D32"></path>
+                                                <path d="M18.0002 23.4L17.3002 22.7C15.5002 20.9 15.5002 18.1 17.3002 16.3L20.3002 13.3C21.2002 12.4 22.3002 12 23.5002 12C24.7002 12 25.8002 12.5 26.7002 13.3C28.5002 15.1 28.5002 17.9 26.7002 19.7L26.0002 20.4L24.6002 19L25.3002 18.3C26.3002 17.3 26.3002 15.7 25.3002 14.7C24.3002 13.7 22.7002 13.7 21.7002 14.7L18.7002 17.7C17.7002 18.7 17.7002 20.3 18.7002 21.3L19.4002 22L18.0002 23.4Z" fill="#292D32"></path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <p class="notification-message-1">Đã copy</p>
+                                </li>
+                                <li>
+                                    <a href="#comment"><button type="button" class="cpanel-item comment" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-comment" data-content-target="" title="Bình luận">
+                                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M17.5834 25.8334H17.1667C13.8334 25.8334 12.1667 25.0001 12.1667 20.8334V16.6667C12.1667 13.3334 13.8334 11.6667 17.1667 11.6667H23.8334C27.1667 11.6667 28.8334 13.3334 28.8334 16.6667V20.8334C28.8334 24.1667 27.1667 25.8334 23.8334 25.8334H23.4167C23.1584 25.8334 22.9084 25.9584 22.75 26.1667L21.5 27.8334C20.95 28.5667 20.05 28.5667 19.5 27.8334L18.25 26.1667C18.1167 25.9834 17.8084 25.8334 17.5834 25.8334Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M16.3333 16.6667H24.6666" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M16.3333 20.8333H21.3333" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </button></a>
+                                </li>
+                                <!--<li>
+								<a rel="nofollow" href="/print-20230523144436970.htm" class="cpanel-item print comment-empty" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-print" data-content-target="" title="In">
+									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M16.5417 15.8334H24.4584V14.1667C24.4584 12.5001 23.8334 11.6667 21.9584 11.6667H19.0417C17.1667 11.6667 16.5417 12.5001 16.5417 14.1667V15.8334Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M28 18.3333V22.4999C28 24.1666 27.1667 24.9999 25.5 24.9999V23H15.5V25C13.8333 25 13 24.1666 13 22.4999V18.3333C13 16.6666 13.8333 15.8333 15.5 15.8333H25.5C27.1667 15.8333 28 16.6666 28 18.3333Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M25.5 23L24.29 23L15.5 23" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M16.3333 19.1667H18.8333" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M25.5 23V25.8571C25.5 27.2857 24.25 28 21.75 28H19.25C16.75 28 15.5 27.2857 15.5 25.8571V23H25.5Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+								</a>
+							</li>-->
+                                <li>
+                                    <button class="cpanel-item back" onclick="javascript:window.history.back();">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.475 14.9417L13.4167 20L18.475 25.0583" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M27.5834 20H13.5583" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
+
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        @include('frontend.post.components.sidebar_post')
                     </div>
                 </div>
             </div>
-        </article>
-    </section>
-
-    <div class='modal fade' id='updatePosts' tabindex='-1' aria-labelledby='cập-nhật-bài-đăng' aria-hidden='true'>
-        <div class='modal-dialog modal-lg'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h1 class='modal-title fs-5' id='cập-nhật-bài-đăng'>Cập nhật bình luận</h1>
-                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Đóng'></button>
-                </div>
-                <div class="container my-4">
-                    <label for="nội-dung" class="form-label">Nội dung:</label>
-                    <textarea v-model="update.content" id="nội-dung" name="nội-dung" rows="4" required class="form-control"></textarea>
-                </div>
-                <div class='modal-footer'>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss='modal'
-                        v-on:click="updateContent">Xác nhận</button>
-                </div>
-            </div>
+            
         </div>
-    </div>
 
-    <div class='modal fade' id='delPosts' tabindex='-1' aria-labelledby='xóa-bài-đăng' aria-hidden='true'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h1 class='modal-title fs-5' id='xóa-bài-đăng'>Xóa bài đăng</h1>
-                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Đóng'></button>
-                </div>
-                <div class="container my-4">
-                    Bạn có chắc chắn muốn xóa? Việc này không thể hoàn tác.
-                </div>
-                <div class='modal-footer'>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss='modal' v-on:click="deleteContent">Xác
-                        nhận xóa</button>
-                </div>
-            </div>
-        </div>
     </div>
+    <script>
+        function Copy() {
+            var Url = '';
+            Url = window.location.href;
+            console.log(Url);
+            navigator.clipboard.writeText(Url);
+            showNotification1();
+        }
+
+        function showNotification1() {
+            var notificationEl1 = document.querySelector('p.notification-message');
+
+            notificationEl1.classList.add('notify');
+            setTimeout(function() {
+                notificationEl1.classList.remove('notify');
+            }, 600);
+        }
+
+        function Copy1() {
+            var Url = '';
+            Url = window.location.href;
+            console.log(Url);
+            navigator.clipboard.writeText(Url);
+            showNotification2();
+        }
+
+        function showNotification2() {
+            var notificationEl2 = document.querySelector('p.notification-message-1');
+
+            notificationEl2.classList.add('notify-1');
+            setTimeout(function() {
+                notificationEl2.classList.remove('notify-1');
+            }, 550);
+        }
+    </script>
+
+</main>
+
 @endsection
 @section('js')
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                list: [],
-                create: {},
-                update: {},
-                del: {},
-                comment: 0,
-                likes: [],
-                likeCount: [],
-                check: 0,
-                isLiked: false,
-                // names: []
-            },
-            created() {
-                this.loadContent();
-                this.LoadLike();
-                this.Chekc();
-            },
-            methods: {
-                loadContent() {
-                    axios
-                        .get('/view-content-data')
-                        .then((res) => {
-                            this.list = res.data.data;   
-                            console.log(this.list);         
-                            this.comment = res.data.comment_count;
-                        });
-                },
-                createContent() {
-                    axios
-                        .post('/view-content-create', this.create)
-                        .then((res) => {
-                            if (res.data.code == 10) {
-                                flasher.success(res.data.message);
-                                this.create = {};
-                                this.loadContent();
-                            } else {
-                                flasher.error(res.data.message);
-                            }
-                        })
-                        .catch((res) => {
-                            $.each(res.response.data.errors, function(k, v) {
-                                flasher.error(v[0], 'Error');
-                            });
-                        });
-                },
-                updateContent() {
-                    axios
-                        .post('/view-content-update', this.update)
-                        .then((res) => {
-                            if (res.data.code == 10) {
-                                flasher.success(res.data.message);
-                                this.loadContent();
-                            } else {
-                                flasher.error(res.data.message);
-                            }
-                        })
-                        .catch((res) => {
-                            $.each(res.response.data.errors, function(k, v) {
-                                toastr.error(v[0], 'Error');
-                            });
-                        });
-                },
-                deleteContent() {
-                    axios
-                        .post('/view-content-delete', this.del)
-                        .then((res) => {
-                            console.log(res);
-                            
-                            if (res.data.code == 10) {
-                                flasher.success(res.data.message);
-                                this.loadContent();
-                            } else {
-                                flasher.error(res.data.message);
-                            }
-                        })
-                        .catch((res) => {
-                            $.each(res.response.data.errors, function(k, v) {
-                                toastr.error(v[0], 'Error');
-                            });
-                        });
-                },
 
-                LoadLike() {
-                    const url = new URL(window.location.href);
-                    const pathname = url.pathname;
-                    const slug = pathname.split('/').filter(Boolean).pop();
-                    axios
-                        .get('/content/like-data')
-                        .then((res) => {
-                            this.list = res.data.like_count;
-                        })
-                        .catch((res) => {})
-                },
-
-                Chekc() {
-                    const url = new URL(window.location.href);
-                    const pathname = url.pathname;
-                    const slug = pathname.split('/').filter(Boolean).pop();
-                    axios
-                        .get('/content/check')
-                        .then((res) => {
-                            this.check = res.data.check;
-                        })
-                        .catch((res) => {
-                            // $.each(res.response.data.errors, function(k, v) {});
-                        })
-                },
-                Like(v) {
-                    axios
-                        .post('/content/like', v)
-                        .then((res) => {
-                            if (res.data.code == 10) {
-                                this.LoadLike();
-                                this.likeCount = res.data.like_count;
-                                toaster.success(res.data.message);
-                            }
-
-                        })
-                        .catch((res) => {
-                            // $.each(res.response.data.errors, function(k, v) {});
-                        });
-                },
-
-                toggleMenu(k) {
-                    let menu = document.getElementById('menu-' + k);
-                    menu.classList.toggle('show');
-                }
-            },
-        });
-    </script>
 @endsection

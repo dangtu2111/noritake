@@ -34,7 +34,7 @@ class PostService implements PostServiceInterface
         $condition = [
             ['publish', 1]
         ];
-        $relation = ['users'];
+        $relation = ['users','postCatalogues'];
         $perPage = 5;
         $posts = $this->postRepository->pagination(
             $this->paginateSelect(),
