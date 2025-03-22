@@ -3,10 +3,10 @@
   <div class="footer-top">
     <ul class="row footer-top-trai">
       @foreach([
-          ['class' => 'w6 top', 'href' => 'pages/chinh-sach-doi-tra.html', 'text' => 'Chính sách giao hàng & đổi trả'],
-          ['class' => 'w4 top', 'href' => 'pages/chinh-sach-bao-mat.html', 'text' => 'Chính sách bảo mật'],
-          ['class' => 'w6 bot', 'href' => 'pages/dieu-khoan-dich-vu.html', 'text' => 'Phương thức thanh toán'],
-          ['class' => 'w4 bot', 'href' => 'pages/huong-dan-su-dung.html', 'text' => 'Hướng dẫn sử dụng']
+        ['class' => 'w6 top', 'href' => config('app.url') . "/pages/chinh-sach-doi-tra", 'text' => 'Chính sách giao hàng & đổi trả'],
+        ['class' => 'w4 top', 'href' => config('app.url') . "/pages/chinh-sach-bao-mat", 'text' => 'Chính sách bảo mật'],
+        ['class' => 'w6 bot', 'href' => config('app.url') . "/pages/dieu-khoan-dich-vu", 'text' => 'Phương thức thanh toán'],
+        ['class' => 'w4 bot', 'href' => config('app.url') . "/pages/huong-dan-su-dung", 'text' => 'Hướng dẫn sử dụng'],
       ] as $link)
         <li class="column_trai {{ $link['class'] }}"><i class="fa fa-circle" aria-hidden="true"></i><a href="{{ $link['href'] }}">{{ $link['text'] }}</a></li>
       @endforeach
