@@ -41,7 +41,20 @@ class Product extends Model
     protected $casts = [
         'attribute' => 'json'
     ];
+    public function parents()
+    {
+        return $this->belongsToMany(Product::class, 'product_relationships', 'child_id', 'parent_id')
+                    ->withTimestamps();
+    }
 
+    /**
+     * Get the child products of this product.
+     */
+    public function children()
+    {
+        return $this->belongsToMany(Product::class, 'product_relationships', 'parent_id', 'child_id')
+                    ->withTimestamps();
+    }
     //khai báo quan hệ n-n vs bảng product_catalogues thông qua bảng pivot 
     public function productCatalogues(): BelongsToMany
     {

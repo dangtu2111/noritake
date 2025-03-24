@@ -74,6 +74,7 @@ class ProductService implements ProductServiceInterface
     {
         DB::beginTransaction();
         try {
+            
             $product = $this->createProduct($request);
             
             // Trường hợp không có phiên bản
@@ -490,6 +491,8 @@ class ProductService implements ProductServiceInterface
             'is_hot',
             'price',
             'del',
+            'parent_id',
+            'child_id',
             'sku',
             'attributeCatalogue', // json
             'attribute', // json

@@ -158,6 +158,26 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
+                                        <label for="choices-parent-product-input" class="form-label">Sản phẩm cha <span
+                                                class="text-danger fz-18">*</span></label>
+                                        <span class="mt-2"><a href="{{ route('product.create') }}"
+                                                class="text-decoration-underline text-primary">Thêm mới</a></span>
+                                    </div>
+                                    <select class="form-select setUpSelect2" name="parent_id[]" multiple="multiple">
+                                        <option value="0">[Chọn sản phẩm cha]</option>
+                                        @foreach ($products as $product)
+                                        <option value="{{ $product->id }}"
+                                            {{ collect(old('parent_id', $selectedParentIds ?? []))->contains($product->id) ? 'selected' : '' }}>
+                                            {{ $product->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('parent_id'))
+                                    <span class="text-danger fz-12 mt-1">{{ $errors->first('parent_id') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
                                         <label for="choices-publish-status-input" class="form-label">Thương hiệu<span
                                                 class="text-danger fz-18 ">*</span>
                                         </label>

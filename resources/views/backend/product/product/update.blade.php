@@ -166,25 +166,42 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
-                                        <label for="choices-publish-status-input" class="form-label">Tên nhóm <span
-                                                class="text-danger fz-18 ">*</span>
-                                        </label>
+                                        <label for="choices-catalogue-input" class="form-label">Tên nhóm <span class="text-danger fz-18">*</span></label>
                                         <span class="mt-2"><a href="{{ route('product.catalogue.create') }}"
-                                                class="text-decoration-underline text-primary">thêm mới</a></span>
+                                                class="text-decoration-underline text-primary">Thêm mới</a></span>
                                     </div>
-                                    <select class="form-select setUpSelect2" name="product_catalogue_id[]"
-                                        multiple="multiple">
+                                    <select class="form-select setUpSelect2" name="product_catalogue_id[]" multiple="multiple">
                                         <option value="0">[Chọn nhóm sản phẩm]</option>
-                                        @foreach ($productCatalogues as $key => $catalogue)
+                                        @foreach ($productCatalogues as $catalogue)
                                         <option value="{{ $catalogue->id }}"
-                                            {{ in_array($catalogue->id, $product->productCatalogues->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                            {{ $catalogue->name }}</option>
+                                            {{ in_array($catalogue->id, old('product_catalogue_id', $product->productCatalogues->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                            {{ $catalogue->name }}
+                                        </option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('product_catalogue_id'))
-                                    <span
-                                        class="text-danger fz-12 mt-1">{{ $errors->first('product_catalogue_id') }}</span>
-                                    @endif
+                                    @error('product_catalogue_id')
+                                    <span class="text-danger fz-12 mt-1">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <label for="choices-child-product-input" class="form-label">Sản phẩm con <span class="text-danger fz-18">*</span></label>
+                                        <span class="mt-2"><a href="{{ route('product.create') }}"
+                                                class="text-decoration-underline text-primary">Thêm mới</a></span>
+                                    </div>
+                                    <select class="form-select setUpSelect2" name="child_id[]" multiple="multiple">
+                                        <option value="0">[Chọn sản phẩm con]</option>
+                                        @foreach ($products as $productItem)
+                                        <option value="{{ $productItem->id }}"
+                                            {{ in_array($productItem->id, old('child_id', $product->children->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                            {{ $productItem->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @error('child_id')
+                                    <span class="text-danger fz-12 mt-1">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
@@ -199,7 +216,8 @@
                                         @foreach ($brands as $key => $brand)
                                         <option value="{{ $brand->id }}"
                                             {{ $brand->id == $product->brand_id ? 'selected' : '' }}>
-                                            {{ $brand->name }}</option>
+                                            {{ $brand->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('brand_id'))
