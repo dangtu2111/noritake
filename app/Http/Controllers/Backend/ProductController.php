@@ -77,6 +77,7 @@ class ProductController extends Controller
     public function update($slug)
     {
         $product = $this->productRepository->getProductBySlug($slug);
+      
         // lấy ra tất cả vs điều kiện (không lấy ra bản ghi đàn được find)
         $productCatalogues = $this->productCatalogueRepository->all();
         $attributeCatalogue = $this->attributeCatalogueRepository->all();
@@ -85,6 +86,7 @@ class ProductController extends Controller
         // dd($productCatalogues);
         $albumArray = !empty($product->album) ? explode(',', $product->album) : [];
         $template = 'backend.product.product.update';
+        $products = $this->productService->all();
         return view('backend.dashboard.layout', compact(
             'template',
             'brands',
@@ -92,6 +94,7 @@ class ProductController extends Controller
             'productCatalogues',
             'attributeCatalogue',
             'albumArray',
+            'products',
         ));
     }
     public function edit($slug, UpdateProductRequest $request)

@@ -36,12 +36,12 @@
                     <div class="collapse menu-dropdown {{ request()->is('attribute*') || request()->is('brand*') || request()->is('product*') ? 'show' : '' }}"
                         id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="{{ route('attribute.catalogue.index') }}" class="nav-link">Nhóm sản phẩm con </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('attribute.index') }}" class="nav-link">Sản phẩm con</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a href="{{ route('brand.index') }}" class="nav-link">Thương hiệu</a>
                             </li>

@@ -116,6 +116,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $product->productCatalogues()->attach($payload['product_catalogue_id']);
             }
         }
+      
+        // Xử lý ProductRelationship cho sản phẩm cha
+        if (isset($payload['parent_id'])) {
+            if (is_array($payload['parent_id'])) {
+                // Thêm mới các quan hệ cha mà không xóa quan hệ cũ
+                $product->parents()->attach($payload['parent_id']);
+            } else {
+                // Thêm một quan hệ cha duy nhất
+                $product->parents()->attach($payload['parent_id']);
+            }
+        }
         return $product;
     }
 }
