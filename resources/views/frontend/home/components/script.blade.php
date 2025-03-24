@@ -2,7 +2,7 @@
     function loadSmoothScroll() {
       if (window.innerWidth >= 991) {
         var script = document.createElement('script');
-        script.src = "../cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.5.1/SmoothScroll.min.js";
+        script.src = "/cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.5.1/SmoothScroll.min.js";
         script.integrity = "sha512-BkMKSo7sGBeDmtIyZoyInJbrI/XqQ1ez6SZotOL0e+iT6tzOjBmtMpWWPUVbcdqLbaukREItSDV2aohX+9gBlw==";
         script.crossOrigin = "anonymous";
         script.referrerPolicy = "no-referrer";
@@ -32,8 +32,8 @@
   <script src='/hstatic.net/0/0/global/option_selection.js' type='text/javascript'></script>
   <script src='/hstatic.net/0/0/global/api.jquery.js' type='text/javascript'></script>
 
-  <link rel="stylesheet" type="text/css" href="../cdn.jsdelivr.net/npm/slick-carousel%401.8.1/slick/slick.css" />
-  <script type="text/javascript" src="../cdn.jsdelivr.net/npm/slick-carousel%401.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/cdn.jsdelivr.net/npm/slick-carousel%401.8.1/slick/slick.css" />
+  <script type="text/javascript" src="/cdn.jsdelivr.net/npm/slick-carousel%401.8.1/slick/slick.min.js"></script>
 
 
   <script src='/theme.hstatic.net/200000296482/1001063914/14/scripts05b4.js?v=5232' type='text/javascript'></script>
@@ -41,7 +41,7 @@
   <script>
     setTimeout(function () {
       if ($(window).width() > 767) {
-        var chatbot_src = "../app.harasocial.com/widget/101945615048076.js";
+        var chatbot_src = "/app.harasocial.com/widget/101945615048076.js";
         $("head").append('<!-- harafunnel --><script src="' + chatbot_src + '" ' + 'async="async"><\/script>');
       } else {
         (function (d, s, id) {
