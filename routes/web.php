@@ -372,6 +372,7 @@ Route::get('pages/{slug}', [StaticViewController::class, 'show'])->name('static-
 
 // AUTH
 Route::get('login', [LoginController::class, 'index'])->name('auth.login');
+Route::get('admin/login', [LoginController::class, 'index'])->name('auth.admin.login');
 Route::post('store-login', [LoginController::class, 'login'])->name('store.login');
 Route::get('register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('register-store', [RegisterController::class, 'register'])->name('store.register');

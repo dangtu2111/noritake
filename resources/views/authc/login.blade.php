@@ -18,20 +18,22 @@
                         <form accept-charset="UTF-8" action="{{ route('store.login') }}" id="customer_login" method="post">
                             <input name="form_type" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="✓">
+                            <hr width="100%">
                             {{ csrf_field() }}
+                            @if (Route::currentRouteNamed('auth.admin.login'))
                             <div class="form-group mb-4 clearfix">
                                 <label for="customer_email" class="text-field d-none font-weight-normal text-uppercase mb-2">Địa chỉ email</label>
-                                 <input type="text" class="form-control" name="email" id="email" placeholder="Nhập email" value="{{ old('email') }}">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Nhập email" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
-                                            <span class="text-danger fz-12 mt-1">{{ $errors->first('email') }}</span>
-                                        @endif
+                                <span class="text-danger fz-12 mt-1">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                             <div class="form-group mb-4 clearfix">
                                 <label for="customer_password" class="text-field d-none font-weight-normal text-uppercase mb-2">Mật khẩu</label>
-                                <input id="password-input" name="password" required="" type="password" value=""  placeholder="Mật khẩu" autocomplete="off" class="form-control">
+                                <input id="password-input" name="password" required="" type="password" value="" placeholder="Mật khẩu" autocomplete="off" class="form-control">
                                 @if ($errors->has('password'))
-                                                <span class="text-danger fz-12 mt-1">{{ $errors->first('password') }}</span>
-                                            @endif
+                                <span class="text-danger fz-12 mt-1">{{ $errors->first('password') }}</span>
+                                @endif
                             </div>
                             <div class="sitebox-recaptcha mb-4">
                                 This site is protected by reCAPTCHA and the Google
@@ -52,14 +54,27 @@
                                         <a href="{{ route('auth.register') }}" class="" title="Đăng ký">Tạo tài khoản của bạn</a>
                                     </p>
                                 </div>
-                                <div>
-                                            <a href="{{ route('auth.google') }}" type="button"
-                                                class="btn btn-danger btn-icon waves-effect waves-light"><i
-                                                    class="fa-brands fa-google-plus"></i></a>
-                                            <a href="{{ route('auth.facebook') }}" type="button"
-                                                class="btn btn-dark btn-icon waves-effect waves-light"><i
-                                                    class="fa-brands fa-facebook-f"></i></a>
+
+                            </div>
+                            @endif
+
+                            <div class="social-login-container">
+                                <a href="{{ route('auth.google') }}" type="button" class="btn btn-danger btn-icon waves-effect waves-light">
+                                    <div class="google-btn">
+                                        <div class="google-icon-wrapper">
+                                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google Icon" />
                                         </div>
+                                        <p class="btn-text"><b>Sign in with Google</b></p>
+                                    </div>
+                                </a>
+                                <a href="{{ route('auth.facebook') }}" type="button" class="btn btn-dark btn-icon waves-effect waves-light">
+                                    <div class="facebook-btn">
+                                        <div class="facebook-icon-wrapper">
+                                            <img class="facebook-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/900px-Facebook_Logo_%282019%29.png" alt="Facebook Icon" />
+                                        </div>
+                                        <p class="btn-text"><b>Sign in with Facebook</b></p>
+                                    </div>
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -117,4 +132,75 @@
 
 
 </main>
+<style>
+    .social-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    gap: 15px; /* Khoảng cách giữa hai nút */
+    max-width: 300px; /* Giới hạn chiều rộng */
+    margin: 0 auto; /* Căn giữa container trong trang */
+    padding: 20px;
+}
+
+.google-btn, .facebook-btn {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của container cha */
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.google-btn {
+    background-color: #4285F4; /* Màu nền Google */
+    color: white;
+}
+
+.google-btn:hover {
+    background-color: #3267D6;
+}
+
+.facebook-btn {
+    background-color: #3B5998; /* Màu nền Facebook */
+    color: white;
+}
+
+.facebook-btn:hover {
+    background-color: #2D4373;
+}
+
+.google-icon-wrapper, .facebook-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.google-icon, .facebook-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-text {
+    margin: 0; /* Xóa margin mặc định của <p> */
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center; /* Đảm bảo text căn giữa */
+    flex: 1; /* Cho phép text chiếm không gian còn lại */
+}
+
+/* Nếu bạn dùng class btn từ Bootstrap, đảm bảo không bị ghi đè */
+.btn {
+    padding: 0; /* Xóa padding mặc định của Bootstrap */
+    border: none; /* Xóa border mặc định */
+}
+</style>
 @endsection
