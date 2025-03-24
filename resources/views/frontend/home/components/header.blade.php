@@ -213,7 +213,7 @@
                                                 nhân</a></li>
                                         <li><a class="  form-control" href="">Đơn hàng của tôi</a></li>
                                         <li>
-                                            <form action="" method="POST">
+                                            <form action="{{ route('auth.logout') }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="dropdown-item">Đăng xuất</button>
                                             </form>
