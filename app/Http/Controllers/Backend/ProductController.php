@@ -77,7 +77,6 @@ class ProductController extends Controller
     public function update($slug)
     {
         $product = $this->productRepository->getProductBySlug($slug);
-      
         // lấy ra tất cả vs điều kiện (không lấy ra bản ghi đàn được find)
         $productCatalogues = $this->productCatalogueRepository->all();
         $attributeCatalogue = $this->attributeCatalogueRepository->all();

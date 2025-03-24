@@ -36,6 +36,7 @@ class ProductController extends Controller
     public function detail($slug)
     {
         $product = $this->productRepository->getProductBySlug($slug);
+    
         $product->attribute = $this->productService->getAttribute($product);
         $categories = $this->productCatalogueRepository->allWhere([
             ['publish', '=', 1]
@@ -50,6 +51,7 @@ class ProductController extends Controller
             ->where('id', '!=', $product->id)
             ->limit(4)
             ->get();
+        
         $promotions = $this->promotionRepository->allWhere([
             ['status', 'active'],
             ['usage_limit', '>', 0],
