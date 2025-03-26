@@ -59,7 +59,7 @@
                             @endif
 
                             <div class="social-login-container">
-                                <a href="{{ route('auth.google') }}" width="100%" type="button" class="btn btn-danger btn-icon waves-effect waves-light">
+                                <a href="{{ route('auth.google') }}" style="width: 100%;" type="button" class="btn btn-danger btn-icon waves-effect waves-light">
                                     <div class="google-btn">
                                         <div class="google-icon-wrapper">
                                             <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google Icon" />
@@ -67,7 +67,7 @@
                                         <p class="btn-text"><b>Sign in with Google</b></p>
                                     </div>
                                 </a>
-                                <a href="{{ route('auth.facebook') }}" width="100%" type="button" class="btn btn-dark btn-icon waves-effect waves-light">
+                                <a href="{{ route('auth.facebook') }}" style="width: 100%;" type="button" class="btn btn-dark btn-icon waves-effect waves-light">
                                     <div class="facebook-btn">
                                         <div class="facebook-icon-wrapper">
                                             <img class="facebook-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/900px-Facebook_Logo_%282019%29.png" alt="Facebook Icon" />
