@@ -70,52 +70,46 @@ class CartService implements CartServiceInterface
     {
         DB::beginTransaction();
         try {
+            // Lấy dữ liệu từ request
             $payload = $request->input();
-            $product = $this->productRepository->findById($payload['product_id'], ['productVariant']);
+
+            // Tìm sản phẩm theo product_id
+            $product = $this->productRepository->findById($payload['product_id']);
+
+            // Tạo hoặc lấy giỏ hàng của người dùng
             $cartByUser = Cart::firstOrCreate([
                 'user_id' => Auth::id(),
             ]);
+
+            // Xác định giá (giá giảm nếu có, nếu không thì lấy giá gốc)
             $price = $product->del != 0 ? $product->del : $product->price;
-            $attributeId = sortAttributeId($payload['attribute_id']);
-            $productVariant = $this->productVariantRepository->findVariant($attributeId, $product->id);
+
+            // Dữ liệu để lưu vào CartItem
             $data = [
                 'cart_id' => $cartByUser->id,
                 'product_id' => $product->id,
-                'product_variant_id' => $productVariant->id,
                 'quantity' => $payload['quantity'],
-                'price' => str_replace('.', '', $price),
+                'price' => str_replace('.', '', $price), // Loại bỏ dấu chấm trong giá
             ];
 
-            // Nếu có thuộc tính (attribute_id)
-            if (isset($payload['attribute_id']) && $payload['attribute_id']) {
-
-                // dd($productVariant->id);
-                $data['product_id'] = null;
-                $data['product_variant_id'] = $productVariant->id;
-                $data['price'] = str_replace('.', '', $productVariant->price);
-            }
-            // dd($payload, $data);
-
+            // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
             $cartItem = CartItem::where('cart_id', $cartByUser->id)
-                ->where(function ($query) use ($product, $data) {
-                    if ($data['product_variant_id']) {
-                        $query->where('product_variant_id', $data['product_variant_id']);
-                    } else {
-                        $query->where('product_id', $product->id);
-                    }
-                })
+                ->where('product_id', $product->id)
                 ->first();
+
+            // Nếu đã có, tăng số lượng; nếu chưa, tạo mới
             if ($cartItem) {
                 $cartItem->quantity += $data['quantity'];
                 $cartItem->save();
             } else {
                 CartItem::create($data);
             }
+
             DB::commit();
-            return;
+            return true; // Trả về true khi thành công
         } catch (\Exception $e) {
             DB::rollBack();
-            echo $e->getMessage();
+            echo $e->getMessage(); // In lỗi ra để debug
             return false;
         }
     }

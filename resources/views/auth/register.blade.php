@@ -59,7 +59,7 @@
 						<a class="come-back d-block font-weight-bold" href="login.html"><i class="fa fa-long-arrow-left mr-4"></i> Quay lại đăng nhập</a>
 					</div>
 
-<input id="3830a876440744b7a85b9c61af9d929a" name="g-recaptcha-response" type="hidden"><script src="../../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s"></script><script>let recaptchaElm=document.getElementById('3830a876440744b7a85b9c61af9d929a');let recaptchaForm=recaptchaElm.parentNode;recaptchaForm.addEventListener("submit",function(formEvent){if(!recaptchaElm.value){formEvent.preventDefault();grecaptcha.ready(function(){grecaptcha.execute('6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s',{action:'submit'}).then(function(token){recaptchaElm.value=token;recaptchaForm.requestSubmit(formEvent.submitter)})})}})</script></form>				</div>
+<!-- <input id="3830a876440744b7a85b9c61af9d929a" name="g-recaptcha-response" type="hidden"><script src="../../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s"></script><script>let recaptchaElm=document.getElementById('3830a876440744b7a85b9c61af9d929a');let recaptchaForm=recaptchaElm.parentNode;recaptchaForm.addEventListener("submit",function(formEvent){if(!recaptchaElm.value){formEvent.preventDefault();grecaptcha.ready(function(){grecaptcha.execute('6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s',{action:'submit'}).then(function(token){recaptchaElm.value=token;recaptchaForm.requestSubmit(formEvent.submitter)})})}})</script></form>				</div> -->
 			</div>
 		</div>
 	</div>
