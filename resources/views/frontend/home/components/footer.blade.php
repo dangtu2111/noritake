@@ -97,7 +97,7 @@
             @endfor
           </ul>
           <div class="navbar-social-1">
-            <a style="text-align: right;" href="http://online.gov.vn/Home/WebDetails/80881"><img src="../file.hstatic.net/200000296482/file/bo-cong-thuong_3489dcf13995496c92881750ea9c9628.png" /></a>
+            <a style="text-align: right;" href="http://online.gov.vn/Home/WebDetails/80881"><img src="/file.hstatic.net/200000296482/file/bo-cong-thuong_3489dcf13995496c92881750ea9c9628.png" /></a>
           </div>
         </div>
       </div>
@@ -188,31 +188,31 @@
   <ul class="actionToolbar_listing d-flex justify-content-between align-items-center">
     <li>
       <a href="tel:0934 033 988" rel="nofollow" aria-label="phone">
-        <img src="../file.hstatic.net/200000296482/file/hot-line.png" alt="phone">
+        <img src="/file.hstatic.net/200000296482/file/hot-line.png" alt="phone">
       </a>
       <span class="tooltip-text trai">Gọi Ngay</span>
     </li>
     <li>
       <a href="http://zalo.me/3535660045369223497" target="_blank" rel="nofollow noreferrer" aria-label="zalo">
-        <img src="../file.hstatic.net/200000296482/file/zalo-icon.png" alt="zalo">
+        <img src="/file.hstatic.net/200000296482/file/zalo-icon.png" alt="zalo">
       </a>
       <span class="tooltip-text trai">Zalo</span>
     </li>
     <li>
-      <a href="index.html" rel="noreferrer noopener" aria-label="home">
-        <img src="../file.hstatic.net/200000296482/file/home_icon_orange.png" alt="home">
+      <a href="{{ route('home_index.index') }}" rel="noreferrer noopener" aria-label="home">
+        <img src="/file.hstatic.net/200000296482/file/home_icon_orange.png" alt="home">
       </a>
       <span class="tooltip-text trai">Trang chủ</span>
     </li>
     <li>
       <a href="http://m.me/101945615048076" rel="nofollow" aria-label="messenger">
-        <img src="../file.hstatic.net/200000296482/file/mess-icon.png" alt="messenger">
+        <img src="/file.hstatic.net/200000296482/file/mess-icon.png" alt="messenger">
       </a>
       <span class="tooltip-text trai">Messenger</span>
     </li>
     <li>
       <a href="#" aria-label="Go to top" onclick="topFunction()">
-        <img src="../file.hstatic.net/200000296482/file/go-to-top.png" alt="Go to top">
+        <img src="/file.hstatic.net/200000296482/file/go-to-top.png" alt="Go to top">
       </a>
       <span class="tooltip-text trai">Go to top</span>
     </li>
