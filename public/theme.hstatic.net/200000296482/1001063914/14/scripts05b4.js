@@ -32,7 +32,11 @@ var timeOut_modalCart,
                     getCartModal(t);
                 },
                 error: function (t, e) {
-                    alert("Sản phẩm bạn vừa mua đ\xe3 vượt qu\xe1 tồn kho");
+					if(t.message){
+						alert(t.message);
+					}else{
+						alert("Sản phẩm bạn vừa mua đ\xe3 vượt qu\xe1 tồn kho");
+					}
                 },
             }));
     },
