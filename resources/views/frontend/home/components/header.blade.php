@@ -170,27 +170,24 @@
                                                         <p class="popover_title">Đăng nhập tài khoản</p>
                                                         <p class="popover_legend">Nhập email và mật khẩu của bạn:</p>
                                                     </div>
-                                                    <div
-                                                        class="form-group form-input-wrapper form-input-wrapper_labelled">
-                                                        <input type="email" class="form-field_text form-control"
-                                                            name="email" id="email" placeholder="Nhập email"
-                                                            value="{{ old('email') }}">
-                                                        @error('email')
-                                                        <span class="text-danger fz-12 mt-1">{{ $message }}</span>
-                                                        @enderror
-                                                        <label for="login-customer[email]"
-                                                            class="text-field form-floating_label">Email</label>
+                                                    <div class="social-login-container">
+                                                        <a href="{{ route('auth.google') }}" style="width: 100%;" type="button" class="btn btn-danger btn-icon waves-effect waves-light">
+                                                            <div class="google-btn">
+                                                                <div class="google-icon-wrapper">
+                                                                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google Icon" />
+                                                                </div>
+                                                                <p class="btn-text"><b>Sign in with Google</b></p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{{ route('auth.facebook') }}" style="width: 100%;" type="button" class="btn btn-dark btn-icon waves-effect waves-light">
+                                                            <div class="facebook-btn">
+                                                                <div class="facebook-icon-wrapper">
+                                                                    <img class="facebook-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/900px-Facebook_Logo_%282019%29.png" alt="Facebook Icon" />
+                                                                </div>
+                                                                <p class="btn-text"><b>Sign in with Facebook</b></p>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                    <div
-                                                        class="form-group form-input-wrapper form-input-wrapper_labelled">
-                                                        <input id="password-input" name="password" required
-                                                            type="password" placeholder="Mật khẩu" autocomplete="off"
-                                                            class="form-field_text form-control">
-                                                        <label for="login-customer[password]"
-                                                            class="text-field form-floating_label">Mật khẩu</label>
-                                                    </div>
-                                                    <button type="submit" class="form-submit btn btn-box dark">Đăng
-                                                        nhập</button>
                                                 </form>
                                                 <div class="popover-secondary-action">
                                                     <p class="mb-2">Khách hàng mới?
@@ -1165,57 +1162,128 @@
 
 
         <style>
-        .f-nav-three.trai {
-            height: auto;
-        }
+            .f-nav-three.trai {
+                height: auto;
+            }
 
-        /* Đặt chiều cao cố định cho phần tử đầu tiên và cuối cùng nếu cần */
-        .f-nav-three.trai li:first-child a {
-            height: auto;
-        }
+            /* Đặt chiều cao cố định cho phần tử đầu tiên và cuối cùng nếu cần */
+            .f-nav-three.trai li:first-child a {
+                height: auto;
+            }
 
-        .f-nav-three.trai li:last-child a {
-            height: auto;
-        }
+            .f-nav-three.trai li:last-child a {
+                height: auto;
+            }
 
 
-        .f-nav-three:nth-of-type(2) {
-            left: 450px !important;
-        }
+            .f-nav-three:nth-of-type(2) {
+                left: 450px !important;
+            }
 
-        .f-nav-three:nth-of-type(3) {
-            left: 675px !important;
-        }
+            .f-nav-three:nth-of-type(3) {
+                left: 675px !important;
+            }
 
-        .f-nav-three:nth-of-type(4) {
-            left: 900px !important;
-        }
+            .f-nav-three:nth-of-type(4) {
+                left: 900px !important;
+            }
 
-        .has-sub {
-            /*border-bottom: 1px solid #ddd;*/
-        }
+            .has-sub {
+                /*border-bottom: 1px solid #ddd;*/
+            }
         </style>
 
         <script>
-        $(document).ready(function() {
-            // Duyệt qua mỗi thẻ li có class has-sub
-            $("li.has-sub").each(function() {
-                // Lấy ul đầu tiên và cuối cùng trong thẻ li này
-                var firstUl = $(this).find("ul").first();
-                var lastUl = $(this).find("ul").last();
+            $(document).ready(function() {
+                // Duyệt qua mỗi thẻ li có class has-sub
+                $("li.has-sub").each(function() {
+                    // Lấy ul đầu tiên và cuối cùng trong thẻ li này
+                    var firstUl = $(this).find("ul").first();
+                    var lastUl = $(this).find("ul").last();
 
-                // Thêm class ul-last vào ul cuối cùng
-                lastUl.addClass("ul-last");
+                    // Thêm class ul-last vào ul cuối cùng
+                    lastUl.addClass("ul-last");
 
-                // Kiểm tra nếu cả ul đầu tiên và cuối cùng đều tồn tại
-                if (firstUl.length && lastUl.length) {
-                    // Lấy chiều cao của ul đầu tiên
-                    var firstUlHeight = firstUl.outerHeight();
-                    // Đặt chiều cao của ul cuối cùng bằng chiều cao của ul đầu tiên
-                    lastUl.css("height", firstUlHeight + "px");
-                }
+                    // Kiểm tra nếu cả ul đầu tiên và cuối cùng đều tồn tại
+                    if (firstUl.length && lastUl.length) {
+                        // Lấy chiều cao của ul đầu tiên
+                        var firstUlHeight = firstUl.outerHeight();
+                        // Đặt chiều cao của ul cuối cùng bằng chiều cao của ul đầu tiên
+                        lastUl.css("height", firstUlHeight + "px");
+                    }
+                });
             });
-        });
         </script>
     </div>
 </header>
+<style>
+    .social-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    gap: 15px; /* Khoảng cách giữa hai nút */
+    max-width: 300px; /* Giới hạn chiều rộng */
+    margin: 0 auto; /* Căn giữa container trong trang */
+    padding: 20px;
+}
+
+.google-btn, .facebook-btn {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    width: 100%; /* Chiếm toàn bộ chiều rộng của container cha */
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.google-btn {
+    background-color: #4285F4; /* Màu nền Google */
+    color: white;
+}
+
+.google-btn:hover {
+    background-color: #3267D6;
+}
+
+.facebook-btn {
+    background-color: #3B5998; /* Màu nền Facebook */
+    color: white;
+}
+
+.facebook-btn:hover {
+    background-color: #2D4373;
+}
+
+.google-icon-wrapper, .facebook-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.google-icon, .facebook-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-text {
+    margin: 0; /* Xóa margin mặc định của <p> */
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center; /* Đảm bảo text căn giữa */
+    flex: 1; /* Cho phép text chiếm không gian còn lại */
+}
+
+/* Nếu bạn dùng class btn từ Bootstrap, đảm bảo không bị ghi đè */
+.btn {
+    padding: 0; /* Xóa padding mặc định của Bootstrap */
+    border: none; /* Xóa border mặc định */
+}
+</style>
