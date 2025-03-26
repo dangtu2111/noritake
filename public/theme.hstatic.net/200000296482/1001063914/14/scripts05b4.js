@@ -30,14 +30,29 @@ var timeOut_modalCart,
                 dataType: "json",
                 success: function (t) {
                     getCartModal(t);
-                },
-                error: function (t, e) {
-					if(t.message){
-						alert(t.message);
-					}else{
-						alert("Sản phẩm bạn vừa mua đ\xe3 vượt qu\xe1 tồn kho");
+					// Hiển thị giỏ hàng và cuộn lên đầu trang nếu cần
+					if ($("#site-header .header-bottom").hasClass("hSticky")) {
+						setTimeout(function () {
+							$(".wrap-cart").addClass("show-action");
+							$("#site-header .header-bottom").addClass(
+								"hSticky hSticky-down hSticky-up"
+							);
+						}, 300);
+					} else {
+						$(".wrap-cart").addClass("show-action");
+						$("html, body").animate({ scrollTop: 0 }, 600);
 					}
                 },
+                error: function(xhr, status, error) {  // Sử dụng các tham số chuẩn của jQuery AJAX error
+					// Log toàn bộ response để debug
+					if (xhr.responseJSON && xhr.responseJSON.message) {
+						console.log("Error message:", xhr.responseJSON.message);
+						alert(xhr.responseJSON.message);
+					} else {
+						console.log("Error status:", status);
+						alert("Sản phẩm bạn vừa mua đã vượt quá tồn kho");
+					}
+				}
             }));
     },
     plusQuantity = function () {
@@ -116,18 +131,7 @@ function getCartModal() {
         }
     });
 
-    // Hiển thị giỏ hàng và cuộn lên đầu trang nếu cần
-    if ($("#site-header .header-bottom").hasClass("hSticky")) {
-        setTimeout(function () {
-            $(".wrap-cart").addClass("show-action");
-            $("#site-header .header-bottom").addClass(
-                "hSticky hSticky-down hSticky-up"
-            );
-        }, 300);
-    } else {
-        $(".wrap-cart").addClass("show-action");
-        $("html, body").animate({ scrollTop: 0 }, 600);
-    }
+    
 }
 getCartModal();
 function clone_item(item, index) {
