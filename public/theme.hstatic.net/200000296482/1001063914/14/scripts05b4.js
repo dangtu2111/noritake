@@ -107,7 +107,8 @@ function getCartModal() {
                     0
                 );
                 $("#total-view-cart").html(
-                    totalPrice
+            
+					Number(totalPrice).toLocaleString('vi-VN') + '₫'
                     // Haravan.formatMoney(totalPrice, formatMoney)
                 );
                 $(".cart-subtotal").html(
@@ -163,11 +164,13 @@ function clone_item(item, index) {
     // Cập nhật tiêu đề, số lượng, giá
     $template.find(".pro-title-view").html(name);
     $template.find(".pro-quantity-view").html(item.quantity || 1);
-    $template.find(".pro-price-view").html(1000000);
+	$template.find(".pro-price-view").html(
+		Number(item.products.del).toLocaleString('vi-VN') + 'đ'
+	);
 
     // Cập nhật nút xóa
     $template.find(".remove-cart").html(`
-        <a href="javascript:void(0);" onclick="deleteCart(${index + 1})">
+        <a href="javascript:void(0);" onclick="deleteCart(${item.id})">
             <i class="fa fa-times"></i>
         </a>
     `);
@@ -186,10 +189,16 @@ function clone_item(item, index) {
     $template.removeClass("d-none").prependTo("#cart-view");
 }
 function deleteCart(t) {
+	
+    var _token = $('meta[name="csrf-token"]').attr("content");
+	let datas = {
+		id_cart_item:t,
+		_token: _token,
+	};
     $.ajax({
-        type: "POST",
-        url: "/cart/change.js",
-        data: "quantity=0&line=" + t,
+        type: "DELETE",
+        url: "/ajax/cart/destroyCart",
+        data: datas,
         dataType: "json",
         success: function (t) {
             getCartModal();
@@ -1375,17 +1384,11 @@ function backToTop() {
                                           $.each(t.items, function (t, e) {
                                               clone_item(e, t);
                                           }),
-                                          $("#total-view-cart").html(
-                                              Haravan.formatMoney(
-                                                  t.total_price,
-                                                  formatMoney
-                                              )
-                                          ),
+										  $("#total-view-cart").html(
+											Number(t.total_price).toLocaleString('vi-VN') + '₫'
+										),
                                           $(".cart-subtotal").html(
-                                              Haravan.formatMoney(
-                                                  t.total_price,
-                                                  formatMoney
-                                              )
+											  Number(tota.total_pricelPrice).toLocaleString('vi-VN') + '₫'
                                           ))
                                         : $("#cart-view").html(
                                               '<div class="mini-cart_empty-state"><svg width="65" height="65" viewBox="0 0 81 70"><g transform="translate(0 2)" stroke-width="4" stroke="#333333" fill="none" fill-rule="evenodd"><circle stroke-linecap="square" cx="34" cy="60" r="6"></circle><circle stroke-linecap="square" cx="67" cy="60" r="6"></circle><path d="M22.9360352 15h54.8070373l-4.3391876 30H30.3387146L19.6676025 0H.99560547"></path></g></svg><p class="m-0">Hiện chưa c\xf3 sản phẩm</p></div>'

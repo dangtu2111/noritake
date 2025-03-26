@@ -177,7 +177,7 @@ class CartController extends FontendController
             flash()->error('Bạn cần đăng nhập để sử dụng chức năng.');
             return redirect()->route('auth.login');
         }
-
+        
         try {
             $destroy = $this->cartService->destroy($request);
 

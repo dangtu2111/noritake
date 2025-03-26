@@ -126,20 +126,24 @@ class CartService implements CartServiceInterface
                 ]
             );
             if ($cart) {
+                $payload = $request->input();
+                $carItem_id=$payload['cartItem_id'];
+                $quantity=$payload['quantity'];
+                $cartItem = CartItem::findOrFail($carItem_id);
+                $cartItem->update(['quantity' => $quantity]);
                 // loop qua các item trong giỏ hàng 
-                foreach ($cart->cartItems as $item) {
-                    $payload = $request->input();
-
-                    // product_variant_id tồn tại trong payload (request)
-                    if ($payload['product_variant_id'] && $item->productVariants && $item->productVariants->id == $payload['product_variant_id']) {
-                        // Cập nhật
-                        $quantity = $payload['quantity'];
-                        $item->update(['quantity' => $quantity]);
-                    } elseif ($payload['product_id'] && $item->products && $item->products->id == $payload['product_id']) {
-                        $quantity = $payload['quantity'];
-                        $item->update(['quantity' => $quantity]);
-                    }
-                }
+                // foreach ($cart->cartItems as $item) {
+                //     // 
+                //     // product_variant_id tồn tại trong payload (request)
+                //     // if ($payload['product_variant_id'] && $item->productVariants && $item->productVariants->id == $payload['product_variant_id']) {
+                //     //     // Cập nhật
+                //     //     $quantity = $payload['quantity'];
+                //     //     $item->update(['quantity' => $quantity]);
+                //     // } elseif ($payload['product_id'] && $item->products && $item->products->id == $payload['product_id']) {
+                //     //     $quantity = $payload['quantity'];
+                //     //     $item->update(['quantity' => $quantity]);
+                //     // }
+                // }
             }
 
             DB::commit();
@@ -154,24 +158,18 @@ class CartService implements CartServiceInterface
     {
         DB::beginTransaction();
         try {
-            $payload = $request->input();
-
-            $id = $payload['product_id'] ? $payload['product_id'] : $payload['product_variant_id'];
-            // lấy ra item dựa trên mối quan hệ                         // closure
-            $cartItem = CartItem::whereHas('productVariants', function ($query) use ($id) {
-                $query->where('product_variant_id', $id);
-            })
-                ->orWhereHas('products', function ($query) use ($id) {
-                    $query->where('product_id', $id);
-                })
-                ->first();
-            if ($cartItem) {
-                $cartItem->delete();
-            } else {
-                return redirect()->back();
+            $id = $request->input('id_cart_item');
+    
+            if (!$id) {
+                throw new \Exception('Thiếu ID của mục trong giỏ hàng');
             }
+
+            $cartItem = CartItem::findOrFail($id); // Tự động ném ngoại lệ nếu không tìm thấy
+            $cartItem->delete();
+
             DB::commit();
-            return true;
+            
+            return redirect()->back()->with('success', 'Đã xóa mục khỏi giỏ hàng');
         } catch (\Exception $e) {
             DB::rollBack();
             echo $e->getMessage();
