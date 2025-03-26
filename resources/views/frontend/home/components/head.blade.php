@@ -196,7 +196,8 @@ Haravan.domain = 'noritake.vn';
 (function() { function asyncLoad() { var urls = ["//static.zotabox.com/9/1/915b6d60dc96dcac1a855d3a1bbac591/widgets.js"];for (var i = 0; i < urls.length; i++) {var s = document.createElement('script');s.type = 'text/javascript';s.async = true;s.src = urls[i];var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);}}window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false);})();
 //]]>
 </script>
-<script defer src='/stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000296482'></script><style>.grecaptcha-badge{visibility:hidden;}</style>
+<!-- <script defer src='/stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000296482'></script> -->
+<style>.grecaptcha-badge{visibility:hidden;}</style>
 <script type='text/javascript'>
 window.HaravanAnalytics = window.HaravanAnalytics || {};
 window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};

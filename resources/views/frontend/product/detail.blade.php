@@ -130,6 +130,117 @@ Chi tiết sản phẩm
         });
     });
 </script>
+<script>
+	var template_style = "style-03";
+	$(document).ready(function(){
+		$(document).on('click','#add-to-cart', function(e){	
+			e.preventDefault();
+			var quantity = $("#quantity").val();
+			add_item_show_modalCart($('#product-select').val(),quantity,{{ $product->del }});
+			/*$('.header-bottom').addClass('pos-relative');*/
+			$('html, body').animate({scrollTop:0}, 10);
+
+		});
+		$('#quan-input').keyup(function(){
+			$('[name="quantity"]').val($(this).val());
+		});
+		$('[name="quantity"]').on('keyup change', function(){
+			$('#quan-input').val($(this).val());
+		});
+		$(document).on('click','.add-to-contactProduct', function(e){
+			e.preventDefault();
+			window.location.href = $('#link-to-contact').attr('href');
+		});
+		if(template_style == 'style-01'){
+			$('body').scrollspy({ target: '#scrollspyProducts' });
+			$('#scrollspyProducts a[href*="#"]').click(function(e){
+				e.preventDefault();
+				$('#scrollspyProducts .product-thumb').removeClass('active');
+				$('html, body').animate({
+					scrollTop: $($.attr(this, 'href')).offset().top + 20
+				}, 500);		
+			});
+			if ($(window).width() < 992){
+				$("#sliderProduct").owlCarousel({
+					items:1,
+					nav: true,
+					dots: true,
+					lazyLoad: false,		
+					loop: false,	
+					smartSpeed: 1000
+				});	
+			}
+		}
+		if(template_style == 'style-02'){
+			if ($(window).width() < 992){
+				$("#sliderProduct").owlCarousel({
+					items: 1,
+					nav: true,
+					dots: true,
+					lazyLoad: false,		
+					loop: false,	
+					smartSpeed: 1000
+				});	
+			}
+		}
+		if(template_style == 'style-03'){
+			$('#productSlick-slider').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: true,
+				fade: false,
+				infinite: false,
+				speed: 600,
+				asNavFor: '#productSlick-thumb',
+				dots: false,
+				arrows: true,
+				prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button"></button>',
+				nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button"></button>',
+				lazyLoad: 'ondemand'
+			});
+			if($(window).width() > 767) {
+				$('#productSlick-thumb').slick({
+					slidesToShow: 6,
+					slidesToScroll: 6,
+					asNavFor: '#productSlick-slider',
+					dots: false,
+					arrows: false,
+					vertical: true,
+					
+					infinite: false,
+					focusOnSelect: true,
+          draggable: false
+				});
+			} else {
+				$('#productSlick-thumb').slick({
+					slidesToShow: 6,
+					slidesToScroll: 6,
+					asNavFor: '#productSlick-slider',
+					dots: false,
+					arrows: false,
+					infinite: false,
+					focusOnSelect: true
+				});
+			}
+			
+			$("#productSlick-slider").on('setPosition', function () {
+				$(this).find('.slick-slide').height('auto');
+				var slickTrackHeight = $(this).find('.slick-track').height();
+				$(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+			});
+			
+			$(document).on('click','#productSlick-thumb .product-thumb-item', function(e){
+				e.preventDefault();
+				$('#productSlick-thumb .product-thumb').removeClass('slick-current');
+				$(this).parent().addClass('slick-current');
+			});
+
+		}
+	});
+	$(document).on("click", ".product-sharing", function(){
+		$(this).toggleClass('sharing-active');
+	});	
+</script>
 @endsection
 @section('js')
 

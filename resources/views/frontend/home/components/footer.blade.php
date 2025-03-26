@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-box dark">Đăng ký</button>
             <input name='__RequestVerificationToken' type='hidden' value='CfDJ8FyFPV59mBtNhmQGz0fYZt_c0YksJidjGQ-Nt1gusScYneRZEG0n55dUbXkXnLdiJykFZ9cjvJM77N34CSE-UjXUYhwEMecdQS5Y7UmVyZFRq0SH93BtKkq3CSPuJlFp9CaBumKSTii1r6jWQxDfZY8'>
             <input id='c8f55ef940824e14a6c2d210af3329a4' name='g-recaptcha-response' type='hidden'>
-            <script src='../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s'></script>
+            <!-- <script src='../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s'></script> -->
             <script>
               let recaptchaElm = document.getElementById('c8f55ef940824e14a6c2d210af3329a4');
               let recaptchaForm = recaptchaElm.parentNode;
@@ -265,7 +265,7 @@
               <button class="btnSubmit-modal btn btn-box dark clearfix">Gửi cho chúng tôi</button>
             </div>
           </div>
-          <input id='da50cddbf79b428595434c207502e686' name='g-recaptcha-response' type='hidden'><noscript src='../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s'></noscript><noscript>let recaptchaElm=document.getElementById('da50cddbf79b428595434c207502e686');let recaptchaForm=recaptchaElm.parentNode;recaptchaForm.addEventListener("submit",function(formEvent){if(!recaptchaElm.value){formEvent.preventDefault();grecaptcha.ready(function(){grecaptcha.execute('6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s',{action:'submit'}).then(function(token){recaptchaElm.value=token;recaptchaForm.requestSubmit(formEvent.submitter)})})}})</noscript>
+          <!-- <input id='da50cddbf79b428595434c207502e686' name='g-recaptcha-response' type='hidden'><noscript src='../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s'></noscript><noscript>let recaptchaElm=document.getElementById('da50cddbf79b428595434c207502e686');let recaptchaForm=recaptchaElm.parentNode;recaptchaForm.addEventListener("submit",function(formEvent){if(!recaptchaElm.value){formEvent.preventDefault();grecaptcha.ready(function(){grecaptcha.execute('6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s',{action:'submit'}).then(function(token){recaptchaElm.value=token;recaptchaForm.requestSubmit(formEvent.submitter)})})}})</noscript> -->
         </form>
       </div>
     </div>

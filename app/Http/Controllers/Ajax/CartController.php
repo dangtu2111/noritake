@@ -90,8 +90,11 @@ class CartController extends FontendController
             ], 401);
         }
         try {
+            // dd($request->all());
             $carts = $this->cartService->create($request);
             $cart = $this->cartService->all();
+
+            
             return response()->json([
                 'code' => 10,
                 'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
@@ -104,6 +107,39 @@ class CartController extends FontendController
                 'message' => 'Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng.',
             ], 500);
         }
+    }
+    public function sessionOrderByCartId(Request $request)
+    {
+        $arrayIdChecked = $request->input('array_id', []);
+        if (!is_array($arrayIdChecked)) {
+            $arrayIdChecked = array_filter([$arrayIdChecked]); //xóa value rống
+        }
+        // luu lại sesion id
+        session(['array_id' => $arrayIdChecked]);
+        return response()->json([
+            'code' => 10,
+            'data' => $arrayIdChecked
+        ]);
+    }
+    
+    public function getOrderByCartId()
+    {
+        $arrayId = session('array_id', []);
+        $cart = $this->cartService->all();
+        return response()->json(data: [
+            'code' => 10,
+            'array_id' => $arrayId,
+            'cartItem' => $cart->cartItems,
+        ]);
+    }
+    public function clearSessionId(Request $request)
+    {
+        $arrayId = session()->forget('array_id');
+        return response()->json([
+            'code' => 10,
+            'array_id' => $arrayId,
+            
+        ]);
     }
 
     public function updateCart(Request $request)
@@ -225,36 +261,7 @@ class CartController extends FontendController
             ]);
         }
     }
-    public function sessionOrderByCartId(Request $request)
-    {
-        $arrayIdChecked = $request->input('array_id', []);
-        if (!is_array($arrayIdChecked)) {
-            $arrayIdChecked = array_filter([$arrayIdChecked]); //xóa value rống
-        }
-        // luu lại sesion id
-        session(['array_id' => $arrayIdChecked]);
-        return response()->json([
-            'code' => 10,
-            'data' => $arrayIdChecked
-        ]);
-    }
     
-    public function getOrderByCartId()
-    {
-        $arrayId = session('array_id', []);
-        return response()->json([
-            'code' => 10,
-            'array_id' => $arrayId,
-        ]);
-    }
-    public function clearSessionId(Request $request)
-    {
-        $arrayId = session()->forget('array_id');
-        return response()->json([
-            'code' => 10,
-            'array_id' => $arrayId,
-        ]);
-    }
 
 
 
