@@ -81,7 +81,10 @@
         new Vue({
             el: '#app',
             data: {
-                date: {},
+                date: {
+                    tu_ngay: '',   // Giá trị mặc định sẽ được đặt trong created()
+                    den_ngay: ''   // Giá trị mặc định sẽ được đặt trong created()
+                },
                 list: [],
                 tong_tien: 0,
                 Don_hang: 0,
@@ -89,6 +92,13 @@
             },
             created() {
                 this.today = this.getToday();
+                // Đặt giá trị mặc định cho tu_ngay (ngày đầu tháng) và den_ngay (ngày cuối tháng)
+                const now = new Date();
+                const firstDay = new Date(now.getFullYear(), now.getMonth(), 1); // Ngày 1 của tháng
+                const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0); // Ngày cuối của tháng
+                this.date.tu_ngay = firstDay.toISOString().split('T')[0]; // Định dạng YYYY-MM-DD
+                this.date.den_ngay = lastDay.toISOString().split('T')[0]; // Định dạng YYYY-MM-DD
+                this.ThongKe(); // Gọi hàm ThongKe ngay khi trang tải
             },
             methods: {
                 ThongKe() {
@@ -105,19 +115,16 @@
                     const now = new Date();
                     return now.toISOString().split('T')[0];
                 },
-
                 formatCurrency(value) {
                     if (!value) return '0';
                     return new Intl.NumberFormat('vi-VN').format(value);
                 },
-
                 formatDate(dateString) {
                     const options = {
                         day: '2-digit',
                         month: '2-digit',
                         year: 'numeric',
                     };
-
                     const date = new Date(dateString);
                     return date.toLocaleString('en-GB', options).replace(',', '');
                 },
