@@ -52,7 +52,7 @@ class CartController extends FontendController
         );
         $countCart = $this->cartService->countProductIncart();
 
-        return view('frontend.cart.index', compact(
+        return view('fontend.cart.index', compact(
             'carts',
             'countCart',
             'productNews',

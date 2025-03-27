@@ -74,6 +74,7 @@ class OrderController extends FontendController
         $carts = $this->cartService->all();
         $arrayIdChecked = session('array_id', []);
         $order = $this->cartService->getOrderByCartId($request);
+        dd($order);
         $attributesByCartItem = $this->cartService->findAttributesByCode();
         $promotions = session('promotions', []); // Danh sách mã khuyến mãi
 

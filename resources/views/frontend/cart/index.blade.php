@@ -110,7 +110,7 @@ Giỏ hàng
 												<div class="check_out_btn d-none">
 													<a class="button dark link-continue d-none" href="javascript:history.back()" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
 													<button type="submit" id="update-cart" class="btn-update button dark d-none" name="update" value="">Cập nhật</button>
-													<button type="submit" id="checkout" class="btn-checkout button dark d-none" name="checkout" value="">Thanh toán</button>
+													<a  href="{{ route('order.checkout') }}" id="checkout" class="btn-checkout button dark d-none" name="checkout" value="">Thanh toán</a>
 												</div>
 											</div>
 											<div class="col-12 col-lg-6 d-none d-md-block">
@@ -130,14 +130,14 @@ Giỏ hàng
 										<h2 class="order-title mb-3">Thông tin đơn hàng</h2>
 										<div class="order-total mb-2 font-weight-bold">
 											<p class="d-flex justify-content-between align-items-center m-0 py-3 border-bottom border-top">
-												Tổng tiền:<span>13,658,000₫</span>
+												Tổng tiền:<span>0₫</span>
 											</p>
 										</div>
 										<div class="order-short-description">
 											<p class="mb-2">Bạn có thể nhập mã giảm giá ở trang thanh toán</p>
 										</div>
 										<div class="order-action-checkout">
-											<a href="#" class="checkout-btn d-block text-center text-white text-uppercase link" name="checkout">Thanh toán</a>
+											<a href="{{ route('order.checkout') }}" class="checkout-btn d-block text-center text-white text-uppercase link" name="checkout">Thanh toán</a>
 										</div>
 										<a class="countine_order_cart d-block text-center mt-2 link" href="javascript:history.back()" title="Tiếp tục mua hàng"><i class="fa fa-reply mr-2"></i>Tiếp tục mua hàng</a>
 									</div>
@@ -300,12 +300,7 @@ Giỏ hàng
 		});
 	</script>
 	<script>
-		$(document).ready(function() {
-			$('.checkout-btn').click(function(e) {
-				e.preventDefault();
-				$('button[name="checkout"]').trigger('click');
-			})
-		});
+		
 		$('.qty-click .qtyplus').on('click', function(e) {
 			e.preventDefault();
 			var input = $(this).parent('.product-quantity').find('input');

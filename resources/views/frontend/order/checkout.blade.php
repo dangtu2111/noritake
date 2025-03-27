@@ -4,10 +4,10 @@
 <head>
     <link rel="shortcut icon" href="//theme.hstatic.net/200000296482/1001063914/14/favicon.png?v=5233" type="image/png" />
     <title>
-        Noritake Vietnam - Thanh toán đơn hàng
+    {{ $title ?? 'Page' }}
     </title>
 
-    <meta name="description" content="Noritake Vietnam - Thanh to&#225;n đơn h&#224;ng" />
+    <meta name="description" content="  {{ $title ?? 'Page' }}" />
 
 
 
@@ -2787,438 +2787,7 @@
             }
         }
 
-        // function funcFormOnSubmit(e) {
-
-        //     if (!isInit) {
-        //         isInit = true;
-
-        //         $.fn.tagName = function() {
-        //             return this.prop("tagName").toLowerCase();
-        //         };
-        //     }
-
-        //     // update new version 
-        //     let oldVer = $('.checkout_version')
-        //     $(oldVer).attr('data_checkout_version', oldVer++);
-        //     //----------
-
-        //     if (typeof(e) == 'string') {
-        //         var element = $(e);
-        //         var formData = e;
-        //     } else {
-        //         var element = this;
-        //         var formData = this;
-        //         //e.preventDefault();
-        //         let formIdCheck = $(element).attr('id'),
-        //             replaceElement = [],
-        //             funcCallback;
-        //         e.preventDefault();
-        //     }
-
-        //     $(element).find('button:submit').addClass('btn-loading');
-        //     let formId = $(element).attr('id'),
-        //         replaceElement = [],
-        //         funcCallback;
-
-        //     if (formId == undefined || formId == null || formId == '')
-        //         return;
-
-        //     const findPaymentMethodId = $('body').find('input:radio[name$="payment_method_id"]:checked').attr('type-id');
-
-        //     const isReePay = findPaymentMethodId == 41 || findPaymentMethodId == 43 || findPaymentMethodId == 46 || findPaymentMethodId == 12;
-        //     const findCardHistoryId = $('body').find('input:radio[name$="payment_card_id"]:checked').attr('card-id');
-
-        //     if (['section-payment-method', 'form_discount_add', 'section-shipping-rate'].includes(formId) && isReePay) {
-        //         if (findPaymentMethodId == 41) {
-        //             $('#section-pay-later-method').removeClass('hidden');
-        //         }
-        //         if (findPaymentMethodId == 43) {
-        //             $('#section-pay-later-method-kredivo').removeClass('hidden');
-        //         }
-        //         if (findPaymentMethodId == 46) {
-        //             $('#section-pay-later-method-aftee').removeClass('hidden');
-        //         }
-        //         if (findPaymentMethodId == 12) {
-        //             $('#section-pay-card-history-method-payoo').removeClass('hidden');
-        //         }
-        //         paylayterLoadingTrigger()
-        //     }
-
-        //     if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
-        //         if ($('.order-checkout__loading--box').length > 0) {
-        //             $('#' + formId).find('.order-checkout__loading--box').addClass('show');
-        //             $('body').find('button:submit').addClass('btn-loading');
-        //         }
-        //     }
-
-
-
-        //     if (formId == 'form_next_step' || formId == "checkout_complete") {
-        //         formData = '.section-customer-information';
-        //         replaceElement = [...replaceElement,
-        //             '#checkout_order_information_changed_error_message',
-        //             '.step-sections',
-        //             '.order-summary-sections'
-        //         ]
-        //     } else if (
-        //         formId == 'form_redeem_add' ||
-        //         formId == 'form_redeem_remove' ||
-        //         formId == 'form_discount_add' ||
-        //         formId == 'form_discount_remove' ||
-        //         formId == 'form_update_location_customer_shipping' ||
-        //         formId == 'form_update_shipping_method' ||
-        //         formId == "checkout_complete"
-
-        //     ) {
-        //         replaceElement = [...replaceElement, '#checkout_order_information_changed_error_message',
-        //             '#form_update_location_customer_shipping',
-        //             '#change_pick_location_or_shipping',
-        //             '.inventory_location',
-        //             '.inventory_location_data',
-        //             '.order-summary-toggle-inner .order-summary-toggle-total-recap',
-        //             '.order-summary-sections'
-        //         ]
-        //     }
-
-
-        //     replaceElement = [...replaceElement, '#checkout_order_information_changed_error_message']
-        //     if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method') {
-        //         formId = 'form_update_shipping_method';
-        //         replaceElement = [...replaceElement, '#form_update_location_customer_shipping',
-        //             '#change_pick_location_or_shipping',
-        //             '.inventory_location',
-        //             '.inventory_location_data',
-        //             '.order-summary-toggle-inner .order-summary-toggle-total-recap',
-        //             '.order-summary-sections'
-        //         ]
-        //     }
-        //     if (formId == 'form_update_location_customer_pick_at_location' || formId == 'form_update_shipping_method') {
-        //         formId = 'form_update_shipping_method';
-        //         replaceElement = [...replaceElement, '#form_update_location_customer_pick_at_location',
-        //             '#change_pick_location_or_shipping',
-        //             '.inventory_location',
-        //             '.inventory_location_data',
-        //             '.order-summary-toggle-inner .order-summary-toggle-total-recap',
-        //             '.order-summary-sections',
-        //             '.order-summary-section.order-summary-section-total-lines.total-line-table.total-line-table-footer',
-        //             '.order-summary-section.order-summary-section-total-lines.total-line-table.total-line.total-line-redeem',
-        //             '.order-summary-section.order-summary-section-redeem.redeem-login-section'
-        //         ]
-        //     }
-
-
-
-
-
-        //     replaceElement.push('#section-pay-later-method');
-        //     replaceElement.push('#section-pay-later-method-kredivo')
-        //     replaceElement.push('#section-pay-later-method-aftee')
-        //     replaceElement.push('#section-pay-card-history-method-payoo')
-        //     if (!$(formData) || $(formData).length == 0) {
-        //         window.location.reload();
-        //         return false;
-        //     }
-
-        //     var inputurl = '';
-
-        //     if (($(formData).tagName() != 'form' && $(formData).tagName() != 'input' && $(formData).tagName() != 'div') ||
-        //         ($(formData).tagName() == 'input' || $(formData).tagName() == 'div')) {
-
-        //         formData += ' :input';
-        //     }
-        //     try {
-
-        //         var listparameters = new URLSearchParams($(formData).serialize());
-
-        //         var countrytmp = $('body').find('input[name$="selected_customer_shipping_country"]').val();
-        //         if (countrytmp && countrytmp != '') {
-        //             listparameters.set('customer_shipping_country', countrytmp);
-        //         }
-
-        //         if ($('body').find('#customer_pick_at_location_true').length != 0 && $('body').find('#customer_pick_at_location_true').is(':checked')) {
-        //             let location_id_checked = $('.inventory_location input[name="inventory_location_id"]:checked').val();
-        //             listparameters.set('inventory_location_id', location_id_checked);
-        //         }
-
-        //         if ($('body').find('#section-shipping-rate').length != 0) {
-        //             let shipping_rate_id_checked = $('#section-shipping-rate input[name="shipping_rate_id"]:checked').val();
-        //             listparameters.set('shipping_rate_id', shipping_rate_id_checked);
-        //         }
-
-
-        //         var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
-        //         if (provincetmp && provincetmp != '' && provincetmp != "null") {
-        //             listparameters.set('customer_shipping_province', provincetmp);
-        //             var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
-        //             if (districttmp && districttmp != '' && districttmp != "null") {
-        //                 listparameters.set('customer_shipping_district', districttmp);
-        //                 var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
-        //                 if (wardtmp && wardtmp != '') listparameters.set('customer_shipping_ward', wardtmp);
-        //             } else {
-        //                 var districtid = listparameters.get('customer_shipping_district');
-        //                 if (districtid == null || districtid == '' || districtid == "null" || districtid == 'null') {
-        //                     listparameters.set('customer_shipping_district', '');
-        //                     listparameters.set('customer_shipping_ward', '');
-        //                 }
-        //             }
-        //         } else {
-        //             var provinceid = listparameters.get('customer_shipping_province');
-        //             if (provinceid == null || provinceid == '' || provinceid == "null" || provinceid == 'null') {
-        //                 var district = listparameters.get('customer_shipping_district')
-        //                 if (district && district != '') {
-        //                     listparameters.set('customer_shipping_district', '');
-        //                 }
-
-        //                 var ward = listparameters.get('customer_shipping_ward')
-        //                 if (ward && ward != '') {
-        //                     listparameters.set('customer_shipping_ward', '');
-        //                 }
-        //             }
-        //         }
-
-
-
-
-
-        //         var address1tmp = $('body').find('input[name$="billing_address[address1]"]').val();
-        //         if (address1tmp != '' && address1tmp != undefined) listparameters.set('billing_address[address1]', address1tmp);
-
-        //         var phonetmp = $('body').find('input[name$="billing_address[phone]"]').val();
-        //         if (phonetmp != '' && phonetmp != undefined) listparameters.set('billing_address[phone]', phonetmp);
-
-        //         var emailtmp = $('body').find('input[name$="checkout_user[email]"]').val();
-        //         if (emailtmp != '' && emailtmp != undefined) listparameters.set('checkout_user[email]', emailtmp);
-
-        //         var fullnametmp = $('body').find('input[name$="billing_address[full_name]"]').val();
-        //         if (fullnametmp != '' && fullnametmp != undefined) listparameters.set('billing_address[full_name]', fullnametmp);
-
-
-        //         listparameters.delete('selected_customer_shipping_country');
-        //         listparameters.delete('selected_customer_shipping_province');
-        //         listparameters.delete('selected_customer_shipping_district');
-        //         listparameters.delete('selected_customer_shipping_ward');
-
-        //         if ($('body').find('input[name$="customer_pick_at_location"]')) {
-        //             var optionShippingtmp = $('body').find('input[name$="customer_pick_at_location"]:checked').val();
-        //             if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set('customer_pick_at_location', optionShippingtmp);
-
-        //         } else {
-        //             listparameters.append("customer_pick_at_location", false);
-        //         }
-
-
-        //         if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId == 'section-payment-method' || formId == 'section-shipping-rate') {
-        //             var version = Number($('body').find('.checkout_version').attr("data_checkout_version"));
-        //             if (version)
-        //                 listparameters.append("version", version);
-        //         }
-
-
-        //         if (findCardHistoryId != null && findCardHistoryId != 'undefined')
-        //             listparameters.set('card_payment_token', findCardHistoryId);
-        //         inputurl = listparameters.toString();
-
-        //     } catch (err) {
-
-        //         // Older Browser URLSearchParams not support
-        //         var listparameters = parseQueryString($(formData).serialize());
-        //         if (formId == 'form_next_step') {
-        //             var version = Number($('body').find('.checkout_version').attr("data_checkout_version"));
-        //             listparameters.version = version;
-        //         }
-        //         var countrytmp = $('body').find('input[name$="selected_customer_shipping_country"]').val();
-        //         if (countrytmp != '') {
-        //             listparameters.customer_shipping_country = countrytmp;
-        //         }
-
-        //         var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
-        //         if (provincetmp != '' && listparameters.customer_shipping_province) listparameters.customer_shipping_province = provincetmp;
-
-        //         var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
-        //         if (districttmp != '' && listparameters.customer_shipping_district) listparameters.customer_shipping_district = districttmp;
-
-        //         var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
-        //         if (wardtmp != '' && listparameters.customer_shipping_ward) listparameters.customer_shipping_ward = wardtmp;
-
-
-        //         var address1tmp = $('body').find('input[name$="billing_address[address1]"]').val();
-        //         if (address1tmp != '' && listparameters.billing_address[address1] && address1tmp != undefined) listparameters.set('billing_address[address1]', address1tmp);
-
-        //         var phonetmp = $('body').find('input[name$="billing_address[phone]"]').val();
-        //         if (phonetmp != '' && listparameters.billing_address[phone] && phonetmp != undefined) listparameters.set('billing_address[phone]', phonetmp);
-
-        //         var emailtmp = $('body').find('input[name$="checkout_user[email]"]').val();
-        //         if (emailtmp != '' && listparameters.checkout_user[email] && emailtmp != undefined) listparameters.set('checkout_user[email]', emailtmp);
-
-
-        //         var fullnametmp = $('body').find('input[name$="billing_address[full_name]"]').val();
-        //         if (fullnametmp != '' && listparameters.billing_address[full_name] && fullnametmp != undefined) listparameters.set('billing_address[full_name]', fullnametmp);
-
-
-        //         delete listparameters.selected_customer_shipping_country;
-        //         delete listparameters.selected_customer_shipping_province;
-        //         delete listparameters.selected_customer_shipping_district;
-        //         delete listparameters.selected_customer_shipping_ward;
-
-        //         if ($('body').find('input[name$="customer_pick_at_location"]')) {
-        //             var optionShippingtmp = $('body').find('input[name$="customer_pick_at_location"]:checked').val();
-        //             if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set('customer_pick_at_location', optionShippingtmp);
-        //         } else {
-        //             listparameters.append("customer_pick_at_location", false);
-        //         }
-
-        //         if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId == 'section-payment-method' || formId == 'section-shipping-rate') {
-        //             var fiversion = $('body').find('.checkout_version').attr("data_checkout_version");
-        //             if (fiversion && fiversion != '') {
-        //                 listparameters['version'] = Number(fiversion);
-        //             }
-
-        //         }
-
-
-        //         var listObject = '';
-        //         for (var key in listparameters) {
-        //             listObject += '&' + key + '=' + encodeURIComponent(listparameters[key]);
-        //         };
-        //         inputurl = listObject.substring(1);
-
-        //     }
-
-
-
-        //     let url = window.location.origin + window.location.pathname + '?' + inputurl + encodeURI('&form_name=' + formId)
-        //     let data = '';
-        //     var method = "get";
-        //     if (formId == "checkout_complete") {
-        //         url = '/checkouts/complete';
-        //         method = "post";
-        //         data = $('#' + formId).serialize()
-        //     }
-
-
-        //     $.ajax({
-        //         type: method,
-        //         url: url,
-        //         data: data,
-        //         success: function(html) {
-        //             if ($(html).attr('id') == 'redirect-url') {
-        //                 window.location = $(html).val();
-        //             } else {
-        //                 if (replaceElement.length > 0) {
-        //                     for (var i = 0; i < replaceElement.length; i++) {
-        //                         var tempElement = replaceElement[i];
-        //                         var newElement = $(html).find(tempElement);
-
-        //                         if (newElement.length > 0) {
-        //                             if (tempElement == '.step-sections')
-        //                                 $(tempElement).attr('step', $(newElement).attr('step'));
-
-        //                             var listTempElement = $(tempElement);
-
-        //                             for (var j = 0; j < newElement.length; j++)
-        //                                 if (j < listTempElement.length) {
-
-        //                                     if ($(newElement[j]).attr('id') == 'checkout_order_information_changed_error_message') {
-        //                                         if ($(newElement[j]).find('span').html().trim() != '') {
-        //                                             $(listTempElement[j]).removeClass('hidden');
-        //                                             $("html, body").animate({
-        //                                                 scrollTop: 0
-        //                                             }, "slow");
-        //                                             if ($(window).width() <= 999) {
-        //                                                 $('.banner').addClass('error');
-        //                                             }
-        //                                         } else {
-        //                                             $(listTempElement[j]).addClass('hidden');
-        //                                             if ($(window).width() <= 999) {
-        //                                                 $('.banner').removeClass('error');
-        //                                             }
-        //                                         }
-        //                                     }
-        //                                     if ($(newElement[j]).attr('class') == 'order-summary-sections' && formId == 'section-payment-method') {
-        //                                         const oldVersion = $('.checkout_version')
-        //                                         const newVersion = $(html).find('.checkout_version').attr('data_checkout_version')
-        //                                         $(oldVersion).attr('data_checkout_version', newVersion);
-        //                                         $(listTempElement[j]).html($(newElement[j]).html());
-        //                                     } else {
-        //                                         $(listTempElement[j]).html($(newElement[j]).html());
-        //                                     }
-
-        //                                 }
-        //                         }
-        //                     }
-        //                 }
-
-
-
-
-        //                 var is_vietnam = $("#is_vietnam").val();
-        //                 if (is_vietnam && is_vietnam == "true") {
-        //                     //$("#div_location_country_not_vietnam").hide();
-        //                 } else {
-        //                     $("#div_location_country_not_vietnam").show();
-        //                 }
-
-
-
-        //                 $('body').attr('src', $(html).attr('src'));
-        //                 $(element).find('button:submit').removeClass('btn-loading');
-        //                 $('body').find('button:submit').removeClass('btn-loading');
-        //                 if (($('body').find('.field-error') && $('body').find('.field-error').length > 0) ||
-        //                     ($('body').find('.has-error') && $('body').find('.has-error').length > 0)) {
-        //                     $("html, body").animate({
-        //                         scrollTop: 0
-        //                     }, "slow");
-        //                 }
-        //                 if (['section-payment-method', 'form_discount_add', 'section-shipping-rate', 'form_discount_remove'].includes(formId) && isReePay) {
-        //                     if (formId != 'section-payment-method') {
-        //                         paylayterLoadingTrigger()
-        //                         funcFormOnSubmit('#section-payment-method')
-        //                     } else {
-        //                         if (findPaymentMethodId == 41) {
-        //                             $('#section-pay-later-method').removeClass('hidden')
-        //                         }
-        //                         if (findPaymentMethodId == 43) {
-        //                             $('#section-pay-later-method-kredivo').removeClass('hidden')
-        //                         }
-        //                         if (findPaymentMethodId == 46) {
-        //                             $('#section-pay-later-method-aftee').removeClass('hidden')
-        //                         }
-        //                         if (findPaymentMethodId == 12) {
-        //                             $('#section-pay-card-history-method-payoo').removeClass('hidden')
-        //                         }
-        //                         paylayterLoadingTrigger(false)
-        //                     }
-        //                 } else {
-        //                     paylayterLoadingTrigger()
-        //                 }
-
-        //                 if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
-        //                     if ($('.order-checkout__loading--box').length > 0) {
-        //                         $('.order-checkout__loading--box').removeClass('show');
-        //                     }
-        //                 }
-        //                 if (funcCallback)
-        //                     funcCallback();
-        //             }
-        //         }
-        //     }).fail(function() {
-        //         $(element).find('button:submit').removeClass('btn-loading');
-        //         if (formId == 'section-payment-method') {
-        //             $('#section-pay-later-method').addClass('hidden');
-        //             paylayterLoadingTrigger(false)
-        //         }
-        //         if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
-        //             if ($('.order-checkout__loading--box').length > 0) {
-        //                 $('.order-checkout__loading--box').removeClass('show');
-
-        //             }
-        //         }
-        //     });
-
-        //     return false;
-        // };
-
-        function getRepayment(e) {
+         function getRepayment(e) {
             let element, formData;
             if (typeof(e) == 'string') {
                 element = $(e);
@@ -3665,23 +3234,9 @@
         });
     </script>
 
-    <script type='text/javascript'>
-        //<![CDATA[
-        if ((typeof Haravan) === 'undefined') {
-            Haravan = {};
-        }
-        Haravan.culture = 'vi-VN';
-        Haravan.shop = 'noritake.myharavan.com';
-        Haravan.theme = {
-            "name": "Main Noritake Template (Trai dev)",
-            "id": 1001063914,
-            "role": "main"
-        };
-        Haravan.domain = 'noritake.vn';
-        //]]>
-    </script>
+    
     <!-- Global site tag (gtag.js) - Google Ads: 357987955 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-357987955"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -3800,16 +3355,14 @@
 <body>
 
 
-    <input id="reloadValue" type="hidden" name="reloadValue" value="" />
-    <input id="is_vietnam" type="hidden" value="true" />
-    <input id="is_vietnam_location" type="hidden" value="true" />
+
 
     <div class="banner">
         <div class="wrap">
             <a href="/" class="logo">
 
 
-                <h1 class="logo-text">Noritake Vietnam</h1>
+                <h1 class="logo-text">{{ $systems['homepage_company']."- Thanh Toán"}}</h1>
 
             </a>
         </div>
@@ -3899,21 +3452,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr class="product" data-product-id="1036053562" data-variant-id="1079135998">
+                                        @if(isset($order))
+                                        @foreach($order as $item)
+                                        <tr class="product" data-product-id="{{ $item->products->id }}" data-variant-id="">
                                             <td class="product-image">
                                                 <div class="product-thumbnail">
                                                     <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="Bộ ấm chén uống trà (ấm 1.250ml, chén 245ml) 15 món sứ xương | Bogart Platinum 4958L - T017A" src="//product.hstatic.net/200000296482/product/bogart_platinum_-_tra_15__1__63ae0de1a9e54c59840b12b75cbe3dc6_small.jpg" />
+                                                        <img class="product-thumbnail-image" alt="{{ $item->products->name }}" src="{{ $item->products->image }}" />
                                                     </div>
                                                     <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
                                                 </div>
                                             </td>
                                             <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">Bộ ấm chén uống trà (ấm 1.250ml, chén 245ml) 15 món sứ xương | Bogart Platinum 4958L - T017A</span>
+                                                <span class="product-description-name order-summary-emphasis">{{ $item->products->name }}</span>
 
                                                 <span class="product-description-variant order-summary-small-text">
-                                                    Bogart Platinum
+                                                {{ $item->products->category->name }}
                                                 </span>
 
                                             </td>
@@ -3922,6 +3476,8 @@
                                                 <span class="order-summary-emphasis">13,658,000₫</span>
                                             </td>
                                         </tr>
+                                        @endforeach
+                                        @endif
 
                                     </tbody>
                                 </table>
