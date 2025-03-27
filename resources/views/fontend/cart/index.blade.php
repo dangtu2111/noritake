@@ -355,29 +355,6 @@
                                                         class="text-secondary fz-14 {{ $productNew->del == 0 && $productNew->del == null ? 'hidden-visibility' : '' }}">{{ number_format($productNew->price, '0', ',', '.') }}đ</del>
                                                 </span>
                                             </div>
-<<<<<<< HEAD
-                                            
-=======
-                                            <div class="box-action">
-                                                <a href="{{ route('cart.index') }}"
-                                                    class="action-cart-item-buy addToCart buyNow"
-                                                    data-id="{{ $productNew->id }}"
-                                                    data-product-variant-id="{{ $variantFirst->id }}"
-                                                    data-product-variant-price="{{ $variantFirst->price }}"
-                                                    data-attributeId="{{ @json_encode($variantFirst->code) }}">
-                                                    <i class="fa-solid fa-cart-shopping fz-18 me-2"></i>
-                                                    <span>Mua ngay</span>
-                                                </a>
-                                                <a href="" class="action-cart-item-add addToCart"
-                                                    data-id="{{ $productNew->id }}"
-                                                    data-product-variant-id="{{ $variantFirst->id }}"
-                                                    data-product-variant-price="{{ $variantFirst->price }}"
-                                                    data-attributeId="{{ @json_encode($variantFirst->code) }}">
-                                                    <i class="fa-solid fa-cart-plus fz-18 me-2"></i>
-                                                    <span>thêm giỏ hàng</span>
-                                                </a>
-                                            </div>
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
                                             <div class="head-card d-flex p-1">
                                                 <span class="fz-14 ">
                                                     Mã sản phẩm

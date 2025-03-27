@@ -31,7 +31,16 @@ class FPromotionController extends Controller
 
         return view('fontend.promotion.index', compact('promotions'));
     }
+    public function checkDiscount(Request $request)
+    {
+        $request->validate([
+            'discount_code' => 'required|string',
+        ]);
 
+        $result = $this->promotionService->applyDiscount($request->input('discount_code'));
+
+        return response()->json($result);
+    }
     public function receivePromotion(Promotion $promotion, Request $request)
     {
         try {

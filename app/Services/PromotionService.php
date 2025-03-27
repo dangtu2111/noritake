@@ -191,7 +191,34 @@ class PromotionService
             return $promotion;
         });
     }
+    public function applyDiscount($code)
+    {
+        $discount = Promotion::where('code', $code)->first();
 
+        if (!$discount) {
+            return ['success' => false, 'message' => 'Mã giảm giá không hợp lệ!'];
+        }
+
+        if ($discount->start_date && Carbon::now()->lt($discount->start_date)) {
+            return ['success' => false, 'message' => 'Mã giảm giá chưa có hiệu lực!'];
+        }
+
+        if ($discount->end_date && Carbon::now()->gt($discount->end_date)) {
+            return ['success' => false, 'message' => 'Mã giảm giá đã hết hạn!'];
+        }
+
+        if ($discount->usage_limit && $discount->quantity >= $discount->usage_limit) {
+            return ['success' => false, 'message' => 'Mã giảm giá đã hết lượt sử dụng!'];
+        }
+
+       
+
+        return [
+            'success' => true,
+            'message' => 'Mã giảm giá hợp lệ!',
+            'discount_amount' => $discount->discount,
+        ];
+    }
     public function receivePromotion(Promotion $promotion)
     {
         $user = Auth::user();

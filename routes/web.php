@@ -126,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
     //promotion
     Route::get('/promotion', [FPromotionController::class, 'index'])->name('promotion.home_index');
     Route::post('/receive/{promotion}', [FPromotionController::class, 'receivePromotion'])->name('promotion.receive');
+    Route::post('/apply-discount', [FPromotionController::class, 'checkDiscount'])->name('promotion.checkDiscount');
 
     // ORDER 
     Route::group(['prefix' => 'order'], function () {

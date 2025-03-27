@@ -252,12 +252,13 @@ class CartService implements CartServiceInterface
         return $attributesByCartItem;
     }
 
-    public function getOrderByCartId($request)
+    public function getOrderByCartId($cart_id)
     {
-        $array_ids = session('array_id', []);
-        $array_id = collect($array_ids)->flatten(1)->all();
+        // $array_ids = session('array_id', []);
+        // $array_id = collect($array_ids)->flatten(1)->all();
         $order = CartItem::with('products', 'productVariants', 'productVariants.attributes')
-            ->whereIn('id', $array_id)->get();
+        ->where('cart_id', $cart_id)
+        ->get();
         return $order;
     }
 

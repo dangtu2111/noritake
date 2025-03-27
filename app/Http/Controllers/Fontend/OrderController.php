@@ -67,17 +67,31 @@ class OrderController extends FontendController
     }
 
     public function selectmethod(Request $request){
+  
+        $validatedData = $request->validate([
+            'full_name'     => 'required|string|max:255',
+            'email'         => 'required|email|max:255',
+            'phone'         => 'required|string|max:15',
+            'province_id'   => 'required|integer',
+            'district_id'   => 'required|integer',
+            'ward_id'       => 'required|string',
+            'province_name' => 'required|string|max:255',
+            'district_name' => 'required|string|max:255',
+            'ward_name'     => 'required|string|max:255',
+            'address'       => 'required|string|max:255',
+            'total_amount'  => 'required|numeric|min:0'
+        ]);
+        session()->put('order_data', $validatedData);
         return view('frontend.order.paymentmethod');
     }
     public function checkout(Request $request)
     {
         $carts = $this->cartService->all();
+        
+        $cart_id = $carts  ? $carts->id : null;
+        $order = $this->cartService->getOrderByCartId($cart_id);
         $arrayIdChecked = session('array_id', []);
-        $order = $this->cartService->getOrderByCartId($request);
-<<<<<<< HEAD
-        dd($order);
-=======
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+        
         $attributesByCartItem = $this->cartService->findAttributesByCode();
         $promotions = session('promotions', []); // Danh sách mã khuyến mãi
 
@@ -110,6 +124,7 @@ class OrderController extends FontendController
 
     public function store(StoreOrderRequest $request)
     {
+        
         $order = $this->orderService->create($request);
         if ($order['payment_method'] !== 'cod') {
             $response = $this->paymentMethod($order);
