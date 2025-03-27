@@ -193,7 +193,11 @@
                     }
                 },
                 error: function(xhr) {
-                    // Hiển thị modal lỗi chung
+                    // Hiển thị modal lỗi chungnotice-red
+                   
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        $('#exampleModalCenter2_' + productId).find('.notice-red').text(xhr.responseJSON.message);
+					}
                     $('#exampleModalCenter2_' + productId).modal('show');
                 }
             });
