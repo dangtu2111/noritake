@@ -209,8 +209,17 @@
                                         <li><a class="  form-control" href="{{ route("profile.user") }}">Trang cá
                                                 nhân</a></li>
                                         <li><a class="  form-control" href="">Đơn hàng của tôi</a></li>
+<<<<<<< HEAD
                                         <li><a class="  form-control" href="{{ route('auth.logout') }}">Đăng xuất</a></li>
                                         
+=======
+                                        <li>
+                                            <form action="{{ route('auth.logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Đăng xuất</button>
+                                            </form>
+                                        </li>
+>>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
                                     </ul>
                                     <!-- Hiển thị dropdown nếu đã đăng nhập -->
 
@@ -315,7 +324,11 @@
                                         <div
                                             class="mini-cart_price-total-line d-flex justify-content-between align-items-center">
                                             <span>TỔNG TIỀN:</span>
+<<<<<<< HEAD
                                             <span id="total-view-cart">0</span>
+=======
+                                            <span id="total-view-cart">0₫</span>
+>>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
                                         </div>
                                         <div class="mini-cart_button-container d-flex ">
                                             <a href="{{ route('cart.index') }}" class="link-to-cart btn-box dark">Xem
