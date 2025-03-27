@@ -177,7 +177,7 @@
                 method: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
-                    id: productId,
+                    product_id: productId,
                     quantity: quantity
                 },
                 success: function(response) {

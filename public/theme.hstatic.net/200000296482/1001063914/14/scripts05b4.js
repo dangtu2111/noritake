@@ -2,7 +2,7 @@
 var timeOut_modalCart,
     viewout = !0,
     check_show_modal = !0,
-    add_item_show_modalCart = function (product_id, quantity, price) {
+    add_item_show_modalCart = function (product_id, quantity) {
         check_show_modal &&
             ((check_show_modal = !1),
             (timeOut_modalCart = setTimeout(function () {
@@ -22,8 +22,7 @@ var timeOut_modalCart,
                 data: {
                     product_id: product_id,
                     // product_variant_id: product_variant_id,
-                    quantity: quantity,
-                    price: price,
+                    quantity: quantity
                     // attribute_id: attribute_id,
                     // _token: _token,
                 },

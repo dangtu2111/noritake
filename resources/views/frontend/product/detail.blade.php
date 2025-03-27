@@ -136,7 +136,7 @@ Chi tiết sản phẩm
 		$(document).on('click','#add-to-cart', function(e){	
 			e.preventDefault();
 			var quantity = $("#quantity").val();
-			add_item_show_modalCart($('#product-select').val(),quantity,{{ $product->del }});
+			add_item_show_modalCart($('#product-select').val(),quantity);
 			/*$('.header-bottom').addClass('pos-relative');*/
 			$('html, body').animate({scrollTop:0}, 10);
 
