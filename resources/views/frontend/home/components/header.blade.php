@@ -1289,5 +1289,8 @@
 }
 
 /* Nếu bạn dùng class btn từ Bootstrap, đảm bảo không bị ghi đè */
-
+.social-login-container>.btn {
+    padding: 0; /* Xóa padding mặc định của Bootstrap */
+    border: none; /* Xóa border mặc định */
+}
 </style>
