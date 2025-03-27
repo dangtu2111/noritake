@@ -2,10 +2,10 @@
 <section id="sectionInfoFooter" class="clearfix">
 <div class="footer-top">
     <ul class="row footer-top-trai">
-              <li class="column_trai w6 top"><i class="fa fa-circle" aria-hidden="true"></i><a href="pages/chinh-sach-doi-tra">Chính sách giao hàng &amp; đổi trả</a></li>
-              <li class="column_trai w4 top"><i class="fa fa-circle" aria-hidden="true"></i><a href="pages/chinh-sach-bao-mat">Chính sách bảo mật</a></li>
-              <li class="column_trai w6 bot"><i class="fa fa-circle" aria-hidden="true"></i><a href="pages/dieu-khoan-dich-vu">Phương thức thanh toán</a></li>
-              <li class="column_trai w4 bot"><i class="fa fa-circle" aria-hidden="true"></i><a href="pages/huong-dan-su-dung">Hướng dẫn sử dụng</a></li>
+              <li class="column_trai w6 top"><i class="fa fa-circle" aria-hidden="true"></i><a href="/pages/chinh-sach-doi-tra">Chính sách giao hàng &amp; đổi trả</a></li>
+              <li class="column_trai w4 top"><i class="fa fa-circle" aria-hidden="true"></i><a href="/pages/chinh-sach-bao-mat">Chính sách bảo mật</a></li>
+              <li class="column_trai w6 bot"><i class="fa fa-circle" aria-hidden="true"></i><a href="/pages/dieu-khoan-dich-vu">Phương thức thanh toán</a></li>
+              <li class="column_trai w4 bot"><i class="fa fa-circle" aria-hidden="true"></i><a href="/pages/huong-dan-su-dung">Hướng dẫn sử dụng</a></li>
           </ul>
   </div>
   <!--<div class="container-fluid-mb footer-mb-trai f2 clearfix">-->
