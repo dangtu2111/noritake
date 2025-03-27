@@ -107,12 +107,10 @@ function getCartModal() {
                     0
                 );
                 $("#total-view-cart").html(
-<<<<<<< HEAD
+
             
 					Number(totalPrice).toLocaleString('vi-VN') + '₫'
-=======
-                    totalPrice
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+
                     // Haravan.formatMoney(totalPrice, formatMoney)
                 );
                 $(".cart-subtotal").html(
@@ -168,7 +166,7 @@ function clone_item(item, index) {
     // Cập nhật tiêu đề, số lượng, giá
     $template.find(".pro-title-view").html(name);
     $template.find(".pro-quantity-view").html(item.quantity || 1);
-<<<<<<< HEAD
+
 	$template.find(".pro-price-view").html(
 		Number(item.products.del).toLocaleString('vi-VN') + 'đ'
 	);
@@ -176,13 +174,7 @@ function clone_item(item, index) {
     // Cập nhật nút xóa
     $template.find(".remove-cart").html(`
         <a href="javascript:void(0);" onclick="deleteCart(${item.id})">
-=======
-    $template.find(".pro-price-view").html(1000000);
 
-    // Cập nhật nút xóa
-    $template.find(".remove-cart").html(`
-        <a href="javascript:void(0);" onclick="deleteCart(${index + 1})">
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
             <i class="fa fa-times"></i>
         </a>
     `);
@@ -201,7 +193,7 @@ function clone_item(item, index) {
     $template.removeClass("d-none").prependTo("#cart-view");
 }
 function deleteCart(t) {
-<<<<<<< HEAD
+
 	
     var _token = $('meta[name="csrf-token"]').attr("content");
 	let datas = {
@@ -212,12 +204,7 @@ function deleteCart(t) {
         type: "DELETE",
         url: "/ajax/cart/destroyCart",
         data: datas,
-=======
-    $.ajax({
-        type: "POST",
-        url: "/cart/change.js",
-        data: "quantity=0&line=" + t,
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+
         dataType: "json",
         success: function (t) {
             getCartModal();
@@ -1403,25 +1390,13 @@ function backToTop() {
                                           $.each(t.items, function (t, e) {
                                               clone_item(e, t);
                                           }),
-<<<<<<< HEAD
+
 										  $("#total-view-cart").html(
 											Number(t.total_price).toLocaleString('vi-VN') + '₫'
 										),
                                           $(".cart-subtotal").html(
 											  Number(tota.total_pricelPrice).toLocaleString('vi-VN') + '₫'
-=======
-                                          $("#total-view-cart").html(
-                                              Haravan.formatMoney(
-                                                  t.total_price,
-                                                  formatMoney
-                                              )
-                                          ),
-                                          $(".cart-subtotal").html(
-                                              Haravan.formatMoney(
-                                                  t.total_price,
-                                                  formatMoney
-                                              )
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+
                                           ))
                                         : $("#cart-view").html(
                                               '<div class="mini-cart_empty-state"><svg width="65" height="65" viewBox="0 0 81 70"><g transform="translate(0 2)" stroke-width="4" stroke="#333333" fill="none" fill-rule="evenodd"><circle stroke-linecap="square" cx="34" cy="60" r="6"></circle><circle stroke-linecap="square" cx="67" cy="60" r="6"></circle><path d="M22.9360352 15h54.8070373l-4.3391876 30H30.3387146L19.6676025 0H.99560547"></path></g></svg><p class="m-0">Hiện chưa c\xf3 sản phẩm</p></div>'

@@ -52,11 +52,9 @@ class CartController extends FontendController
         );
         $countCart = $this->cartService->countProductIncart();
 
-<<<<<<< HEAD
-        return view('fontend.cart.index', compact(
-=======
+
         return view('frontend.cart.index', compact(
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+
             'carts',
             'countCart',
             'productNews',
@@ -181,11 +179,9 @@ class CartController extends FontendController
             flash()->error('Bạn cần đăng nhập để sử dụng chức năng.');
             return redirect()->route('auth.login');
         }
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+        
+
         try {
             $destroy = $this->cartService->destroy($request);
 

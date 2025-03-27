@@ -324,11 +324,9 @@
                                         <div
                                             class="mini-cart_price-total-line d-flex justify-content-between align-items-center">
                                             <span>TỔNG TIỀN:</span>
-<<<<<<< HEAD
+
                                             <span id="total-view-cart">0</span>
-=======
-                                            <span id="total-view-cart">0₫</span>
->>>>>>> a49165e89efd4cc07df4e43f35084b1750916191
+
                                         </div>
                                         <div class="mini-cart_button-container d-flex ">
                                             <a href="{{ route('cart.index') }}" class="link-to-cart btn-box dark">Xem
@@ -1291,8 +1289,5 @@
 }
 
 /* Nếu bạn dùng class btn từ Bootstrap, đảm bảo không bị ghi đè */
-.btn {
-    padding: 0; /* Xóa padding mặc định của Bootstrap */
-    border: none; /* Xóa border mặc định */
-}
+
 </style>
