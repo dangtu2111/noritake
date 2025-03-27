@@ -16,7 +16,7 @@ Liên hệ
                             <meta itemprop="position" content="1">
                         </li>
                         <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                            <span itemprop="item" content="https://noritake.vn/pages/he-thong-cua-hang"><strong itemprop="name">Hệ thống cửa hàng</strong></span>
+                            <span itemprop="item" content="{{ config('app.url').'pages/he-thong-cua-hang' }}"><strong itemprop="name">Hệ thống cửa hàng</strong></span>
                             <meta itemprop="position" content="2">
                         </li>
                     </ol>
@@ -44,7 +44,7 @@ Liên hệ
                                         <span class="mr-3">Điện thoại</span>
                                     </div>
                                     <div class="info-contact_right">
-                                        <p class="m-0">0934033988</p>
+                                        <p class="m-0">{{ $systems['contact_hotline'] }}</p>
                                     </div>
                                 </li>
                                 <li class="d-flex">
@@ -52,7 +52,7 @@ Liên hệ
                                         <span class="mr-3">Địa chỉ</span>
                                     </div>
                                     <div class="info-contact_right">
-                                        <p class="m-0">40 Đường B2, KĐT Sala - Đại Quang Minh, P. An Lợi Đông, Q.2, Tp. Hồ Chí Minh</p>
+                                        <p class="m-0">{{ $systems['contact_address'] }}</p>
                                     </div>
                                 </li>
                                 <li class="d-flex">
@@ -60,7 +60,7 @@ Liên hệ
                                         <span class="mr-3">Email</span>
                                     </div>
                                     <div class="info-contact_right">
-                                        <p class="m-0">contact@noritake-vietnam.com</p>
+                                        <p class="m-0">{{ $systems['contact_email'] }}</p>
                                     </div>
                                 </li>
                                 <li class="d-flex">

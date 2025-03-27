@@ -34,10 +34,15 @@
                                     @if ($item->parentReference)
                                         <strong><a href="javascript:void(0)"
                                                 class="text-danger pe-2">{{ $item->parentReference->name }}</a></strong>
+                                                
                                     @else
                                         <strong><span class="text-success">Root</span></strong>
+                                       
+
                                     @endif
+                                  
                                 </span>
+                                <p>{{ route('product.category',['id'=>$item->id]) }}</p>
                             </div>
                         </div>
                     </td>
