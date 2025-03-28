@@ -30,7 +30,7 @@ return new class extends Migration
             $table->enum('status', ['pending', 'confirmed', 'shipping', 'canceled', 'completed'])->default('pending');
             $table->enum('payment', ['unpaid', 'paid', 'failed'])->default('unpaid');
             $table->string('payment_method', 50);
-            $table->timestamps('paid_at');
+            $table->timestamp('paid_at');
             $table->timestamps();
         });
     }
