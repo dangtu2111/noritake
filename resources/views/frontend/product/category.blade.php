@@ -12,7 +12,9 @@ Sản phẩm danh mục
   <div id="collection" class="layout-collectionPage collection-temp2">
     @include('frontend.product.component.banner')
     @include('frontend.product.component.products')
+    @if(isset($category->description))
     @include('frontend.product.component.content')
+    @endif
   </div>
 
   <div class="modal fade hidden-xs" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="false">
