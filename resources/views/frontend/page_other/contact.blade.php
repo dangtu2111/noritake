@@ -83,7 +83,8 @@ Liên hệ
                             </div>
                         </div>
                         <div class="wrapper-contact-form">
-                            <form accept-charset="UTF-8" action="/contact" class="contact-form" method="post">
+                            <form accept-charset="UTF-8" action="{{ route('user.contact.create') }}" class="contact-form" method="post">
+                            @csrf
                                 <input name="form_type" type="hidden" value="contact">
                                 <input name="utf8" type="hidden" value="✓">
                                 <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FyFPV59mBtNhmQGz0fYZt_FgtNAPE7u8QGUxIojmlulBtS0Of4pfeyWxJ3930fcvkOoi-fj5lyYa_LaGKzKbBjKpz_JITYv9armZzq92H7kqg_amS4zmGBOveuDvkQ_cdxqGIK5wT-MNgj8dGSvMY7JTc5XNHM6cztYa5tCvnBvM-n7RrCQxst-Ogc2-sLdeg">

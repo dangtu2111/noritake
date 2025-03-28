@@ -192,22 +192,20 @@ if (!function_exists('recursive')) {
      * @param mixed $parentId ID của menu cha (mặc định là null cho các menu gốc)
      * @return array Mảng phân cấp với cấu trúc ['item' => $menu, 'children' => [...]]
      */
-    function recursive($data, $parentId = null)
-    {
+    function recursive($data, $parentId = null) {
         $temp = [];
-        if (!empty($data) && is_countable($data) && count($data)) {
-            foreach ($data as $val) {
-                // So sánh với parent_id, lưu ý: menu gốc có parent_id là null
-                if ($val->parent_id == $parentId) {
-                    $temp[] = [
-                        'item'     => $val,
-                        'children' => recursive($data, $val->id)
-                    ];
+        foreach ($data as $val) {
+            if ((int) $val['parent_id'] === (int) $parentId) {
+                $children = recursive($data, $val['id']); // Lấy danh mục con
+                if (!empty($children)) {
+                    $val['children'] = $children; // Thêm children vào
                 }
+                $temp[] = $val;
             }
         }
         return $temp;
     }
+    
 }
 
 if (!function_exists('recursive_menu')) {
@@ -222,17 +220,16 @@ if (!function_exists('recursive_menu')) {
         $html = '';
         if (!empty($data) && is_countable($data) && count($data)) {
             foreach ($data as $val) {
-                $itemId   = $val['item']->id;
-                $itemName = $val['item']->name;
-                // Giả sử bạn có route 'menu.children' để quản lý menu con, nếu không, thay bằng route thích hợp
+                $itemId   = $val['id'];  // Không cần 'item' nữa
+                $itemName = $val['name'];
                 $itemUrl  = route('menu.children', ['id' => $itemId]);
-
+    
                 $html .= "<li class='dd-item' data-id='{$itemId}'>";
                 $html .= "<div class='dd-handle'>";
                 $html .= "<span class='label label-info'><i class='fa fa-arrows'></i></span> {$itemName}";
                 $html .= "</div>";
                 $html .= "<a class='create-children-menu' href='{$itemUrl}'> Quản lý menu con </a>";
-
+    
                 if (!empty($val['children']) && is_countable($val['children']) && count($val['children'])) {
                     $html .= "<ol class='dd-list'>";
                     $html .= recursive_menu($val['children']);
@@ -243,4 +240,5 @@ if (!function_exists('recursive_menu')) {
         }
         return $html;
     }
+    
 }

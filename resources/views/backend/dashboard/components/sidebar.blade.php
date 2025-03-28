@@ -256,7 +256,22 @@
                         </ul>
                     </div>
                 </li>
-
+                <!-- FAQ -->
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarPageposts" data-bs-toggle="collapse" role="button"
+                        aria-expanded="{{ request()->is('post*') ? 'true' : 'false' }}"
+                        aria-controls="sidebarPageposts">
+                        <i class="fas fa-address-card"></i> <span data-key="t-pageposts">Câu hỏi liên hệ</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->is('post*') ? 'show' : '' }}"
+                        id="sidebarPageposts">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('contact.index') }}" class="nav-link">Danh sách liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="menu-title"><i class="ri-more-fill"></i> <span class="text-light">Cấu Hình</span></li>
 
                 <!-- Banner -->

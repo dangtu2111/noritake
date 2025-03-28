@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="ibox-content">
                                     @php
-                                    $menus=recursive($menus);
+                                    $menus = recursive($menus->toArray());
                                     $menuString=recursive_menu($menus);
                                     @endphp
                                     <div class="dd" id="nestable2">
