@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -32,13 +29,9 @@ return new class extends Migration
             $table->string('payment_method', 50);
             $table->timestamp('paid_at')->nullable(); // Thêm cột `paid_at`
             $table->timestamps(); // Tạo `created_at` và `updated_at`
-            
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('orders');
