@@ -74,7 +74,25 @@ class ProductService implements ProductServiceInterface
     {
         DB::beginTransaction();
         try {
+           
+            $slug = $request->input('slug');
             
+            // Kiểm tra và chuyển đổi slug về định dạng chuẩn
+            if ($slug) {
+                // Chuyển thành chữ thường, thay khoảng trắng bằng dấu gạch ngang
+                $formattedSlug = strtolower($slug);
+                $formattedSlug = preg_replace('/\s+/', '-', $formattedSlug);
+                // Loại bỏ các ký tự đặc biệt, chỉ giữ chữ cái, số và dấu gạch ngang
+                $formattedSlug = preg_replace('/[^a-z0-9-]/', '', $formattedSlug);
+                // Loại bỏ nhiều dấu gạch ngang liên tiếp
+                $formattedSlug = preg_replace('/-+/', '-', $formattedSlug);
+                // Loại bỏ dấu gạch ngang ở đầu và cuối
+                $formattedSlug = trim($formattedSlug, '-');
+                
+                // Gán lại slug đã được format vào request
+                $request->merge(['slug' => $formattedSlug]);
+            }
+            dd($request->all());
             $product = $this->createProduct($request);
             
             // Trường hợp không có phiên bản
