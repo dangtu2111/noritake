@@ -134,6 +134,7 @@ class OrderController extends FontendController
                 }
                 $this->orderService->updateQuantitySoldProduct($order);
                 $this->cartService->destroyCartItem($request);
+               
                 flash()->success('Đặt hàng thành công');
                 return redirect()->route('order.success');
             }

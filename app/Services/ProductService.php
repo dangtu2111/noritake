@@ -92,7 +92,7 @@ class ProductService implements ProductServiceInterface
                 // Gán lại slug đã được format vào request
                 $request->merge(['slug' => $formattedSlug]);
             }
-            dd($request->all());
+       
             $product = $this->createProduct($request);
             
             // Trường hợp không có phiên bản
