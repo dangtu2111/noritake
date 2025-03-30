@@ -36,10 +36,11 @@
                         <a href="{{ route('post.detail', ['slug' => $firstPost->slug]) }}">{{ $firstPost->name }}</a>
                         <span class="article-date-left"> - {{ $firstPost->created_at->format('d/m/Y') }}  </span>
                         <i class="fa fa-file-text-o" style="font-size: 12px; color: #ccc"></i>
-                        @if($firstPost->post_catalogues && $firstPost->post_catalogues->id)
-                            <a href="{{ route('post.category', ['id' => $firstPost->post_catalogues->id]) }}"
+                        
+                        @if($firstPost->postCatalogues && $firstPost->postCatalogues->first()->id)
+                            <a href="{{ route('post.category', ['id' => $firstPost->postCatalogues->first()->id]) }}"
                                 style="font-size: 12px; color: #ccc; padding-left: 5px;">
-                                {{ $firstPost->post_catalogues->name ?? 'Tin tức - Sự kiện' }}
+                                {{ $firstPost->postCatalogues->first()->name ?? 'Tin tức - Sự kiện' }}
                             </a>
                         @else
                             <span style="font-size: 12px; color: #ccc; padding-left: 5px;">Chưa có danh mục</span>
@@ -69,10 +70,10 @@
                         <span class="article-date-right">
                             - {{ $post->created_at->format('d/m/Y') }}
                             <i class="fa fa-file-text-o" style="font-size: 12px; color: #ccc; margin-left: 5px;"></i>
-                            @if($post->post_catalogues && $post->post_catalogues->id)
-                                <a href="{{ route('post.category', ['id' => $post->post_catalogues->id]) }}"
+                            @if($post->postCatalogues && $post->postCatalogues->first()->id)
+                                <a href="{{ route('post.category', ['id' => $post->postCatalogues->first()->id]) }}"
                                     style="font-size: 12px; color: #ccc; padding-left: 5px;">
-                                    {{ $post->post_catalogues->name ?? 'Chưa có danh mục' }}
+                                    {{ $post->postCatalogues->first()->name ?? 'Chưa có danh mục' }}
                                 </a>
                             @else
                                 <span style="font-size: 12px; color: #ccc; padding-left: 5px;">Chưa có danh mục</span>
