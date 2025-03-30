@@ -398,652 +398,69 @@
                             fill="#ffffff"></path>
                     </svg>
                 </span>
+                <!-- Menu mobile -->
                 <div class="site-nav-container-menu">
                     <div class="menu-mobile-content">
                         <nav id="mb-menu">
                             <div class="navbar-level" data-level="1">
                                 <ul class="menuList-sub vertical-menu-list sub-child">
-                                    <li>
-                                        <a class="parent" href="{{ route('home_index.index') }}">
-                                            <span style="font-size: 17px; font-weight: 500;">TRANG CHỦ</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="parent" href="collections/new-arrival.html">
-                                            <span style="font-size: 17px; font-weight: 400;">Sản phẩm mới</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="parent" href="collections/kiet-tac-phien-ban-gioi-han.html">
-                                            <span style="font-size: 17px; font-weight: 400;">Kiệt tác phiên bản giới
-                                                hạn</span>
-                                        </a>
-                                    </li>
-
-
-
-                                    <li class="accordion" id="accordionExample2">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <div class="mb-0">
-                                                    <button class="btn btn-link menu-mobile-button"
-                                                        data-toggle="collapse" data-target="#collapseOne2"
-                                                        aria-expanded="true" aria-controls="collapseOne2">
-                                                        <span style="font-weight: 500; font-size: 17px;">Tìm theo loại
-                                                            sản phẩm</span>
-                                                        <span class="icon-control">
-                                                            <img id="icon-plus-2"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
-                                                            <img id="icon-minus-2"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png">
-                                                            <!--<i id="icon-plus-2" class="fa fa-plus" aria-hidden="true"></i>
-            							<i id="icon-minus-2" class="fa fa-minus" aria-hidden="true"></i>-->
+                                    @if(isset($menus))
+                                        @foreach ($menus as $menu)
+                                            <li class="{{ $menu->children->count() ? 'accordion' : '' }}">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="{{ url($menu->slug) }}" style="text-decoration: none; font-size: 17px; font-weight: 500;">
+                                                        {{ $menu->name }}
+                                                    </a>
+                                                    @if ($menu->children->count())
+                                                        <span class="icon-control" data-toggle="collapse" data-target="#collapse{{ $menu->id }}" 
+                                                            aria-expanded="false" aria-controls="collapse{{ $menu->id }}">
+                                                            <img id="icon-plus-{{ $menu->id }}" src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
+                                                            <img id="icon-minus-{{ $menu->id }}" src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
                                                         </span>
-                                                    </button>
+                                                    @endif
                                                 </div>
-                                            </div>
-                                            <div id="collapseOne2" class="collapse" aria-labelledby="headingOne"
-                                                data-parent="#accordionExample2">
-                                                <ul class="card-body">
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-tra_d2ebb2ea983a4a0e9cec3f625c037487.png">
-                                                        <a class="parent" href="collections/coc-su-ly-su.html">Cốc sứ
-                                                            (ly sứ)</a>
-                                                    </li>
-                                                    <li style="border-bottom: 1px solid #d7d7d7;;">
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-an-chau-a_633264541fd44401b9a9f3159fd8aa34.png">
-                                                        <a class="parent"
-                                                            href="collections/nap-coc-su-nap-ly-su.html">Nắp cốc sứ (ly
-                                                            sứ)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-an-chau-au_0e5003f327c04f988d9163da98b48fad.png">
-                                                        <a class="parent" href="collections/am-tra-binh-tra.html">Ấm trà
-                                                            (bình trà)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/su-trang-khong-hoa-tiet_1cf2df365e824392b8248e6a3cd7d7df.png">
-                                                        <a class="parent"
-                                                            href="collections/chen-tra-tach-tra-va-dia-lot.html">Chén
-                                                            trà (tách
-                                                            trà) & đĩa lót</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/ly-coc-uong-nuoc_68481bd8dcd947b7b0b46963d988776d.png">
-                                                        <a class="parent" href="collections/hu-dung-sua.html">Hũ đựng
-                                                            sữa</a>
-                                                    </li>
-                                                    <li style="border-bottom: 1px solid #d7d7d7;;">
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/binh-hoa-khung-tranh_cddf35af2f324a21ba82d32c46188c5e.png">
-                                                        <a class="parent" href="collections/hu-dung-duong.html">Hũ đựng
-                                                            đường</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../product.hstatic.net/200000296482/product/mc04_-_ac-ph_f2af86724a0b449dab88aebfface6aae_master.jpg">
-                                                        <a class="parent" href="collections/bat-com-chen-com.html">Bát
-                                                            (chén) cơm (11cm -
-                                                            12,5cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/bat-dung-nuoc-cham-bat-an-sup.html">Bát
-                                                            (chén) đựng
-                                                            nước chấm, súp</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/bat-chen-da-nang-dung-trai-cay-ngu-coc.html">Bát
-                                                            (chén) đa năng</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/bat-chen-cream-soup-02-quai-cam.html">Bát
-                                                            (chén)
-                                                            creamsoup 02 quai cầm</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/bat-an-yen-co-nap-day.html">Bát (chén) ăn
-                                                            yến có nắp
-                                                            đậy</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/bat-my-to-my.html">Bát mỳ
-                                                            (tô mỳ)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/bat-soup-to-soup-cac-loai.html">Bát ăn
-                                                            soup (tô ăn
-                                                            soup)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/bat-canh-to-canh.html">Bát
-                                                            canh (tô canh)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-sau-long.html">Đĩa sâu
-                                                            lòng</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-dung-khan-lanh.html">Đĩa
-                                                            đựng khăn lạnh</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-dung-nuoc-cham.html">Đĩa
-                                                            đựng nước chấm (8cm -
-                                                            11cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-lot-bat-com.html">Đĩa
-                                                            lót bát (chén) cơm (15cm -
-                                                            18cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-tron-co-vua.html">Đĩa
-                                                            tròn cỡ vừa (19cm -
-                                                            24cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-tron-co-lon.html">Đĩa
-                                                            tròn cỡ lớn (26cm -
-                                                            30cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-oval-co-nho.html">Đĩa
-                                                            Oval cỡ nhỏ (26cm -
-                                                            32cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-oval-co-vua.html">Đĩa
-                                                            Oval cỡ vừa (34cm -
-                                                            38cm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-oval-co-lon.html">Đĩa
-                                                            Oval cỡ lớn (39cm trở
-                                                            lên)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-vuong.html">Đĩa
-                                                            hình vuông</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-chu-nhat.html">Đĩa
-                                                            hình chữ nhật</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-luc-giac.html">Đĩa
-                                                            hình lục giác</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-tam-giac.html">Đĩa
-                                                            hình tam giác</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-dam-may.html">Đĩa
-                                                            hình đám mây</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dia-hinh-song.html">Đĩa hình
-                                                            sóng</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/au-dung-com-tho-com.html">Âu
-                                                            đựng cơm (thố cơm)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/binh-dung-nuoc-xot-kem-dia-lot.html">Bình
-                                                            (hũ) đựng
-                                                            nước xốt</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/binh-dung-nuoc-tuong-nuoc-mam.html">Bình
-                                                            đựng nước
-                                                            tương, nước mắm</a>
-
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/dung-cu-an-trung-vit-lon.html">Dụng cụ ăn
-                                                            trứng
-                                                            (hột) vịt lộn</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/lo-dung-tieu-va-muoi.html">Lọ đựng tiêu &
-                                                            muối</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/lo-dung-tam.html">Lọ đựng
-                                                            tăm</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/thia-su-muong-su.html">Thìa
-                                                            sứ (muỗng sứ)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/gac-dua-gac-thia-bang-su.html">Gác đũa,
-                                                            gác thìa
-                                                            (muỗng) bằng sứ</a>
-                                                    </li>
-                                                    <li style="border-bottom: 1px solid #d7d7d7;">
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/gat-tan-thuoc-la.html">Gạt
-                                                            tàn thuốc lá</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dao-muong-nia.html">Bộ dao
-                                                            muỗng nĩa (dao thìa
-                                                            dĩa)</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dua-go-cac-loai.html">Đũa gỗ
-                                                            các loại</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/thia-muong-ca-phe.html">Thìa
-                                                            (muỗng) cà phê</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent"
-                                                            href="collections/dia-nia-an-trai-cay.html">Dĩa (nĩa) ăn
-                                                            trái cây</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/dung-cu-loc-tra.html">Dụng
-                                                            cụ lọc trà</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/ly-thuy-tinh-pha-le.html">Ly
-                                                            thủy tinh - pha lê</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/binh-ma-bac.html">Bình mạ
-                                                            bạc</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/khay-ma-bac.html">Khay mạ
-                                                            bạc</a>
-                                                    </li>
-                                                    <li style="border-bottom: 1px solid #d7d7d7;">
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/ke-banh.html">Kệ bánh</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/binh-hoa.html">Bình hoa</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/tuong-su.html">Tượng sứ</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="#">Đồng hồ sứ</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/phu-kien-ban-tra_d81b87e9702a402da9cd601c9311067d.png">
-                                                        <a class="parent" href="collections/khung-anh-dep.html">Khung
-                                                            ảnh</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="accordion" id="accordionExample3">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <div class="mb-0">
-                                                    <button class="btn btn-link menu-mobile-button"
-                                                        data-toggle="collapse" data-target="#collapseOne3"
-                                                        aria-expanded="true" aria-controls="collapseOne3">
-                                                        <span style="font-weight: 500; font-size: 17px;">Tìm theo bộ sưu
-                                                            tập</span>
-                                                        <span class="icon-control">
-                                                            <img id="icon-plus-3"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
-                                                            <img id="icon-minus-3"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png">
-                                                            <!--<i id="icon-plus-2" class="fa fa-plus" aria-hidden="true"></i>
-            							<i id="icon-minus-2" class="fa fa-minus" aria-hidden="true"></i>-->
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div id="collapseOne3" class="collapse" aria-labelledby="headingOne"
-                                                data-parent="#accordionExample3">
-                                                <ul class="card-body">
-                                                    <li>
-
-                                                        <div style="margin: 0" class="row">
-
-                                                            <div class="col-6 col-md-4 col-lg-3 collection-loop"
-                                                                style="padding: 0;">
-                                                                <div class="p-0 banner-image-testimonials">
-                                                                    <div
-                                                                        class="banner-image-testimonials_content effect-banner">
-                                                                        <a
-                                                                            href="collections/cher-blanc-1655/index.html">
-                                                                            <span class="effect-banner-image">
-                                                                                <img data-src="https://file.hstatic.net/200000296482/file/cher_blanc_65e7279a6a55464193cd0f89fb474088.png"
-                                                                                    class="lazyloaded"
-                                                                                    src="../file.hstatic.net/200000296482/file/cher_blanc_65e7279a6a55464193cd0f89fb474088.png">
-                                                                            </span>
+                                                @if ($menu->children->count())
+                                                    <div id="collapse{{ $menu->id }}" class="collapse" data-parent="#mb-menu">
+                                                        <ul class="card-body">
+                                                            @foreach ($menu->children as $child)
+                                                                <li class="{{ $child->children->count() ? 'accordion' : '' }}">
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <a href="{{ url($child->slug) }}" style="text-decoration: none;">
+                                                                            {{ $child->name }}
                                                                         </a>
-                                                                    </div>
-                                                                </div>
-                                                                <p style="text-align: center">
-                                                                    <a href="collections/cher-blanc-1655/index.html">Cher
-                                                                        Blanc</a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="col-6 col-md-4 col-lg-3 collection-loop"
-                                                                style="padding: 0;">
-                                                                <div class="p-0 banner-image-testimonials">
-                                                                    <div
-                                                                        class="banner-image-testimonials_content effect-banner">
-                                                                        <a href="collections/Yoshino-9983J.html">
-                                                                            <span class="effect-banner-image">
-                                                                                <img data-src="https://file.hstatic.net/200000296482/file/yoshino_a7727a8ade0a4fee8f5f90e238f17d93.png"
-                                                                                    class="lazyloaded"
-                                                                                    src="../file.hstatic.net/200000296482/file/yoshino_a7727a8ade0a4fee8f5f90e238f17d93.png">
+                                                                        @if ($child->children->count())
+                                                                            <span class="icon-control" data-toggle="collapse" data-target="#collapse{{ $child->id }}"
+                                                                                aria-expanded="false" aria-controls="collapse{{ $child->id }}">
+                                                                                <img id="icon-plus-{{ $child->id }}" src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
+                                                                                <img id="icon-minus-{{ $child->id }}" src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
                                                                             </span>
-                                                                        </a>
+                                                                        @endif  
                                                                     </div>
-                                                                </div>
-                                                                <p style="text-align: center">
-                                                                    <a href="collections/Yoshino-9983J.html">Yoshino</a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="col-6 col-md-4 col-lg-3 collection-loop"
-                                                                style="padding: 0;">
-                                                                <div class="p-0 banner-image-testimonials">
-                                                                    <div
-                                                                        class="banner-image-testimonials_content effect-banner">
-                                                                        <a href="collections/crochet-4966.html">
-                                                                            <span class="effect-banner-image">
-                                                                                <img data-src="https://file.hstatic.net/200000296482/file/crochet_b8e62f06fda34491a748dab14b98f7bd.png"
-                                                                                    class="lazyloaded"
-                                                                                    src="../file.hstatic.net/200000296482/file/crochet_b8e62f06fda34491a748dab14b98f7bd.png">
-                                                                            </span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <p style="text-align: center">
-                                                                    <a href="collections/crochet-4966.html">Crochet</a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="col-6 col-md-4 col-lg-3 collection-loop"
-                                                                style="padding: 0;">
-                                                                <div class="p-0 banner-image-testimonials">
-                                                                    <div
-                                                                        class="banner-image-testimonials_content effect-banner">
-                                                                        <a href="collections/rochelle-gold-4796l.html">
-                                                                            <span class="effect-banner-image">
-                                                                                <img data-src="https://file.hstatic.net/200000296482/file/rochelle_gold_d4d0753851b64103aeaeee94d00c5c61.png"
-                                                                                    class="lazyloaded"
-                                                                                    src="../file.hstatic.net/200000296482/file/rochelle_gold_d4d0753851b64103aeaeee94d00c5c61.png">
-                                                                            </span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <p style="text-align: center">
-                                                                    <a href="collections/rochelle-gold-4796l.html">Rochelle
-                                                                        Gold</a>
-                                                                </p>
-                                                            </div>
-
-
-
-                                                            <div class="col-12 viewmore" style="text-align: right;">
-                                                                <a
-                                                                    href="collections/tim-theo-bo-suu-tap-collections-search.html">Xem
-                                                                    thêm</a>
-                                                            </div>
-
-
-                                                        </div>
-
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="accordion" id="accordionExample4">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <div class="mb-0">
-                                                    <button class="btn btn-link menu-mobile-button"
-                                                        data-toggle="collapse" data-target="#collapseOne4"
-                                                        aria-expanded="true" aria-controls="collapseOne4">
-                                                        <span style="font-weight: 500; font-size: 17px;">Tìm nhanh bộ
-                                                            sản phẩm</span>
-                                                        <span class="icon-control">
-                                                            <img id="icon-plus-4"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
-                                                            <img id="icon-minus-4"
-                                                                src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png">
-                                                            <!--<i id="icon-plus-2" class="fa fa-plus" aria-hidden="true"></i>
-            							<i id="icon-minus-2" class="fa fa-minus" aria-hidden="true"></i>-->
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div id="collapseOne4" class="collapse" aria-labelledby="headingOne"
-                                                data-parent="#accordionExample4">
-                                                <ul class="card-body">
-
-
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-tra_d2ebb2ea983a4a0e9cec3f625c037487.png">
-                                                        <a class="parent" href="collections/bo-am-chen-uong-tra.html">Bộ
-                                                            ấm trà cao cấp</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-tra_d2ebb2ea983a4a0e9cec3f625c037487.png">
-                                                        <a class="parent"
-                                                            href="collections/cac-bo-am-chen-uong-tra-13-mon.html">Bộ ấm
-                                                            chén uống
-                                                            trà 13 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-tra_d2ebb2ea983a4a0e9cec3f625c037487.png">
-                                                        <a class="parent"
-                                                            href="collections/bo-am-chen-uong-tra-15-mon.html">Bộ ấm
-                                                            chén uống trà
-                                                            15 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-an-chau-a_633264541fd44401b9a9f3159fd8aa34.png">
-                                                        <a class="parent"
-                                                            href="collections/bo-am-chen-uong-tra-18-den-21-mon.html">Bộ
-                                                            ấm chén
-                                                            uống trà 18 món - 21 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-an-chau-a_633264541fd44401b9a9f3159fd8aa34.png">
-                                                        <a class="parent"
-                                                            href="collections/bo-bat-dia-an-kieu-a-22-mon.html">Bộ bát
-                                                            đĩa ăn kiểu
-                                                            Á 22 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/bo-ban-an-chau-au_0e5003f327c04f988d9163da98b48fad.png">
-                                                        <a class="parent"
-                                                            href="collections/bo-bat-dia-an-kieu-a-38-mon.html">Bộ bát
-                                                            đĩa ăn kiểu
-                                                            Á 38 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/su-trang-khong-hoa-tiet_1cf2df365e824392b8248e6a3cd7d7df.png">
-                                                        <a class="parent" href="collections/bo-dia-an-kieu-au.html">Bộ
-                                                            đĩa ăn kiểu Âu 22 món</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/su-trang-khong-hoa-tiet_1cf2df365e824392b8248e6a3cd7d7df.png">
-                                                        <a class="parent"
-                                                            href="collections/bo-san-pham-06-mon-cac-loai.html">Bộ sản
-                                                            phẩm 06 món
-                                                            các loại</a>
-                                                    </li>
-                                                    <li>
-                                                        <img style="width: 50px"
-                                                            src="../file.hstatic.net/200000296482/file/su-trang-khong-hoa-tiet_1cf2df365e824392b8248e6a3cd7d7df.png">
-                                                        <a class="parent"
-                                                            href="collections/cap-tach-tra-kem-dia-lot-cap-dia-banh-dep.html">Cặp
-                                                            tách trà kèm đĩa lót, cặp đĩa bánh</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <a class="parent" href="pages/he-thong-cua-hang.html">
-                                            <span style="font-size: 17px; font-weight: 400;">Hệ thống cửa hàng</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="parent" href="blogs/all.html">
-                                            <span style="font-size: 17px; font-weight: 400;">Tin Tức</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="parent" href="pages/lich-su-100-nam-hinh-thanh-va-phat-trien.html">
-                                            <span style="font-size: 17px; font-weight: 400;">Về chúng tôi</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="row" style="margin: 65px 0;">
-                                        <div class="col-12" style="text-align: center; margin-top: 20px;">
-                                            <img style="width: 50%;"
-                                                src="/file.hstatic.net/200000296482/file/logo_1c90af075f3541399f3f74a35237f63c.png">
-                                        </div>
-                                        <div class="col-12">
-                                            <p style="text-align: center; margin: 15px 15px 0;">NORITAKE - Sứ cao cấp số
-                                                1 Nhật Bản |
-                                                Website chính thức tại Việt Nam</p>
-                                        </div>
-                                        <div class="col-12" style="margin:0 15px 15px 15px;">
-
-                                        </div>
-                                    </li>
-
+                                                                    @if ($child->children->count())
+                                                                        <div id="collapse{{ $child->id }}" class="collapse">
+                                                                            <ul class="card-body">
+                                                                                @foreach ($child->children as $subChild)
+                                                                                    <li>
+                                                                                        <a href="{{ url($subChild->slug) }}">{{ $subChild->name }}</a>
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>  
+                                                                    @endif
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>  
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </nav>
                     </div>
                 </div>
+
             </div>
 
             <div class="header_dropdown_content site_menu_mobile desktop-menu-icon">
@@ -1116,6 +533,7 @@
                 </div>
             </div>
         </div>
+        <!-- Menu desktop -->
         <nav class="f-nav nav-wrap-menu">
             <ul class="f-nav-one wrap-menu">
                 @if(isset($menus))
@@ -1169,6 +587,96 @@
 
 
         <style>
+          .menuList-sub li > div {
+    display: flex;
+    justify-content: space-between; /* Đẩy hai phần tử về hai phía */
+    align-items: center;
+    width: 100%;
+}
+
+.menuList-sub li a {
+    flex-grow: 1; /* Giúp tên menu mở rộng về bên trái */
+    text-align: left;
+}
+
+.icon-control {
+    margin-left: auto; /* Đẩy icon sang phải */
+}
+
+.card-body {
+    padding-left: 15px; /* Thụt lề cho danh sách con */
+}
+
+.card-body li {
+    display: block; /* Đảm bảo các mục con xuống dòng */
+    padding: 5px 0;
+}
+
+/* Cấp 1 (Điện thoại) */
+.menuList-sub > li {
+    background:#ffffff; /* Xám đậm */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Cấp 2 (Samsung, iPhone) */
+.menuList-sub > li .card-body > li {
+    background: #f0f0f0#ddd; /* Xám nhạt */
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Cấp 3 (s24, các model con) */
+.menuList-sub > li .card-body > li .card-body > li {
+    background: #ffffff; /* Trắng hoặc màu khác dễ phân biệt */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+            
+        .site-nav-container-menu {
+            background: #f8f8f8;
+            padding: 10px;
+        }
+        .menu-mobile-content {
+            max-width: 400px;
+            margin: auto;
+        }
+        .menuList-sub {
+            list-style: none;
+            padding-left: 0;
+        }
+        .menuList-sub li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        .menu-mobile-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 10px;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .menu-mobile-button:focus {
+            outline: none;
+        }
+        .icon-control {
+            cursor: pointer;
+        }
+        .icon-control img {
+            width: 16px;
+            height: 16px;
+        }
+        .collapse ul {
+            padding-left: 20px;
+        }
             .f-nav-three.trai {
                 height: auto;
             }
@@ -1201,6 +709,46 @@
         </style>
 
         <script>
+             $(document).ready(function () {
+        $('.icon-control').click(function (e) {
+            e.preventDefault(); // Chặn mở link khi ấn vào icon
+
+            let target = $(this).attr("data-target");
+            let iconPlus = $(this).find("img:first");
+            let iconMinus = $(this).find("img:last");
+
+            if ($(target).hasClass("show")) {
+                iconPlus.show();
+                iconMinus.hide();
+            } else {
+                iconPlus.hide();
+                iconMinus.show();
+            }
+        });
+    });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll(".menu-mobile-button").forEach(button => {
+                    button.addEventListener("click", function () {
+                        let menuId = this.getAttribute("data-target").replace("#collapse", ""); 
+                        let iconPlus = document.getElementById(`icon-plus-${menuId}`);
+                        let iconMinus = document.getElementById(`icon-minus-${menuId}`);
+                        
+                        if (iconPlus && iconMinus) {
+                            let isCollapsed = document.getElementById(`collapse${menuId}`).classList.contains("show");
+
+                            if (isCollapsed) {
+                                iconPlus.style.display = "inline";
+                                iconMinus.style.display = "none";
+                            } else {
+                                iconPlus.style.display = "none";
+                                iconMinus.style.display = "inline";
+                            }
+                        }
+                    });
+                });
+            });
+
             $(document).ready(function() {
                 // Duyệt qua mỗi thẻ li có class has-sub
                 $("li.has-sub").each(function() {
@@ -1224,6 +772,10 @@
     </div>
 </header>
 <style>
+    .icon-control img[id^="icon-minus-"] {
+    display: none;
+}
+
     .social-login-container {
     display: flex;
     flex-direction: column;

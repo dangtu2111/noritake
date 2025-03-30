@@ -42,6 +42,8 @@ use App\Http\Controllers\Backend\HomeViewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeComponentController;
 use App\Http\Controllers\StaticViewController;
+// 
+use App\Http\Controllers\Backend\ContactController;
 
 
 
@@ -170,6 +172,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/content/like-data', [ContentController::class, 'likedata']);
     Route::get('/content/check', [ContentController::class, 'checkIfRated']);
     Route::get('/comments', [ContentController::class, 'loadCommentsPage']);
+
+});
+//Gửi thắc mắc
+Route::group(['prefix' => 'contact'], function () {
+    Route::post('create', [ContactController::class, 'create'])->name('user.contact.create');
 });
 
 //BACKEND
@@ -177,6 +184,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+    
     // usercatalogue
     Route::group(['prefix' => 'user/catalogue'], function () {
         Route::get('index', [UserCatalogueController::class, 'index'])->name('user.catalogue.index');
@@ -308,6 +316,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('delete/{id}', [BannerController::class, 'delete'])->where(['id' => '[0-9]+'])->name('banner.delete');
         Route::delete('destroy/{id}', [BannerController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('banner.destroy');
     });
+
+    //Contact
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('index', [ContactController::class, 'index'])->name('contact.index');
+        Route::get('admin/contacts/{id}', [ContactController::class, 'show'])->name('contact.show');
+        Route::delete('admin/contacts/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
+    });
     //System
     Route::group(['prefix' => 'system'], function () {
         Route::get('index', [SystemController::class, 'index'])->name('system.index');
@@ -359,7 +374,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/home-view/{id}', [HomeComponentController::class, 'destroy'])->name('home-components.destroy');
 
 
-    
+
     Route::get('/admin/static-pages', [StaticViewController::class, 'index'])->name('static-pages.index');
     Route::get('/admin/static-pages/create', [StaticViewController::class, 'create'])->name('static-pages.create');
     Route::post('/admin/static-pages', [StaticViewController::class, 'store'])->name('static-pages.store');
@@ -394,6 +409,8 @@ Route::get('auth/facebook', [LoginController::class, 'redirectToFacebook'])->nam
 Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('auth.facebook.callback');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+
 
 //Page 404
 Route::fallback(function () {
