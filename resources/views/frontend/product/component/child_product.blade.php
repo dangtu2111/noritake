@@ -1,3 +1,4 @@
+@if(isset($productSimilars) && $productSimilars->isNotEmpty())
 <div class="productDetail-related clearfix border-top pt-4 tr">
     <div>
         <div class="productRelated-title text-center">
@@ -8,7 +9,7 @@
         <div class="noritake-conetent owl-carousel owl-theme" style="margin: 0px; display: flex; overflow-x: auto;">
             <div class="owl-stage-outer">
                 <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all; width: 5881px;">
-                    @if(isset($productSimilars) && $productSimilars->isNotEmpty())
+                    
                     @foreach($productSimilars as $productItem)
                     <div class="owl-item active" style="width: 207.8px; margin-right: 10px;">
                         <div class="product-loop">
@@ -112,12 +113,12 @@
                         </div>
                     </div>
                     @endforeach
-                    @else
-                    <p>Không có sản phẩm tương tự.</p>
-                    @endif
+                    
+                 
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endif
