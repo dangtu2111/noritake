@@ -408,7 +408,7 @@
                                         @foreach ($menus as $menu)
                                             <li class="{{ $menu->children->count() ? 'accordion' : '' }}">
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="{{ $menu->link ? url($menu->link) : "#" }}" style="text-decoration: none; font-size: 17px; font-weight: 500;">
+                                                    <a href="{{ url($menu->slug) }}" style="text-decoration: none; font-size: 17px; font-weight: 500;">
                                                         {{ $menu->name }}
                                                     </a>
                                                     @if ($menu->children->count())
@@ -539,7 +539,7 @@
                 @if(isset($menus))
                 @foreach ($menus as $menu)
                 <li class="hidden-on-small {{ $menu->children->count() ? 'has-sub' : '' }}">
-                    <a href="{{ $menu->link ? url($menu->link) : "#" }}" title="{{ $menu->name }}">
+                    <a href="{{ url($menu->slug) }}" title="{{ $menu->name }}">
                         {{ $menu->name }}
                         @if ($menu->children->count())
                         <svg class="icon--arrow-bottom" viewBox="0 0 12 8">
