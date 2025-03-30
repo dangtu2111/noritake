@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products,slug',
-            'info' => 'max:1280',
+            'info' => 'max:255',
             'product_catalogue_id' => 'required',
             'instock' => 'nullable',
             'brand_id' => 'gt:0', // gia tri lớn hơn 0

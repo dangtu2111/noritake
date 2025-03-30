@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('album')->nullable();
-            $table->string('info')->nullable();
+            $table->text('info')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');  // vừa tạo field vừa tạo Khóa ngoại đến bảng brands
             $table->tinyInteger('is_hot')->default(0);

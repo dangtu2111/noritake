@@ -37,7 +37,7 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->getProductBySlug($slug);
     
-        $product->attribute = $this->productService->getAttribute($product);
+        // $product->attribute = $this->productService->getAttribute($product);
         $categories = $this->productCatalogueRepository->allWhere([
             ['publish', '=', 1]
         ]);

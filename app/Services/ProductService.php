@@ -137,6 +137,7 @@ class ProductService implements ProductServiceInterface
         } catch (\Exception $e) {
             DB::rollBack();
             echo $e->getMessage();
+            dd($e->getMessage());
             return false;
         }
     }
@@ -302,6 +303,25 @@ class ProductService implements ProductServiceInterface
     private function updateProduct($product, $request)
     {
         $payload = $request->only($this->payload());
+        // Lấy mảng key_info và info_ms
+       
+
+        $keyInfos = $payload['key_info'];
+        $infoMs =$payload['info_ms'];
+        // Kiểm tra số lượng phần tử có khớp không
+        if (count($keyInfos) !== count($infoMs)) {
+            throw new \Exception("Số lượng key_info và info_ms không khớp!");
+        }
+      
+        // Ghép key_info và info_ms thành mảng kết hợp, sau đó mã hóa JSON
+        $infoArray = [];
+        foreach ($keyInfos as $index => $keyInfo) {
+            $infoArray[] = [
+                'key_info' => $keyInfo,
+                'info_ms' => $infoMs[$index],
+            ];
+        }
+        $payload['info'] = json_encode($infoArray);
         $payload['slug'] = Str::slug($payload['slug'], '-');
         $payload['attributeCatalogue'] = $this->formatJson($request, 'attributeCatalogue');
         if ($request->has('attribute')) {
@@ -511,6 +531,8 @@ class ProductService implements ProductServiceInterface
             'del',
             'parent_id',
             'child_id',
+            'key_info',
+            'info_ms',
             'sku',
             'attributeCatalogue', // json
             'attribute', // json

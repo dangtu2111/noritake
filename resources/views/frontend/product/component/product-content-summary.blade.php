@@ -21,7 +21,7 @@
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                     <a href="https://noritake.vn/collections/art-stage-collection"
                         target="_self" itemprop="item">
-                        <span itemprop="name">Art Stage Collection</span>
+                        <span itemprop="name">{{ optional($product->productCatalogues->first())->name }}</span>
                     </a>
                     <meta itemprop="position" content="3" />
                 </li>
@@ -45,10 +45,8 @@
 <div class="product-container-detail stickyProduct-detail">
     <div class="product-content-summary">
         <div class="product-heading mb-3" style="margin-top: 0.5rem">
-            <!--<span class="pro-vendor">
-                                        <a title="Xem bộ sưu tập: Art Stage Collection" href="/collections/art-stage-collection">Art Stage Collection</a>
-                                    </span>-->
-            <h1>{{ $product->name }}</h1>
+
+            <h1>{{ $product->name }} | {{ optional($product->productCatalogues->first())->name }} {{ $product->sku }} </h1>
 
             <span id="pro_sku"><strong>Mã SP:</strong> {{ $product->sku }}</span>
 
@@ -56,7 +54,8 @@
         </div>
         <div id="price-preview" class="product-price d-flex align-items-center py-2 mb-1">
 
-            <span class="pro-price">{{ $product->price }}₫</span>
+            <span class="pro-price">{{ number_format($product->del ?? $product->price , 0, ',', '.') }}
+                ₫</span>
         </div>
         <div class="product-available">
             <p class="txt-inventory"><!--<span>Tình trạng:</span>-->
@@ -69,7 +68,7 @@
 
                 <!-- Select ẩn cho biến thể sản phẩm -->
                 <div class="select clearfix d-none">
-                    <select id="product-select" name="id"  value ="{{ $product->id }}" style="display:none;">
+                    <select id="product-select" name="id" value="{{ $product->id }}" style="display:none;">
                         <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->del }}₫</option>
                         <!-- Có thể thêm các option khác nếu cần -->
                     </select>
@@ -183,61 +182,24 @@
                                         <td style="width: 195px; height: 18px;"><strong>Bộ sưu
                                                 tập</strong></td>
                                         <td style="width: 400px; height: 18px;"><a
-                                                title="Xem bộ sưu tập:  Art Stage Collection"
-                                                href="https://noritake.vn/collections/art-stage-collection">
+                                                title="Xem bộ sưu tập: {{ optional($product->productCatalogues->first())->name }}"
+                                                href="{{ route('product.category', ['id' => optional($product->productCatalogues->first())->id]) }}">
                                                 <span
-                                                    style="color: #d29f13; font-weight: 500;">Art
-                                                    Stage Collection</span></a></td>
+                                                    style="color: #d29f13; font-weight: 500;">{{ optional($product->productCatalogues->first())->name }}</span></a></td>
                                     </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Đặc
-                                                điểm</strong></td>
-                                        <td style="width: 400px; height: 18px;">M&agrave;u trắng
-                                            kh&ocirc;ng họa tiết</td>
+                                    @php
+                                    $infos = json_decode($product->info, true); // Chuyển JSON thành mảng
+
+                                    @endphp
+                                    @if (is_array($infos))
+                                    @foreach ($infos as $item)
+                                    <tr>
+                                        <td style="width: 187.066px;"><strong>{{ $item['key_info'] }}</strong></td>
+                                        <td style="width: 378.976px;">{{ $item['info_ms'] }}</td>
                                     </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Chất
-                                                liệu</strong></td>
-                                        <td style="width: 400px; height: 18px;">Sứ trắng</td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Phong
-                                                c&aacute;ch thiết kế</strong></td>
-                                        <td style="width: 400px; height: 18px;">Art Stage Style
-                                        </td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;">
-                                            <strong>K&iacute;ch thước mỗi sản
-                                                phẩm</strong><strong><br /></strong>
-                                        </td>
-                                        <td style="width: 400px; height: 18px;">Đường
-                                            k&iacute;nh 122mm | Cao 56mm</td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Dung
-                                                t&iacute;ch mỗi sản phẩm</strong></td>
-                                        <td style="width: 400px; height: 18px;">320ml</td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Trọng
-                                                lượng mỗi sản phẩm</strong></td>
-                                        <td style="width: 400px; height: 18px;">Đang cập nhật
-                                        </td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Lưu
-                                                &yacute; khi sử dụng</strong></td>
-                                        <td style="width: 400px; height: 18px;">Sử dụng được
-                                            trong l&ograve; vi s&oacute;ng v&agrave; m&aacute;y
-                                            rửa ch&eacute;n</td>
-                                    </tr>
-                                    <tr style="height: 18px;">
-                                        <td style="width: 195px; height: 18px;"><strong>Nơi sản
-                                                xuất</strong></td>
-                                        <td style="width: 400px; height: 18px;">Nh&agrave;
-                                            m&aacute;y Noritake tại Sri Lanka</td>
-                                    </tr>
+                                    @endforeach
+
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

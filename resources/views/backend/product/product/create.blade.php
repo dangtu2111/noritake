@@ -65,7 +65,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="row" id="keyInfoContainer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label class="form-label" for="ckContent">Key info</label>
+                                        <a href="#" id="multipleInserKeyInfo">Thêm key</a>
+                                    </div>
+                                    <div class="row key-info-row">
+                                        <div class="col-lg-4">
+                                            <input type="text" name="key_info[]" class="form-control"
+                                                value="{{ old('key_info') }}" placeholder="key_info sản phẩm">
+                                            @if ($errors->has('key_info'))
+                                            <span class="text-danger fz-12 mt-1">{{ $errors->first('key_info') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <input type="text" name="info_ms[]" class="form-control"
+                                                value="{{ old('info_ms') }}" placeholder="info_ms sản phẩm">
+                                            @if ($errors->has('info_ms'))
+                                            <span class="text-danger fz-12 mt-1">{{ $errors->first('info_ms') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div>
                                     <label class="form-label" for="info">Thông tin</label>
                                     <div>
                                         <textarea class="form-control " rows="6"
@@ -74,7 +96,7 @@
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('info') }}</span>
                                         @endif
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="mt-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label class="form-label" for="ckContent">Mô tả </label>
@@ -87,6 +109,7 @@
                                             name="description">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
+
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -117,6 +140,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!-- {{-- sản phẩm nhiều phiên bản  --}}
                                 @include('backend.product.product.component.variant')
@@ -295,3 +319,27 @@
         </div>
     </div>
 </div>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('multipleInserKeyInfo').addEventListener('click', function(e) {
+        e.preventDefault(); // Ngăn hành vi mặc định của thẻ <a>
+
+        // Tạo HTML cho dòng mới
+        const newRow = `
+            <div class="row key-info-row mt-2">
+                <div class="col-lg-4">
+                    <input type="text" name="key_info[]" class="form-control" 
+                        placeholder="key_info sản phẩm">
+                </div>
+                <div class="col-lg-8">
+                    <input type="text" name="info_ms[]" class="form-control" 
+                        placeholder="info_ms sản phẩm">
+                </div>
+            </div>
+        `;
+
+        // Thêm dòng mới vào container
+        document.getElementById('keyInfoContainer').insertAdjacentHTML('beforeend', newRow);
+    });
+});
+</script>

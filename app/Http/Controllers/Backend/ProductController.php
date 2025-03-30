@@ -97,7 +97,8 @@ class ProductController extends Controller
         ));
     }
     public function edit($slug, UpdateProductRequest $request)
-    {
+    {   
+        
         $result = $this->productService->update($slug, $request);
         if ($result) {
             flash()->success('cập nhật thành công');

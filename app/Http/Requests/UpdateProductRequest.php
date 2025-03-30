@@ -24,7 +24,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'slug' => 'required|string|max:255',
-            'info' => 'max:1280',
+            'info' => 'string',
             'short_desc' => 'max:255',
             'product_catalogue_id' => 'required',
             'brand_id' => 'gt:0', // gia tri lớn hơn 0
@@ -50,7 +50,7 @@ class UpdateProductRequest extends FormRequest
             'price.numeric' => 'Giá tiền phải là số.',
             'price.min' => 'Giá tiền phải lớn hơn 0.',
             'short_desc.max' => 'Mô tả ngắn không được vượt quá 255 ký tự.',
-            'info.max' => 'Thông tin không được vượt quá 255 ký tự.',
+            'info.string' => 'Thông tin không được vượt quá 255 ký tự.',
 
         ];
     }
