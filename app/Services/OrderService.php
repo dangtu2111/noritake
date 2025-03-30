@@ -84,6 +84,7 @@ class OrderService implements OrderServiceInterface
             $payload = $this->preparePayload($request);
             $payload['paid_at'] = ($request->payment_method === 'cod') ? null : now();
             $order = $this->orderRepository->create($payload);
+            dd($order);
             if ($order->id > 0) {
                 $orderItem = $this->createOrderitems($request, $order);
             }

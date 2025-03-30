@@ -126,7 +126,6 @@ class OrderController extends FontendController
     {
         
         $order = $this->orderService->create($request);
-        dd($order);
         if ($order['payment_method'] !== 'cod') {
             $response = $this->paymentMethod($order);
             if ($response) {
