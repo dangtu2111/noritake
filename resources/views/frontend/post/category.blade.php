@@ -52,7 +52,7 @@ Danh mục bài viết
                     <div class="col-12 col-lg-10 col-heading-page">
                         <div class="heading-page">
 
-                            <h1 style="scroll-margin-top: 40px;" id="decor---sắp-xếp-1">Decor - Sắp xếp</h1>
+                            <h1 style="scroll-margin-top: 40px;" id="decor---sắp-xếp-1">{{$postCatalogue->name}}</h1>
 
 
 
