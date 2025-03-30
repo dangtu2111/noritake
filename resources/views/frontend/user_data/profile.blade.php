@@ -47,7 +47,7 @@ Thông tin cá nhân
 									<p class="mb-2">
 										<span class="font-weight-bold mr-2">Số điện thoại: </span>{{ $user->phone ?? 'Chưa cập nhật' }}
 									</p>
-									<a id="view_address" href="/account/addresses">Xem địa chỉ</a>
+									<a id="view_address" href="{{route('address.user')}}">Xem địa chỉ</a>
 								</div>
 							</div>
 						</div>

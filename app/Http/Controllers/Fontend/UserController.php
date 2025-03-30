@@ -27,7 +27,6 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        // dd($user);
         return view('frontend.user_data.profile', compact('user'));
     }
     public function address(){
@@ -46,6 +45,7 @@ class UserController extends Controller
     {
         try {
             $user = Auth::user();
+           
             $payload = $request->only('name', 'phone', 'description', 'birthday', 'province_id', 'district_id', 'ward_id', 'address');
 
             if ($request->hasFile('image')) {
@@ -61,7 +61,7 @@ class UserController extends Controller
             }
             
             $user->update($payload);
-            
+        
             return redirect()->route('profile.user')->with('success', 'Cập nhật thông tin thành công!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Đã xảy ra lỗi. Vui lòng thử lại!');

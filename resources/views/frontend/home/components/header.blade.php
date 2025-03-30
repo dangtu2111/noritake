@@ -208,7 +208,7 @@
                                     <ul class="popover-panel_list">
                                         <li><a class="  form-control" href="{{ route("profile.user") }}">Trang cá
                                                 nhân</a></li>
-                                        <li><a class="  form-control" href="">Đơn hàng của tôi</a></li>
+                                   
 
                                         <li><a class="  form-control" href="{{ route('auth.logout') }}">Đăng xuất</a></li>
                                         
