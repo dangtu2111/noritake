@@ -82,7 +82,7 @@ class OrderService implements OrderServiceInterface
         DB::beginTransaction();
         try {
             $payload = $this->preparePayload($request);
-            $payload['paid_at'] = ($request->payment_method === 'cod') ? null : now();
+            $payload['paid_at'] =  now();
             dd($payload);
             $order = $this->orderRepository->create($payload);
            
