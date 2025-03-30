@@ -77,7 +77,7 @@
                                 <div class="product-detail">
                                     <div class="box-pro-detail">
                                         <!-- Thương hiệu hoặc danh mục (nếu có) -->
-                                        @if($productItem->)
+                                        @if($productItem->productCatalogues)
                                         <span class="pro-vendor">
                                             <a title="Xem bộ sưu tập: {{ optional($product->productCatalogues->first())->name )}}"
                                                 href="{{ route('product.category', ['id'=>$product->productCatalogues->first())->id]) }}">
