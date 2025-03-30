@@ -25,10 +25,7 @@
 			<ul class="list-unstyled">			
 				<li><a href="{{ route("profile.user") }}" class="d-block position-relative">Thông tin tài khoản</a></li>
 				<li><a href="{{ route("address.user") }}" class="d-block position-relative">Danh sách địa chỉ</a></li>
-				<li><form action="" method="POST">
-                                                @csrf
-                                                <button type="submit" class="d-block position-relative">Đăng xuất</button>
-                                            </form></li>
+				<li><a href="{{ route('auth.logout') }}" class="d-block position-relative">Đăng xuất</a></li>
 			</ul>
 		</div>
 	</div>
