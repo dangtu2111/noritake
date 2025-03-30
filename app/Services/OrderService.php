@@ -83,7 +83,7 @@ class OrderService implements OrderServiceInterface
         try {
             $payload = $this->preparePayload($request);
             $payload['paid_at'] =  now();
-            dd($payload);
+        
             $order = $this->orderRepository->create($payload);
            
             if ($order->id > 0) {
