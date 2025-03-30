@@ -39,7 +39,7 @@
                                         <div class="article-excerpt-desc">
                                             <a href="{{ route('post.detail', ['slug' => $post->slug]) }}"
                                                class="link">
-                                                <p class="article-excerpt-desc_content">{{ $post->excerpt }}</p>
+                                                <p class="article-excerpt-desc_content">{!!  $post->description !!}</p>
                                             </a>
                                         </div>
                                         <span class="date">- {{ $post->created_at->format('d.m.Y') }}</span>

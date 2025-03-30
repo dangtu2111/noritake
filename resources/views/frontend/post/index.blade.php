@@ -66,11 +66,12 @@ Bài viết
                                     Chủ đề
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="van-hoa-nghe-thuat.html">Văn hóa - Nghệ
-                                        thuật</a>
-                                    <a class="dropdown-item" href="tin-tuc-su-kien.html">Tin tức - Sự kiện</a>
-                                    <a class="dropdown-item" href="decor-sap-xep.html">Decor - Sắp xếp</a>
-                                    <a class="dropdown-item" href="am-thuc.html">Ẩm thực</a>
+                                    @if(isset($postCategories))
+                                    @foreach($postCategories as $categoryP)
+                                    <a class="dropdown-item" href="{{ route('post.category',['id'=>$categoryP->id]) }}">{{ $categoryP->name }}</a>
+                                    @endforeach
+                                    @endif
+                                    
                                 </div>
                             </div>
 
@@ -86,23 +87,23 @@ Bài viết
                     </div>
                     <div class="col-12 col-lg-7">
                         <div class="content-list-blog">
-                        @include('frontend.post.components.post_new')
+                            @include('frontend.post.components.post_new')
                         </div>
                         @if(isset($postCategories))
                         @foreach($postCategories as $categoryP)
-                            <div class="blog-child">
-                                @include('frontend.post.components.post_category',['categoryP'=>$categoryP])
-                                
-                            </div>
+                        <div class="blog-child">
+                            @include('frontend.post.components.post_category',['categoryP'=>$categoryP])
+
+                        </div>
                         @endforeach
                         @endif
-                        
 
-                  
+
+
                     </div>
                     <div class="col-12 col-lg-3 col-sidebar">
                         @include('frontend.post.components.sidebar_post')
-                        
+
                     </div>
                 </div>
             </div>
