@@ -72,9 +72,12 @@ class BannerService implements BannerServiceInterface
         DB::beginTransaction();
         try {
             $payload = $request->except(['_token', 'submit']);
-            $payload['album'] = json_encode($payload['variantAlbum']);
-            unset($payload['variantAlbum']);
+            
+            // $payload['album'] = json_encode($payload['variantAlbum']);
+            // dd($payload);
+            // unset($payload['variantAlbum']);
             $banner = $this->bannerRepository->create($payload);
+            
             DB::commit();
             return true;
         } catch (\Exception $e) {

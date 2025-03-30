@@ -45,7 +45,9 @@ class BannerController extends Controller
     public function store(StoreBannerRequest $request)
     {
         // gọi tới service với phương thức create 
+        
         $result = $this->bannerService->create($request);
+        
         if ($result) {
             flash()->success('Thêm mới thành công');
             return redirect()->route('banner.index');
