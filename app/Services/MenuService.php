@@ -92,6 +92,7 @@ class MenuService implements MenuServiceInterface
         } catch (\Exception $e) {
             DB::rollback();
             Log::error('Lỗi khi lưu menu: ' . $e->getMessage());
+            dd($e->getMessage());
             return false;
         }
     }
