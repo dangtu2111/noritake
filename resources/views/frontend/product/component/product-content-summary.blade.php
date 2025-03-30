@@ -149,16 +149,22 @@
 
 
 
-
+                    @if(isset($product->description ))
                     <li class="active">
                         <p>Thông tin cơ bản </p>
                         <div class="tabs-content">
                             {!! $product->description !!}
                         </div>
                     </li>
+                    @endif
 
 
+@php
+                                    $infos = json_decode($product->info, true); // Chuyển JSON thành mảng
 
+                                    @endphp
+                                    @if (is_array($infos))
+                                    @foreach ($infos as $item)
 
                     <li class="active">
                         <p>Thông tin chi tiết </p>
@@ -187,44 +193,42 @@
                                                 <span
                                                     style="color: #d29f13; font-weight: 500;">{{ optional($product->productCatalogues->first())->name }}</span></a></td>
                                     </tr>
-                                    @php
-                                    $infos = json_decode($product->info, true); // Chuyển JSON thành mảng
-
-                                    @endphp
-                                    @if (is_array($infos))
-                                    @foreach ($infos as $item)
+                                    
                                     <tr>
                                         <td style="width: 187.066px;"><strong>{{ $item['key_info'] }}</strong></td>
                                         <td style="width: 378.976px;">{{ $item['info_ms'] }}</td>
                                     </tr>
-                                    @endforeach
-
-                                    @endif
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </li>
+                    @endforeach
+
+                                    @endif
+                    @if(isset($product->children))
+                    @foreach($product->children as $itemChildren)
                     <li class="active">
                         <p>Bộ sản phẩm bao gồm </p>
                         <div class="tabs-content">
                             <div class="row product-include-trai respon4"
                                 style="margin: 0;">
-                                @if(isset($product->children))
-                                @foreach($product->children as $itemChildren)
+
                                 <div class="col-6 col-sm-6 col-md-4"><a
                                         href="{{ route('product.detail',['slug'=>$itemChildren->slug]) }}">
                                         <img src="{{ $itemChildren->image?? 'https://file.hstatic.net/200000296482/file/dia_sau_long_21_4cm_dung_tich_300ml__3cfc42fa196f43289d268644aae2858e.jpg'}}"
                                             alt="Đĩa s&acirc;u l&ograve;ng 21,4cm" />
-                                        <span style="font-size: 10pt;"> <strong>{{  $itemChildren->sku}}</strong> </span> </a> <br /><span
+                                        <span style="font-size: 10pt;"> <strong>{{ $itemChildren->sku}}</strong> </span> </a> <br /><span
                                         style="font-size: 10pt;"> <a
                                             href="{{ route('product.detail',['slug'=>$itemChildren->slug]) }}">{{ $itemChildren->name}}<span
-                                                style="color: #d29f13;">  </span> </a>
+                                                style="color: #d29f13;"> </span> </a>
                                     </span></div>
-                                @endforeach
-                                @endif
+
                             </div>
                         </div>
                     </li>
+                    @endforeach
+                    @endif
 
 
                 </ul>
