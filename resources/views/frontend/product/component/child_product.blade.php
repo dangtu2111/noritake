@@ -79,9 +79,9 @@
                                         <!-- Thương hiệu hoặc danh mục (nếu có) -->
                                         @if($productItem->productCatalogues)
                                         <span class="pro-vendor">
-                                            <a title="Xem bộ sưu tập: {{ optional($product->productCatalogues->first())->name )}}"
-                                                href="{{ route('product.category', ['id'=>$product->productCatalogues->first())->id]) }}">
-                                                {{ optional( $product->productCatalogues->first())->name) }}
+                                            <a title="Xem bộ sưu tập: {{ optional($productItem->productCatalogues->first())->name }}"
+                                                href="{{ route('product.category', ['id' => optional($productItem->productCatalogues->first())->id]) }}">
+                                                {{ optional($productItem->productCatalogues->first())->name }}
                                             </a>
                                         </span>
                                         @endif
