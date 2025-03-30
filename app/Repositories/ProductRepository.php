@@ -79,7 +79,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         return $this->model
             ->select(['*'])
-            ->with(['productCatalogues',
+            ->with(['productCatalogues','children',
              'productVariant' => function ($query) {
                 $query->where('quantity', '>', 0); 
             }, 

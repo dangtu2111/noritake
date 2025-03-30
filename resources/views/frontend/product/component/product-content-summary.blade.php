@@ -204,6 +204,28 @@
                             </table>
                         </div>
                     </li>
+                    <li class="active">
+                        <p>Bộ sản phẩm bao gồm </p>
+                        <div class="tabs-content">
+                            <div class="row product-include-trai respon4"
+                                style="margin: 0;">
+                                @if(isset($product->children))
+                                @foreach($product->children as $itemChildren)
+                                <div class="col-6 col-sm-6 col-md-4"><a
+                                        href="{{ route('product.detail',['slug'=>$itemChildren->slug]) }}">
+                                        <img src="{{ $itemChildren->image?? 'https://file.hstatic.net/200000296482/file/dia_sau_long_21_4cm_dung_tich_300ml__3cfc42fa196f43289d268644aae2858e.jpg'}}"
+                                            alt="Đĩa s&acirc;u l&ograve;ng 21,4cm" />
+                                        <span style="font-size: 10pt;"> <strong>{{  $itemChildren->sku}}</strong> </span> </a> <br /><span
+                                        style="font-size: 10pt;"> <a
+                                            href="{{ route('product.detail',['slug'=>$itemChildren->slug]) }}">{{ $itemChildren->name}}<span
+                                                style="color: #d29f13;">  </span> </a>
+                                    </span></div>
+                                @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </li>
+
 
                 </ul>
             </div>
