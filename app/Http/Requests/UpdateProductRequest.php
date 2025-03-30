@@ -24,7 +24,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'slug' => 'required|string|max:255',
-            'info' => 'max:255',
+            'info' => 'max:1280',
             'short_desc' => 'max:255',
             'product_catalogue_id' => 'required',
             'brand_id' => 'gt:0', // gia tri lớn hơn 0
