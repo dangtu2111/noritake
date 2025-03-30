@@ -287,7 +287,7 @@
 					address: {!! json_encode($order['address'] ?? '') !!},
 					discount_code: {!! json_encode($order['discount_code'] ?? '') !!},
 					payment_method: typeId,
-					note: {!! json_encode($order['note'] ?? '') !!}
+					note: {!! json_encode($order['note'] ?? '') !!},
 					total_amount: {!! json_encode($order['total_amount'] ?? 0) !!}
 				},
 				beforeSend: function() {
