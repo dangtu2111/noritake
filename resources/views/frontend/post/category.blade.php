@@ -131,7 +131,7 @@ Danh mục bài viết
                                                     <div class="article-excerpt-desc">
                                                         <a href="{{ route('post.detail', ['slug' => $postChild->slug]) }}"
                                                             class="link">
-                                                            <p class="article-excerpt-desc_content">{!! Str::limit(strip_tags($postChild->description), 100) !!}</p>
+                                                            <p class="article-excerpt-desc_content">{!! Str::limit(strip_tags($postChild->description), 255) !!}</p>
                                                         </a>
                                                     </div>
                                                 </div>
