@@ -2,7 +2,7 @@
 <div class="productDetail-related clearfix border-top pt-4 tr">
     <div>
         <div class="productRelated-title text-center">
-            <a href="{{ route('product.category', ['id' => optional($productItem->productCatalogues->first())->id]) }}">
+            <a href="{{ route('product.category', ['id' => optional($product->productCatalogues->first())->id]) }}">
                 <h3>CÙNG BỘ SƯU TẬP</h3>
             </a>
         </div>

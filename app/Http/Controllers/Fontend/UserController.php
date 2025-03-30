@@ -27,6 +27,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
+        // dd($user);
         return view('frontend.user_data.profile', compact('user'));
     }
     public function address(){

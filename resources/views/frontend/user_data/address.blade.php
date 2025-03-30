@@ -17,18 +17,7 @@ Danh sách địa chỉ
 				<div class="row">
 					<div class="col-12 col-lg-3">
 						<div class="sidebar-account-inner mb-4">
-							<div class="account-sidebar">
-								<h2 class="account-title title-sidebar mb-3 text-uppercase">Tài khoản</h2>
-								<div class="account-content">
-									<div class="account-list">
-										<ul class="list-unstyled">
-											<li><a href="/account" class="d-block position-relative">Thông tin tài khoản</a></li>
-											<li><a href="/account/addresses" class="d-block position-relative">Danh sách địa chỉ</a></li>
-											<li><a href="/account/logout" class="d-block position-relative">Đăng xuất</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							@include('frontend.user_data.component.account-sidebar')
 						</div>
 					</div>
 					<div class="col-12 col-lg-9">
@@ -118,26 +107,27 @@ Danh sách địa chỉ
 												</div>
 												<div class="input-group mb-3">
 													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-													<select id="customer_shipping_province" class="input-textbox custom-select" name="address[country]" data-default="Vietnam">
+													<select id="" class="customer_shipping_province input-textbox custom-select">
 														<option value="" data-provinces="[]">- Please Select --</option>
-														
+
 													</select>
 												</div>
 												<div class="input-group mb-3" id="address_province_container_10223266902" style="">
 													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-													<select id="customer_shipping_district" class="input-textbox custom-select" name="address[province]" data-default="">
-														<option value="" data-provinces="[]">- Please Select --</option>
-														
+													<select id="" class="customer_shipping_district input-textbox custom-select" name="address[province]" data-default="">
+														<option value="">- Please Select --</option>
+
 													</select>
+
 												</div>
 												<div class="input-group mb-3" id="address_province_container_10223266902" style="">
 													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-													<select id="customer_shipping_ward" class="input-textbox custom-select" name="address[province]" data-default="">
-														<option value="" data-provinces="[]">- Please Select --</option>
-														
+													<select id="" class="customer_shipping_ward input-textbox custom-select" name="address[province]" data-default="">
+														<option value="">- Please Select --</option>
+
 													</select>
+
 												</div>
-												
 												<div class="input-group mb-3">
 													<span class="input-icon text-center"><i class="fa fa-phone"></i></span>
 													<input type="text" id="address_phone_10223266902" class="input-textbox form-control" name="address[phone]" value="" placeholder="Số điện thoại">
@@ -182,26 +172,28 @@ Danh sách địa chỉ
 												<input type="text" id="address_address2_new" class="input-textbox form-control" name="address[address2]" value="" placeholder="Địa chỉ 2">
 											</div>
 											<div class="input-group mb-3">
-												<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-												<select id="customer_shipping_ward" class="input-textbox custom-select" name="address[country]" data-default="">
-													<option value"" >- Please Select --</option>
-													
-												</select>
-												<div class="input-group mb-3" id="address_province_container_10223266902" style="">
 													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-													<select id="customer_shipping_district" class="input-textbox custom-select" name="address[province]" data-default="">
+													<select id="" class="customer_shipping_province input-textbox custom-select">
 														<option value="" data-provinces="[]">- Please Select --</option>
-														
+
 													</select>
 												</div>
 												<div class="input-group mb-3" id="address_province_container_10223266902" style="">
 													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-													<select id="customer_shipping_district" class="input-textbox custom-select" name="address[province]" data-default="">
-														<option value="" data-provinces="[]">- Please Select --</option>
-														
+													<select id="" class="customer_shipping_district input-textbox custom-select" name="address[province]" data-default="">
+														<option value="">- Please Select --</option>
+
 													</select>
+
 												</div>
-											</div>
+												<div class="input-group mb-3" id="address_province_container_10223266902" style="">
+													<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
+													<select id="" class="customer_shipping_ward input-textbox custom-select" name="address[province]" data-default="">
+														<option value="">- Please Select --</option>
+
+													</select>
+
+												</div>
 											<div class="input-group mb-3" id="address_province_container_new" style="display:none">
 												<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
 												<select id="address_province_new" class="input-textbox custom-select" name="address[province]" data-default=""></select>
@@ -227,74 +219,85 @@ Danh sách địa chỉ
 			</div>
 		</div>
 	</div>
-	
-</main>
-<script>
-		// Lấy các phần tử select theo id
-        var citis = document.getElementById("customer_shipping_province");
-        var districts = document.getElementById("customer_shipping_district");
-        var wards = document.getElementById("customer_shipping_ward");
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy danh sách tất cả các select có cùng class
+        var citis = document.querySelectorAll(".customer_shipping_province");
+        var districts = document.querySelectorAll(".customer_shipping_district");
+        var wards = document.querySelectorAll(".customer_shipping_ward");
+
+        if (!citis.length || !districts.length || !wards.length) {
+            console.error("Không tìm thấy các phần tử select.");
+            return;
+        }
 
         // Cấu hình tham số cho axios
         var Parameter = {
             url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
             method: "GET",
-            responseType: "application/json",
+            responseType: "json",
         };
 
-        // Gọi API và render dữ liệu tỉnh/thành
+        // Gọi API và render dữ liệu tỉnh/thành cho tất cả các select
         axios(Parameter)
-            .then(function(result) {
-                renderCity(result.data);
+            .then(function (response) {
+                if (response.data && Array.isArray(response.data)) {
+                    citis.forEach((citySelect, index) => {
+                        renderCity(response.data, citySelect, districts[index], wards[index]);
+                    });
+                } else {
+                    console.error("Dữ liệu không hợp lệ.");
+                }
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error("Lỗi khi tải dữ liệu:", error);
             });
 
-
-        function renderCity(data) {
-            // Đổ dữ liệu tỉnh/thành vào select
-            for (const x of data) {
-                citis.options[citis.options.length] = new Option(x.Name, x.Id);
-            }
+        function renderCity(data, citis, districts, wards) {
+            // Đổ dữ liệu tỉnh/thành vào từng select
+            data.forEach(x => {
+                let option = new Option(x.Name, x.Id);
+                citis.add(option);
+            });
 
             // Khi chọn tỉnh/thành
-            citis.onchange = function() {
-                // Reset lại danh sách quận/huyện và phường/xã
-                districts.length = 1;
-                wards.length = 1;
-                if (this.value !== "") {
-                    // Lọc lấy tỉnh được chọn
-                    const result = data.filter(n => n.Id === this.value);
-                    if (result.length > 0) {
-                        // Đổ dữ liệu quận/huyện
-                        for (const k of result[0].Districts) {
-                            districts.options[districts.options.length] = new Option(k.Name, k.Id);
-                        }
+            citis.addEventListener("change", function () {
+                districts.innerHTML = '<option value="">Chọn quận/huyện</option>';
+                wards.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+                if (this.value) {
+                    let result = data.find(n => n.Id === this.value);
+                    if (result) {
+                        result.Districts.forEach(k => {
+                            let option = new Option(k.Name, k.Id);
+                            districts.add(option);
+                        });
                     }
                 }
-            };
+            });
 
             // Khi chọn quận/huyện
-            districts.onchange = function() {
-                // Reset lại danh sách phường/xã
-                wards.length = 1;
-                // Lọc dữ liệu tỉnh hiện đang được chọn
-                const dataCity = data.filter(n => n.Id === citis.value);
-                if (this.value !== "" && dataCity.length > 0) {
-                    // Lọc lấy quận/huyện được chọn
-                    const districtData = dataCity[0].Districts.filter(n => n.Id === this.value);
-                    if (districtData.length > 0) {
-                        // Đổ dữ liệu phường/xã
-                        const dataWards = districtData[0].Wards;
-                        for (const w of dataWards) {
-                            wards.options[wards.options.length] = new Option(w.Name, w.Id);
-                        }
+            districts.addEventListener("change", function () {
+                wards.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+                let dataCity = data.find(n => n.Id === citis.value);
+                if (this.value && dataCity) {
+                    let districtData = dataCity.Districts.find(n => n.Id === this.value);
+                    if (districtData) {
+                        districtData.Wards.forEach(w => {
+                            let option = new Option(w.Name, w.Id);
+                            wards.add(option);
+                        });
                     }
                 }
-            };
+            });
         }
-	</script>
+    });
+</script>
+
+
+</main>
 <script src="hstatic.net/0/0/global/customer_area.js"></script>
 
 @endsection
