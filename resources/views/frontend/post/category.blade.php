@@ -127,7 +127,6 @@ Danh mục bài viết
                                                             title="{{ $postChild->name }}"
                                                             class="link">{{ $postChild->name }}</a>
                                                     </h2>
-                                                    <p><span class="date">- {{ $postChild->created_at->format('d.m.Y') }}</span></p>
                                                     <div class="article-excerpt-desc">
                                                         <a href="{{ route('post.detail', ['slug' => $postChild->slug]) }}"
                                                             class="link">
