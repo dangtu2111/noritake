@@ -71,7 +71,7 @@
                                 <div>
                                     <label class="form-label" for="info">Thông tin</label>
                                     <div>
-                                        <textarea class="form-control ck-editor" id="info" data-height="100"
+                                        <textarea class="form-control" id="info" data-height="100"
                                             name="info">{{ old('info', $product->info) }}</textarea>
                                         @if ($errors->has('info'))
                                         <span class="text-danger fz-12 mt-1">{{ $errors->first('info') }}</span>
