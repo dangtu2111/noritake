@@ -18,8 +18,15 @@ Danh sách địa chỉ
 					<div class="col-12 col-lg-3">
 						<div class="sidebar-account-inner mb-4">
 							@include('frontend.user_data.component.account-sidebar')
-						</div>
+										<div class="col					@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
 					</div>
+					@endif
 					<div class="col-12 col-lg-9">
 						<div class="row wrap_content_address">
 							<div class="col-12 col-lg-6">
@@ -51,9 +58,9 @@ Danh sách địa chỉ
 														<b>Địa chỉ:</b>
 													</div>
 													<div class="lb-right">
-														<p class="mb-2">{{ $user->address }}</p>
-														<p class="mb-2">Quận: {{ $user->district_id }}</p>
-														<p class="mb-0">Phường: {{ $user->ward_id }}</p>
+														<p class="mb-2">
+															<span id="user_address">Đang cập nhật...</span>
+														</p>													
 													</div>
 												</div>
 
@@ -219,6 +226,38 @@ Danh sách địa chỉ
 		</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        let provinceId = "{{ str_pad($user->province_id, 2, '0', STR_PAD_LEFT) }}";
+        let districtId = "{{ str_pad($user->district_id, 3, '0', STR_PAD_LEFT) }}";
+        let wardId = "{{ str_pad($user->ward_id, 5, '0', STR_PAD_LEFT) }}";
+
+        if (provinceId && districtId && wardId) {
+            try {
+                // Gọi API lấy danh sách địa phương
+                let response = await fetch("https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json");
+                let data = await response.json();
+
+                // Lấy tên tỉnh/thành
+                let province = data.find(item => item.Id == provinceId);
+                let provinceName = province ? province.Name : "Chưa cập nhật";
+
+                // Lấy tên quận/huyện
+                let district = province ? province.Districts.find(item => item.Id == districtId) : null;
+                let districtName = district ? district.Name : "Chưa cập nhật";
+
+                // Lấy tên phường/xã
+                let ward = district ? district.Wards.find(item => item.Id == wardId) : null;
+                let wardName = ward ? ward.Name : "Chưa cập nhật";
+
+                // Cập nhật nội dung vào HTML
+                document.getElementById("user_address").innerHTML = `${wardName}, ${districtName}, ${provinceName}`;
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu địa phương:", error);
+            }
+        }
+    });
+</script>
 	<script type="text/javascript" charset="utf-8">
 		document.addEventListener("DOMContentLoaded", function() {
 			// Lấy danh sách tất cả các select có cùng class

@@ -33,14 +33,13 @@ Thông tin cá nhân
 								</p>
 								<div class="address">
 									<p class="mb-2">
-										<span class="font-weight-bold mr-2">Địa chỉ 1: </span>{{ $user->address ?? 'Chưa cập nhật' }}
+										<span class="font-weight-bold mr-2">Địa chỉ: </span>{{ $user->address ?? 'Chưa cập nhật' }}
 									</p>
 									<p class="mb-2">
-										<span class="font-weight-bold mr-2">Địa chỉ 2: </span>
-										{{ optional($user->ward)->name ?? 'Chưa cập nhật' }},
-										{{ optional($user->district)->name ?? 'Chưa cập nhật' }},
-										{{ optional($user->province)->name ?? 'Chưa cập nhật' }}
+										<span class="font-weight-bold mr-2">Thuộc : </span>
+										<span id="user_address">Đang cập nhật...</span>
 									</p>
+
 									<p class="mb-2">
 										<span class="font-weight-bold mr-2">Quốc gia: </span>Vietnam
 									</p>
@@ -66,4 +65,36 @@ Thông tin cá nhân
 	</div>
 	</div>
 </main>
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        let provinceId = "{{ str_pad($user->province_id, 2, '0', STR_PAD_LEFT) }}";
+        let districtId = "{{ str_pad($user->district_id, 3, '0', STR_PAD_LEFT) }}";
+        let wardId = "{{ str_pad($user->ward_id, 5, '0', STR_PAD_LEFT) }}";
+
+        if (provinceId && districtId && wardId) {
+            try {
+                // Gọi API lấy danh sách địa phương
+                let response = await fetch("https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json");
+                let data = await response.json();
+
+                // Lấy tên tỉnh/thành
+                let province = data.find(item => item.Id == provinceId);
+                let provinceName = province ? province.Name : "Chưa cập nhật";
+
+                // Lấy tên quận/huyện
+                let district = province ? province.Districts.find(item => item.Id == districtId) : null;
+                let districtName = district ? district.Name : "Chưa cập nhật";
+
+                // Lấy tên phường/xã
+                let ward = district ? district.Wards.find(item => item.Id == wardId) : null;
+                let wardName = ward ? ward.Name : "Chưa cập nhật";
+
+                // Cập nhật nội dung vào HTML
+                document.getElementById("user_address").innerHTML = `${wardName}, ${districtName}, ${provinceName}`;
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu địa phương:", error);
+            }
+        }
+    });
+</script>
 @endsection
