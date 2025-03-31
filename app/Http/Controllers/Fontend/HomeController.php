@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Fontend;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 use App\Services\ProductService;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
@@ -10,6 +12,8 @@ use App\Repositories\BannerRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\ProductCatalogueRepository;
+use App\Repositories\PostCatalogueRepository;
+
 use App\Services\PostService;
 use App\Services\ShopService;
 use Illuminate\Support\Facades\Mail;
@@ -26,6 +30,7 @@ class HomeController extends Controller
     protected $bannerRepository;
     protected $productCatalogueRepository;
     protected $systemRepository;
+    protected $postCatalogueRepository;
 
     public function __construct(
         ShopService $shopService,
@@ -34,7 +39,8 @@ class HomeController extends Controller
         BrandRepository $brandRepository,
         BannerRepository $bannerRepository,
         ProductCatalogueRepository $productCatalogueRepository,
-        SystemRepository $systemRepository
+        SystemRepository $systemRepository,
+        PostCatalogueRepository $postCatalogueRepository
     ) {
         $this->postRepository = $postRepository;
         $this->shopService = $shopService;
@@ -43,6 +49,7 @@ class HomeController extends Controller
         $this->brandRepository = $brandRepository;
         $this->productCatalogueRepository = $productCatalogueRepository;
         $this->systemRepository=$systemRepository;
+        $this->postCatalogueRepository=$postCatalogueRepository;
     }
     public function index(Request $request)
     {
@@ -131,9 +138,27 @@ class HomeController extends Controller
         return view('fontend.page_other.return_and_warranty_policy');
     }
     public function about_us()
-    {
+    {   
+        $category= $this->postCatalogueRepository->allWhere([
+            ['slug','ve-chung-toi']
+        ] );
+        $id=$category->first()->id;
+        $postCatalogue = $this->postCatalogueRepository->findById($id, ['childrenReference']);
+
+        $postCatalogueIds = collect([$id]);
+        if ($postCatalogue->childrenReference->count() > 0) {
+            $postCatalogueIds = $postCatalogueIds->merge($postCatalogue->childrenReference->pluck('id'));
+        }
+        // lấy 
+        $postInCatagories = Post::whereHas('postCatalogues', function ($query) use ($postCatalogueIds) {
+            $query->whereIn('post_catalogues.id', $postCatalogueIds);
+        })
+            ->where('publish', 1)
+            ->orderBy('created_at', 'desc')
+            ->paginate(9);
+        // dd($postInCatagories);
         $products = $this->productService->productNews();
-        return view('frontend.page_other.about_us',compact('products'));
+        return view('frontend.page_other.about_us',compact('products','postInCatagories'));
     }
     public function security_center()
     {

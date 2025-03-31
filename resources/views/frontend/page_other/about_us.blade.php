@@ -63,34 +63,18 @@ Giới thiệu
 
                                 <!-- Main Content -->
                                 <div id="history-main"><!-- Chapter I -->
+                                    @if(isset($postInCatagories))
+                                    @foreach($postInCatagories as $post)
                                     <div class="row align-items-center">
-                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter I Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-su-khai-sinh.jpg"></div>
+                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter I Image" class="img-fluid rounded" src="{{ $post->image }}"></div>
                                         <div class="col-lg-9 col-md-8 col-sm-12">
-                                            <h2 class="h3 fw-bold">Chương I: Sự khai sinh của công ty “Morimura Gumi” và công ty “Anh em nhà Morimura”</h2>
-                                            <p class="text-dark">Vào đầu thế kỷ 20, công ty Morimura Gumi và Anh em nhà Morimura đã đặt những nền tảng đầu tiên cho sự phát triển của ngành công nghiệp gốm sứ Nhật Bản. Tầm nhìn của họ không chỉ đơn thuần là kinh doanh mà còn là sự cống hiến cho nghệ thuật và sự hoàn mỹ.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/su-khai-sinh-cua-cong-ty-morimura-gumi-va-cong-ty-anh-em-nha-morimura">Đọc tiếp</a>
+                                            <h2 class="h3 fw-bold">{{ $post->name }}</h2>
+                                            <p class="text-dark">{!! Str::limit(strip_tags($post->description), 255) !!}</p><a class="btn btn-custom text-white" href="{{ route('post.detail', ['slug' => $post->slug]) }}">Đọc tiếp</a>
                                         </div>
-                                    </div><!-- Chapter II -->
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter II Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-thoi-dai-vat-pham.jpg"></div>
-                                        <div class="col-lg-9 col-md-8 col-sm-12">
-                                            <h2 class="h3 fw-bold">Chương II: Thời đại của vật phẩm</h2>
-                                            <p class="text-dark">Thời đại của vật phẩm mở ra một chương mới với việc mở rộng các sản phẩm gốm sứ ra thị trường quốc tế. Họ tập trung vào chất lượng và sáng tạo trong từng chi tiết, tạo nên sự khác biệt và đưa thương hiệu Nhật Bản lên một tầm cao mới.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/thoi-dai-cua-vat-pham">Đọc tiếp</a>
-                                        </div>
-                                    </div><!-- Chapter III -->
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter III Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-muc-tieu-san-xuat.jpg"></div>
-                                        <div class="col-lg-9 col-md-8 col-sm-12">
-                                            <h2 class="h3 fw-bold">Chương III: Mục tiêu sản xuất bộ đồ bàn ăn phương Tây màu trắng tinh tế</h2>
-                                            <p class="text-dark">Định hướng mới về sản xuất bộ đồ bàn ăn phương Tây với thiết kế tinh tế đã giúp họ tiếp cận được những người tiêu dùng yêu thích sự sang trọng. Sự tỉ mỉ và chất lượng của từng sản phẩm đã tạo nên uy tín không chỉ tại Nhật Bản mà còn trên khắp thế giới.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/muc-tieu-san-xuat-bo-do-ban-an-phuong-tay-mau-trang-tinh-te">Đọc tiếp</a>
-                                        </div>
-                                    </div><!-- Chapter IV -->
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-3 col-md-4 col-sm-12 text-center"><img alt="Chapter IV Image" class="img-fluid rounded" src="https://theme.hstatic.net/200000296482/1000794328/14/banner-100-nam-thanh-lap-cong-ty.jpg"></div>
-                                        <div class="col-lg-9 col-md-8 col-sm-12">
-                                            <h2 class="h3 fw-bold">Chương IV: Thành lập Công ty Hợp danh Gốm sứ Nhật Bản - Sự ra đời của thương hiệu Noritake</h2>
-                                            <p class="text-dark">Thương hiệu Noritake được sinh ra từ khát vọng mang đến những sản phẩm chất lượng hàng đầu, phản ánh tinh thần Nhật Bản trong từng nét vẽ. Noritake nhanh chóng trở thành biểu tượng của sự tinh tế và sang trọng trong lĩnh vực sản xuất gốm sứ.</p><a class="btn btn-custom text-white" href="https://noritake.vn/pages/thanh-lap-cong-ty-hop-danh-gom-su-nhat-ban">Đọc tiếp</a>
-                                        </div>
-                                    </div><!-- Quote Section -->
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    Quote Section
                                     <p class="fst-italic text-secondary">“Chân thành và không ngừng theo đuổi hoài bão, chúng ta phấn đấu vì lợi ích của dân tộc và hạnh phúc của người dân.”- Ichizaemon Morimura</p>
                                 </div>
 
