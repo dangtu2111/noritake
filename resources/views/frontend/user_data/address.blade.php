@@ -30,7 +30,7 @@ Danh sách địa chỉ
 											<span class="default_address note">(Địa chỉ mặc định)</span>
 										</h3>
 										<p class="address_actions position-absolute m-auto">
-											<span class="action_link action_edit d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.toggleForm(10223266902);return false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+											<span class="action_link action_edit d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.toggleForm({{ $user->id }});return false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="action_link action_delete d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.destroy(10223266902);return false"><i class="fa fa-times" aria-hidden="true"></i></a></span>
 										</p>
 									</div>
@@ -195,11 +195,11 @@ Danh sách địa chỉ
 											</div>
 											<div class="input-group mb-3" id="address_province_container_new" style="display:none">
 												<span class="input-icon text-center"><i class="fa fa-map-marker"></i></span>
-												<select id="address_province_new" class="input-textbox custom-select" name="address[province]" data-default=""></select>
+												<select id="address_province_new" class="input-textbox custom-select" name="province_id" data-default=""></select>
 											</div>
 											<div class="input-group mb-3">
 												<span class="input-icon text-center"><i class="fa fa-phone"></i></span>
-												<input type="text" id="address_phone_new" class="input-textbox form-control" name="address[phone]" value="" placeholder="Số điện thoại">
+												<input type="text" id="address_phone_new" class="input-textbox form-control" name="phone" value="" placeholder="Số điện thoại">
 											</div>
 											<div class="special-default mb-3">
 												<input type="checkbox" id="address_default_address_new" name="address[default]" value="1"> Đặt làm địa chỉ mặc định.
