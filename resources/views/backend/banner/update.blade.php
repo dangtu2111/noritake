@@ -50,9 +50,19 @@
                                 <div class="mb-3">
                                     <label class="form-label">Tên trang hiển thị:</label>
                                     <select class="form-select setUpSelect2" name="location">
-                                        <option value="0" {{ $banner->location == 0 ? 'selected' : '' }}>Trang chủ vị trí 1</option>
-                                        <option value="1" {{ $banner->location == 1 ? 'selected' : '' }}>Trang chủ vị trí 2</option>
-                                        <option value="2" {{ $banner->location == 2 ? 'selected' : '' }}>Trang cửa hàng</option>
+                                        <option value="{{ route('home_index.index') }}"
+                                            {{ $banner->location == route('home_index.index') ? 'selected' : '' }}>
+                                            Trang chủ
+                                        </option>
+
+                                        @if(isset($categories))
+                                        @foreach($categories as $category)
+                                        <option value="{{ route('product.category', ['id' => $category->id]) }}"
+                                            {{ $banner->location == route('product.category', ['id' => $category->id]) ? 'selected' : '' }}>
+                                            Danh mục {{ $category->name }}
+                                        </option>
+                                        @endforeach
+                                        @endif
                                     </select>
                                     @if ($errors->has('location'))
                                     <span class="text-danger fz-12 mt-1">{{ $errors->first('location') }}</span>

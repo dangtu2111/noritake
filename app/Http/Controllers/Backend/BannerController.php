@@ -8,19 +8,27 @@ use App\Http\Controllers\Controller;
 use App\Repositories\BannerRepository;
 use App\Http\Requests\StoreBannerRequest;
 use App\Http\Requests\UpdateBannerRequest;
+use App\Repositories\ProductCatalogueRepository;
+
 
 class BannerController extends Controller
 {
     protected $bannerService;
     protected $bannerRepository;
     protected $bannerCatalogueRepository;
+    protected $productCatalogueRepository;
+    
     public function __construct(
         BannerService $bannerService,
         BannerRepository $bannerRepository,
+        ProductCatalogueRepository $productCatalogueRepository,
+
 
     ) {
         $this->bannerService = $bannerService;
         $this->bannerRepository = $bannerRepository;
+        $this->productCatalogueRepository = $productCatalogueRepository;
+
     }
 
     public function index(Request $request)
@@ -36,10 +44,12 @@ class BannerController extends Controller
     public function create()
     {
         $banners = $this->bannerService->all();
+        $categories=$this->productCatalogueRepository->all();
         $template = 'backend.banner.create';
         return view('backend.dashboard.layout', compact(
             'template',
             'banners',
+            'categories'
         ));
     }
     public function store(StoreBannerRequest $request)
@@ -59,10 +69,13 @@ class BannerController extends Controller
     public function update($id)
     {
         $banner = $this->bannerRepository->findById($id);
+        $categories=$this->productCatalogueRepository->all();
+
         $template = 'backend.banner.update';
         return view('backend.dashboard.layout', compact(
             'template',
             'banner',
+            'categories'
         ));
     }
     public function edit($id, UpdateBannerRequest $request)

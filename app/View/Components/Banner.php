@@ -5,20 +5,26 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Services\BannerService;
+use App\Repositories\BannerRepository;
+
 
 class Banner extends Component
 {
-    protected $bannerService;
+    protected $bannerRepository;
     public $banners; // Đặt thành public để truy cập trong view
 
     /**
      * Create a new component instance.
      */
-    public function __construct(BannerService $bannerService)
+    public function __construct(BannerRepository $bannerRepository)
     {
-        $this->bannerService = $bannerService;
-        $this->banners = $this->bannerService->paginateFontend();
+        $this->bannerRepository = $bannerRepository;
+        $this->banners = $this->bannerRepository->allWhere([
+            ['date_start', '<', now()],  // Sử dụng now() thay vì now
+            ['date_end', '>', now()],    // Sử dụng now() thay vì now
+            ['location', url()->current()],
+            ['publish', 1]
+        ]);
     }
 
     /**

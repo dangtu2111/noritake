@@ -10,7 +10,7 @@ Sản phẩm danh mục
 <main class="mainContent-theme">
   <div class="overlay123"></div>
   <div id="collection" class="layout-collectionPage collection-temp2">
-    @include('frontend.product.component.banner')
+    @include('frontend.product.component.banner',['banner'=>$banner->first()])
     @include('frontend.product.component.products')
     @if(isset($category->description))
     @include('frontend.product.component.content')

@@ -39,7 +39,7 @@ Danh sách địa chỉ
 											<span class="default_address note">(Địa chỉ mặc định)</span>
 										</h3>
 										<p class="address_actions position-absolute m-auto">
-											<span class="action_link action_edit d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.toggleForm( $user->id }});return false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
+											<span class="action_link action_edit d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.toggleForm( {{  $user->id }});return false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="action_link action_delete d-inline-block align-middle text-center"><a href="#" onclick="Haravan.CustomerAddress.destroy(10223266902);return false"><i class="fa fa-times" aria-hidden="true"></i></a></span>
 										</p>
 									</div>

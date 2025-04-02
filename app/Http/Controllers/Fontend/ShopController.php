@@ -134,14 +134,17 @@ class ShopController extends Controller
                 ->where('publish', 1)
                 ->paginate(9);
         }
-        $bannerShop = $this->bannerRepository->allWhere([
-            ['publish', 1],
-            ['location', 2]
+        $banner = $this->bannerRepository->allWhere([
+            ['date_start', '<', now()],  // Sử dụng now() thay vì now
+            ['date_end', '>', now()],    // Sử dụng now() thay vì now
+            ['location', url()->current()],
+            ['publish', 1]
         ]);
+        // dd($bannerShop);
         return view('frontend.product.category', compact(
             'category',
             'brandAll',
-            'bannerShop',
+            'banner',
             'brandFilters',
             'postCategories',
             'attributeSizes',
