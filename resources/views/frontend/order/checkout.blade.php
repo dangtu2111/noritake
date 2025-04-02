@@ -3667,7 +3667,7 @@
                                             <div class="logged-in-customer-information-avatar gravatar" style="background-image: url(//www.gravatar.com/avatar/6534c8300a21d101a75779fcc4527f5d.jpg?s=100&d=blank);filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//www.gravatar.com/avatar/6534c8300a21d101a75779fcc4527f5d.jpg?s=100&d=blank', sizingMethod='scale')"></div>
                                         </div>
                                         <p class="logged-in-customer-information-paragraph">
-                                            tu dang (anhtuhanam1@gmail.com)
+                                            {{ $user->name }} ({{ $user->email }})
                                             <br />
                                             <a href="{{ route('auth.logout') }}">Đăng xuất</a>
                                         </p>
@@ -3675,7 +3675,7 @@
 
                                     <div class="fieldset">
 
-                                        <div class="field field-show-floating-label">
+                                        <!-- <div class="field field-show-floating-label">
                                             <div class="field-input-wrapper field-input-wrapper-select">
                                                 <label class="field-label" for="stored_addresses">Thêm địa chỉ mới...</label>
                                                 <select class="field-input" id="stored_addresses">
@@ -3685,7 +3685,7 @@
 
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
                                         <div class="field field-required  ">

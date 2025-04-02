@@ -153,7 +153,6 @@ class HomeController extends Controller
         $postInCatagories = Post::whereHas('postCatalogues', function ($query) use ($postCatalogueIds) {
             $query->whereIn('post_catalogues.id', $postCatalogueIds);
         })
-            ->where('publish', 1)
             ->orderBy('created_at', 'desc')
             ->paginate(9);
         // dd($postInCatagories);

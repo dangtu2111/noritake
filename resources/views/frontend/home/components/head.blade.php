@@ -51,7 +51,7 @@
 
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/theme.hstatic.net/200000296482/1001063914/14/favicon05b4.png?v=5232" type="image/png" />
+    <link rel="shortcut icon" href="{{ $systems['homepage_logo'] }}"  />
     
     <!-- CSS Libraries -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->

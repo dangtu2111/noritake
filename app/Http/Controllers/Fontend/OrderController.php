@@ -81,11 +81,15 @@ class OrderController extends FontendController
             'address'       => 'required|string|max:255',
             'total_amount'  => 'required|numeric|min:0'
         ]);
+        $validatedData['note'] = session('note', '');
+        
         session()->put('order_data', $validatedData);
+        session()->forget('note');
         return view('frontend.order.paymentmethod');
     }
     public function checkout(Request $request)
     {
+        $title='Checkout';
         $carts = $this->cartService->all();
         
         $cart_id = $carts  ? $carts->id : null;
@@ -107,11 +111,13 @@ class OrderController extends FontendController
                 $this->updateIsUsed($promotionId, $userId);
             }
         }
-        
+        $user = auth()->user();
         // Truyền dữ liệu vào view
         return view('frontend.order.checkout', compact(
             'order',
-            'attributesByCartItem'
+            'attributesByCartItem',
+            'user',
+            'title'
         ));
     }
     public function updateIsUsed($promotionId, $userId)

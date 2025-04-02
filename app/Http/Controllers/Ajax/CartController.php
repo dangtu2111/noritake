@@ -62,6 +62,18 @@ class CartController extends FontendController
             'attributesByCartItem'
         ));
     }
+    public function submitNote(Request $request)
+    {
+        // Kiểm tra nếu trường 'note' tồn tại trong request
+        if ($request->has('note')) {
+            // Lưu giá trị 'note' vào session
+            $request->session()->put('note', $request->note);
+        }
+        
+        // Redirect đến route 'order.checkout' sau khi lưu vào session
+        return redirect()->route('order.checkout');
+    }
+
 
     public function checkStock(Request $request)
     {

@@ -19,7 +19,7 @@ Giỏ hàng
 
 					</li>
 					<li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-						<span itemprop="item" content="https://noritake.vn/cart"><strong itemprop="name">Giỏ hàng (1)</strong></span>
+						<span itemprop="item" content="{{ route('cart.index') }}"><strong itemprop="name">Giỏ hàng (1)</strong></span>
 						<meta itemprop="position" content="2">
 					</li>
 				</ol>
@@ -36,9 +36,12 @@ Giỏ hàng
 				</div>
 				<div class="wrapbox-content-cart">
 					<div class="cart-container-inner">
+					<form action="{{ route('cart.submitNote') }}" method="post" id="cartformpage" >
+					@csrf
 						<div class="row">
+						
 							<div class="col-12 col-md-8">
-								<form action="/cart" method="post" id="cartformpage">
+							
 									<div class="reponsive-table-cart">
 										<div class="title-count-cart mb-2">
 											Bạn đang có <span>1 sản phẩm</span> trong giỏ hàng
@@ -126,7 +129,7 @@ Giỏ hàng
 											</div>
 										</div>
 									</div>
-								</form>
+					
 							</div>
 							<div class="col-12 col-md-4">
 								<div class="wrap-order-summary sticky-cart-order mt-4 mt-md-0">
@@ -141,7 +144,7 @@ Giỏ hàng
 											<p class="mb-2">Bạn có thể nhập mã giảm giá ở trang thanh toán</p>
 										</div>
 										<div class="order-action-checkout">
-											<a href="{{ route('order.checkout') }}" class="checkout-btn d-block text-center text-white text-uppercase link" name="checkout">Thanh toán</a>
+											<a href="javascript:void(0);" class="checkout-btn d-block text-center text-white text-uppercase link" name="checkout" id="checkoutButton">Thanh toán</a>
 										</div>
 										<a class="countine_order_cart d-block text-center mt-2 link" href="javascript:history.back()" title="Tiếp tục mua hàng"><i class="fa fa-reply mr-2"></i>Tiếp tục mua hàng</a>
 									</div>
@@ -155,7 +158,9 @@ Giỏ hàng
 								</div>
 
 							</div>
+							
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -395,6 +400,11 @@ Giỏ hàng
 			};
 			jQuery.ajax(params);
 		}
+	</script>
+	<script>
+		document.getElementById('checkoutButton').addEventListener('click', function() {
+			document.getElementById('cartformpage').submit();  // Trigger form submit
+		});
 	</script>
 </main>
 @endsection
