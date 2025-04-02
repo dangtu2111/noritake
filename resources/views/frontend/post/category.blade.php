@@ -24,7 +24,7 @@ Danh mục bài viết
 
 
                                         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                            <a href="https://noritake.vn/blogs/all" itemprop="item">
+                                            <a href="{{ route('post.page') }}" itemprop="item">
                                                 <span itemprop="name">Blog</span>
                                             </a>
                                             <meta itemprop="position" content="2">

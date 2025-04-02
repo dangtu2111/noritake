@@ -4,14 +4,14 @@
             <ol class="breadcrumb breadcrumb-arrows" itemscope
                 itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a href="https://noritake.vn/" target="_self" itemprop="item"><span
+                    <a href="{{ route('home.index') }}" target="_self" itemprop="item"><span
                             itemprop="name">Trang chủ</span></a>
                     <meta itemprop="position" content="1" />
                 </li>
 
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                     <a
-                        href="https://noritake.vn/collections/tim-theo-bo-suu-tap-collections-search">
+                        href="#">
                         <span itemprop="name">Các bộ sưu tập</span>
                     </a>
                     <meta itemprop="position" content="2" />
@@ -19,7 +19,7 @@
 
 
                 <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                    <a href="https://noritake.vn/collections/art-stage-collection"
+                    <a href="{{ route('product.category',['id'=>$product->productCatalogues->first()->id]) }}"
                         target="_self" itemprop="item">
                         <span itemprop="name">{{ optional($product->productCatalogues->first())->name }}</span>
                     </a>
@@ -29,12 +29,7 @@
 
 
 
-                <!--<li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <span itemprop="item" content="https://noritake.vn/products/bo-06-bat-com-chen-com-12-2cm-dung-tich-320ml-su-trang-art-stage-4257l-s91481">
-                                <strong itemprop="name">Bộ 06 bát cơm (chén cơm) 12,2cm dung tích 320ml sứ trắng | Art Stage 4257L - S91481</strong>
-                            </span>
-                            <meta itemprop="position" content="3" />
-                        </li>-->
+             
 
 
             </ol>
@@ -63,7 +58,7 @@
         </div>
         <div class="product-variants mb-md-3">
 
-            <form id="add-item-form" action="https://noritake.vn/cart/add" method="post" class="variants clearfix">
+            <form id="add-item-form" action="{{ route('ajax.cart.addToCart') }}" method="post" class="variants clearfix">
                 @csrf <!-- Thêm CSRF token cho Laravel -->
 
                 <!-- Select ẩn cho biến thể sản phẩm -->

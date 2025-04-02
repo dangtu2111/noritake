@@ -32,7 +32,7 @@ class PostService implements PostServiceInterface
     public function paginateFontend($request)
     {
         $condition = [
-            ['publish', 1]
+            'publish' => 1
         ];
         $relation = ['users','postCatalogues'];
         $perPage = 5;
@@ -43,6 +43,7 @@ class PostService implements PostServiceInterface
             ['created_at', 'asc'],
             $perPage,
         );
+        // dd($posts);
 
         return $posts;
     }

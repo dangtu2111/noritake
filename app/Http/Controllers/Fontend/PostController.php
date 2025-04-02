@@ -35,9 +35,9 @@ class PostController extends Controller
             [
             ['publish', 1]
             ],
-            3
+            4
 
-    );
+        );
         // dd($postCategories);
         $productCategories = $this->productCatalogueRepository->allWhere([
             ['publish', '=', 1]

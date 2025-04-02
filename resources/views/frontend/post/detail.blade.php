@@ -31,9 +31,7 @@ Chi tiết bài viết
         }
     </style>
 
-    <!--<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="desktop-image" src="https://file.hstatic.net/200000296482/file/1920_x_450_px_1.jpg" alt=""/></a>
-<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="mobile-image" src="https://file.hstatic.net/200000296482/file/1920_x_1440_px.jpg" alt=""/></a>-->
-
+   
     <div id="article">
         <div class="wrapper-content-article">
             <div class="container-fluid">
@@ -49,7 +47,7 @@ Chi tiết bài viết
                                             <meta itemprop="position" content="1">
                                         </li>
                                         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                            <a href="https://noritake.vn/blogs/all" itemprop="item">
+                                            <a href="{{ route('post.page') }}" itemprop="item">
                                                 <span itemprop="name">Blog</span>
                                             </a>
                                             <meta itemprop="position" content="2">
@@ -60,10 +58,7 @@ Chi tiết bài viết
                                             </a>
                                             <meta itemprop="position" content="2">
                                         </li>
-                                        <!--<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">
-						<span itemprop="item" content="https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet"><strong itemprop="name">Noritake Private Sale @ Diamond Plaza – Hành trình trải nghiệm tinh hoa sứ Nhật dành riêng cho khách hàng VIP</strong></span>
-						<meta itemprop="position" content="3" />
-					</li>-->
+                               
                                     </ol>
                                 </div>
                             </div>
@@ -80,21 +75,15 @@ Chi tiết bài viết
                         <!-- start icon share -->
                         <ul class="cpanel-action social-pin">
                             <li>
-                                <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
+                                <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u={{ route('post.detail',['slug'=>$post->slug]) }}" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M21.125 16.3V19.2H24.05C24.275 19.2 24.3875 19.4 24.3875 19.6L23.9375 21.5C23.9375 21.6 23.7125 21.7 23.6 21.7H21.125V29H17.75V21.8H15.8375C15.6125 21.8 15.5 21.7 15.5 21.5V19.6C15.5 19.4 15.6125 19.3 15.8375 19.3H17.75V16C17.75 14.3 19.2125 13 21.125 13H24.1625C24.3875 13 24.5 13.1 24.5 13.3V15.7C24.5 15.9 24.3875 16 24.1625 16H21.4625C21.2375 16 21.125 16.1 21.125 16.3Z" fill="#292D32"></path>
                                     </svg>
                                 </a>
                             </li>
-                            <!--<li>
-						<a class="cpanel-item twitter" href="https://twitter.com/intent/tweet?text=https://dantri.com.vn/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" target="_blank" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-twitter" data-content-target="/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" rel="nofollow" title="Chia sẻ bài viết lên twitter">
-							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M29.5 15.5C28.825 15.8 28.15 15.9 27.3625 16C28.15 15.6 28.7125 15 28.9375 14.2C28.2625 14.6 27.475 14.8 26.575 15C25.9 14.4 24.8875 14 23.875 14C21.9625 14 20.275 15.5 20.275 17.3C20.275 17.6 20.275 17.8 20.3875 18C17.35 17.9 14.5375 16.6 12.7375 14.6C12.4 15.1 12.2875 15.6 12.2875 16.3C12.2875 17.4 12.9625 18.4 13.975 19C13.4125 19 12.85 18.8 12.2875 18.6C12.2875 20.2 13.525 21.5 15.2125 21.8C14.875 21.9 14.5375 21.9 14.2 21.9C13.975 21.9 13.75 21.9 13.525 21.8C13.975 23.1 15.325 24.1 17.0125 24.1C15.775 25 14.2 25.5 12.4 25.5C12.0625 25.5 11.8375 25.5 11.5 25.5C13.1875 26.4 15.1 27 17.125 27C23.875 27 27.5875 22 27.5875 17.7C27.5875 17.6 27.5875 17.4 27.5875 17.3C28.375 16.8 29.05 16.2 29.5 15.5Z" fill="#292D32" stroke="#292D32" stroke-linejoin="round"></path>
-							</svg>
-						</a>
-					</li>-->
+                           
                             <li>
-                                <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
+                                <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url={{ route('post.detail',['slug'=>$post->slug]) }}" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_752_6605)">
                                             <path d="M27.8 12H13.2C12.8 12 12.5 12.3 12.5 12.7V27.4C12.5 27.7 12.8 28 13.2 28H27.9C28.3 28 28.6 27.7 28.6 27.3V12.7C28.5 12.3 28.2 12 27.8 12ZM17.2 25.6H14.9V18H17.3V25.6H17.2ZM16.1 17C15.3 17 14.7 16.3 14.7 15.6C14.7 14.8 15.3 14.2 16.1 14.2C16.9 14.2 17.5 14.8 17.5 15.6C17.4 16.3 16.8 17 16.1 17ZM26.1 25.6H23.7V21.9C23.7 21 23.7 19.9 22.5 19.9C21.3 19.9 21.1 20.9 21.1 21.9V25.7H18.7V18H21V19C21.3 18.4 22.1 17.8 23.2 17.8C25.6 17.8 26 19.4 26 21.4V25.6H26.1Z" fill="#292D32"></path>
@@ -164,35 +153,21 @@ Chi tiết bài viết
                             <div class="article-content-desc mb-4" itemprop="description">
                             {!! $post->content !!}      
                             </div>
-                            <!--<div class="article-post-nav clearfix mb-4">							
-							<span class="float-right right">
-								<a href="/blogs/tin-tuc-su-kien/su-nhat-noritake-mon-qua-dang-cap-ton-vinh-phai-dep-ngay-8-3" title="">Bài sau</a>
-								<svg class="arrow-right d-inline-block align-middle" viewBox="0 0 11 18">
-									<path d="M1.5 1.5l8 7.5-8 7.5" stroke-width="2" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
-								</svg>
-							</span>
-
-						</div>-->
+                            
                         </div>
 
                         <div class="singular-footer horizontal">
                             <ul class="cpanel-action social-pin hidden">
                                 <li>
-                                    <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
+                                    <a class="cpanel-item facebook" target="_blank" href="//www.facebook.com/sharer.php?u={{ route('post.detail',['slug'=>$post->slug]) }}" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-facebook" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên facebook">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21.125 16.3V19.2H24.05C24.275 19.2 24.3875 19.4 24.3875 19.6L23.9375 21.5C23.9375 21.6 23.7125 21.7 23.6 21.7H21.125V29H17.75V21.8H15.8375C15.6125 21.8 15.5 21.7 15.5 21.5V19.6C15.5 19.4 15.6125 19.3 15.8375 19.3H17.75V16C17.75 14.3 19.2125 13 21.125 13H24.1625C24.3875 13 24.5 13.1 24.5 13.3V15.7C24.5 15.9 24.3875 16 24.1625 16H21.4625C21.2375 16 21.125 16.1 21.125 16.3Z" fill="#292D32"></path>
                                         </svg>
                                     </a>
                                 </li>
-                                <!--<li>
-								<a class="cpanel-item twitter" href="https://twitter.com/intent/tweet?text=https://dantri.com.vn/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" target="_blank" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-twitter" data-content-target="/xa-hoi/chu-tich-nuoc-bieu-duong-nhung-guong-mat-vang-sea-games-32-20230523144436970.htm" rel="nofollow" title="Chia sẻ bài viết lên twitter">
-									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M29.5 15.5C28.825 15.8 28.15 15.9 27.3625 16C28.15 15.6 28.7125 15 28.9375 14.2C28.2625 14.6 27.475 14.8 26.575 15C25.9 14.4 24.8875 14 23.875 14C21.9625 14 20.275 15.5 20.275 17.3C20.275 17.6 20.275 17.8 20.3875 18C17.35 17.9 14.5375 16.6 12.7375 14.6C12.4 15.1 12.2875 15.6 12.2875 16.3C12.2875 17.4 12.9625 18.4 13.975 19C13.4125 19 12.85 18.8 12.2875 18.6C12.2875 20.2 13.525 21.5 15.2125 21.8C14.875 21.9 14.5375 21.9 14.2 21.9C13.975 21.9 13.75 21.9 13.525 21.8C13.975 23.1 15.325 24.1 17.0125 24.1C15.775 25 14.2 25.5 12.4 25.5C12.0625 25.5 11.8375 25.5 11.5 25.5C13.1875 26.4 15.1 27 17.125 27C23.875 27 27.5875 22 27.5875 17.7C27.5875 17.6 27.5875 17.4 27.5875 17.3C28.375 16.8 29.05 16.2 29.5 15.5Z" fill="#292D32" stroke="#292D32" stroke-linejoin="round"></path>
-									</svg>
-								</a>
-							</li>-->
+                              
                                 <li>
-                                    <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url=https://noritake.vn/blogs/tin-tuc-su-kien/noritake-private-sale-su-kien-danh-cho-khach-hang-than-thiet" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
+                                    <a class="cpanel-item linkedin" target="_blank" href="https://www.linkedin.com/cws/share?url={{ route('post.detail',['slug'=>$post->slug]) }}" data-content-target="" rel="nofollow" title="Chia sẻ bài viết lên linkedin">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_752_6605)">
                                                 <path d="M27.8 12H13.2C12.8 12 12.5 12.3 12.5 12.7V27.4C12.5 27.7 12.8 28 13.2 28H27.9C28.3 28 28.6 27.7 28.6 27.3V12.7C28.5 12.3 28.2 12 27.8 12ZM17.2 25.6H14.9V18H17.3V25.6H17.2ZM16.1 17C15.3 17 14.7 16.3 14.7 15.6C14.7 14.8 15.3 14.2 16.1 14.2C16.9 14.2 17.5 14.8 17.5 15.6C17.4 16.3 16.8 17 16.1 17ZM26.1 25.6H23.7V21.9C23.7 21 23.7 19.9 22.5 19.9C21.3 19.9 21.1 20.9 21.1 21.9V25.7H18.7V18H21V19C21.3 18.4 22.1 17.8 23.2 17.8C25.6 17.8 26 19.4 26 21.4V25.6H26.1Z" fill="#292D32"></path>
@@ -200,20 +175,7 @@ Chi tiết bài viết
                                         </svg>
                                     </a>
                                 </li>
-                                <!--<li class="zalo-share-button" data-href="" data-oaid="" data-layout="3" data-color="blue" data-customize="true">
-								<button class="cpanel-item zalo" title="Chia sẻ bài viết lên zalo">
-									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<g clip-path="url(#clip0_608_594)">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M20.6809 17.5205V17.064H22.0481V23.4824H21.2659C20.9439 23.4824 20.6825 23.2224 20.6809 22.9008C20.6807 22.901 20.6804 22.9011 20.6802 22.9013C20.1295 23.304 19.4488 23.5431 18.7135 23.5431C16.872 23.5431 15.3789 22.0509 15.3789 20.2106C15.3789 18.3703 16.872 16.8782 18.7135 16.8782C19.4488 16.8782 20.1295 17.1173 20.6802 17.52C20.6804 17.5201 20.6807 17.5203 20.6809 17.5205ZM15.0246 15V15.2081C15.0246 15.5962 14.9727 15.9131 14.7205 16.2848L14.69 16.3197C14.6349 16.3821 14.5057 16.5287 14.4442 16.6083L10.0549 22.1175H15.0246V22.8974C15.0246 23.2205 14.7624 23.4824 14.439 23.4824H8V23.1146C8 22.6643 8.1119 22.4634 8.25335 22.254L12.9324 16.4624H8.19507V15H15.0246ZM23.7064 23.4824C23.4375 23.4824 23.2189 23.2639 23.2189 22.9953V15H24.6824V23.4824H23.7064ZM29.0096 16.838C30.864 16.838 32.3667 18.3414 32.3667 20.1929C32.3667 22.046 30.864 23.5494 29.0096 23.5494C27.1552 23.5494 25.6525 22.046 25.6525 20.1929C25.6525 18.3414 27.1552 16.838 29.0096 16.838ZM18.7135 22.1713C19.7972 22.1713 20.6754 21.2936 20.6754 20.2106C20.6754 19.1292 19.7972 18.2516 18.7135 18.2516C17.6298 18.2516 16.7516 19.1292 16.7516 20.2106C16.7516 21.2936 17.6298 22.1713 18.7135 22.1713ZM29.0096 22.168C30.0997 22.168 30.9844 21.2839 30.9844 20.1929C30.9844 19.1035 30.0997 18.2196 29.0096 18.2196C27.9179 18.2196 27.0348 19.1035 27.0348 20.1929C27.0348 21.2839 27.9179 22.168 29.0096 22.168Z" fill="#292D32"></path>
-										</g>
-										<defs>
-											<clipPath id="clip0_608_594">
-												<rect width="25" height="9" fill="white" transform="translate(8 15)"></rect>
-											</clipPath>
-										</defs>
-									</svg>
-								</button>
-							</li>-->
+                               
                                 <li>
                                     <button onclick="Copy1()" type="button" class="cpanel-item link" data-track-content="" data-content-name="" data-content-piece="" title="Copy">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -234,17 +196,7 @@ Chi tiết bài viết
                                             </svg>
                                         </button></a>
                                 </li>
-                                <!--<li>
-								<a rel="nofollow" href="/print-20230523144436970.htm" class="cpanel-item print comment-empty" data-track-content="" data-content-name="article-actions" data-content-piece="article-actions-print" data-content-target="" title="In">
-									<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M16.5417 15.8334H24.4584V14.1667C24.4584 12.5001 23.8334 11.6667 21.9584 11.6667H19.0417C17.1667 11.6667 16.5417 12.5001 16.5417 14.1667V15.8334Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-										<path d="M28 18.3333V22.4999C28 24.1666 27.1667 24.9999 25.5 24.9999V23H15.5V25C13.8333 25 13 24.1666 13 22.4999V18.3333C13 16.6666 13.8333 15.8333 15.5 15.8333H25.5C27.1667 15.8333 28 16.6666 28 18.3333Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-										<path d="M25.5 23L24.29 23L15.5 23" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-										<path d="M16.3333 19.1667H18.8333" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-										<path d="M25.5 23V25.8571C25.5 27.2857 24.25 28 21.75 28H19.25C16.75 28 15.5 27.2857 15.5 25.8571V23H25.5Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-									</svg>
-								</a>
-							</li>-->
+                               
                                 <li>
                                     <button class="cpanel-item back" onclick="javascript:window.history.back();">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

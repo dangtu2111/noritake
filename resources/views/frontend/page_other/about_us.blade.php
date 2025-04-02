@@ -27,9 +27,6 @@ Giới thiệu
         }
     </style>
 
-    <!--<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="desktop-image" src="https://file.hstatic.net/200000296482/file/1920_x_450_px_1.jpg" alt=""/></a>
-<a href="https://noritake.vn/collections/uu-dai-den-10"><img class="mobile-image" src="https://file.hstatic.net/200000296482/file/1920_x_1440_px.jpg" alt=""/></a>-->
-
     <div class="container-fluid breadcrumb">
         <div class="row row-breadcrumb">
             <div class="col-12 col-lg-12 col-breadcrumb">
@@ -93,17 +90,6 @@ Giới thiệu
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Check if the current canonical URL matches the target URL
-            var canonicalUrl = $('link[rel="canonical"]').attr('href');
-            var targetUrl = "https://noritake.vn/pages/qua-tang-tan-gia-cao-cap";
-
-            if (canonicalUrl === targetUrl) {
-                // Find the second <h2> element and insert the content of hidden container after it
-                $('h2').eq(1).before($('#hidden-container').html()).show();
-            }
-        });
-    </script>
+    
 </main>
 @endsection

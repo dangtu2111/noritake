@@ -28,7 +28,7 @@ Sản phẩm danh mục
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-              <form method="post" action="https://noritake.vn/cart/add">
+              <form method="post" action="{{ route('ajax.cart.addToCart') }}">
                 <div class="col-lg-5 col-md-6">
                   <div class="image-zoom row">
                     <img class="p-product-image-feature" src="#">

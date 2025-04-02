@@ -104,44 +104,7 @@
     
     <!-- Dynamic Includes -->
     <!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-    "@type": "WebSite",
-    "@id": "https://noritake.vn/#website",
-    "url": "https://noritake.vn",
-    "name": "Noritake Vietnam",
-    "publisher": {
-        "@id": "https://noritake.vn/#organization"
-    },
-    "inLanguage": "vi"
-}
-</script>
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://noritake.vn/#organization",
-    "name": "Noritake Vietnam",
-    "alternateName": "Noritake Vietnam",
-    "url": "https://noritake.vn",
-    "logo": "https://file.hstatic.net/200000296482/file/logo_1c90af075f3541399f3f74a35237f63c.png",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "0945900188",
-        "contactType": "customer service",
-        "areaServed": ["VN", "GB"],
-        "availableLanguage": "Vietnamese"
-    },
-    "sameAs": [
-        "https://www.facebook.com/NoritakeVietnam",
-        "https://twitter.com/noritakevn",
-        "https://www.instagram.com/noritakevietnam",
-        "https://www.youtube.com/noritakevietnam",
-        "https://www.linkedin.com/company/noritake-vietnam",
-        "{{ route('home_index.index') }}"
-    ]
-}
-</script>
+
 
 
 
