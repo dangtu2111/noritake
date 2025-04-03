@@ -12,6 +12,8 @@ class System{
             'company'=>['type'=>'text','label'=>'Tên công ty'],
             'brand'=>['type'=>'text','label'=>'Tên thương hiệu'],
             'slogan'=>['type'=>'text','label'=>'Slogan'],
+            
+            'favicon'=>['type'=>'image','label'=>'favicon logo  website','title'=>'Click vào ảnh kế bên để tải logo'],
             'logo'=>['type'=>'image','label'=>'Logo website','title'=>'Click vào ảnh kế bên để tải logo'],
             'logo_payment1'=>['type'=>'image','label'=>'Logo thanh toán website 1','title'=>'Click vào ảnh kế bên để tải logo'],
             'logo_payment2'=>['type'=>'image','label'=>'Logo thanh toán website 2','title'=>'Click vào ảnh kế bên để tải logo'],
@@ -23,7 +25,12 @@ class System{
                     'open'=>'Mở cửa website',
                     'close'=>'Website đang bảo trì'
                 ]
-            ]
+                ],
+            'script'=>[
+                'type'=>'textarea',
+                'label'=>'Bổ sung Javascript',
+                
+                ]
           ]  
         ];
 

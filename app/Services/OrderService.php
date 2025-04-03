@@ -15,6 +15,7 @@ use App\Mail\OrderMailFail;
 use App\Models\Attribute;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Promotion;
 
 /**
  * interface  UserService
@@ -83,9 +84,20 @@ class OrderService implements OrderServiceInterface
         try {
             $payload = $this->preparePayload($request);
             $payload['paid_at'] =  now();
-
+            if(isset($request->discount_code)){
+                $promotion = Promotion::where('code',$request->discount_code);
+                if ($promotion &&$promotion->usage_limit>0) {
+                    // Cập nhật giá trị usage_limit thành -1
+                    $promotion->usage_limit -= -1;
+                    $promotion->save(); // Lưu thay đổi
+                }  else {
+                    return response()->json([
+                        'message' => 'Không tìm thấy promotion với code này.'
+                    ], 404);
+                }
+            }
             $order = $this->orderRepository->create($payload);
-
+            
             if ($order->id > 0) {
 
                 $orderItem = $this->createOrderitems($request, $order);

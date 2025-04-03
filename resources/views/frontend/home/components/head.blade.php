@@ -33,28 +33,15 @@
     <meta name="facebook-domain-verification" content="s7um3vwiargardwbc79auelsj99t80" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="x-dns-prefetch-control" content="on">
-    
-    <!-- Conditional Meta for IE -->
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
-    
-    <!-- Title -->
-    <title>
-        Thương Hiệu Sứ Cao Cấp Số 1 Nhật Bản
-        
-        
-        
-        &ndash; Noritake Vietnam
-        
-    </title>
+  
 
       <link rel="canonical" href="{{ route('home_index.index') }}" />
 
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ $systems['homepage_logo'] }}"  />
+    <link rel="shortcut icon" href="{{ $systems['homepage_favicon'] }}"  />
     
-    <!-- CSS Libraries -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
     <link rel="stylesheet" href="/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
     <link href='/theme.hstatic.net/200000296482/1001063914/14/lightslider05b4.css?v=5232' rel='stylesheet' type='text/css'  media='all'  />
