@@ -39,7 +39,7 @@
 
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ $systems['homepage_favicon'] }}"  />
+    <link rel="shortcut icon" href="{{ $systems['homepage_favicon']??'' }}"  />
     
 
     <link rel="stylesheet" href="/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
