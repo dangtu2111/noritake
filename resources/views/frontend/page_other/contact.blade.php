@@ -143,7 +143,7 @@ Liên hệ
             <div class="container-fluid">
                 <div class="box-contact-map">
 
-                    <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.9796508507!2d106.7269498!3d10.7733555!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175255cfaed7b6f%3A0xed24bb04136b5a20!2sNoritake%20Vi%E1%BB%87t%20Nam!5e0!3m2!1svi!2s!4v1717987285540!5m2!1svi!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe style="width: 100%;" src="{{ $systems['he-thong-cua-hang']??'' }}" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
