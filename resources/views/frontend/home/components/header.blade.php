@@ -7,7 +7,7 @@
                     <div class="wrap-logo text-center" itemscope="" itemtype="http://schema.org/Organization">
                         <a href="{{ route('home_index.index') }}" itemprop="url" aria-label="logo">
                             <img itemprop="logo"
-                                src="/file.hstatic.net/200000296482/file/logo_1c90af075f3541399f3f74a35237f63c.png"
+                                src="{{ $systems['homepage_logo'] }}"
                                 alt="Thương hiệu đồ gốm sứ Nhật Bản cao cấp">
                         </a>
                         <!--<h1 style="display:none">
