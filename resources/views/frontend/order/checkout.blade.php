@@ -503,7 +503,7 @@
             width: 20px;
             height: 20px;
             display: inline-block;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTIwIDEwYzAgNS41MjMtNC40NzcgMTAtMTAgMTBTMCAxNS41MjMgMCAxMCA0LjQ3NyAwIDEwIDB2MmMtNC40MTggMC04IDMuNTgyLTggOHMzLjU4MiA4IDggOCA4LTMuNTgyIDgtOGgyeiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=='), none;
+            background-image: url('/libaries/upload/images/image.svg');
             background-size: cover;
             animation: spin 1s linear infinite;
         }
@@ -4059,7 +4059,7 @@
             var ward_name = $("#customer_shipping_ward option:selected").text();
             var discount_code = $('#discount\\.code1').val() ?? $('#discount\\.code2').val();
             $(this).find('.btn-content').addClass('d-none'); // Ẩn chữ
-                $(this).find('.icon-button-spinner').show(); // Hiển thị spinner
+                $(this).find('.icon-button-spinner').show().css('opacity', 1); // Hiển thị spinner
 
                 // Giả lập xử lý 3 giây, sau đó khôi phục nút bình thường
                 setTimeout(() => {

@@ -26,7 +26,7 @@
 
         <p class="heading-h4 footer-newletter footer-trai">ĐĂNG KÝ NHẬN KHUYẾN MẠI</p>
         <div class="col-9 col-sm-12 col-md-12 col-lg-9 col-xl-9" style="padding: 0; margin: 0 0 13px 0;">
-          <form accept-charset='UTF-8' action='https://noritake.vn/account/contact' class='contact-form' method='post'>
+          <form accept-charset='UTF-8' action='' class='contact-form' method='post'>
             <input name='form_type' type='hidden' value='customer'>
             <input name='utf8' type='hidden' value='✓'>
             <input type="hidden" name="contact[tags]" value="Khách hàng đăng ký nhận tin">
@@ -229,7 +229,7 @@
         </button>
       </div>
       <div class="modal-body body-popupform">
-        <form accept-charset='UTF-8' action='https://noritake.vn/contact' class='contact-form' method='post'>
+        <form accept-charset='UTF-8' action='' class='contact-form' method='post'>
           <input name='form_type' type='hidden' value='contact'>
           <input name='utf8' type='hidden' value='✓'>
           <input name='__RequestVerificationToken' type='hidden' value='CfDJ8FyFPV59mBtNhmQGz0fYZt_c0YksJidjGQ-Nt1gusScYneRZEG0n55dUbXkXnLdiJykFZ9cjvJM77N34CSE-UjXUYhwEMecdQS5Y7UmVyZFRq0SH93BtKkq3CSPuJlFp9CaBumKSTii1r6jWQxDfZY8'>

@@ -266,7 +266,19 @@
 
 		$('.submit-order').click(function(e){
 			e.preventDefault();
-
+			var $button = $(this);
+			if (!$button.hasClass('processing')) {
+				$button.addClass('processing')
+					.prop('disabled', true)
+					.find('.btn-content').hide()
+					.end()
+					.find('.btn-spinner').show().css('opacity', 1);
+				
+				// Code xử lý khi click nút
+				console.log('Nút đã được click');
+				// Ví dụ: submit form
+				// $(this).closest('form').submit();
+			}
 			var _token = $('meta[name="csrf-token"]').attr("content");
 			var typeId = $('input[name="payment_method_id"]').attr('type-id');
 
@@ -294,9 +306,7 @@
 					$(".btn-spinner").show();
 				},
 				success: function(response) {
-					document.open();
-                    document.write(response);
-                    document.close();
+					$('body .content .main').html(response)
 				},
 				error: function(xhr, status, error) {
 					alert("Có lỗi xảy ra, vui lòng thử lại!");
