@@ -41,7 +41,7 @@ class OrderMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'fontend.mail.content',
+            view: 'frontend.mail.content',
             with: ['content' => $this->content]
         );
     }

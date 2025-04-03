@@ -83,10 +83,11 @@ class OrderService implements OrderServiceInterface
         try {
             $payload = $this->preparePayload($request);
             $payload['paid_at'] =  now();
-        
+
             $order = $this->orderRepository->create($payload);
-           
+
             if ($order->id > 0) {
+
                 $orderItem = $this->createOrderitems($request, $order);
             }
             DB::commit();
@@ -130,31 +131,42 @@ class OrderService implements OrderServiceInterface
     private function createOrderItems($request, $order)
     {
         $cart = json_decode($order['cart'], true);
-        $arrayIdCartChecked = session('array_id', []);
-
+        // $arrayIdCartChecked = session('array_id', []);
         $orderItems = [];
-
         if (isset($cart['cart_items']) && is_array($cart['cart_items'])) {
             foreach ($cart['cart_items'] as $item) {
-                // kiểm tra có trong sssion 
-                if (in_array($item['id'], $arrayIdCartChecked)) {
-                    $productName = isset($item['products']['name'])
-                        ? $item['products']['name']
-                        : ($item['product_variants']['name'] ?? 'Sản phẩm hiện đang phát hành');
 
-                    $orderItems[] = [
-                        'order_id'           => $order->id,
-                        'product_id'         => $item['product_id'] ?? null,
-                        'product_variant_id' => $item['product_variant_id'] ?? null,
-                        'product_name'       => $productName,
-                        'final_quantity'     => $item['quantity'] ?? 1,
-                        'final_price'        => $item['price'] ?? 0,
-                    ];
-                }
+                $productName = isset($item['products']['name'])
+                    ? $item['products']['name']
+                    : ($item['product_variants']['name'] ?? 'Sản phẩm hiện đang phát hành');
+
+                $orderItems[] = [
+                    'order_id'           => $order->id,
+                    'product_id'         => $item['product_id'] ?? null,
+                    'product_variant_id' => $item['product_variant_id'] ?? null,
+                    'product_name'       => $productName,
+                    'final_quantity'     => $item['quantity'] ?? 1,
+                    'final_price'        => $item['price'] ?? 0,
+                ];
+                // kiểm tra có trong sssion 
+                // if (in_array($item['id'], $arrayIdCartChecked)) {
+                //     $productName = isset($item['products']['name'])
+                //         ? $item['products']['name']
+                //         : ($item['product_variants']['name'] ?? 'Sản phẩm hiện đang phát hành');
+
+                //     $orderItems[] = [
+                //         'order_id'           => $order->id,
+                //         'product_id'         => $item['product_id'] ?? null,
+                //         'product_variant_id' => $item['product_variant_id'] ?? null,
+                //         'product_name'       => $productName,
+                //         'final_quantity'     => $item['quantity'] ?? 1,
+                //         'final_price'        => $item['price'] ?? 0,
+                //     ];
+                // }
             }
         }
+        // dd($orderItems);
 
-        
         if (!empty($orderItems)) {
             $order->orderItems()->createMany($orderItems);
         }
