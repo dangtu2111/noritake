@@ -58,8 +58,8 @@
         <p class="heading-h4">LIÊN HỆ VỚI CHÚNG TÔI</p>
         <ul class="footer-text-line">
           <li><i class="fa fa-phone"></i>
-            <p>Hotline: <a href="">{{ $systems['contact_hotline'] ?? '' }}</a> (8:00-22:00 hàng ngày)</p>
-        /li>
+            <p>Hotline: <a href="">{{ $systems['contact_hotline'] ?? '' }}</a> </p>
+            </li>
           <li><i class="fa fa-envelope"></i>
             <p>Email: {{ $systems['contact_email'] ?? 'Chưa có email' }}</p>
           </li>

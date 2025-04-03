@@ -34,10 +34,6 @@ Bài viết
                                             <meta itemprop="position" content="2" />
                                         </li>
 
-                                        <!--<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">
-						<span itemprop="item" content="https://noritake.vn/blogs/all"><strong itemprop="name">Tất cả bài viết</strong></span>
-						<meta itemprop="position" content="2" />
-					</li>-->
                                     </ol>
                                 </div>
                             </div>

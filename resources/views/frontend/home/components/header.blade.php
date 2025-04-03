@@ -456,7 +456,7 @@
 
             </div>
 
-            <div class="header_dropdown_content site_menu_mobile desktop-menu-icon">
+            <!-- <div class="header_dropdown_content site_menu_mobile desktop-menu-icon">
                 <span class="box-triangle">
                     <svg viewBox="0 0 20 9">
                         <path
@@ -500,7 +500,7 @@
                         </nav>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Menu desktop -->
         <nav class="f-nav nav-wrap-menu">

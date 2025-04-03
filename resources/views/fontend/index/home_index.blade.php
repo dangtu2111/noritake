@@ -1,6 +1,6 @@
 @extends('fontend.home.layout')
 @section('page_title')
-    Bee Cloudy
+    Admin
 @endsection
 @section('content')
     <div class="" id="app">

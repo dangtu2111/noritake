@@ -13,7 +13,7 @@ return [
     | "mailers" array. Examples of each type of mailer are provided.
     |
     */
-
+    'system_mail'=>env('SYSTEM_MAIL', 'anhtuhanam1@gmail.com'),
     'default' => env('MAIL_MAILER', 'log'),
 
     /*

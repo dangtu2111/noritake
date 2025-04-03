@@ -30,10 +30,7 @@ Danh mục bài viết
                                             <meta itemprop="position" content="2">
                                         </li>
 
-                                        <!--<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">
-						<span itemprop="item" content="https://noritake.vn/blogs/decor-sap-xep"><strong itemprop="name">Decor - Sắp xếp</strong></span>
-						<meta itemprop="position" content="2" />
-					</li>-->
+                               
                                     </ol>
                                 </div>
                             </div>

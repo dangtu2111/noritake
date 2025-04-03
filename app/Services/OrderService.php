@@ -102,7 +102,7 @@ class OrderService implements OrderServiceInterface
     {
         $order = $this->all();
         $to = $order->email;
-        $cc = 'beecloudy2024@gmail.com'; // gửi về mail của hệ thống 
+        $cc = config('mail.system_mail'); // gửi về mail của hệ thống 
         $content = ['order' => $order];
         Mail::to($to)->cc($cc)->send(new OrderMail($content));
     }
@@ -110,7 +110,7 @@ class OrderService implements OrderServiceInterface
     {
         $order = $this->all();
         $to = $order->email;
-        $cc = 'beecloudy2024@gmail.com'; // gửi về mail của hệ thống 
+        $cc = config('mail.system_mail'); // gửi về mail của hệ thống 
         $content_fail = ['order' => $order];
         Mail::to($to)->cc($cc)->send(new OrderMailFail($content_fail));
     }

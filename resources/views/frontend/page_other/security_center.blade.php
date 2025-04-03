@@ -93,7 +93,7 @@ Bảo mật
                 <h5 class="">7. Yêu cầu xóa bỏ thông tin cá nhân</h5>
                 <p>
                     • Khách hàng có quyền yêu cầu xóa bỏ hoàn toàn các thông tin cá nhân lưu trữ trên hệ thống của chúng tôi bất cứ khi nào.<br>
-                    • Khách hàng gửi thư điện tử về địa chỉ <span class="fw-bold">beecloudy2024@gmail.com</span> để yêu cầu xóa bỏ thông tin cá nhân hoàn toàn khỏi hệ thống.
+                    • Khách hàng gửi thư điện tử về địa chỉ <span class="fw-bold">{{ config('mail.system_mail') }}</span> để yêu cầu xóa bỏ thông tin cá nhân hoàn toàn khỏi hệ thống.
                 </p>
                 <h5 class="">8. Thông tin liên hệ</h5>
                 <p>
@@ -102,7 +102,7 @@ Bảo mật
                 <p class="mb-0">
                 <p class="p-0 ms-3">
                     • Gọi điện thoại đến: <span class="fw-bold">0379000358</span>
-                    <br> • Gửi thư điện tử đến địa chỉ email: <span class="fw-bold">beecloudy2024@gmail.com</span>
+                    <br> • Gửi thư điện tử đến địa chỉ email: <span class="fw-bold">{{ config('mail.system_mail') }}</span>
                 </p>
 
                 <p>

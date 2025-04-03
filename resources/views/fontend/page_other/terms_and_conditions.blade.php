@@ -57,7 +57,7 @@
                     • Khách hàng có quyền đổi trả sản phẩm trong vòng 5 ngày kể từ ngày nhận hàng,
                     với điều kiện sản phẩm còn nguyên vẹn, chưa qua sử dụng và còn tem mác. <br>
                     • Để đổi trả, vui lòng liên hệ bộ phận
-                    chăm sóc khách hàng của chúng tôi qua <a href="mailto:beecloudy2024@gmail.com?subject=Hỗ trợ khách hàng đổi trả&body=Chào đội ngũ hỗ trợ, tôi cần giúp đỡ về...">beecloudy2024@gmail.com</a> hoặc <a href="tel:+84379000358">0379000358</a> <br>
+                    chăm sóc khách hàng của chúng tôi qua <a href="mailto:{{ config('mail.system_mail') }}?subject=Hỗ trợ khách hàng đổi trả&body=Chào đội ngũ hỗ trợ, tôi cần giúp đỡ về...">{{ config('mail.system_mail') }}</a> hoặc <a href="tel:+84379000358">0379000358</a> <br>
                 </p>
                 <p>
                     <strong>Vận chuyển và giao nhận:</strong> <br>

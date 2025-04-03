@@ -502,7 +502,14 @@
         .icon.icon-button-spinner {
             width: 20px;
             height: 20px;
+            display: inline-block;
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTIwIDEwYzAgNS41MjMtNC40NzcgMTAtMTAgMTBTMCAxNS41MjMgMCAxMCA0LjQ3NyAwIDEwIDB2MmMtNC40MTggMC04IDMuNTgyLTggOHMzLjU4MiA4IDggOCA4LTMuNTgyIDgtOGgyeiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=='), none;
+            background-size: cover;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .icon.icon-clear {
@@ -3385,7 +3392,7 @@
                                                     <label class="field-label" for="discount.code">Mã giảm giá</label>
                                                     <input placeholder="Mã giảm giá" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code1" name="discount.code" value="" />
                                                 </div>
-                                                <button type="button" class="form_discount_add field-input-btn btn btn-default btn-disabled">
+                                                <button type="button" class="form_discount_add field-input-btn btn btn-default ">
                                                     <span class="btn-content">Sử dụng</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
@@ -3473,7 +3480,7 @@
                                                     <label class="field-label" for="discount.code">Mã giảm giá</label>
                                                     <input placeholder="Mã giảm giá" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code2" name="discount.code" value="" />
                                                 </div>
-                                                <button type="button" class="form_discount_add field-input-btn btn btn-default btn-disabled">
+                                                <button type="button" class="form_discount_add field-input-btn btn btn-default ">
                                                     <span class="btn-content">Sử dụng</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
@@ -4051,7 +4058,14 @@
             var district_name = $("#customer_shipping_district option:selected").text();
             var ward_name = $("#customer_shipping_ward option:selected").text();
             var discount_code = $('#discount\\.code1').val() ?? $('#discount\\.code2').val();
-           
+            $(this).find('.btn-content').addClass('d-none'); // Ẩn chữ
+                $(this).find('.icon-button-spinner').show(); // Hiển thị spinner
+
+                // Giả lập xử lý 3 giây, sau đó khôi phục nút bình thường
+                setTimeout(() => {
+                    $(this).find('.btn-content').removeClass('d-none');
+                    $(this).find('.icon-button-spinner').hide();
+                }, 3000);
             var total_amount=  $(".payment-due-price").attr("data-checkout-payment-due-target");
             $.ajax({
                 url: "{{ route('order.paymentmethod') }}", // Thay bằng URL xử lý đơn hàng của bạn
