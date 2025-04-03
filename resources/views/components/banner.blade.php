@@ -20,7 +20,7 @@
                 @if(!empty($banner->location))
                     <a href="{{ $banner->location }}" target="_blank" aria-label="Xem chi tiết về {{ $banner->name }}">
                         <div class="slider-content-text d-flex align-items-center text-center">
-                            {{ $banner->name ?? '' }}
+                         
                         </div>
                     </a>
                 @endif
