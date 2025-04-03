@@ -45,6 +45,25 @@ class CartService implements CartServiceInterface
             ]
         );
     }
+    public function emptyCart()
+    {
+        // Get the current user's cart
+        $cart = $this->cartRepository->all(
+            ['cartItems'],
+            [['user_id', Auth::id()]]
+        )->first();
+
+        if ($cart) {
+            // Delete all cart items and the cart itself
+            DB::transaction(function () use ($cart) {
+                $cart->cartItems()->delete(); // Delete all associated cart items
+                $cart->delete(); // Delete the cart itself
+            });
+            return true; // Indicate success
+        }
+
+        return false; // Indicate no cart was found or emptied
+    }
 
     public function countProductIncart()
     {

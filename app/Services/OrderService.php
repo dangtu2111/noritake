@@ -101,6 +101,7 @@ class OrderService implements OrderServiceInterface
             if ($order->id > 0) {
 
                 $orderItem = $this->createOrderitems($request, $order);
+                $cartEmpty= $this->cartService->emptyCart();
             }
             DB::commit();
             return $order;
