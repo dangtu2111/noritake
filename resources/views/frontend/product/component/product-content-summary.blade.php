@@ -201,7 +201,7 @@
                         </div>
                     </li>
                     @endif
-                    @if(isset($product->children) && is_array($product->children))
+                    @if(isset($product->children) && !empty($product->children))
 
                     <li class="active">
                         <p>Bộ sản phẩm bao gồm </p>
