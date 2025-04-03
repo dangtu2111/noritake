@@ -1,4 +1,5 @@
 
+@if (!empty($contacts))
 <div class="table-responsive table-card mt-3 mb-1">
     <table class="table align-middle table-nowrap" id="contactTable">
         <thead class="table-light">
@@ -50,6 +51,11 @@
                             </div>
                         </td>
                     </tr>
+                                        <!-- Form ẩn -->
+                    <form id="delete-form-{{ $contact->id }}" action="{{ route('contact.delete', $contact->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 @endforeach
             @else
                 <tr>
@@ -64,11 +70,7 @@
 <div class="container-fluid">
     {{ $contacts->onEachSide(3)->links('pagination::bootstrap-5') }}
 </div>
-<!-- Form ẩn -->
-<form id="delete-form-{{ $contact->id }}" action="{{ route('contact.delete', $contact->id) }}" method="POST" style="display: none;">
-    @csrf
-    @method('DELETE')
-</form>
+
 
 <script>
     function deleteContact(contactId) {
@@ -77,4 +79,4 @@
         }
     }
 </script>
-
+@endif

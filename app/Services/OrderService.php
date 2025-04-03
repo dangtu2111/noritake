@@ -166,6 +166,7 @@ class OrderService implements OrderServiceInterface
             }
         }
         // dd($orderItems);
+        
 
         if (!empty($orderItems)) {
             $order->orderItems()->createMany($orderItems);

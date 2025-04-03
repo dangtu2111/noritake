@@ -26,32 +26,13 @@
 
         <p class="heading-h4 footer-newletter footer-trai">ĐĂNG KÝ NHẬN KHUYẾN MẠI</p>
         <div class="col-9 col-sm-12 col-md-12 col-lg-9 col-xl-9" style="padding: 0; margin: 0 0 13px 0;">
-          <form accept-charset='UTF-8' action='' class='contact-form' method='post'>
-            <input name='form_type' type='hidden' value='customer'>
-            <input name='utf8' type='hidden' value='✓'>
-            <input type="hidden" name="contact[tags]" value="Khách hàng đăng ký nhận tin">
-            <input type="hidden" name="contact[first_name]" value="Người đăng ký">
-            <input type="hidden" name="contact[last_name]" value="">
-            <input type="email" placeholder="Nhập email của bạn" name="contact[email]">
+          <form accept-charset='UTF-8' action='{{ route('sendmail_promotion') }}' class='contact-form' method='post'>
+          @csrf
+          <input type="hidden" name="full_name" value="{{ auth()->check() ? auth()->user()->name : 'Người đăng kí' }}">
+
+            <input type="email" placeholder="Nhập email của bạn" name="email">
             <button type="submit" class="btn btn-box dark">Đăng ký</button>
-            <input name='__RequestVerificationToken' type='hidden' value='CfDJ8FyFPV59mBtNhmQGz0fYZt_c0YksJidjGQ-Nt1gusScYneRZEG0n55dUbXkXnLdiJykFZ9cjvJM77N34CSE-UjXUYhwEMecdQS5Y7UmVyZFRq0SH93BtKkq3CSPuJlFp9CaBumKSTii1r6jWQxDfZY8'>
-            <input id='c8f55ef940824e14a6c2d210af3329a4' name='g-recaptcha-response' type='hidden'>
-            <!-- <script src='../www.google.com/recaptcha/api030a.js?render=6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s'></script> -->
-            <script>
-              let recaptchaElm = document.getElementById('c8f55ef940824e14a6c2d210af3329a4');
-              let recaptchaForm = recaptchaElm.parentNode;
-              recaptchaForm.addEventListener("submit", function(formEvent) {
-                if (!recaptchaElm.value) {
-                  formEvent.preventDefault();
-                  grecaptcha.ready(function() {
-                    grecaptcha.execute('6LchSLkqAAAAABVHBpeFgg8N-WgkYsr5fO6GUF_s', {action: 'submit'}).then(function(token) {
-                      recaptchaElm.value = token;
-                      recaptchaForm.requestSubmit(formEvent.submitter)
-                    })
-                  })
-                }
-              })
-            </script>
+            
           </form>
         </div>
 
@@ -302,4 +283,32 @@
 
 <!-- Site Overlay -->
 <div id="site-overlay" class="site-overlay"></div>
+<script>
+
+    // Gửi form khi người dùng nhấn nút đăng ký
+    $('.contact-form').on('submit', function(e) {
+        e.preventDefault(); // Ngừng hành động submit mặc định của form
+
+        // Lấy dữ liệu của form
+        var formData = new FormData(this);
+
+        // Gửi dữ liệu AJAX
+        $.ajax({
+            url: $(this).attr('action'), // Lấy URL từ thuộc tính action của form
+            method: 'POST',
+            data: formData,
+            processData: false, // Không xử lý dữ liệu
+            contentType: false, // Không thay đổi kiểu nội dung
+            success: function(response) {
+                // Nếu gửi thành công, xử lý dữ liệu trả về
+                alert(response.message); // Giả sử server trả về thông điệp
+            },
+            error: function(xhr, status, error) {
+                // Xử lý lỗi
+                alert('Có lỗi xảy ra! Vui lòng thử lại.');
+            }
+        });
+    });
+
+</script>
 @endif

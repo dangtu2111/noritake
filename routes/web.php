@@ -31,6 +31,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Fontend\PostController as FontendPostController;
 use App\Http\Controllers\Fontend\ShopController;
 use App\Http\Controllers\Backend\PromotionController;
+use App\Http\Controllers\PromotionEmailController;
 use App\Http\Controllers\Backend\UserCatalogueController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\ContentController;
@@ -325,6 +326,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('admin/contacts/{id}', [ContactController::class, 'show'])->name('contact.show');
         Route::delete('admin/contacts/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
     });
+    //Email request
+    Route::group(['prefix' => 'email'], function () {
+        Route::get('index', [PromotionEmailController::class, 'index'])->name('email.index');
+    });
     //System
     Route::group(['prefix' => 'system'], function () {
         Route::get('index', [SystemController::class, 'index'])->name('system.index');
@@ -409,6 +414,8 @@ Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallbac
 
 Route::get('auth/facebook', [LoginController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('auth.facebook.callback');
+Route::post('/sendmail_promotion', [PromotionEmailController::class, 'store'])->name('sendmail_promotion');
+
 
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 

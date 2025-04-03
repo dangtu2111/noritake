@@ -28,20 +28,14 @@
 
                 <!-- Sản phẩm -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarProducts" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('attribute*') || request()->is('brand*') || request()->is('product*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPages">
-                        <i class="ri-pages-line"></i> <span data-key="t-pages">Sản phẩm</span>
+                        aria-controls="sidebarProducts">
+                        <i class="ri-pages-line"></i> <span data-key="t-products">Sản phẩm</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('attribute*') || request()->is('brand*') || request()->is('product*') ? 'show' : '' }}"
-                        id="sidebarPages">
+                        id="sidebarProducts">
                         <ul class="nav nav-sm flex-column">
-                            <!-- <li class="nav-item">
-                                <a href="{{ route('attribute.catalogue.index') }}" class="nav-link">Nhóm sản phẩm con </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('attribute.index') }}" class="nav-link">Sản phẩm con</a>
-                            </li> -->
                             <li class="nav-item">
                                 <a href="{{ route('brand.index') }}" class="nav-link">Thương hiệu</a>
                             </li>
@@ -49,11 +43,11 @@
                                 <a href="{{ route('product.catalogue.index') }}" class="nav-link">Nhóm sản phẩm</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#sidebarProduct" class="nav-link" data-bs-toggle="collapse" role="button"
+                                <a href="#sidebarProductList" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{ request()->is('product*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarProduct">Sản phẩm</a>
+                                    aria-controls="sidebarProductList">Sản phẩm</a>
                                 <div class="collapse menu-dropdown {{ request()->is('product*') ? 'show' : '' }}"
-                                    id="sidebarProduct">
+                                    id="sidebarProductList">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{ route('product.index') }}" class="nav-link">Danh sách</a>
@@ -73,22 +67,12 @@
                     <a class="nav-link menu-link" href="#sidebarOrders" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('order*') ? 'true' : 'false' }}"
                         aria-controls="sidebarOrders">
-                        <i class="fa-brands fa-shopify"></i> <span data-key="t-Orders">Đơn hàng</span>
+                        <i class="fa-brands fa-shopify"></i> <span data-key="t-orders">Đơn hàng</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('order*') ? 'show' : '' }}" id="sidebarOrders">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarorder" class="nav-link" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{ request()->is('order*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarorder">Quản lý</a>
-                                <div class="collapse menu-dropdown {{ request()->is('order*') ? 'show' : '' }}"
-                                    id="sidebarorder">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="{{ route('order.index') }}" class="nav-link">Danh sách</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a href="{{ route('order.index') }}" class="nav-link">Danh sách</a>
                             </li>
                         </ul>
                     </div>
@@ -99,13 +83,13 @@
                     <a class="nav-link menu-link" href="#sidebarRevenue" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('revenue*') ? 'true' : 'false' }}"
                         aria-controls="sidebarRevenue">
-                        <i class="fa-solid fa-dollar-sign"></i> <span data-key="t-Revenues">Doanh thu</span>
+                        <i class="fa-solid fa-dollar-sign"></i> <span data-key="t-revenues">Doanh thu</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('revenue*') ? 'show' : '' }}"
                         id="sidebarRevenue">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('revenue.index') }}" class="nav-link" data-key="t-starter">Quản lý</a>
+                                <a href="{{ route('revenue.index') }}" class="nav-link">Quản lý</a>
                             </li>
                         </ul>
                     </div>
@@ -116,7 +100,7 @@
                     <a class="nav-link menu-link" href="#sidebarMembers" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('user*') ? 'true' : 'false' }}"
                         aria-controls="sidebarMembers">
-                        <i class="ri-group-fill"></i> <span data-key="t-pages">Thành viên</span>
+                        <i class="ri-group-fill"></i> <span data-key="t-members">Thành viên</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('user*') ? 'show' : '' }}"
                         id="sidebarMembers">
@@ -125,11 +109,11 @@
                                 <a href="{{ route('user.catalogue.index') }}" class="nav-link">Nhóm thành viên</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#sidebarUser" class="nav-link" data-bs-toggle="collapse" role="button"
+                                <a href="#sidebarUserList" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{ request()->is('user*') && !request()->is('user.catalogue*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarUser">Thành viên</a>
+                                    aria-controls="sidebarUserList">Thành viên</a>
                                 <div class="collapse menu-dropdown {{ request()->is('user*') && !request()->is('user.catalogue*') ? 'show' : '' }}"
-                                    id="sidebarUser">
+                                    id="sidebarUserList">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{ route('user.index') }}" class="nav-link">Quản lý</a>
@@ -146,20 +130,20 @@
 
                 <!-- Voucher -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPagesvoucher" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarVouchers" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('promotions*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPagesvoucher">
-                        <i class="fa-solid fa-ticket"></i> <span data-key="t-pages">Voucher</span>
+                        aria-controls="sidebarVouchers">
+                        <i class="fa-solid fa-ticket"></i> <span data-key="t-vouchers">Voucher</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('promotions*') ? 'show' : '' }}"
-                        id="sidebarPagesvoucher">
+                        id="sidebarVouchers">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarvoucher" class="nav-link" data-bs-toggle="collapse" role="button"
+                                <a href="#sidebarVoucherList" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{ request()->is('promotions*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarvoucher">Quản lý</a>
+                                    aria-controls="sidebarVoucherList">Quản lý</a>
                                 <div class="collapse menu-dropdown {{ request()->is('promotions*') ? 'show' : '' }}"
-                                    id="sidebarvoucher">
+                                    id="sidebarVoucherList">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{ route('promotions.index') }}" class="nav-link">Danh sách</a>
@@ -176,20 +160,20 @@
 
                 <!-- Đánh giá -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPagescomment" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarReviews" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('comment*') || request()->is('productreview*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPagescomment">
-                        <i class="fa-solid fa-comments"></i> <span data-key="t-pages">Đánh giá</span>
+                        aria-controls="sidebarReviews">
+                        <i class="fa-solid fa-comments"></i> <span data-key="t-reviews">Đánh giá</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('comment*') || request()->is('productreview*') ? 'show' : '' }}"
-                        id="sidebarPagescomment">
+                        id="sidebarReviews">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarcomment" class="nav-link" data-bs-toggle="collapse" role="button"
+                                <a href="#sidebarReviewList" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{ request()->is('comment*') || request()->is('productreview*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarcomment">Quản lý</a>
+                                    aria-controls="sidebarReviewList">Quản lý</a>
                                 <div class="collapse menu-dropdown {{ request()->is('comment*') || request()->is('productreview*') ? 'show' : '' }}"
-                                    id="sidebarcomment">
+                                    id="sidebarReviewList">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{ route('comment') }}" class="nav-link">Bài viết</a>
@@ -206,23 +190,23 @@
 
                 <!-- Bài viết -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPageposts" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarPosts" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('post*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPageposts">
-                        <i class="fa-solid fa-newspaper"></i> <span data-key="t-pageposts">Bài viết</span>
+                        aria-controls="sidebarPosts">
+                        <i class="fa-solid fa-newspaper"></i> <span data-key="t-posts">Bài viết</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('post*') ? 'show' : '' }}"
-                        id="sidebarPageposts">
+                        id="sidebarPosts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('post.catalogue.index') }}" class="nav-link">Nhóm bài viết</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#sidebarPost" class="nav-link" data-bs-toggle="collapse" role="button"
+                                <a href="#sidebarPostList" class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{ request()->is('post*') && !request()->is('post.catalogue*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarPost">Bài viết</a>
+                                    aria-controls="sidebarPostList">Bài viết</a>
                                 <div class="collapse menu-dropdown {{ request()->is('post*') && !request()->is('post.catalogue*') ? 'show' : '' }}"
-                                    id="sidebarPost">
+                                    id="sidebarPostList">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a href="{{ route('post.index') }}" class="nav-link">Danh sách</a>
@@ -239,13 +223,13 @@
 
                 <!-- Trang -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPage" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('home-components*') || request()->is('banner*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPage">
-                        <i class="fa-solid fa-image"></i> <span data-key="t-Page">Trang</span>
+                        aria-controls="sidebarPages">
+                        <i class="fa-solid fa-image"></i> <span data-key="t-pages">Trang</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->is('homeview*') || request()->is('banner*') ? 'show' : '' }}"
-                        id="sidebarPage">
+                    <div class="collapse menu-dropdown {{ request()->is('home-components*') || request()->is('banner*') ? 'show' : '' }}"
+                        id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('static-pages.index') }}" class="nav-link">Trang tĩnh</a>
@@ -256,15 +240,16 @@
                         </ul>
                     </div>
                 </li>
-                <!-- FAQ -->
+
+                <!-- Câu hỏi liên hệ -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPageposts" data-bs-toggle="collapse" role="button"
-                        aria-expanded="{{ request()->is('post*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarPageposts">
-                        <i class="fas fa-address-card"></i> <span data-key="t-pageposts">Câu hỏi liên hệ</span>
+                    <a class="nav-link menu-link" href="#sidebarContacts" data-bs-toggle="collapse" role="button"
+                        aria-expanded="{{ request()->is('contact*') ? 'true' : 'false' }}"
+                        aria-controls="sidebarContacts">
+                        <i class="fas fa-address-card"></i> <span data-key="t-contacts">Câu hỏi liên hệ</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->is('post*') ? 'show' : '' }}"
-                        id="sidebarPageposts">
+                    <div class="collapse menu-dropdown {{ request()->is('contact*') ? 'show' : '' }}"
+                        id="sidebarContacts">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('contact.index') }}" class="nav-link">Danh sách liên hệ</a>
@@ -272,30 +257,38 @@
                         </ul>
                     </div>
                 </li>
+
+                <!-- Email yêu cầu -->
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarEmails" data-bs-toggle="collapse" role="button"
+                        aria-expanded="{{ request()->is('email*') ? 'true' : 'false' }}"
+                        aria-controls="sidebarEmails">
+                        <i class="fas fa-address-card"></i> <span data-key="t-emails">Email yêu cầu</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->is('email*') ? 'show' : '' }}"
+                        id="sidebarEmails">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('email.index') }}" class="nav-link">Danh sách email yêu cầu</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="menu-title"><i class="ri-more-fill"></i> <span class="text-light">Cấu Hình</span></li>
 
                 <!-- Banner -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarBanner" data-bs-toggle="collapse" role="button"
+                    <a class="nav-link menu-link" href="#sidebarBanners" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('banner*') ? 'true' : 'false' }}"
-                        aria-controls="sidebarBanner">
-                        <i class="fa-solid fa-image"></i> <span data-key="t-Banner">Banner</span>
+                        aria-controls="sidebarBanners">
+                        <i class="fa-solid fa-image"></i> <span data-key="t-banners">Banner</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('banner*') ? 'show' : '' }}"
-                        id="sidebarBanner">
+                        id="sidebarBanners">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarBannerManage" class="nav-link" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="{{ request()->is('banner*') ? 'true' : 'false' }}"
-                                    aria-controls="sidebarBannerManage">Quản lý</a>
-                                <div class="collapse menu-dropdown {{ request()->is('banner*') ? 'show' : '' }}"
-                                    id="sidebarBannerManage">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="{{ route('banner.index') }}" class="nav-link">Danh sách</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a href="{{ route('banner.index') }}" class="nav-link">Danh sách</a>
                             </li>
                         </ul>
                     </div>
@@ -306,7 +299,7 @@
                     <a class="nav-link menu-link" href="#sidebarSystem" data-bs-toggle="collapse" role="button"
                         aria-expanded="{{ request()->is('system*') ? 'true' : 'false' }}"
                         aria-controls="sidebarSystem">
-                        <i class="fa-solid fa-cogs"></i> <span data-key="t-System">Hệ thống</span>
+                        <i class="fa-solid fa-cogs"></i> <span data-key="t-system">Hệ thống</span>
                     </a>
                     <div class="collapse menu-dropdown {{ request()->is('system*') ? 'show' : '' }}"
                         id="sidebarSystem">
