@@ -53,8 +53,8 @@ Chi tiết bài viết
                                             <meta itemprop="position" content="2">
                                         </li>
                                         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                            <a href="/blogs/tin-tuc-su-kien" itemprop="item">
-                                                <span itemprop="name">Tin tức - Sự kiện</span>
+                                            <a href="{{ route('post.category',['id'=>$postCatalogues->first()->id]) }}" itemprop="item">
+                                                <span itemprop="name">{{ $postCatalogues->first()->name }}</span>
                                             </a>
                                             <meta itemprop="position" content="2">
                                         </li>
