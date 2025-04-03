@@ -143,7 +143,7 @@ Liên hệ
             <div class="container-fluid">
                 <div class="box-contact-map">
 
-                    <iframe style="width: 100%;" src="{{ $systems['he-thong-cua-hang']??'' }}" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe style="width: 100%;" src="{{ $systems['contact_map']??'' }}" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
