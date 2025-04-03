@@ -203,19 +203,19 @@
             });
         });
 
-        // Xử lý tăng/giảm số lượng
-        $('.minus-btn').on('click', function() {
-            var input = $(this).siblings('.quantity-input');
-            var value = parseInt(input.val());
-            if (value > 1) {
-                input.val(value - 1);
-            }
-        });
+        // // Xử lý tăng/giảm số lượng
+        // $('.minus-btn').on('click', function() {
+        //     var input = $(this).siblings('.quantity-input');
+        //     var value = parseInt(input.val());
+        //     if (value > 1) {
+        //         input.val(value - 1);
+        //     }
+        // });
 
-        $('.plus-btn').on('click', function() {
-            var input = $(this).siblings('.quantity-input');
-            var value = parseInt(input.val());
-            input.val(value + 1);
-        });
+        // $('.plus-btn').on('click', function() {
+        //     var input = $(this).siblings('.quantity-input');
+        //     var value = parseInt(input.val());
+        //     input.val(value + 1);
+        // });
     });
 </script>
