@@ -311,5 +311,5 @@
     });
 
 </script>
-{{ $systems['homepage_script'] }}
+{{ $systems['homepage_script']??'' }}
 @endif
