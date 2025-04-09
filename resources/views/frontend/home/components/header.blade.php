@@ -10,6 +10,7 @@
                                 src="{{ $systems['homepage_logo'] }}"
                                 alt="Thương hiệu đồ gốm sứ Nhật Bản cao cấp">
                         </a>
+                      
                         <!--<h1 style="display:none">
                   <a href="https://noritake.vn" itemprop="url">Thương hiệu sứ số 1 Nhật Bản</a>
                 </h1>-->
@@ -19,44 +20,22 @@
                     <div class="header-action-icon d-flex justify-content-end ">
                         <div class="search-bar-mobile d-block">
                             <div class="search-box wpo-wrapper-search">
-                                <form action="https://noritake.vn/search"
-                                    class="searchform searchform-categoris ultimate-search">
-                                    <div class="wpo-search-inner">
-                                        <input type="hidden" name="type" value="product" />
-                                        <input required id="inputSearchAuto-mb" name="q" maxlength="40"
-                                            autocomplete="off" class="searchinput input-search search-input" type="text"
-                                            size="20" placeholder="Tìm kiếm sản phẩm..."
-                                            aria-label="Tìm kiếm sản phẩm...">
-                                    </div>
-                                    <button type="submit" class="btn-search btn" id="search-header-btn-mb"
-                                        aria-label="Button icon search">
-                                        <span class="search-icon">
-                                            <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;"
-                                                xml:space="preserve">
-                                                <path
-                                                    d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z">
-                                                </path>
-                                                <rect x="17" y="17"
-                                                    transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)"
-                                                    width="4" height="8"></rect>
-                                            </svg>
-                                        </span>
-                                        <span class="search-close">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </form>
-                                <div id="ajaxSearchResults-mb" class="smart-search-wrapper ajaxSearchResults"
-                                    style="display: none">
-                                    <div class="resultsContent"></div>
-                                </div>
+                            <!-- Desktop -->
+                            <form action="{{ route('search') }}" method="GET"
+                                class="searchform searchform-categoris ultimate-search">
+                                <input type="hidden" name="type" value="product" />
+                                <input required id="inputSearchAuto-mb" name="q" maxlength="40"
+                                    autocomplete="off" class="searchinput input-search search-input"
+                                    type="text" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm...">
+                                <button type="submit" class="btn-search btn" id="search-header-btn-mb">
+                                <span class="search-icon">
+									<svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+								</span>
+                                <span class="search-close">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+								</span>
+                                </button>
+                            </form>
                             </div>
                         </div>
                         <div class="wrap-search header-action">
@@ -90,38 +69,18 @@
                                             fill="#ffffff"></path>
                                     </svg>
                                 </span>
-                                <div class="site-nav-container">
-                                    <p class="titlebox-search">Tìm kiếm</p>
-                                    <div class="wpo-wrapper-search pt-3">
-                                        <form action="https://noritake.vn/search"
-                                            class="searchform searchform-categoris ultimate-search mb-2">
-                                            <div class="wpo-search-inner">
-                                                <input type="hidden" name="type" value="product" />
-                                                <input required id="inputSearchAuto" name="q" maxlength="40"
-                                                    autocomplete="off" class="searchinput input-search search-input"
-                                                    type="text" size="20" placeholder="Tìm kiếm sản phẩm..."
-                                                    aria-label="Tìm kiếm sản phẩm...">
-                                            </div>
-                                            <button type="submit" class="btn btn-search" id="search-header-btn-dk"
-                                                aria-label="Button icon search">
-                                                <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;"
-                                                    xml:space="preserve">
-                                                    <path
-                                                        d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z">
-                                                    </path>
-                                                    <rect x="17" y="17"
-                                                        transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)"
-                                                        width="4" height="8"></rect>
-                                                </svg>
-                                            </button>
-                                        </form>
-                                        <div id="ajaxSearchResults" class="smart-search-wrapper ajaxSearchResults"
-                                            style="display: none">
-                                            <div class="resultsContent"></div>
+                                <!-- mobile -->
+                                <div class="wpo-wrapper-search pt-3">
+                                    <form class="searchform searchform-categoris ultimate-search mb-2">
+                                        <div class="wpo-search-inner">
+                                            <input id="inputSearchAuto-mb" name="q"
+                                                class="searchinput input-search search-input"
+                                                type="text" placeholder="Tìm kiếm sản phẩm...">
                                         </div>
-                                    </div>
+                                        <button type="submit" class="btn btn-search">
+                                        <i class="fas fa-search"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -330,11 +289,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -455,52 +409,6 @@
                 </div>
 
             </div>
-
-            <!-- <div class="header_dropdown_content site_menu_mobile desktop-menu-icon">
-                <span class="box-triangle">
-                    <svg viewBox="0 0 20 9">
-                        <path
-                            d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
-                            fill="#ffffff"></path>
-                    </svg>
-                </span>
-                <div class="site-nav-container-menu">
-                    <div class="menu-mobile-content">
-                        <nav id="mb-menu">
-                            <div class="navbar-level" data-level="1">
-                                <ul class="menuList-sub vertical-menu-list sub-child">
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/bo-am-chen-uong-tra.html">Bộ ấm trà cao
-                                            cấp</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/bo-bat-dia-dep.html">Bộ bát đĩa đẹp cao
-                                            cấp</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/su-trang-khong-hoa-tiet.html">Bộ sản phẩm sứ
-                                            trắng</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/coc-su-ly-su.html">Cốc sứ / Ly sứ</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/binh-hoa.html">Bình hoa đẹp</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/khung-anh-dep.html">Khung ảnh đẹp</a>
-                                    </li>
-                                    <li class="data-li">
-                                        <a class="parent" href="collections/phu-kien-ban-tra.html">Phụ kiện bàn trà</a>
-                                    </li>
-                                 
-                                </ul>
-
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <!-- Menu desktop -->
         <nav class="f-nav nav-wrap-menu">
@@ -555,8 +463,8 @@
         </nav>
 
 
-        <style>
-          .menuList-sub li > div {
+<style>
+    .menuList-sub li > div {
     display: flex;
     justify-content: space-between; /* Đẩy hai phần tử về hai phía */
     align-items: center;
@@ -815,3 +723,286 @@
     border: none; /* Xóa border mặc định */
 }
 </style>
+
+<!-- css Search -->
+<style>
+.search-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #ffffff; /* Nền trắng */
+    color: #000000; /* Chữ đen */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 5px;
+}
+
+/* Đảm bảo tất cả phần tử con bên trong cũng có màu đen */
+.search-results-dropdown * {
+    color: #000000 !important;
+}
+
+
+.search-results-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results-dropdown::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.search-results-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px dashed #ccc; /* Đường gạch sọc rõ nét hơn */
+    transition: background-color 0.2s;
+}
+.search-result-item:not(:last-child) {
+    border-bottom: 1px dashed #ccc;
+}
+
+
+
+.search-result-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: #fff;
+}
+
+.search-result-image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+}
+
+.search-loading {
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Gradient fade effect at bottom of results */
+.search-results-dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, #ffffff); /* Chuyển sang nền trắng */
+    pointer-events: none;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: #fff;
+}
+
+.search-result-image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.search-result-title {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    line-height: 1.4;
+}
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+}
+
+
+@media (max-width: 767px) {
+    .searchform-categoris {
+        display: block;
+    }
+}
+.search-result-item {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  padding: 15px 0 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.search-result-title {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #333 !important;
+  margin-bottom: 8px !important;
+}
+
+.f-initial {
+  font-size: 16px !important;
+  color: #000 !important;
+  font-weight: 500 !important;
+  margin-bottom: 5px !important;
+}
+
+.search-result-image {
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+/* Đảm bảo có đủ không gian cho hình ảnh */
+.search-result-item {
+  padding-right: 100px !important;
+  min-height: 100px !important;
+}
+</style>
+
+<!-- desktop Search -->
+<script>
+    $(document).ready(function() {
+        let searchTimeout;
+        let currentSearchRequest;
+
+        // ✅ Chỉ AJAX khi người dùng gõ (input bằng tay)
+        $('.searchinput').on('input', function(e) {
+            // Nếu input do người dùng gõ thì mới gọi AJAX
+            if (!e.originalEvent || !e.originalEvent.isTrusted) return;
+
+            const keyword = $(this).val().trim();
+            const searchForm = $(this).closest('form');
+            const resultsContainer = searchForm.siblings('.search-results-dropdown');
+
+            clearTimeout(searchTimeout);
+
+            if (keyword === '') {
+                resultsContainer.remove();
+                return;
+            }
+
+            searchTimeout = setTimeout(() => {
+                performSearch(keyword, searchForm);
+            }, 300);
+        });
+
+       
+
+       
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.wpo-wrapper-search').length) {
+                $('.search-results-dropdown').remove();
+            }
+        });
+
+       
+        $('.search-close').on('click', function(e) {
+            e.preventDefault();
+            const searchForm = $(this).closest('form');
+            searchForm.siblings('.search-results-dropdown').remove();
+            searchForm.find('.searchinput').val('');
+        });
+
+        // ✅ AJAX lấy gợi ý tìm kiếm
+        function performSearch(keyword, form) {
+            if (currentSearchRequest) {
+                currentSearchRequest.abort();
+            }
+
+            form.siblings('.search-results-dropdown').remove();
+
+            const resultsContainer = $('<div class="search-results-dropdown"><div class="search-loading">Đang tìm kiếm...</div></div>');
+            form.after(resultsContainer);
+
+            currentSearchRequest = $.ajax({
+                url: '{{ route("ajax.search.modal") }}',
+                type: 'GET',
+                data: { q: keyword },
+                success: function(response) {
+                    if (response.success && response.products.length > 0) {
+                        let html = '';
+                        response.products.forEach(product => {
+                            html += `
+                               <a href="/product/detail/${product.slug}" class="search-result-item" title="${product.name}">
+                                    <h3 class="search-result-title">${product.name}</h3>
+                                    <p class="f-initial">${product.price}</p>
+                                    <img src="${product.image}" class="search-result-image" alt="${product.name}">
+                                </a>`;
+                        });
+                        resultsContainer.html(html);
+                    } else {
+                        resultsContainer.html('<div class="no-results">Không có sản phẩm nào...</div>');
+                    }
+                },
+                error: function() {
+                    resultsContainer.html('<div class="no-results">Có lỗi xảy ra</div>');
+                }
+            });
+        }
+    });
+</script>
+
+
+<!-- mobile Search-->
+<script>
+    $(document).ready(function () {
+        // Khi nhấn nút tìm kiếm (mobile)
+        $('.btn-search').on('click', function (e) {
+            e.preventDefault(); // Ngăn form submit mặc định
+            const keyword = $(this).closest('form').find('.searchinput').val().trim();
+            if (keyword !== '') {
+                window.location.href = '{{ route("search") }}?q=' + encodeURIComponent(keyword);
+            }
+        });
+
+        // Khi nhấn Enter trong input mobile
+        $('#inputSearchAuto-mb').on('keydown', function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // Ngăn submit
+                const keyword = $(this).val().trim();
+                if (keyword !== '') {
+                    window.location.href = '{{ route("search") }}?q=' + encodeURIComponent(keyword);
+                }
+            }
+        });
+    });
+</script>
+

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Ajax;
-
+use App\Models\HomeComponent;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -36,53 +36,40 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
-        
-        $type = $request->input('type');
-        if ($type === 'product') {
-            $results = Product::where('name', 'LIKE', "%{$keyword}%")
-                ->where('publish', 1)
-                ->with('productCatalogues', 'productVariant', 'productVariant.attributes')
-                ->paginate(9);
-            if ($results->isNotEmpty()) {
-                // Nếu có kết quả chính xác
-                $resultSearchs = new \Illuminate\Pagination\LengthAwarePaginator(
-                    $results,
-                    $results->count(),
-                    12
-                );
-            } else {
-                $resultSearchs = Product::where(function ($query) use ($keyword) {
-                    $query->where('name', 'LIKE', "%{$keyword}%")
-                        ->where('publish', 1);
-                })
-                    ->with('productCatalogues', 'productVariant', 'productVariant.attributes')
-                    ->paginate(12);
-            }
-        } elseif ($type === 'post') {
-            $results = Post::where('name', 'LIKE', "%{$keyword}%")
-                ->where('publish', 1)
-                ->with('users')
-                ->paginate(12);
-            if ($results->isNotEmpty()) {
-                // Nếu có kết quả chính xác
-                $resultSearchs = new \Illuminate\Pagination\LengthAwarePaginator(
-                    $results,
-                    $results->count(),
-                    12
-                );
-            } else {
-                $resultPostSearchs = Post::where(function ($query) use ($keyword) {
-                    $query->where('name', 'LIKE', "%{$keyword}%")
-                        ->where('publish', 1);
-                })
-                    ->with('users')
-                    ->paginate(9);
-            }
-        } else {
-            $results = collect([]); 
+        $keyword = $request->input('q'); // tên input
+    
+        // Truy vấn tất cả sản phẩm để đếm tổng số sản phẩm tìm được
+        $totalProducts = Product::where('name', 'LIKE', "%{$keyword}%")
+                                ->where('publish', 1)
+                                ->count();
+    
+        // Phân trang kết quả tìm kiếm
+        $products = Product::where('name', 'LIKE', "%{$keyword}%")
+                            ->where('publish', 1)
+                            ->with('productCatalogues', 'productVariant', 'productVariant.attributes')
+                            ->paginate(8);
+    
+        return view('frontend.page_other.search', compact('products', 'keyword', 'totalProducts'));
+    }
+    
+    
+    
+    public function modalSearch(Request $request)
+    {
+        $keyword = $request->input('q');
+        if (empty($keyword)) {
+            return response()->json(['error' => 'Vui lòng nhập từ khóa tìm kiếm']);
         }
-
-        return view('fontend.index.search', compact('results', 'keyword', 'type'));
+        
+        $products = Product::where('name', 'LIKE', "%{$keyword}%")
+            ->where('publish', 1)
+            ->with('productCatalogues', 'productVariant', 'productVariant.attributes')
+            ->limit(5)
+            ->get();
+            
+        return response()->json([
+            'success' => true,
+            'products' => $products
+        ]);
     }
 }
