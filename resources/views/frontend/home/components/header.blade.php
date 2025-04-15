@@ -361,8 +361,8 @@
                                                     @if ($menu->children->count())
                                                         <span class="icon-control" data-toggle="collapse" data-target="#collapse{{ $menu->id }}" 
                                                             aria-expanded="false" aria-controls="collapse{{ $menu->id }}">
-                                                            <img id="icon-plus-{{ $menu->id }}" src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
-                                                            <img id="icon-minus-{{ $menu->id }}" src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
+                                                            <img id="icon-plus-{{ $menu->id }}" src="/file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
+                                                            <img id="icon-minus-{{ $menu->id }}" src="/file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
                                                         </span>
                                                     @endif
                                                 </div>
@@ -378,8 +378,8 @@
                                                                         @if ($child->children->count())
                                                                             <span class="icon-control" data-toggle="collapse" data-target="#collapse{{ $child->id }}"
                                                                                 aria-expanded="false" aria-controls="collapse{{ $child->id }}">
-                                                                                <img id="icon-plus-{{ $child->id }}" src="../file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
-                                                                                <img id="icon-minus-{{ $child->id }}" src="../file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
+                                                                                <img id="icon-plus-{{ $child->id }}" src="/file.hstatic.net/200000296482/file/icons8-plus-24_056a68c5ba51474ea67c80ccdd68c0c1.png">
+                                                                                <img id="icon-minus-{{ $child->id }}" src="/file.hstatic.net/200000296482/file/icons8-minus-24_9763de20001449b39af4c7b544d27690.png" style="display: none;">
                                                                             </span>
                                                                         @endif  
                                                                     </div>
